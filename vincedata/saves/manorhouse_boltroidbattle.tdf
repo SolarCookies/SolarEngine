@@ -1,0 +1,1715 @@
+[objects]
+{
+	[vince_base]
+	{
+		zone = 9;
+		location = 6.562469 2.154432 11.599690;
+		rotation = 0.000000 -0.685057 -0.000000 -0.728490;
+	}
+	[train_ab_base]
+	{
+		zone = 9;
+		location = 0.536131 1.137210 -9.072536;
+		rotation = 0.000000 -0.999211 -0.000000 0.039717;
+		instancename = train_ab;
+	}
+	[train_aa_base]
+	{
+		zone = 9;
+		location = -7.792997 2.370713 -5.901480;
+		rotation = 0.000000 0.994408 -0.000000 0.105602;
+	}
+	[catus_base]
+	{
+		zone = 9;
+		location = -5.206258 0.546415 4.902547;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base1]
+	{
+		zone = 9;
+		location = -5.721194 0.402842 4.111397;
+		rotation = 0.000000 0.374067 -0.000000 0.927402;
+		instancename = poodletarget;
+	}
+	[catus_base2]
+	{
+		zone = 9;
+		location = -5.947661 -0.002209 3.070969;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base3]
+	{
+		zone = 9;
+		location = -6.204505 0.691809 3.739659;
+		rotation = 0.000000 0.232408 -0.000000 0.972618;
+		instancename = poodletarget;
+	}
+	[catus_base4]
+	{
+		zone = 9;
+		location = -6.587993 0.806375 3.421187;
+		rotation = 0.000000 -0.495943 -0.000000 0.868355;
+		instancename = poodletarget;
+	}
+	[catus_base5]
+	{
+		zone = 9;
+		location = -7.118871 0.780476 2.993829;
+		rotation = 0.000000 0.299677 -0.000000 0.954041;
+		instancename = poodletarget;
+	}
+	[catus_base6]
+	{
+		zone = 9;
+		location = -6.736276 0.109370 2.427971;
+		rotation = -0.021407 0.132211 0.129924 0.982437;
+		instancename = poodletarget;
+	}
+	[catus_base7]
+	{
+		zone = 9;
+		location = -7.881695 -0.019411 1.514162;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base8]
+	{
+		zone = 9;
+		location = -7.727887 0.238241 2.039238;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base9]
+	{
+		zone = 9;
+		location = -7.606854 1.003928 2.846666;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base10]
+	{
+		zone = 9;
+		location = -7.715510 1.225575 3.084055;
+		rotation = 0.000000 -0.374530 -0.000000 0.927215;
+		instancename = poodletarget;
+	}
+	[catus_base11]
+	{
+		zone = 9;
+		location = -7.067159 1.465619 3.718294;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base12]
+	{
+		zone = 9;
+		location = -6.464900 0.490177 3.335670;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base13]
+	{
+		zone = 9;
+		location = -6.986441 1.912233 4.326048;
+		rotation = 0.000000 -0.269790 -0.000000 0.962919;
+		instancename = poodletarget;
+	}
+	[catus_base14]
+	{
+		zone = 9;
+		location = -7.164292 3.264744 5.737174;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base15]
+	{
+		zone = 9;
+		location = -8.557004 4.834312 6.948938;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base16]
+	{
+		zone = 9;
+		location = -6.215100 2.948433 9.994694;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base17]
+	{
+		zone = 9;
+		location = -7.388820 3.781484 10.189416;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base18]
+	{
+		zone = 9;
+		location = -7.866333 3.972516 9.283825;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base19]
+	{
+		zone = 9;
+		location = -10.219167 6.552353 9.626600;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[catus_base20]
+	{
+		zone = 9;
+		location = -9.730317 6.507401 9.306547;
+		rotation = 0.000000 0.450644 -0.000000 0.892704;
+		instancename = poodletarget;
+	}
+	[catus_base21]
+	{
+		zone = 9;
+		location = -10.227520 6.448095 9.268874;
+		rotation = -0.063917 -0.457748 0.060877 0.884689;
+		instancename = poodletarget;
+	}
+	[firlarge_base]
+	{
+		zone = 9;
+		location = 0.732653 2.385780 -10.290454;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base1]
+	{
+		zone = 9;
+		location = 3.562772 2.291396 -9.568305;
+		rotation = 0.038209 -0.787870 -0.029774 0.613934;
+		instancename = poodletarget;
+	}
+	[firlarge_base2]
+	{
+		zone = 9;
+		location = 5.427632 3.431669 -9.855996;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base3]
+	{
+		zone = 9;
+		location = 6.332537 3.123572 -8.532893;
+		rotation = 0.015691 0.501956 0.027019 0.864329;
+		instancename = poodletarget;
+	}
+	[firlarge_base4]
+	{
+		zone = 9;
+		location = 9.159308 3.725148 -8.822150;
+		rotation = 0.017774 -0.331119 0.050570 0.942065;
+		instancename = poodletarget;
+	}
+	[firlarge_base5]
+	{
+		zone = 9;
+		location = 8.464656 2.772134 -7.309625;
+		rotation = 0.000000 0.537179 -0.000000 0.843468;
+		instancename = poodletarget;
+	}
+	[firlarge_base6]
+	{
+		zone = 9;
+		location = 9.603127 3.419541 -6.012670;
+		rotation = -0.008436 -0.255990 -0.031837 0.966118;
+		instancename = poodletarget;
+	}
+	[firlarge_base7]
+	{
+		zone = 9;
+		location = 10.074018 3.479800 -4.342619;
+		rotation = 0.000000 -0.016704 -0.000000 0.999860;
+		instancename = poodletarget;
+	}
+	[firlarge_base8]
+	{
+		zone = 9;
+		location = 9.662279 2.429772 -2.163130;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base9]
+	{
+		zone = 9;
+		location = 9.933273 2.317038 1.807138;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base10]
+	{
+		zone = 9;
+		location = 7.910252 -0.040953 8.229160;
+		rotation = 0.000000 -0.369112 -0.000000 0.929385;
+		instancename = poodletarget;
+	}
+	[firlarge_base11]
+	{
+		zone = 9;
+		location = 6.904136 -0.110883 9.146643;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base12]
+	{
+		zone = 9;
+		location = 4.722809 -0.148678 9.917136;
+		rotation = 0.000000 0.095832 -0.000000 0.995398;
+		instancename = poodletarget;
+	}
+	[firlarge_base13]
+	{
+		zone = 9;
+		location = -3.684599 2.395030 -10.231325;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base14]
+	{
+		zone = 9;
+		location = -1.366663 0.685574 -7.828774;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base15]
+	{
+		zone = 9;
+		location = -1.663752 1.144848 -8.570941;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base]
+	{
+		zone = 9;
+		location = 2.939820 2.097088 -9.855721;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base1]
+	{
+		zone = 9;
+		location = 6.453318 3.247980 -9.676050;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base2]
+	{
+		zone = 9;
+		location = 6.253577 2.521839 -7.501923;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base3]
+	{
+		zone = 9;
+		location = 6.868730 2.938804 -8.255842;
+		rotation = -0.007776 -0.509927 -0.004610 0.860170;
+		instancename = poodletarget;
+	}
+	[firmedium_base4]
+	{
+		zone = 9;
+		location = 8.395354 3.306666 -8.863140;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base5]
+	{
+		zone = 9;
+		location = 9.939165 4.123322 -9.145979;
+		rotation = -0.023199 -0.624505 0.018564 0.780456;
+		instancename = poodletarget;
+	}
+	[firmedium_base6]
+	{
+		zone = 9;
+		location = 9.079154 3.729794 -9.836237;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base7]
+	{
+		zone = 9;
+		location = 9.587526 3.199018 -3.600450;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base9]
+	{
+		zone = 9;
+		location = 9.410819 1.849186 2.369705;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base10]
+	{
+		zone = 9;
+		location = 5.317460 -0.093984 9.484812;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base11]
+	{
+		zone = 9;
+		location = 7.175383 -0.217270 8.619502;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base]
+	{
+		zone = 9;
+		location = 2.061587 2.070767 -9.783482;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base1]
+	{
+		zone = 9;
+		location = 1.855267 2.155957 -9.997122;
+		rotation = 0.000000 -0.248374 -0.000000 0.968664;
+		instancename = poodletarget;
+	}
+	[firmedium_base12]
+	{
+		zone = 9;
+		location = 2.119795 2.112872 -10.100283;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base2]
+	{
+		zone = 9;
+		location = 3.686199 2.702685 -10.353709;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base3]
+	{
+		zone = 9;
+		location = 5.019832 3.196170 -9.855451;
+		rotation = -0.037080 -0.000000 -0.000000 0.999312;
+		instancename = poodletarget;
+	}
+	[firsmall_base4]
+	{
+		zone = 9;
+		location = 4.595934 2.492238 -9.426716;
+		rotation = 0.000000 -0.000000 0.051270 0.998685;
+		instancename = poodletarget;
+	}
+	[firsmall_base5]
+	{
+		zone = 9;
+		location = 0.896427 1.442200 -9.625380;
+		rotation = 0.033946 -0.000000 -0.000000 0.999424;
+		instancename = poodletarget;
+	}
+	[firsmall_base6]
+	{
+		zone = 9;
+		location = 8.032482 3.274782 -8.765129;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base7]
+	{
+		zone = 9;
+		location = 10.198689 4.003530 -10.182565;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base8]
+	{
+		zone = 9;
+		location = 9.837522 3.527770 -6.635949;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base9]
+	{
+		zone = 9;
+		location = 9.684341 3.825244 -8.280190;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base10]
+	{
+		zone = 9;
+		location = 7.232729 2.444827 -7.222291;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base11]
+	{
+		zone = 9;
+		location = 10.272296 2.032108 2.626874;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base12]
+	{
+		zone = 9;
+		location = 10.134282 2.750667 0.947011;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base13]
+	{
+		zone = 9;
+		location = 6.725686 0.183833 2.492218;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base14]
+	{
+		zone = 9;
+		location = 7.862429 -0.100161 7.774754;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base15]
+	{
+		zone = 9;
+		location = 0.304995 -0.132880 7.891510;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base16]
+	{
+		zone = 9;
+		location = 1.768897 -0.105134 1.208981;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treefancylarge_base]
+	{
+		zone = 9;
+		location = 4.583384 0.010798 8.700542;
+		rotation = 0.000000 -0.816257 -0.000000 0.577689;
+		instancename = poodletarget;
+	}
+	[treefancylarge_base1]
+	{
+		zone = 9;
+		location = 1.515596 -0.020462 5.651522;
+		rotation = 0.000000 0.683118 -0.000000 0.730308;
+		instancename = poodletarget;
+	}
+	[treefancylarge_base2]
+	{
+		zone = 9;
+		location = -0.753019 0.000885 5.421486;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treefancylarge_base3]
+	{
+		zone = 9;
+		location = -4.805182 -0.081849 -3.243082;
+		rotation = 0.000000 -0.511908 -0.000000 0.859040;
+		instancename = poodletarget;
+	}
+	[treefancylarge_base4]
+	{
+		zone = 9;
+		location = -0.650740 -0.061387 3.434509;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treefancylarge_base5]
+	{
+		zone = 9;
+		location = 5.004749 -0.158245 4.399638;
+		rotation = 0.000000 -0.735714 -0.000000 0.677293;
+		instancename = poodletarget;
+	}
+	[treefancysmall_base]
+	{
+		zone = 9;
+		location = 1.501996 0.029441 7.451634;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treefancysmall_base1]
+	{
+		zone = 9;
+		location = 7.354806 0.009963 6.687848;
+		rotation = 0.000000 0.105424 -0.000000 0.994427;
+		instancename = poodletarget;
+	}
+	[treefancysmall_base2]
+	{
+		zone = 9;
+		location = 1.396393 -0.010102 -4.261353;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treeroundsmall_base]
+	{
+		zone = 9;
+		location = 0.717913 -0.018797 7.916351;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treeroundsmall_base1]
+	{
+		zone = 9;
+		location = -0.139518 -0.014041 7.900161;
+		rotation = 0.000000 0.972539 -0.000000 0.232740;
+		instancename = poodletarget;
+	}
+	[treeroundsmall_base2]
+	{
+		zone = 9;
+		location = -2.598152 -0.003665 6.779831;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treeroundsmall_base3]
+	{
+		zone = 9;
+		location = 1.731790 -0.021102 3.861727;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treeroundsmall_base4]
+	{
+		zone = 9;
+		location = -0.751823 -0.007827 -6.227509;
+		rotation = 0.000000 0.643252 -0.000000 0.765654;
+		instancename = poodletarget;
+	}
+	[treeroundsmall_base5]
+	{
+		zone = 9;
+		location = -0.323244 -0.037331 -6.229666;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treeroundsmall_base6]
+	{
+		zone = 9;
+		location = 0.070104 -0.037757 -6.243322;
+		rotation = 0.000000 0.632555 -0.000000 0.774515;
+		instancename = poodletarget;
+	}
+	[treeroundsmall_base7]
+	{
+		zone = 9;
+		location = 7.088371 -0.038817 4.222649;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[treefancylarge_base6]
+	{
+		zone = 9;
+		location = 5.818435 -0.102311 0.312208;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base16]
+	{
+		zone = 9;
+		location = 7.986811 0.823516 2.487937;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[activator_base]
+	{
+		zone = 9;
+		location = -6.307714 4.473730 -9.039508;
+		rotation = 0.000000 0.297263 -0.000000 0.954796;
+		instancename = activator_trainswitcha;
+		target = trainswitcha;
+	}
+	[activator_base1]
+	{
+		zone = 9;
+		location = -9.736778 6.610351 10.079958;
+		rotation = -0.014838 0.806091 -0.013961 0.591441;
+		instancename = activator_trainswitchb;
+		target = trainswitchb;
+	}
+	[activator_base2]
+	{
+		zone = 9;
+		location = 10.116483 2.893660 0.545839;
+		rotation = 0.052038 -0.468217 -0.005433 0.882063;
+		instancename = activator_trainswitchc;
+		target = trainswitchc;
+	}
+	[stopsign_base]
+	{
+		zone = 9;
+		location = -0.580999 -0.003993 0.124167;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[phonepole_base]
+	{
+		zone = 9;
+		location = 5.726797 -0.080268 -1.440953;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[phonepolewire_base]
+	{
+		zone = 9;
+		location = 5.733427 -0.092419 5.064488;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[stopsign_base1]
+	{
+		zone = 9;
+		location = -0.579455 -0.006910 2.556443;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[stopsign_base2]
+	{
+		zone = 9;
+		location = -2.580522 -0.017820 1.005142;
+		rotation = 0.019430 0.795052 -0.025504 0.605693;
+		instancename = poodletarget;
+	}
+	[stopsign_base3]
+	{
+		zone = 9;
+		location = -0.600388 0.057868 -2.072560;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[stopsign_base4]
+	{
+		zone = 9;
+		location = 0.580395 -0.013825 -1.011878;
+		rotation = 0.000000 0.998474 -0.000000 -0.055215;
+		instancename = poodletarget;
+	}
+	[stopsign_base5]
+	{
+		zone = 9;
+		location = 0.450064 -0.018121 0.999280;
+		rotation = 0.000000 0.708471 -0.000000 0.705740;
+		instancename = poodletarget;
+	}
+	[stopsign_base6]
+	{
+		zone = 9;
+		location = 0.530176 -0.004018 5.636932;
+		rotation = 0.000000 -0.701193 -0.000000 0.712971;
+		instancename = poodletarget;
+	}
+	[stopsign_base7]
+	{
+		zone = 9;
+		location = 5.156290 0.026418 5.649309;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[phonepolewire_base1]
+	{
+		zone = 9;
+		location = 5.734844 -0.095260 3.881554;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[phonepolewire_base2]
+	{
+		zone = 9;
+		location = 5.734447 -0.096110 2.694796;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[phonepolewire_base3]
+	{
+		zone = 9;
+		location = 5.732614 -0.089955 1.508008;
+		rotation = 0.004069 -0.000000 -0.000000 0.999992;
+		instancename = poodletarget;
+	}
+	[phonepolewire_base4]
+	{
+		zone = 9;
+		location = 5.730617 -0.069743 0.316196;
+		rotation = 0.012939 -0.000000 -0.000000 0.999916;
+		instancename = poodletarget;
+	}
+	[phonepolewire_base5]
+	{
+		zone = 9;
+		location = 5.730189 -0.054300 -0.841522;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[phonepolewire_base6]
+	{
+		zone = 9;
+		location = 2.166841 -0.130291 1.018851;
+		rotation = 0.000000 -0.713386 -0.000000 0.700771;
+		instancename = poodletarget;
+	}
+	[phonepole_base1]
+	{
+		zone = 9;
+		location = 2.766151 -0.159275 1.033511;
+		rotation = -0.002184 -0.725916 0.001875 0.687778;
+		instancename = poodletarget;
+	}
+	[cattlefence_base]
+	{
+		zone = 9;
+		location = 5.955369 -0.008679 7.153703;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[cattlefence_base1]
+	{
+		zone = 9;
+		location = 5.738667 -0.009664 6.911756;
+		rotation = 0.000000 -0.707107 -0.000000 0.707107;
+		instancename = poodletarget;
+	}
+	[cattlefence_base2]
+	{
+		zone = 9;
+		location = 5.940122 -0.007961 6.572757;
+		rotation = 0.000000 0.231996 -0.000000 0.972717;
+		instancename = poodletarget;
+	}
+	[cattlefence_base3]
+	{
+		zone = 9;
+		location = 6.331823 -0.008513 6.331694;
+		rotation = 0.000000 0.337339 -0.000000 0.941383;
+		instancename = poodletarget;
+	}
+	[cattlefence_base4]
+	{
+		zone = 9;
+		location = 6.674033 -0.005180 6.027015;
+		rotation = 0.000000 0.394905 -0.000000 0.918722;
+		instancename = poodletarget;
+	}
+	[cattlefence_base5]
+	{
+		zone = 9;
+		location = 6.992730 -0.009029 5.695207;
+		rotation = 0.000000 0.411075 -0.000000 0.911601;
+		instancename = poodletarget;
+	}
+	[cattlefence_base6]
+	{
+		zone = 9;
+		location = 7.309625 0.018011 5.353937;
+		rotation = 0.010257 0.407028 0.023009 0.913068;
+		instancename = poodletarget;
+	}
+	[cattlefence_base7]
+	{
+		zone = 9;
+		location = 7.593955 0.033005 4.998405;
+		rotation = 0.000000 0.476405 -0.000000 0.879226;
+		instancename = poodletarget;
+	}
+	[cattlefence_base8]
+	{
+		zone = 9;
+		location = 7.859193 0.035990 4.615640;
+		rotation = 0.000000 0.475050 -0.000000 0.879959;
+		instancename = poodletarget;
+	}
+	[cattlefence_base9]
+	{
+		zone = 9;
+		location = 8.167131 0.077279 4.604688;
+		rotation = -0.021622 -0.363418 0.033943 0.930757;
+		instancename = poodletarget;
+	}
+	[cattlefence_base10]
+	{
+		zone = 9;
+		location = 8.478045 0.132110 4.936357;
+		rotation = -0.012337 -0.408584 0.044019 0.911575;
+		instancename = poodletarget;
+	}
+	[cattlefence_base11]
+	{
+		zone = 9;
+		location = 8.653505 0.158233 5.337209;
+		rotation = 0.000000 -0.633627 -0.000000 0.773639;
+		instancename = poodletarget;
+	}
+	[cattlefence_base12]
+	{
+		zone = 9;
+		location = 8.812963 0.242739 5.770801;
+		rotation = -0.071116 -0.466818 0.132756 0.871435;
+		instancename = poodletarget;
+	}
+	[cattlefence_base13]
+	{
+		zone = 9;
+		location = 9.020172 0.367800 6.156016;
+		rotation = -0.046726 -0.528225 0.102314 0.841621;
+		instancename = poodletarget;
+	}
+	[cattlefence_base14]
+	{
+		zone = 9;
+		location = 9.129903 0.451296 6.584580;
+		rotation = -0.044890 -0.661215 0.063824 0.746128;
+		instancename = poodletarget;
+	}
+	[cattlefence_base15]
+	{
+		zone = 9;
+		location = 9.079045 0.509065 7.027858;
+		rotation = -0.065754 0.598630 0.012733 0.798221;
+		instancename = poodletarget;
+	}
+	[cattlefence_base16]
+	{
+		zone = 9;
+		location = 8.879809 0.421486 7.411089;
+		rotation = 0.054995 0.437955 0.160863 0.882776;
+		instancename = poodletarget;
+	}
+	[cattlefence_base17]
+	{
+		zone = 9;
+		location = 8.591988 0.284067 7.764470;
+		rotation = 0.011668 0.406329 0.128146 0.904621;
+		instancename = poodletarget;
+	}
+	[cattlefence_base18]
+	{
+		zone = 9;
+		location = 8.268689 0.193764 8.095549;
+		rotation = 0.027977 0.399533 0.083708 0.912460;
+		instancename = poodletarget;
+	}
+	[cattlefence_base19]
+	{
+		zone = 9;
+		location = 7.952478 0.125676 8.429728;
+		rotation = 0.025054 0.406076 0.059602 0.911549;
+		instancename = poodletarget;
+	}
+	[cattlefence_base20]
+	{
+		zone = 9;
+		location = 7.592829 0.007570 8.515772;
+		rotation = -0.026866 -0.202542 0.128720 0.970405;
+		instancename = poodletarget;
+	}
+	[cattlefence_base21]
+	{
+		zone = 9;
+		location = 7.155920 -0.030264 8.348398;
+		rotation = 0.004826 -0.125714 -0.038055 0.991325;
+		instancename = poodletarget;
+	}
+	[cattlefence_base22]
+	{
+		zone = 9;
+		location = 4.951979 -0.030661 7.328371;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[cattlefence_base23]
+	{
+		zone = 9;
+		location = 4.489541 -0.029272 7.318630;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[cattlefence_base24]
+	{
+		zone = 9;
+		location = 4.030684 -0.025994 7.349357;
+		rotation = 0.000000 0.087945 -0.000000 0.996125;
+		instancename = poodletarget;
+	}
+	[cattlefence_base25]
+	{
+		zone = 9;
+		location = 3.595277 -0.047037 7.446395;
+		rotation = -0.005306 0.138110 0.038023 0.989673;
+		instancename = poodletarget;
+	}
+	[cattlefence_base26]
+	{
+		zone = 9;
+		location = 5.172769 -0.030774 7.573797;
+		rotation = 0.014994 -0.706948 -0.014994 0.706948;
+		instancename = poodletarget;
+	}
+	[cattlefence_base27]
+	{
+		zone = 9;
+		location = 5.166340 -0.038429 8.040829;
+		rotation = 0.000000 -0.707107 -0.000000 0.707107;
+		instancename = poodletarget;
+	}
+	[cattlefence_base28]
+	{
+		zone = 9;
+		location = 5.155225 -0.038891 8.507527;
+		rotation = 0.000000 -0.707107 -0.000000 0.707107;
+		instancename = poodletarget;
+	}
+	[cattlefence_base29]
+	{
+		zone = 9;
+		location = 5.151022 -0.047684 8.966394;
+		rotation = 0.000000 -0.707107 -0.000000 0.707107;
+		instancename = poodletarget;
+	}
+	[cattlefence_base30]
+	{
+		zone = 9;
+		location = 4.919193 -0.040919 9.190921;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[cattlefence_base31]
+	{
+		zone = 9;
+		location = 4.458700 -0.043534 9.180152;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[cattlefence_base32]
+	{
+		zone = 9;
+		location = 3.457216 0.009175 9.179550;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[cow_base]
+	{
+		zone = 9;
+		location = 8.203179 0.147168 5.914258;
+		rotation = -0.207880 -0.623883 -0.177116 0.732247;
+		instancename = poodletarget;
+	}
+	[cow_base1]
+	{
+		zone = 9;
+		location = 6.694576 0.021790 6.200771;
+		rotation = 0.000000 -0.287845 -0.000000 0.957677;
+		instancename = poodletarget;
+	}
+	[cow_base2]
+	{
+		zone = 9;
+		location = 7.034792 0.028457 6.580845;
+		rotation = 0.000000 -0.842358 -0.000000 0.538919;
+		instancename = poodletarget;
+	}
+	[cow_base3]
+	{
+		zone = 9;
+		location = 8.186892 0.069528 5.914374;
+		rotation = 0.059674 -0.643082 0.050374 0.761805;
+		instancename = poodletarget;
+	}
+	[cow_base4]
+	{
+		zone = 9;
+		location = 7.991865 0.031957 7.057611;
+		rotation = 0.000000 -0.999413 -0.000000 -0.034246;
+		instancename = poodletarget;
+	}
+	[cow_base5]
+	{
+		zone = 9;
+		location = 7.187932 0.029217 6.599477;
+		rotation = 0.000000 -0.997763 -0.000000 0.066854;
+		instancename = poodletarget;
+	}
+	[cow_base6]
+	{
+		zone = 9;
+		location = 7.953752 0.077927 4.677503;
+		rotation = 0.000000 -0.993228 -0.000000 0.116177;
+		instancename = poodletarget;
+	}
+	[cow_base7]
+	{
+		zone = 9;
+		location = 7.677289 0.074530 5.284450;
+		rotation = 0.000000 0.978890 -0.000000 0.204389;
+		instancename = poodletarget;
+	}
+	[cow_base8]
+	{
+		zone = 9;
+		location = 5.845489 0.012261 6.818388;
+		rotation = 0.000000 -0.601191 -0.000000 0.799105;
+		instancename = poodletarget;
+	}
+	[cow_base9]
+	{
+		zone = 9;
+		location = 6.099450 0.021820 6.677946;
+		rotation = 0.000000 0.999267 -0.000000 0.038295;
+		instancename = poodletarget;
+	}
+	[cow_base10]
+	{
+		zone = 9;
+		location = 7.141550 0.013883 5.735901;
+		rotation = 0.000000 -0.922763 -0.000000 0.385368;
+		instancename = poodletarget;
+	}
+	[farmwatertank_base]
+	{
+		zone = 9;
+		location = 7.545793 -0.115878 7.893724;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[grainbin_base]
+	{
+		zone = 9;
+		location = 5.706048 -0.089267 8.566405;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[barn_base]
+	{
+		zone = 9;
+		location = 6.543222 0.034886 7.735006;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[farmwindmill_base]
+	{
+		zone = 9;
+		location = 4.795356 -0.015287 7.552978;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[farmhouse_base]
+	{
+		zone = 9;
+		location = 4.058615 -0.009495 9.144163;
+		rotation = -0.027461 -0.000000 -0.000000 0.999623;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[housecream_base]
+	{
+		zone = 9;
+		location = -3.111013 0.004211 2.458743;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[housecream_base1]
+	{
+		zone = 9;
+		location = 1.995421 0.000202 3.111759;
+		rotation = 0.000000 -1.000000 -0.000000 0.000000;
+		instancename = poodletarget;
+	}
+	[housecream_base2]
+	{
+		zone = 9;
+		location = 4.700535 -0.006178 3.599157;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[bluehouse_base]
+	{
+		zone = 9;
+		location = -3.095534 -0.003001 1.467275;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[bluehouse_base1]
+	{
+		zone = 9;
+		location = 2.271311 -0.002987 1.749713;
+		rotation = 0.000000 0.707107 -0.000000 0.707107;
+		instancename = poodletarget;
+	}
+	[bluehouse_base2]
+	{
+		zone = 9;
+		location = 4.574143 0.000151 5.042635;
+		rotation = -0.022075 -0.000000 -0.000000 0.999756;
+		instancename = poodletarget;
+	}
+	[watertower_base]
+	{
+		zone = 9;
+		location = 8.012882 1.092157 -3.837169;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[fueltruck_base]
+	{
+		zone = 9;
+		location = -1.703572 0.003361 -4.321280;
+		rotation = 0.000000 0.718336 -0.000000 0.695696;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[pickuptruck_base]
+	{
+		zone = 9;
+		location = 5.459940 -0.015558 7.690191;
+		rotation = 0.029623 -0.151921 0.004555 0.987938;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[mineshed_base]
+	{
+		zone = 9;
+		location = -9.436533 4.336368 4.611748;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[minecart_base]
+	{
+		zone = 9;
+		location = -9.135557 4.385166 3.045103;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[minecart_base1]
+	{
+		zone = 9;
+		location = -9.556909 4.386735 3.946218;
+		rotation = 0.000000 -0.644224 -0.000000 0.764837;
+		instancename = poodletarget;
+	}
+	[dghardware_base]
+	{
+		zone = 9;
+		location = -1.605502 0.003372 2.220282;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[restaurant_base]
+	{
+		zone = 9;
+		location = -1.091398 0.001419 1.214277;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[factory_base]
+	{
+		zone = 9;
+		location = -3.531364 0.000000 -4.264909;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[oiltank_base]
+	{
+		zone = 9;
+		location = -1.819379 -0.011939 -5.397192;
+		rotation = 0.000000 -0.086671 -0.000000 0.996237;
+		instancename = poodletarget;
+	}
+	[oiltank_base1]
+	{
+		zone = 9;
+		location = -2.827199 0.000000 -5.397153;
+		rotation = 0.000000 0.181094 -0.000000 0.983466;
+		instancename = poodletarget;
+	}
+	[oiltank_base2]
+	{
+		zone = 9;
+		location = -3.861209 -0.005376 -5.395566;
+		rotation = 0.000000 -0.155587 -0.000000 0.987822;
+		instancename = poodletarget;
+	}
+	[oiltank_base3]
+	{
+		zone = 9;
+		location = -1.801490 -0.037757 -6.424984;
+		rotation = 0.000000 0.200711 -0.000000 0.979650;
+		instancename = poodletarget;
+	}
+	[oiltank_base4]
+	{
+		zone = 9;
+		location = -2.816967 -0.015112 -6.420397;
+		rotation = 0.000000 -0.282057 -0.000000 0.959398;
+		instancename = poodletarget;
+	}
+	[oiltank_base5]
+	{
+		zone = 9;
+		location = -3.844342 -0.008218 -6.415724;
+		rotation = 0.000000 0.106341 -0.000000 0.994330;
+		instancename = poodletarget;
+	}
+	[billboarddocj_base]
+	{
+		zone = 9;
+		location = 0.887520 -0.052143 -4.965107;
+		rotation = 0.000000 0.132338 -0.000000 0.991205;
+		instancename = poodletarget;
+	}
+	[billboardjens_base]
+	{
+		zone = 9;
+		location = -1.035511 -0.073361 6.146033;
+		rotation = 0.000000 0.171390 -0.000000 0.985203;
+		instancename = poodletarget;
+	}
+	[billboardshark_base]
+	{
+		zone = 9;
+		location = -2.611541 -0.075223 8.146458;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[trainstation_base]
+	{
+		zone = 9;
+		location = 0.422787 0.004460 7.461674;
+		rotation = 0.000000 -0.000353 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[buildingbrownbrick_base]
+	{
+		zone = 9;
+		location = -0.931971 0.003362 -0.721857;
+		rotation = 0.000000 0.710473 -0.000000 0.703725;
+		instancename = poodletarget;
+	}
+	[buildingbrownbrick_base1]
+	{
+		zone = 9;
+		location = 2.218450 0.003787 -0.451097;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[grocerystore_base]
+	{
+		zone = 9;
+		location = 0.855596 0.003025 3.492498;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[firmedium_base13]
+	{
+		zone = 9;
+		location = 10.191266 2.770135 -0.345641;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[alpinewindmill_base]
+	{
+		zone = 9;
+		location = -2.967464 1.348048 -8.251513;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[alpinelodge_base]
+	{
+		zone = 9;
+		location = -3.588419 2.297366 -9.231926;
+		rotation = 0.008252 0.139607 0.058425 0.988447;
+		instancename = poodletarget;
+	}
+	[alpinehut_base]
+	{
+		zone = 9;
+		location = -4.645368 2.348393 -9.413552;
+		rotation = 0.000000 0.637291 -0.000000 0.770623;
+		instancename = poodletarget;
+	}
+	[alpinelodge_base1]
+	{
+		zone = 9;
+		location = -4.994097 2.016933 -8.197305;
+		rotation = 0.000000 -0.361998 -0.000000 0.932179;
+		instancename = poodletarget;
+	}
+	[alpinehut_base1]
+	{
+		zone = 9;
+		location = -4.617796 2.037119 -8.707698;
+		rotation = 0.000000 0.519503 -0.000000 0.854469;
+		instancename = poodletarget;
+	}
+	[alpinehut_base2]
+	{
+		zone = 9;
+		location = -3.865904 2.026082 -8.509600;
+		rotation = 0.000000 -0.055385 -0.000000 0.998465;
+		instancename = poodletarget;
+	}
+	[alpinehut_base3]
+	{
+		zone = 9;
+		location = -4.180921 1.994046 -8.026381;
+		rotation = 0.000000 -0.436557 -0.000000 0.899677;
+		instancename = poodletarget;
+	}
+	[alpinelodge_base2]
+	{
+		zone = 9;
+		location = -5.469371 1.367818 -7.380191;
+		rotation = 0.000000 0.625540 -0.000000 0.780192;
+		instancename = poodletarget;
+	}
+	[alpinehut_base4]
+	{
+		zone = 9;
+		location = -4.388978 2.470332 -10.072263;
+		rotation = 0.000000 0.541032 -0.000000 0.841002;
+		instancename = poodletarget;
+	}
+	[alpinehut_base5]
+	{
+		zone = 9;
+		location = -4.269893 2.483743 -10.648895;
+		rotation = 0.000000 0.184915 -0.000000 0.982755;
+		instancename = poodletarget;
+	}
+	[firmedium_base14]
+	{
+		zone = 9;
+		location = -3.831329 2.427866 -10.601247;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base17]
+	{
+		zone = 9;
+		location = -4.533470 2.286414 -9.783215;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firmedium_base15]
+	{
+		zone = 9;
+		location = -3.897838 2.207613 -9.703347;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base17]
+	{
+		zone = 9;
+		location = -2.979779 1.511063 -8.795523;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base18]
+	{
+		zone = 9;
+		location = -2.026962 1.148439 -8.289506;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base19]
+	{
+		zone = 9;
+		location = -4.978131 1.108508 -7.558540;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firlarge_base18]
+	{
+		zone = 9;
+		location = -3.702690 1.274241 -7.831470;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[alpinehut_base6]
+	{
+		zone = 9;
+		location = -6.255058 0.932022 -5.403255;
+		rotation = 0.000000 0.658843 -0.000000 0.752281;
+		instancename = poodletarget;
+	}
+	[alpinewindmill_base1]
+	{
+		zone = 9;
+		location = -6.381440 0.934181 -4.630998;
+		rotation = 0.000000 0.155986 -0.000000 0.987759;
+		instancename = poodletarget;
+	}
+	[firmedium_base16]
+	{
+		zone = 9;
+		location = -5.805739 1.163312 -6.640570;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base20]
+	{
+		zone = 9;
+		location = -5.574449 0.849852 -5.971855;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[firsmall_base21]
+	{
+		zone = 9;
+		location = -6.722753 0.754649 -4.259549;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[buildingorangeblue_base]
+	{
+		zone = 9;
+		location = -2.762863 -0.001512 -0.300716;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[buildingorangeblue_base1]
+	{
+		zone = 9;
+		location = -0.830355 -0.005097 2.150505;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[petstore_base]
+	{
+		zone = 9;
+		location = 0.746589 -0.000618 -1.963203;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[buildingorangegrey_base]
+	{
+		zone = 9;
+		location = -1.869176 0.005273 -0.272097;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[billboardklok_base]
+	{
+		zone = 9;
+		location = 5.252682 -0.120865 -1.588160;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[buildingredbrick_base]
+	{
+		zone = 9;
+		location = 0.896275 0.000000 1.559084;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[buildingredbrick_base1]
+	{
+		zone = 9;
+		location = -3.003061 0.001917 -1.014139;
+		rotation = 0.000000 -0.709247 -0.000000 0.704960;
+		instancename = poodletarget;
+	}
+	[hotel_base]
+	{
+		zone = 9;
+		location = 0.898176 -0.005997 -0.441035;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+		objectprelit = true;
+	}
+	[crashlight_base]
+	{
+		zone = 9;
+		location = -8.971213 2.306751 -1.080985;
+		rotation = 0.000000 0.707107 -0.000000 0.707107;
+	}
+	[crashlight_base1]
+	{
+		zone = 9;
+		location = 0.181945 0.010000 6.947842;
+		rotation = 0.000000 -1.000000 -0.000000 0.000000;
+	}
+	[crashlight_base2]
+	{
+		zone = 9;
+		location = 4.233951 1.086294 -5.418484;
+		rotation = -0.035352 -0.464056 -0.008888 0.885056;
+	}
+	[powericon_base]
+	{
+		zone = 9;
+		location = -6.466982 4.520000 -9.852198;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = rewarddollyboss;
+		powername = whammytruck;
+	}
+	[dollyboss_base]
+	{
+		zone = 9;
+		location = -0.009931 1.436501 0.540924;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[extralife_base]
+	{
+		zone = 9;
+		location = -4.310454 2.050784 -8.459064;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[extralife_base1]
+	{
+		zone = 9;
+		location = -9.136886 4.407844 4.157808;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[browna_base]
+	{
+		zone = 9;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[brownb_base]
+	{
+		zone = 9;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = poodletarget;
+	}
+	[switchstarttrain_base]
+	{
+		zone = 9;
+		location = -9.398324 6.618060 9.967423;
+		rotation = 0.000000 -0.578746 -0.000000 0.815508;
+		instancename = trainswitchb;
+	}
+	[switchstarttrain_base1]
+	{
+		zone = 9;
+		location = -6.109175 4.472885 -8.733468;
+		rotation = 0.000000 -0.960701 -0.000000 0.277585;
+		instancename = trainswitcha;
+	}
+	[switchstarttrain_base2]
+	{
+		zone = 9;
+		location = 9.744864 2.896697 0.741280;
+		rotation = 0.000000 0.854847 -0.000000 0.518881;
+		instancename = trainswitchc;
+	}
+	[castle_base]
+	{
+		zone = 9;
+		location = -6.534702 4.461482 -9.768341;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectprelit = true;
+	}
+	[dollyskirt_base]
+	{
+		zone = 9;
+		location = -0.000000 0.000000 0.509197;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[entryhatch_base]
+	{
+		zone = 9;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectprelit = true;
+	}
+}
+[regions]
+{
+	[areaload]
+	{
+		zone = 9;
+		type = plane;
+		location = 5.363455 2.774518 11.577217;
+		rotation = 0.007492 -0.007492 -0.707067 0.707067;
+		scale = 1.340552 1.340552 1.340552;
+		instancename = areaload_glowberrytangle;
+		nextarea = glowberrytangle;
+		targetlocation = loadfromboltroidbattle;
+		vinceanimation = vince_walkstop;
+	}
+	[traincollide]
+	{
+		zone = 9;
+		type = cube;
+		location = 0.180414 0.145768 6.658583;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.500000 0.500000 0.500000;
+		instancename = traincollide;
+	}
+	[traincollide]
+	{
+		zone = 9;
+		type = cube;
+		location = 4.017690 1.228271 -5.245141;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.500000 0.500000 0.500000;
+		instancename = traincollide;
+	}
+	[traincollide]
+	{
+		zone = 9;
+		type = cube;
+		location = -8.693061 2.461710 -1.080000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.500000 0.500000 0.500000;
+		instancename = traincollide;
+	}
+	[battlebegin]
+	{
+		zone = 9;
+		type = plane;
+		location = 9.123990 3.883074 9.319485;
+		rotation = -0.242577 0.664196 -0.664196 -0.242577;
+		scale = 4.401734 4.129440 5.819011;
+		instancename = battlebegin;
+	}
+	[areaload]
+	{
+		zone = 9;
+		type = plane;
+		location = -6.393185 3.772310 -10.720871;
+		rotation = 0.494767 0.494767 0.505179 0.505179;
+		scale = 0.964164 0.619469 1.337499;
+		activatechapter = 1;
+		instancename = areaload_bayou;
+		nextarea = crawdadjimmys;
+		nextlevel = d:\levels\bayou;
+		targetlocation = loadfromboltroidbattle;
+		vinceanimation = vince_walkstop;
+	}
+	[cutscene]
+	{
+		zone = 9;
+		type = plane;
+		location = 9.574007 2.716825 10.780712;
+		rotation = -0.503847 0.503847 -0.496124 0.496124;
+		scale = 1.340552 1.340552 1.340552;
+		cutscene = dollypreludecutscene;
+		instancename = dollypreludecutscene;
+	}
+}

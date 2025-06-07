@@ -1,0 +1,45 @@
+// area settings (override settings found in Maya file)
+
+Version = 1;
+
+[Fog]
+{
+	[Distance]
+	{
+		// Distance to far plane in meters
+		FarPlane = 100;
+		// Distance to start of fog in meters
+		FogNear = 100;
+		// Distance to fully opaque fog in
+		float FogFar = 100;
+		// Fog Color
+		FogColor = 0 0 0;
+	}
+	[FogZones]
+	{
+		[FogZone0]
+		{
+		}
+	}
+}
+
+[Water]
+{
+	WaterColor = 0.01 0.39 0.492 0.69;
+	WaterReflectivity = 0.3;
+	GridSizeX = 128;
+	GridSizeY = 128;
+	WaveStrength = 0.385;
+	WaveElevation = 0.012;
+	WaveScale = 6.0;
+    WaveFalloff = 0.8;
+    WaveAnimSpeed = 1.30;
+    WaveTimeMultiplier = 1.5;
+    WaveNoiseNumOctaves = 5;
+	SunColor = 0.00 3.5 1.8 0.4;
+	SunDir = 8.0 -180 0.0;
+	SunLightDir = 0.577 0.577 0.577;
+	SunShininess = 50.0;
+	SunStrength = 0.15;
+	MaskWater = true;
+ }

@@ -1,0 +1,23 @@
+// area settings (override settings found in Maya file)
+
+Version = 1;
+
+[Fog]
+{
+	[Distance]
+	{
+		FogOverride = true;
+		FogNear = 20;
+		FogFar = 40;
+		FogColor = 0.06 0.2 0.19;
+	}
+}
+
+[Lights]
+{
+	[GlobalAmbient]
+	{
+		Color = 0.0 0.0 0.0;
+	}
+}
+

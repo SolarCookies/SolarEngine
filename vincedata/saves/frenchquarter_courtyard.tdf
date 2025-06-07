@@ -1,0 +1,715 @@
+[objects]
+{
+	[dustcluster_]
+	{
+		zone = 1;
+		location = 1.494837 -9.159091 7.207480;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = 1.272308 -9.141273 7.262362;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -1.903309 -8.513442 8.266553;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -1.637803 -9.148579 8.313169;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -1.331527 -9.148579 8.400273;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -1.914430 -8.084148 7.516379;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -2.021870 -8.530336 8.462387;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -1.679214 -8.170463 7.542269;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = 0.405004 -6.663510 3.552871;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = 0.632095 -6.607547 3.512605;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -1.822590 -8.072462 7.024480;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -1.238536 -7.618410 5.837810;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = 1.136700 -6.506464 3.346560;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -1.179396 -7.267048 4.801606;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 1;
+		location = -0.623255 -7.070112 3.967895;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[vince_base]
+	{
+		zone = 1;
+		location = -9.430032 -8.916200 26.218460;
+		rotation = 0.000000 -0.873353 -0.000000 0.487089;
+	}
+	[pitfrog_base]
+	{
+		zone = 1;
+		location = -5.286288 -8.216336 20.300829;
+		rotation = 0.000000 -0.241922 -0.000000 0.970296;
+		instancename = trainingfroga;
+	}
+	[pitfrog_base1]
+	{
+		zone = 1;
+		location = -6.148955 -8.216336 19.817905;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = trainingfroga;
+	}
+	[pitfrog_base2]
+	{
+		zone = 1;
+		location = -5.918749 -8.216336 21.430620;
+		rotation = 0.000000 -0.406737 -0.000000 0.913545;
+		instancename = trainingfroga;
+	}
+	[pitfrog_base3]
+	{
+		zone = 1;
+		location = -0.550999 -9.157784 10.519417;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = trainingfrogb;
+		leashradius = 10;
+	}
+	[pitfrog_base4]
+	{
+		zone = 1;
+		location = -2.170000 -9.101086 11.904712;
+		rotation = 0.000000 -0.207912 -0.000000 0.978148;
+		instancename = trainingfrogb;
+		leashradius = 10;
+	}
+	[pitfrog_base5]
+	{
+		zone = 1;
+		location = -1.810000 -9.137695 12.980000;
+		rotation = 0.000000 -0.406737 -0.000000 0.913545;
+		instancename = trainingfrogb;
+		leashradius = 10;
+	}
+	[pitfrog_base6]
+	{
+		zone = 1;
+		location = -3.102632 -9.132566 12.542636;
+		rotation = 0.000000 -0.587785 -0.000000 0.809017;
+		instancename = trainingfrogb;
+		leashradius = 10;
+	}
+	[pitfrog_base7]
+	{
+		zone = 1;
+		location = -0.140000 -9.131924 11.450000;
+		rotation = 0.000000 -0.743145 -0.000000 0.669131;
+		instancename = trainingfrogb;
+		leashradius = 10;
+	}
+	[pitfrog_base8]
+	{
+		zone = 1;
+		location = -2.340000 -9.128881 10.896778;
+		rotation = 0.000000 -0.866025 -0.000000 0.500000;
+		instancename = trainingfrogb;
+		leashradius = 10;
+	}
+	[pitfrog_base9]
+	{
+		zone = 1;
+		location = 0.346051 -9.097400 12.348414;
+		rotation = 0.000000 -0.951057 -0.000000 0.309017;
+		instancename = trainingfrogbalt;
+		leashradius = 10;
+	}
+	[pitfrog_base10]
+	{
+		zone = 1;
+		location = -2.220190 -9.117848 13.690000;
+		rotation = 0.000000 -0.994522 -0.000000 0.104528;
+		instancename = trainingfrogbalt;
+		leashradius = 10;
+	}
+	[pitfrog_base11]
+	{
+		zone = 1;
+		location = -0.857781 -9.116388 11.900000;
+		rotation = 0.000000 -0.994522 -0.000000 -0.104528;
+		instancename = trainingfrogbalt;
+		leashradius = 10;
+	}
+	[pitfrog_base12]
+	{
+		zone = 1;
+		location = -0.999193 -9.140144 12.552723;
+		rotation = 0.000000 -0.951057 -0.000000 -0.309017;
+		instancename = trainingfrogb;
+		leashradius = 10;
+	}
+	[powericon_base]
+	{
+		zone = 1;
+		location = -3.717757 -8.091413 17.506084;
+		rotation = 0.000000 -0.251141 -0.000000 0.967950;
+		instancename = pinpowericon;
+		objectcastshadows = true;
+		powername = whammypin;
+	}
+	[doorscourtyard_base]
+	{
+		zone = 1;
+		location = -1.017981 -9.217958 9.734060;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[doorshallway_base]
+	{
+		zone = 1;
+		location = -4.731944 -8.205213 19.494192;
+		rotation = 0.000000 -0.263680 -0.000000 0.964610;
+	}
+	[dragonfly05_base]
+	{
+		zone = 1;
+		location = -10.534783 -9.282443 25.298494;
+		rotation = 0.000000 0.853638 -0.000000 0.520867;
+	}
+	[mothsmall01_base]
+	{
+		zone = 1;
+		location = -13.338036 -8.414579 24.747072;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[mothsmall02_base]
+	{
+		zone = 1;
+		location = -13.323065 -8.318420 24.759380;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[mothsmall03_base]
+	{
+		zone = 1;
+		location = -13.329028 -8.466954 24.725754;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[mothsmall05_base]
+	{
+		zone = 1;
+		location = -9.141811 -7.949642 25.969543;
+		rotation = 0.000000 -0.892995 -0.000000 0.450067;
+	}
+	[mothsmall04_base]
+	{
+		zone = 1;
+		location = -9.135766 -7.922180 25.998985;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[mothsmall03_base1]
+	{
+		zone = 1;
+		location = -11.753332 -7.675678 20.247929;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly06_base]
+	{
+		zone = 1;
+		location = -4.572000 -7.901667 21.640799;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly06_base1]
+	{
+		zone = 1;
+		location = 1.825936 -9.023252 6.362587;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly04_base]
+	{
+		zone = 1;
+		location = -1.600524 -8.916541 12.341221;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[mothsmall01_base1]
+	{
+		zone = 1;
+		location = 0.495805 -7.516849 8.444058;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[mothsmall02_base1]
+	{
+		zone = 1;
+		location = 0.692614 -7.779288 8.588009;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[signfloat_base]
+	{
+		zone = 1;
+		location = -12.014696 -8.529881 20.349827;
+		rotation = 0.000000 -0.988994 -0.000000 0.147954;
+		instancename = trainingsign;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[signheadslam_base]
+	{
+		zone = 1;
+		location = -5.944540 -7.210196 24.826805;
+		rotation = 0.000000 -0.906352 -0.000000 0.422523;
+		instancename = trainingsign;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[signpunch_base]
+	{
+		zone = 1;
+		location = -10.752544 -8.869247 24.323326;
+		rotation = 0.000000 0.221424 -0.000000 -0.975178;
+		instancename = trainingsign;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[signspinkick_base]
+	{
+		zone = 1;
+		location = -7.475642 -7.111931 24.455149;
+		rotation = 0.000000 -0.993786 -0.000000 -0.111312;
+		instancename = trainingsign;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[signdoublejump_base]
+	{
+		zone = 1;
+		location = -12.343015 -8.962676 23.224327;
+		rotation = 0.000000 -0.973772 -0.000000 0.227527;
+		instancename = trainingsign;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[wallswitch_base]
+	{
+		zone = 2;
+		location = -0.650000 -7.050000 -0.130240;
+		rotation = 0.074182 0.683098 -0.054367 0.724513;
+	}
+	[scale_base]
+	{
+		zone = 2;
+		location = 2.330550 -9.251081 -6.588397;
+		rotation = 0.000000 0.210276 -0.000000 0.977642;
+		objectcastshadows = true;
+	}
+	[doorstorageroom_base]
+	{
+		zone = 2;
+		location = 1.089352 -9.251081 -6.469435;
+		rotation = 0.000000 0.199982 -0.000000 0.979800;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[oven_base]
+	{
+		zone = 2;
+		location = -0.338146 -9.251081 -4.372254;
+		rotation = 0.000000 -0.707974 -0.000000 -0.706239;
+		castrtworldshadows = true;
+		objectcastshadows = true;
+		realtimelight = true;
+	}
+	[vince_base]
+	{
+		zone = 2;
+		location = 0.589476 -7.281940 2.820670;
+		rotation = 0.000000 -0.998728 -0.000000 -0.050426;
+	}
+	[floursack_base]
+	{
+		zone = 2;
+		location = 3.736829 -7.350367 -0.192007;
+		rotation = 0.000000 0.283741 -0.000000 0.958901;
+	}
+	[gingerdeadman_base]
+	{
+		zone = 2;
+		location = 1.549491 -9.250496 -3.251771;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[blender_base]
+	{
+		zone = 2;
+		location = 2.298749 -9.251081 -0.386418;
+		rotation = 0.000000 -0.980801 -0.000000 0.195009;
+	}
+	[activator_base1]
+	{
+		zone = 2;
+		location = -0.300261 -7.306387 -0.099534;
+		rotation = 0.000000 -0.733137 -0.000000 0.680081;
+		instancename = activator_wallswitch;
+		target = wallswitch;
+	}
+	[powericon_base]
+	{
+		zone = 2;
+		location = 1.894980 -7.965340 -8.474720;
+		rotation = 0.000000 -0.509041 -0.000000 0.860742;
+		powername = whammyanvil;
+	}
+	[conveyor_base]
+	{
+		zone = 2;
+		location = -0.338146 -9.251081 -4.372254;
+		rotation = 0.000000 -0.707974 -0.000000 -0.706239;
+		movingplatform = true;
+	}
+	[signusewhammygosh_base]
+	{
+		zone = 2;
+		location = 0.280000 -8.860000 -7.900000;
+		rotation = 0.000000 0.850606 -0.000000 -0.525803;
+		instancename = trainingsign;
+	}
+	[activator_base]
+	{
+		zone = 2;
+		location = 2.376634 -9.240000 -5.920490;
+		rotation = 0.000000 -0.998061 -0.000000 0.062245;
+		instancename = activator_scale;
+		target = scale;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = 0.680665 -9.187590 -8.872046;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = -0.435193 -9.168502 -5.532356;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = -0.218352 -9.157457 2.238073;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = 2.360813 -7.201290 2.748694;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = 3.866707 -9.171264 -3.342725;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = 1.112687 -9.172760 -8.996996;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = -0.293473 -9.139048 -5.699161;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = 1.681039 -8.449644 -8.392909;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = 2.226160 -7.181310 2.877943;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 2;
+		location = 3.975580 -9.171331 -3.172260;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+}
+[regions]
+{
+	[courtyard]
+	{
+		zone = 1;
+		type = plane;
+		location = 1.148497 -6.304150 3.491871;
+		rotation = 0.773860 -0.048693 0.059942 0.628631;
+		scale = 0.679800 0.685907 0.994576;
+		instancename = courtyard;
+	}
+	[healthwaypoint]
+	{
+		zone = 1;
+		type = plane;
+		location = -9.315969 -6.554718 22.173700;
+		rotation = 0.609806 0.357962 -0.357962 0.609806;
+		scale = 0.866310 0.830353 2.307703;
+		instancename = hwfrogrooma;
+		respawnat = hwfrogrooma;
+	}
+	[healthwaypoint]
+	{
+		zone = 1;
+		type = plane;
+		location = -3.513742 -6.922063 17.086344;
+		rotation = 0.188226 0.681595 -0.681595 0.188226;
+		scale = 2.296834 0.972671 3.372855;
+		instancename = hwfrogroomb;
+		respawnat = hwfrogroomb;
+	}
+	[text]
+	{
+		zone = 1;
+		type = cube;
+		location = -12.245946 -8.897527 23.437683;
+		rotation = 0.000000 -0.973615 -0.000000 0.228196;
+		scale = 0.665313 1.111043 0.813304;
+		instancename = signhintdjump;
+		onscreentext = gotdoublejump;
+	}
+	[text]
+	{
+		zone = 1;
+		type = cube;
+		location = -11.857730 -8.509713 20.764002;
+		rotation = 0.000000 -0.990407 -0.000000 0.138184;
+		scale = 0.717008 1.059625 0.928812;
+		instancename = signhinthover;
+		onscreentext = gothover;
+	}
+	[text]
+	{
+		zone = 1;
+		type = cube;
+		location = -6.123405 -7.093608 24.691145;
+		rotation = 0.000000 -0.911563 -0.000000 0.411160;
+		scale = 0.663933 1.170512 0.686081;
+		instancename = signhintslam;
+		onscreentext = gotslam;
+	}
+	[text]
+	{
+		zone = 1;
+		type = cube;
+		location = -7.462401 -7.109807 24.376448;
+		rotation = 0.000000 -0.830189 -0.000000 0.557483;
+		scale = 0.669920 1.000000 0.591637;
+		instancename = signhintspin;
+		onscreentext = gotspin;
+	}
+	[text]
+	{
+		zone = 1;
+		type = cube;
+		location = -10.881807 -8.884636 24.587715;
+		rotation = 0.000000 -0.239986 -0.000000 0.970776;
+		scale = 0.558198 1.116395 0.847686;
+		instancename = signhintpunch;
+		onscreentext = gotkick;
+	}
+	[cutscene]
+	{
+		zone = 1;
+		type = cube;
+		location = -0.680005 -8.871033 8.755896;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 2.367858 3.355086 1.288557;
+		cutscene = vincemeetskosmocutscene;
+		instancename = vincemeetskosmo;
+	}
+	[cutscene]
+	{
+		zone = 1;
+		type = cube;
+		location = -3.705061 -7.017073 17.445688;
+		rotation = 0.000000 -0.251753 -0.000000 0.967792;
+		scale = 2.367858 3.355086 1.288557;
+		cutscene = firstvoodooiconcutscene;
+		instancename = firstvoodooicon;
+	}
+	[dialogue]
+	{
+		zone = 1;
+		type = plane;
+		location = -3.098222 -7.441730 16.603767;
+		rotation = 0.687241 0.169730 0.170380 -0.685465;
+		scale = 1.324263 5.157800 1.819004;
+		dialogue = vince_q_cy_01;
+		instancename = vinceifeelpowerful;
+		onscreentext = firstwhammyhint;
+	}
+	[bakery]
+	{
+		zone = 2;
+		type = plane;
+		location = 0.973157 -6.327190 3.324063;
+		rotation = -0.613908 -0.037630 -0.105645 0.781370;
+		scale = 0.842932 0.010000 0.896549;
+		instancename = bakery;
+	}
+	[healthwaypoint]
+	{
+		zone = 2;
+		type = plane;
+		location = 1.142408 -6.228920 3.342775;
+		rotation = -0.633658 -0.067252 -0.055438 0.768688;
+		scale = 0.511581 0.494311 0.788689;
+		instancename = hwwalkway;
+		respawnat = hwwalkway;
+	}
+	[dialogue]
+	{
+		zone = 2;
+		type = cube;
+		location = 3.744210 -6.937831 -0.163439;
+		rotation = 0.000000 -0.318762 -0.000000 0.947835;
+		scale = 0.867562 0.867562 0.867562;
+		dialogue = charmaine_q_b_03;
+		instancename = dialoguevincecarry;
+	}
+	[camerahelper]
+	{
+		zone = 2;
+		type = cube;
+		location = 2.406969 -7.602560 -6.812491;
+		rotation = 0.000000 0.207131 -0.000000 0.978313;
+		scale = 0.851411 3.499202 0.799825;
+		cameraelevation = 0.5;
+		camerafixangle = 345;
+		cameraorbitradius = 1.5;
+		cameraspeed = 1.5;
+		instancename = camerahelper;
+	}
+	[areaload]
+	{
+		zone = 2;
+		type = plane;
+		location = 2.014660 -7.686480 -8.601471;
+		rotation = 0.291709 -0.644132 -0.644132 -0.291709;
+		scale = 0.842932 0.010000 0.896549;
+		activatechapter = true;
+		instancename = areaload_bigpig;
+		nextarea = bigpig;
+		targetlocation = loadfromcourtyard;
+		vinceanimation = vince_walkstop;
+	}
+	[bakery]
+	{
+		zone = 2;
+		type = plane;
+		location = 1.983290 -7.676014 -8.573416;
+		rotation = 0.291709 -0.644132 -0.644132 -0.291709;
+		scale = 0.842932 0.010000 0.896549;
+		instancename = bakery;
+	}
+	[dialogue]
+	{
+		zone = 2;
+		type = cube;
+		location = -0.611881 -6.902997 -0.103000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 1.081524 1.081524 1.081524;
+		dialogue = charmaine_q_b_01;
+		instancename = charmaineactivatorhint;
+		onscreentext = activatorhint;
+	}
+	[text]
+	{
+		zone = 2;
+		type = cube;
+		location = 0.603123 -8.921358 -7.762106;
+		rotation = 0.000000 -0.232444 -0.000000 0.972610;
+		scale = 0.853708 0.667777 0.667777;
+		instancename = hintforjerks;
+		onscreentext = powerhint;
+	}
+	[dialogue]
+	{
+		zone = 2;
+		type = cube;
+		location = 2.376634 -9.240000 -5.920490;
+		rotation = 0.000000 -0.998061 -0.000000 0.062245;
+		scale = 0.500000 0.500000 0.500000;
+		dialogue = charmaine_q_b_02;
+		instancename = dialoguescale;
+	}
+	[inflour]
+	{
+		zone = 2;
+		type = cylinder;
+		location = 2.545506 -9.193165 -5.564418;
+		rotation = 0.000000 -0.998061 -0.000000 0.062245;
+		scale = 0.400000 0.577874 0.400000;
+		instancename = inflour;
+	}
+	[inflour]
+	{
+		zone = 2;
+		type = cylinder;
+		location = 1.386788 -9.244637 -1.277284;
+		rotation = 0.000000 -0.887011 -0.000000 0.461749;
+		scale = 0.216129 0.432258 0.216129;
+		instancename = inflour;
+	}
+}

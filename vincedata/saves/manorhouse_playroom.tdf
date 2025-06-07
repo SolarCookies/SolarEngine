@@ -1,0 +1,449 @@
+[objects]
+{
+	[vince_base1]
+	{
+		zone = 6;
+		location = -4.116369 2.437638 8.369504;
+		rotation = 0.000000 0.130526 -0.000000 0.991445;
+	}
+	[wallswitch_base1]
+	{
+		zone = 6;
+		location = 12.906748 4.339762 11.522048;
+		rotation = 0.001594 -0.808408 0.002980 0.588613;
+		instancename = levertnt;
+	}
+	[kosmoegg_base]
+	{
+		zone = 6;
+		location = 6.728572 2.437419 14.876714;
+		rotation = 0.000000 -0.700558 -0.000000 0.713595;
+		instancename = eggaa;
+		movingplatform = true;
+	}
+	[kosmoegg_base1]
+	{
+		zone = 6;
+		location = -1.314198 2.436109 15.887848;
+		rotation = 0.000000 -0.999790 -0.000000 -0.020477;
+		instancename = eggbb;
+		movingplatform = true;
+	}
+	[kosmoegg_base2]
+	{
+		zone = 6;
+		location = -4.463226 2.437960 9.903695;
+		rotation = 0.000000 0.642441 -0.000000 0.766335;
+		instancename = eggcc;
+		movingplatform = true;
+	}
+	[activator_base]
+	{
+		zone = 6;
+		location = 7.589868 2.437616 5.532620;
+		rotation = 0.000000 -0.365137 -0.000000 0.930954;
+		instancename = activator_crossbowa;
+		target = crossbowa;
+	}
+	[activator_base1]
+	{
+		zone = 6;
+		location = 8.944552 2.437782 12.838786;
+		rotation = 0.000000 -0.783124 -0.000000 0.621866;
+		instancename = activator_crossbowb;
+		target = crossbowb;
+	}
+	[activator_base2]
+	{
+		zone = 6;
+		location = -7.042851 2.438287 13.164696;
+		rotation = 0.000000 0.671143 -0.000000 0.741328;
+		instancename = activator_crossbowc;
+		target = crossbowc;
+	}
+	[activator_base3]
+	{
+		zone = 6;
+		location = 12.619186 4.160431 11.417470;
+		rotation = 0.002006 0.559189 0.002974 0.829032;
+		instancename = activator_levertnt;
+		target = levertnt;
+	}
+	[crossbow_base]
+	{
+		zone = 6;
+		location = -5.611927 2.437048 13.319187;
+		rotation = 0.000000 0.665882 -0.000000 0.746057;
+		instancename = crossbowc;
+	}
+	[crossbow_base1]
+	{
+		zone = 6;
+		location = 6.673093 2.435590 6.568402;
+		rotation = 0.000000 -0.351637 -0.000000 0.936136;
+		instancename = crossbowa;
+	}
+	[crossbow_base2]
+	{
+		zone = 6;
+		location = 7.591350 2.433690 12.526197;
+		rotation = 0.000000 -0.782608 -0.000000 0.622515;
+		instancename = crossbowb;
+	}
+	[dynamite_base]
+	{
+		zone = 6;
+		location = 12.543577 4.188702 11.760765;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[imp_base]
+	{
+		zone = 6;
+		location = 7.772182 2.494819 7.967839;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggimp;
+	}
+	[imp_base1]
+	{
+		zone = 6;
+		location = 0.749012 3.346351 12.417598;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggbb;
+		instancename = eggimp;
+	}
+	[imp_base2]
+	{
+		zone = 6;
+		location = 8.131522 2.587914 13.826569;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggcc;
+		instancename = eggimp;
+	}
+	[imp_base3]
+	{
+		zone = 6;
+		location = 3.447217 2.485814 10.948627;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggimp;
+	}
+	[imp_base4]
+	{
+		zone = 6;
+		location = 2.778903 2.493958 14.893652;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggbb;
+		instancename = eggimp;
+	}
+	[imp_base5]
+	{
+		zone = 6;
+		location = 6.890973 2.473407 11.416133;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggcc;
+		instancename = eggimp;
+	}
+	[imp_base6]
+	{
+		zone = 6;
+		location = -1.464044 2.454146 13.921926;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggimp;
+	}
+	[firebug_base]
+	{
+		zone = 6;
+		location = 5.651261 3.407765 9.967858;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggbb;
+		instancename = eggfirebug;
+	}
+	[firebug_base1]
+	{
+		zone = 6;
+		location = 4.630404 3.338595 13.138028;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggcc;
+		instancename = eggfirebug;
+	}
+	[firebug_base2]
+	{
+		zone = 6;
+		location = 0.723005 3.085992 14.276600;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggfirebug;
+	}
+	[firebug_base3]
+	{
+		zone = 6;
+		location = 9.168624 2.766529 10.530332;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggbb;
+		instancename = eggfirebug;
+	}
+	[firebug_base4]
+	{
+		zone = 6;
+		location = 1.856306 3.104965 10.919693;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggcc;
+		instancename = eggfirebug;
+	}
+	[firebug_base5]
+	{
+		zone = 6;
+		location = 3.194681 3.024306 12.980427;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggfirebug;
+	}
+	[firebug_base6]
+	{
+		zone = 6;
+		location = -1.987842 3.415783 11.888176;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggbb;
+		instancename = eggfirebug;
+	}
+	[firebug_base7]
+	{
+		zone = 6;
+		location = -1.186213 3.361216 16.034199;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggcc;
+		instancename = eggfirebug;
+	}
+	[extralife_base]
+	{
+		zone = 6;
+		location = 10.040557 2.510916 9.962614;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[powericon_base]
+	{
+		zone = 6;
+		location = 12.050000 4.310000 12.360000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		powername = whammysharktub;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 7.376564 4.643130 17.559309;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 7.144586 2.646054 6.949413;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 7.491468 2.646054 7.991022;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -2.249165 2.584285 11.860574;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 8.124649 4.906942 3.344805;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 8.317133 5.528485 3.270966;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 12.101362 5.419733 6.660913;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 8.506765 4.376793 15.987202;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 6.019341 4.569543 18.102297;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 5.481950 4.046974 17.338684;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -3.361501 4.775958 18.109915;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -8.191513 4.759675 15.308201;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -7.489888 5.702600 11.566846;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -8.355870 5.180555 11.028643;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -6.615460 4.402813 8.303836;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -3.714730 5.490677 6.592669;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -0.570836 5.496425 8.929204;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = -1.536652 5.298957 9.016957;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 5.008088 4.375264 4.827274;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 6;
+		location = 4.681340 4.397418 4.710493;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+}
+[regions]
+{
+	[playroom]
+	{
+		zone = 6;
+		type = cube;
+		location = 0.000000 -0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.010000 0.010000 0.010000;
+		instancename = playroom;
+	}
+	[areaload]
+	{
+		zone = 6;
+		type = plane;
+		location = 8.559222 5.631560 3.072938;
+		rotation = 0.707107 -0.000000 -0.000000 0.707107;
+		scale = 1.387142 0.978063 0.978063;
+		activatechapter = 0;
+		instancename = areaload_playroom2tumblerroom;
+		nextarea = tumblerroom;
+		targetlocation = loadfromplayroom;
+		vinceanimation = vince_walkstop_short;
+	}
+	[areaload]
+	{
+		zone = 6;
+		type = plane;
+		location = -4.451447 3.553799 6.644978;
+		rotation = 0.690905 0.150500 -0.150500 0.690905;
+		scale = 1.169893 0.992372 2.855971;
+		instancename = areaload_tintoyterror;
+		nextarea = tintoyterror;
+		targetlocation = loadfromplayroom;
+		vinceanimation = vince_walkstop;
+	}
+	[fire]
+	{
+		zone = 6;
+		type = cube;
+		location = 3.435379 4.517379 14.467060;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.400000 0.600000 0.400000;
+		flametime = 3.0;
+		instancename = fire;
+	}
+	[fire]
+	{
+		zone = 6;
+		type = cube;
+		location = 0.880778 4.513854 13.344703;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.400000 0.600000 0.400000;
+		flametime = 3.0;
+		instancename = fire;
+	}
+	[fire]
+	{
+		zone = 6;
+		type = cube;
+		location = -1.380563 4.503363 10.649445;
+		rotation = 0.000000 0.000000 -0.000000 1.000000;
+		scale = 0.400000 0.600000 0.400000;
+		flametime = 3.0;
+		instancename = fire;
+	}
+	[shimmer]
+	{
+		zone = 6;
+		type = sphere;
+		location = 3.418637 4.522724 14.470510;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.287820 0.287820 0.287820;
+		instancename = dislwlsop;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 6;
+		type = sphere;
+		location = 0.881399 4.529734 13.338978;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.294498 0.294498 0.294498;
+		instancename = joeigototgoblowanotherjoe;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 6;
+		type = sphere;
+		location = -1.375240 4.498252 10.633982;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.307131 0.307131 0.307131;
+		instancename = danisthemanfortheplan;
+		shimmeron = true;
+	}
+}

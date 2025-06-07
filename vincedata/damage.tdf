@@ -1,0 +1,2788 @@
+[global]
+{
+	[PitFrog]
+	{
+		// Starting health
+		startHealth = 3;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+		[tongue]
+		{
+			damage = 3;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 7;
+
+			// small/medium/large bead count
+			beads = 1/0/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 3/1/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 4/2/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 4/3/0;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+
+			// small/medium/large bead count
+			beads = 3/3/0;
+		}
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 3/1/0;
+			motes = 1;
+		}
+	}
+
+	[Roach]
+	{
+		// Starting health
+		startHealth = 1;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+		[bomb]
+		{
+			damage = 2;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 5;
+			beads = 0/2/1;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 1/1/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 1/2/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 2/2/2;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 2/4/1;
+		}
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 0/1/0;
+			motes = 1;
+		}
+	}
+
+	[MondoMole]
+	{
+		startHealth = 7;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+		[hit]
+		{
+			damage = 3;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 0;
+			knockbackmax = 0;
+			beads = 1/0/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 0;
+			knockbackmax = 0;
+			beads = 0/4/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 0;
+			knockbackmax = 0;
+			beads = 0/5/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 0;
+			knockbackmax = 0;
+			beads = 0/6/0;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 0;
+			knockbackmax = 0;
+			beads = 5/3/1;
+		}
+		
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 0;
+			knockbackmax = 0;
+			beads = 5/1/0;
+			motes = 2;
+		}
+	}
+
+	[BubbaGator]
+	{
+		// Starting health
+		startHealth = 15;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 4;
+		}
+		[tail]
+		{
+			damage = 12;
+		}
+		[belly]
+		{
+			damage = 8;
+		}
+		[bite]
+		{
+			damage = 16;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 1/0/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 5/2/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 6/3/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 8/4/1;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 5/5/1;
+		}
+			
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 0/5/2;
+			motes = 4;
+		}
+	}
+
+
+	[BrackishCrab]
+	{
+		// Starting health
+		startHealth = 15;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 4;
+		}
+		[claw]
+		{
+			damage = 12;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 2/1/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 7/1/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 9/2/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 10/3/1;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 2/1/0;
+		}
+			
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 0/5/2;
+			motes = 4;
+		}
+	}
+
+	[BrackishCrabJr]
+	{
+		// Starting health
+		startHealth = 5;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage =2;
+		}
+		[claw]
+		{
+			damage = 6;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 2/0/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 0/2/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 0/3/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 0/2/0;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 2/0/0;
+		}
+			
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 0/4/2;
+			motes = 4;
+		}
+	}
+
+	[FireBug]
+	{
+		// Starting health
+		startHealth = 1;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 2;
+		}
+		[flame]
+		{
+			damage = 8;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 5;
+			beads = 0/4/2;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 2/0/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 0/2/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 0/0/2;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 2/3/2;
+		}
+			
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 2;
+			knockbackmax = 4;
+			beads = 0/0/1;
+			motes = 1;
+		}
+	}
+
+	[Imp]
+	{
+		startHealth = 7;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+		[hit]
+		{
+			damage = 3;
+		}
+		[slash]
+		{
+			damage = 3;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 7;
+			beads = 0/0/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+			beads = 5/2/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+			beads = 5/2/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+			beads = 5/2/0;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 0/3/1;
+		}
+			
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 3;
+			knockbackmax = 5;
+			beads = 3/2/1;
+			motes = 2;
+		}
+	}
+
+	[KillerDillo]
+	{
+		startHealth = 9;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 4;
+		}
+		[bite]
+		{
+			damage = 6;
+		}
+		[explode]
+		{
+			damage = 8;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 5;
+			beads = 0/0/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 8/0/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 4/1/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 2/1/1;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 1/3/1;
+		}
+			
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 5/2/1;
+			motes = 3;
+		}
+	}
+
+	[airplane]
+	{
+		[bump]
+		{
+			damage = 4;
+		}
+	}
+}
+
+[frenchQuarter]
+{
+	// All of the zones need to be listed here so single zone builds can figure out what level to load
+	courtyard = 1;
+	bakery = 1;
+	bigpig = 1;
+	mainstreet = 1;
+	thesquare = 1;
+	museum = 1;
+
+	[Vince]
+	{
+		// Starting health
+		startHealth = 8;
+
+		// Quips
+		[Quips]
+		{
+			[Damage]
+			{
+				quip = vquip_damage_01;
+				quip = vquip_damage_02;
+				quip = vquip_damage_03;
+				quip = vquip_damage_05;
+				quip = vquip_damage_06;
+				quip = vquip_damage_07;
+				quip = vquip_damage_10;
+				quip = vquip_damage_11;
+				quip = vquip_damage_13;
+				quip = vquip_damage_15;
+				quip = vquip_damage_17;
+				quip = vquip_damage_18;
+				quip = vquip_damage_21;
+				quip = vquip_damage_22;
+				quip = vquip_damage_23;
+				quip = vquip_damage_25;
+				quip = vquip_damage_26;
+				quip = vquip_damage_27;
+				quip = vquip_damage_29;
+			}
+			
+			[Pickup]
+			{
+				quip = vquip_pickup_01;
+				quip = vquip_pickup_03;
+				quip = vquip_pickup_05;
+				quip = vquip_pickup_06;
+				quip = vquip_pickup_07;
+				quip = vquip_pickup_10;
+				quip = vquip_pickup_11;
+				quip = vquip_pickup_13;
+				quip = vquip_pickup_15;
+				quip = vquip_pickup_17;
+				quip = vquip_pickup_18;
+			}
+			
+			[Resurrect]
+			{
+				quip = vquip_life_01;
+				quip = vquip_life_03;
+				quip = vquip_life_05;
+				quip = vquip_life_06;
+				quip = vquip_life_07;
+				quip = vquip_life_09;
+				quip = vquip_life_11;
+				quip = vquip_life_13;
+			}
+			
+			[MonsterKilled]
+			{
+				quip = vquip_mdeath_01;
+				quip = vquip_mdeath_02;
+				quip = vquip_mdeath_03;
+				quip = vquip_mdeath_05;
+				quip = vquip_mdeath_06;
+				quip = vquip_mdeath_07;
+				quip = vquip_mdeath_09;
+				quip = vquip_mdeath_10;
+				quip = vquip_mdeath_14;
+				quip = vquip_mdeath_15;
+			}
+		}
+
+		// Idles
+		[Idles]
+		{
+			[Damage]
+			{
+				idle = vince_injured_ambient001;
+				idle = vince_injured_ambient002;
+			}
+			[Back]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle03;  // Turn around and shrug
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle06;  // Flex
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+			[Any]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle05;  // Smile and blink
+				idle = vince_idle06;  // Flex
+				idle = vince_idle07;  // Polish eye
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle09;  // Look around
+				idle = vince_idle10;  // Dip head and blink
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+				idle = vince_idle15;  // Look Around
+			}
+		}		
+
+
+		// area settings
+		[courtyard]
+		{
+			chapterStartHealth = 8;
+			chapterPowerPunch = 0;
+			chapterPowerSpinKick = 0;
+			chapterPowerHeadSlam = 0;
+			chapterPowerFloat = 0;
+			chapterPowerDoubleJump = 0;
+			chapterPowerBoomerang = 0;
+			chapterPlayBeadHint = 1;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 1;
+		}
+
+		[bigpig]
+		{
+			chapterStartHealth = 12;
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 0;
+			chapterPowerFloat = 0;
+			chapterPowerDoubleJump = 0;
+			chapterPowerBoomerang = 0;
+			chapterPlayDrownComment = 1;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 1;
+		}
+
+		[mainstreet]
+		{
+			chapterStartHealth = 12;
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 0;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 0;
+			chapterPowerBoomerang = 0;
+			chapterPlayDoubleJumpComment = 1;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 1;
+		}
+
+		[thesquare]
+		{
+			chapterStartHealth = 12;
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 0;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 2;
+		}
+
+		[museum]
+		{
+			chapterStartHealth = 16;
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 3;
+		}
+	}
+
+	[GingerDeadMan]
+	{
+		// Starting health
+		startHealth = 2;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[blender]
+		{
+			damage = 1000; // Overkill, but guarantees that they'll die if hit by the blender
+			knockbackmin = 0;
+			knockbackmax = 0;
+		}
+
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 5;
+			beads = 2/0/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 2/0/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 3/0/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 4/1/0;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 2/0/0;
+		}
+			
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 1;
+			knockbackmax = 1;
+			beads = 2/1/0;
+			motes = 1;
+		}
+	}
+
+	[BigPig]
+	{
+		// No start health - can't be hurt by weapons	
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+	}
+
+	[Reggie]
+	{
+		// No start health - can't be hurt by weapons	
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 2;
+		}
+		[wrench]
+		{
+			damage = 2;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+	}
+
+	[Primo]
+	{
+		// No start health - can't be hurt by weapons	
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 2;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+	}
+
+	[TrainingFrog]
+	{
+		// Starting health
+		startHealth = 1;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+		[tongue]
+		{
+			damage = 2;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 5;
+			beads = 2/0/0;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 2/0/0;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 3/0/0;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 2;
+			knockbackmax = 2;
+			beads = 4/1/0;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+			beads = 2/0/0;
+		}
+			
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 2;
+			knockbackmax = 4;
+			beads = 2/1/0;
+			motes = 1;
+		}
+	}
+
+	[ClockFigure]
+	{
+		// No start health - can't be hurt by weapons	
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+	}
+
+	[TurboDactyl]
+	{
+		// No start health - can't be hurt by weapons	
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+		[egg]
+		{
+			damage = 1;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+	}
+
+	[DinoBoss]
+	{
+		// No start health - can't be hurt by weapons	
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+		[tail]
+		{
+			damage = 2;
+		}
+		[chomp]
+		{
+			damage = 4;
+		}
+	}
+
+	[LevelWhammys]
+	{
+		levelwhammy = whammypin;
+		levelwhammy = whammyacid;
+		levelwhammy = whammyanvil;
+		levelwhammy = whammybeartrap;
+		levelwhammy = whammybomb;
+		levelwhammy = whammychainsaw;
+		levelwhammy = whammyironmaiden;
+		levelwhammy = whammykillerbee;
+		levelwhammy = whammylawnmower;
+		levelwhammy = whammymagnet;
+		levelwhammy = whammypitchfork;
+		levelwhammy = whammyufo;
+	}
+}
+
+[sewers]
+{
+	maintunnel = 1;
+	stealthroom = 1;
+	basketcase = 1;
+	propellerroom = 1;
+	rocketlab = 1;
+	throttleup = 1;
+	wrathofjanice = 1;
+
+	[Vince]
+	{
+		// Starting health
+		startHealth = 16;
+
+		// Quips
+		[Quips]
+		{
+			[Damage]
+			{
+				quip = vquip_damage_02;
+				quip = vquip_damage_05;
+				quip = vquip_damage_06;
+				quip = vquip_damage_08;
+				quip = vquip_damage_09;
+				quip = vquip_damage_10;
+				quip = vquip_damage_12;
+				quip = vquip_damage_14;
+				quip = vquip_damage_16;
+				quip = vquip_damage_17;
+				quip = vquip_damage_18;
+				quip = vquip_damage_20;
+				quip = vquip_damage_21;
+				quip = vquip_damage_24;
+				quip = vquip_damage_25;
+				quip = vquip_damage_26;
+				quip = vquip_damage_28;
+				quip = vquip_damage_30;
+			}
+			
+			[Pickup]
+			{
+				quip = vquip_pickup_02;
+				quip = vquip_pickup_04;
+				quip = vquip_pickup_05;
+				quip = vquip_pickup_06;
+				quip = vquip_pickup_09;
+				quip = vquip_pickup_10;
+				quip = vquip_pickup_12;
+				quip = vquip_pickup_13;
+				quip = vquip_pickup_14;
+				quip = vquip_pickup_16;
+				quip = vquip_pickup_18;
+			}
+			
+			[Resurrect]
+			{
+				quip = vquip_life_02;
+				quip = vquip_life_03;
+				quip = vquip_life_05;
+				quip = vquip_life_06;
+				quip = vquip_life_08;
+				quip = vquip_life_10;
+				quip = vquip_life_11;
+				quip = vquip_life_13;
+			}
+			
+			[MonsterKilled]
+			{
+				quip = vquip_mdeath_01;
+				quip = vquip_mdeath_05;
+				quip = vquip_mdeath_06;
+				quip = vquip_mdeath_10;
+				quip = vquip_mdeath_12;
+				quip = vquip_mdeath_13;
+				quip = vquip_mdeath_14;
+			}
+		}
+
+		// Idles
+		[Idles]
+		{
+			[Damage]
+			{
+				idle = vince_injured_ambient001;
+				idle = vince_injured_ambient002;
+			}
+			[Back]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle03;  // Turn around and shrug
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle06;  // Flex
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+			[Any]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle05;  // Smile and blink
+				idle = vince_idle06;  // Flex
+				idle = vince_idle07;  // Polish eye
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle09;  // Look around
+				idle = vince_idle10;  // Dip head and blink
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+		}		
+
+		// Area settings
+		[maintunnel]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 3;
+		}
+		
+		[stealthroom]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 3;
+		}
+		
+		[basketcase]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 4;
+		}
+		
+		[propellerroom]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 3;
+		}
+		
+		[rocketlab]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 3;
+		}
+		
+		[throttleup]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 3;
+		}
+		
+		[wrathofjanice]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 4;
+		}
+	}
+
+ 	[basketcase]
+  	{
+  		startHealth = 1;
+  
+  		// Damage to vince from collision or attack.  Collision must always be named bump.
+  		// Attack names should be the name of the attack
+  		[bump]
+  		{
+  			damage = 4;
+  		}
+  	}
+
+	[LevelWhammys]
+	{
+		levelwhammy = whammypin;
+		levelwhammy = whammyacid;
+		levelwhammy = whammyarrows;
+		levelwhammy = whammybeartrap;
+		levelwhammy = whammydrill;
+		levelwhammy = whammykillerbee;
+		levelwhammy = whammylawnmower;
+		levelwhammy = whammylaxative;
+		levelwhammy = whammymagnet;
+		levelwhammy = whammypitchfork;
+		levelwhammy = whammyufo;
+		levelwhammy = whammywreckingball;
+	}
+	
+	[janice]
+	{
+		[bump]
+		{
+			damage = 4;
+		}
+		
+		[eyes]
+		{
+			damage = 30;
+		}
+	}
+}
+
+[cryptCity]
+{
+	gatekeeperjam = 1;
+	sarcophagushustle = 1;
+	zombieguidancecounselor = 1;
+	gwistlethorpemausoleum = 1;
+	ratracerodeo = 1;
+
+	[Vince]
+	{
+		// Starting health
+		startHealth = 20;
+
+		// Quips
+		[Quips]
+		{
+			[Damage]
+			{
+				quip = vquip_damage_01;
+				quip = vquip_damage_03;
+				quip = vquip_damage_04;
+				quip = vquip_damage_05;
+				quip = vquip_damage_07;
+				quip = vquip_damage_08;
+				quip = vquip_damage_09;
+				quip = vquip_damage_11;
+				quip = vquip_damage_13;
+				quip = vquip_damage_19;
+				quip = vquip_damage_20;
+				quip = vquip_damage_21;
+				quip = vquip_damage_23;
+				quip = vquip_damage_28;
+				quip = vquip_damage_29;
+			}
+			
+			[Pickup]
+			{
+				quip = vquip_pickup_01;
+				quip = vquip_pickup_03;
+				quip = vquip_pickup_05;
+				quip = vquip_pickup_07;
+				quip = vquip_pickup_08;
+				quip = vquip_pickup_09;
+				quip = vquip_pickup_11;
+				quip = vquip_pickup_13;
+				quip = vquip_pickup_15;
+				quip = vquip_pickup_16;
+				quip = vquip_pickup_17;
+			}
+			
+			[Resurrect]
+			{
+				quip = vquip_life_03;
+				quip = vquip_life_04;
+				quip = vquip_life_07;
+				quip = vquip_life_08;
+				quip = vquip_life_09;
+				quip = vquip_life_11;
+				quip = vquip_life_12;
+				quip = vquip_life_13;
+			}
+			
+			[MonsterKilled]
+			{
+				quip = vquip_mdeath_01;
+				quip = vquip_mdeath_03;
+				quip = vquip_mdeath_05;
+				quip = vquip_mdeath_07;
+				quip = vquip_mdeath_09;
+				quip = vquip_mdeath_12;
+				quip = vquip_mdeath_13;
+			}
+		}
+
+		// Idles
+		[Idles]
+		{
+			[Damage]
+			{
+				idle = vince_injured_ambient001;
+				idle = vince_injured_ambient002;
+			}
+			[Back]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle03;  // Turn around and shrug
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle06;  // Flex
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+			[Any]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle05;  // Smile and blink
+				idle = vince_idle06;  // Flex
+				idle = vince_idle07;  // Polish eye
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle09;  // Look around
+				idle = vince_idle10;  // Dip head and blink
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+		}		
+
+		// Area settings
+		[gatekeeperjam]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 4;
+		}
+		
+		[sarcophagushustle]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 4;
+		}
+		
+		[zombieguidancecounselor]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 5;
+		}
+		
+		[gwistlethorpemausoleum]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 0;
+			chapterMaxSkulls = 5;
+		}
+		
+		[ratracerodeo]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 6;
+		}
+	}
+
+	[MrsG]
+	{
+		// No start health - can't be hurt by weapons	
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+		[shockwave]
+		{
+			damage = 4;
+		}
+	}
+
+	[LevelWhammys]
+	{
+		levelwhammy = whammypin;
+		levelwhammy = whammyacid;
+		levelwhammy = whammyarrows;
+		levelwhammy = whammydrill;
+		levelwhammy = whammygiantmallet;
+		levelwhammy = whammyjackhammer;
+		levelwhammy = whammylaxative;
+		levelwhammy = whammypinata;
+		levelwhammy = whammyspacejunk;
+		levelwhammy = whammytornado;
+		levelwhammy = whammywaringblender;
+		levelwhammy = whammywreckingball;
+	}
+}
+
+
+[ManorHouse]
+{
+	// All of the zones need to be listed here so single zone builds can figure out what level to load
+	frontporch = 1;
+	tumblerroom = 1;
+	bowlingalley = 1;
+	captainsroom = 1;
+	tintoyterror = 1;
+	playroom = 1;
+	//BUGBUG:  Zone 7 goes here
+	glowberrytangle = 1;
+	boltroidbattle = 1;
+
+	[Vince]
+	{
+		// Starting health
+		startHealth = 24;
+
+		// Quips
+		[Quips]
+		{
+			[Damage]
+			{
+				quip = vquip_damage_02;
+				quip = vquip_damage_03;
+				quip = vquip_damage_06;
+				quip = vquip_damage_07;
+				quip = vquip_damage_08;
+				quip = vquip_damage_10;
+				quip = vquip_damage_12;
+				quip = vquip_damage_14;
+				quip = vquip_damage_15;
+				quip = vquip_damage_16;
+				quip = vquip_damage_18;
+				quip = vquip_damage_22;
+				quip = vquip_damage_23;
+				quip = vquip_damage_26;
+				quip = vquip_damage_27;
+				quip = vquip_damage_30;
+			}
+			
+			[Pickup]
+			{
+				quip = vquip_pickup_03;
+				quip = vquip_pickup_04;
+				quip = vquip_pickup_06;
+				quip = vquip_pickup_10;
+				quip = vquip_pickup_11;
+				quip = vquip_pickup_14;
+				quip = vquip_pickup_15;
+				quip = vquip_pickup_16;
+				quip = vquip_pickup_18;
+			}
+			
+			[Resurrect]
+			{
+				quip = vquip_life_02;
+				quip = vquip_life_03;
+				quip = vquip_life_04;
+				quip = vquip_life_08;
+				quip = vquip_life_10;
+				quip = vquip_life_11;
+				quip = vquip_life_12;
+			}
+			
+			[MonsterKilled]
+			{
+				quip = vquip_mdeath_03;
+				quip = vquip_mdeath_04;
+				quip = vquip_mdeath_06;
+				quip = vquip_mdeath_07;
+				quip = vquip_mdeath_08;
+				quip = vquip_mdeath_10;
+				quip = vquip_mdeath_11;
+				quip = vquip_mdeath_12;
+				quip = vquip_mdeath_15;
+			}
+		}
+
+		// Idles
+		[Idles]
+		{
+			[Damage]
+			{
+				idle = vince_injured_ambient001;
+				idle = vince_injured_ambient002;
+			}
+			[Back]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle03;  // Turn around and shrug
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle06;  // Flex
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+			[Any]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle05;  // Smile and blink
+				idle = vince_idle06;  // Flex
+				idle = vince_idle07;  // Polish eye
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle09;  // Look around
+				idle = vince_idle10;  // Dip head and blink
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+		}		
+
+		// Area settings
+		[boltroidbattle]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 7;
+		}
+
+		[captainsroom]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 1;
+			wasbutlersummoned = 1;
+			chapterMaxSkulls = 6;
+		}
+
+		[frontporch]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 6;
+		}
+
+		[glowberrytangle]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 6;
+		}
+
+		[playroom]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 6;
+		}
+
+		[tintoyterror]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 6;
+		}
+
+		[tumblerroom]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 0;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 6;
+		}
+	}
+	
+	[DollyBoss]
+	{
+		// Damage to vince from dolly boss attacks
+		[poodle]
+		{
+			damage = 3;
+		}
+		[bullet]
+		{
+			damage = 3;
+		}
+		
+		[bump]
+		{
+			damage = 3;
+		}
+	}
+
+	[LevelWhammys]
+	{
+		levelwhammy = whammypin;
+		levelwhammy = whammyangrygod;
+		levelwhammy = whammygiantmallet;
+		levelwhammy = whammyironmaiden;
+		levelwhammy = whammyjackhammer;
+		levelwhammy = whammypinata;
+		levelwhammy = whammyscissors;
+		levelwhammy = whammysharktub;
+		levelwhammy = whammyspacejunk;
+		levelwhammy = whammytornado;
+		levelwhammy = whammytruck;
+		levelwhammy = whammywaringblender;
+	}
+}
+
+
+[Bayou]
+{
+	// All of the zones need to be listed here so single zone builds can figure out what level to load
+	belowdecks = 1;
+	crawdadjimmys = 1;
+	earthwoodandwater = 1;
+	hurricanehannah = 1;
+	jeanlafittesship = 1;
+	jimmysfanboat = 1;
+	thebogwallow = 1;
+	thesausageworks = 1;
+
+	[Vince]
+	{
+		// Starting health
+		startHealth = 28;
+		chapterPowerPunch = 1;
+		chapterPowerSpinKick = 1;
+		chapterPowerHeadSlam = 1;
+		chapterPowerFloat = 1;
+		chapterPowerDoubleJump = 1;
+		chapterPowerBoomerang = 1;
+		chapterPowerAllSeeingEye = 1;
+
+		// Quips
+		[Quips]
+		{
+			[Damage]
+			{
+				quip = vquip_damage_01;
+				quip = vquip_damage_03;
+				quip = vquip_damage_05;
+				quip = vquip_damage_07;
+				quip = vquip_damage_09;
+				quip = vquip_damage_10;
+				quip = vquip_damage_11;
+				quip = vquip_damage_14;
+				quip = vquip_damage_15;
+				quip = vquip_damage_18;
+				quip = vquip_damage_19;
+				quip = vquip_damage_20;
+				quip = vquip_damage_21;
+				quip = vquip_damage_22;
+				quip = vquip_damage_24;
+				quip = vquip_damage_25;
+				quip = vquip_damage_26;
+				quip = vquip_damage_27;
+				quip = vquip_damage_29;
+				quip = vquip_damage_30;
+			}
+			
+			[Pickup]
+			{
+				quip = vquip_pickup_01;
+				quip = vquip_pickup_02;
+				quip = vquip_pickup_03;
+				quip = vquip_pickup_05;
+				quip = vquip_pickup_07;
+				quip = vquip_pickup_10;
+				quip = vquip_pickup_11;
+				quip = vquip_pickup_13;
+				quip = vquip_pickup_14;
+				quip = vquip_pickup_15;
+				quip = vquip_pickup_18;
+			}
+			
+			[Resurrect]
+			{
+				quip = vquip_life_01;
+				quip = vquip_life_06;
+				quip = vquip_life_08;
+				quip = vquip_life_09;
+				quip = vquip_life_10;
+				quip = vquip_life_11;
+				quip = vquip_life_13;
+			}
+			
+			[MonsterKilled]
+			{
+				quip = vquip_mdeath_01;
+				quip = vquip_mdeath_03;
+				quip = vquip_mdeath_05;
+				quip = vquip_mdeath_06;
+				quip = vquip_mdeath_07;
+				quip = vquip_mdeath_10;
+				quip = vquip_mdeath_11;
+				quip = vquip_mdeath_12;
+				quip = vquip_mdeath_14;
+			}
+		}
+
+		// Idles
+		[Idles]
+		{
+			[Damage]
+			{
+				idle = vince_injured_ambient001;
+				idle = vince_injured_ambient002;
+			}
+			[Back]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle03;  // Turn around and shrug
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle06;  // Flex
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+			[Any]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle05;  // Smile and blink
+				idle = vince_idle06;  // Flex
+				idle = vince_idle07;  // Polish eye
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle09;  // Look around
+				idle = vince_idle10;  // Dip head and blink
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+		}		
+
+		// Area settings
+		[belowdecks]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 8;
+		}
+
+		[crawdadjimmys]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 7;
+		}
+
+		[earthwoodandwater]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 8;
+		}
+
+		[hurricanehannah]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 9;
+		}
+
+		[jeanlafittesship]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 8;
+		}
+
+		[jimmysfanboat]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 9;
+		}
+
+		[thebogwallow]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 8;
+		}
+
+		[thesausageworks]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 9;
+		}
+	}
+
+	[LevelWhammys]
+	{
+		levelwhammy = whammypin;
+		levelwhammy = whammyangrygod;
+		levelwhammy = whammyfallingcow;
+		levelwhammy = whammyironmaiden;
+		levelwhammy = whammymeatcleaver;
+		levelwhammy = whammymobhit;
+		levelwhammy = whammypitchfork;
+		levelwhammy = whammyscissors;
+		levelwhammy = whammysharktub;
+		levelwhammy = whammyswamppepper;
+		levelwhammy = whammytoxic;
+		levelwhammy = whammytruck;
+	}
+	
+	[Onion]
+	{
+		startHealth = 1;
+		
+		[spin]
+		{
+			damage = 0;
+			knockbackmin = 5;
+			knockbackmax = 5;
+		}
+
+		[punch1]
+		{
+			damage = 0;
+			knockbackmin = 2;
+			knockbackmax = 2;
+		}
+
+		[punch2]
+		{
+			damage = 0;
+			knockbackmin = 2;
+			knockbackmax = 2;
+		}
+
+		[punch3]
+		{
+			damage = 0;
+			knockbackmin = 2;
+			knockbackmax = 2;
+		}
+
+		[headslam]
+		{
+			damage = 0;
+			knockbackmin = 3;
+			knockbackmax = 3;
+		}
+	}
+	
+	[SausageGoo]
+	{
+		[hit]
+		{
+			damage = 2;
+		}
+	}
+	
+	[hannah]
+	{
+		// No start health - can't be hurt by weapons	
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[debris]
+		{
+			damage = 6;
+		}
+	}
+	
+	[crawdaddy]
+	{
+		[bump]
+		{
+			damage = 2;
+		}
+		
+		[claw]
+		{
+			damage = 4;
+		}
+	}
+	
+	[jimmysfanboat]
+	{
+		// Quips
+		[Quips]
+		{
+			[jimmywinning]
+			{
+				quip = jimmy_b_fr_04;
+				quip = jimmy_b_fr_06;
+				quip = jimmy_b_fr_09;
+				quip = jimmy_b_fr_10;
+			}
+			
+			[jimmylosing]
+			{
+				quip = jimmy_b_fr_05;
+				quip = jimmy_b_fr_07;
+				quip = jimmy_b_fr_08;
+			}
+			
+			[vincewinning]
+			{
+				
+				quip = vquip_celebrate_02;
+				quip = vquip_celebrate_04;
+				quip = vquip_celebrate_05;
+				quip = vquip_celebrate_07;
+				quip = vquip_celebrate_09;
+				quip = vquip_celebrate_10;
+				quip = vquip_celebrate_12;
+				quip = vquip_celebrate_13;
+			}
+		}
+	}
+}
+
+
+[Carnival]
+{
+	// All of the zones need to be listed here so single zone builds can figure out what level to load
+	bumpercarbumpoff = 1;
+	houseomirrors = 1;
+	insidekosmobot = 1;
+	landorides = 1;
+	midway = 1;
+	scarehouse = 1;
+
+	[Vince]
+	{
+		// Starting health
+		startHealth = 32;
+		chapterPowerPunch = 1;
+		chapterPowerSpinKick = 1;
+		chapterPowerHeadSlam = 1;
+		chapterPowerFloat = 1;
+		chapterPowerDoubleJump = 1;
+		chapterPowerBoomerang = 1;
+		chapterPowerAllSeeingEye = 1;
+
+		// Quips
+		[Quips]
+		{
+			[Damage]
+			{
+				quip = vquip_damage_01;
+				quip = vquip_damage_04;
+				quip = vquip_damage_05;
+				quip = vquip_damage_09;
+				quip = vquip_damage_10;
+				quip = vquip_damage_11;
+				quip = vquip_damage_12;
+				quip = vquip_damage_13;
+				quip = vquip_damage_14;
+				quip = vquip_damage_15;
+				quip = vquip_damage_19;
+				quip = vquip_damage_20;
+				quip = vquip_damage_23;
+				quip = vquip_damage_24;
+				quip = vquip_damage_27;
+				quip = vquip_damage_30;
+			}
+			
+			[Pickup]
+			{
+				quip = vquip_pickup_01;
+				quip = vquip_pickup_02;
+				quip = vquip_pickup_03;
+				quip = vquip_pickup_04;
+				quip = vquip_pickup_07;
+				quip = vquip_pickup_08;
+				quip = vquip_pickup_09;
+				quip = vquip_pickup_12;
+				quip = vquip_pickup_13;
+				quip = vquip_pickup_15;
+				quip = vquip_pickup_16;
+				quip = vquip_pickup_18;
+			}
+			
+			[Resurrect]
+			{
+				quip = vquip_life_01;
+				quip = vquip_life_02;
+				quip = vquip_life_05;
+				quip = vquip_life_06;
+				quip = vquip_life_07;
+				quip = vquip_life_09;
+				quip = vquip_life_10;
+				quip = vquip_life_13;
+			}
+			
+			[MonsterKilled]
+			{
+				quip = vquip_mdeath_01;
+				quip = vquip_mdeath_06;
+				quip = vquip_mdeath_07;
+				quip = vquip_mdeath_08;
+				quip = vquip_mdeath_09;
+				quip = vquip_mdeath_10;
+				quip = vquip_mdeath_13;
+				quip = vquip_mdeath_14;
+				quip = vquip_mdeath_15;
+			}
+		}
+
+		// Idles
+		[Idles]
+		{
+			[Damage]
+			{
+				idle = vince_injured_ambient001;
+				idle = vince_injured_ambient002;
+			}
+			[Back]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle03;  // Turn around and shrug
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle06;  // Flex
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+			[Any]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle05;  // Smile and blink
+				idle = vince_idle06;  // Flex
+				idle = vince_idle07;  // Polish eye
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle09;  // Look around
+				idle = vince_idle10;  // Dip head and blink
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+		}		
+
+		// Area settings
+		[bumpercarbumpoff]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 10;
+		}
+
+		[houseomirrors]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 10;
+		}
+
+		[insidekosmobot]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 10;
+		}
+
+		[landorides]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 9;
+			solvedSH = 1;
+			solvedHOM = 1;
+		}
+
+		[midway]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 9;
+		}
+
+		[scarehouse]
+		{
+			chapterPowerPunch = 1;
+			chapterPowerSpinKick = 1;
+			chapterPowerHeadSlam = 1;
+			chapterPowerFloat = 1;
+			chapterPowerDoubleJump = 1;
+			chapterPowerBoomerang = 1;
+			chapterPowerAllSeeingEye = 1;
+			chapterMaxSkulls = 10;
+		}
+	}
+
+ 	[ScareHouse]
+  	{
+  		startHealth = 1;
+  
+  		// Damage to vince from collision or attack.  Collision must always be named bump.
+  		// Attack names should be the name of the attack
+  		[bump]
+  		{
+  			damage = 1;
+  		}
+  	}
+
+ 	[EvilVince]
+ 	{
+ 		startHealth = 3;
+ 
+ 		[bump]
+ 		{
+ 			damage = 1;
+ 		}
+
+		[whammy]
+		{
+			damage = 4;
+		}
+
+		[spin]
+		{
+			damage = 1;
+		}
+
+		[punch1]
+		{
+			damage = 1;
+		}
+
+		[punch2]
+		{
+			damage = 1;
+		}
+
+		[punch3]
+		{
+			damage = 1;
+		}
+
+		[headslam]
+		{
+			damage = 1;
+		}
+		[death]
+		{
+			damage = 0;
+		}
+ 	}
+
+	[TrailerFrog]
+	{
+		// Starting health
+		startHealth = 15;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 5;
+		}
+		[tongue]
+		{
+			damage = 10;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 7;
+
+			// small/medium/large bead count
+			beads = 0/0/1;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 0/0/1;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 0/0/2;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 0/0/3;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+
+			// small/medium/large bead count
+			beads = 0/0/1;
+		}
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 5/0/0;
+			motes = 1;
+		}
+	}
+
+	[frogofmystery]
+	{
+		// Starting health
+		startHealth = 15;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 5;
+		}
+		[tongue]
+		{
+			damage = 10;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 7;
+
+			// small/medium/large bead count
+			beads = 0/0/1;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 0/0/1;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 0/0/2;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 0/0/3;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+
+			// small/medium/large bead count
+			beads = 0/0/1;
+		}
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 5/0/0;
+			motes = 1;
+		}
+	}
+
+   
+	[KosmoBot]
+	{
+		// Damage to vince from clown missiles
+		[clownmissile]
+		{
+			// Starting health
+			startHealth = 1;
+
+			damage = 4;
+		}
+		
+	}
+   
+	[kosmobotlegs]
+	{
+		[bump]
+		{
+			damage = 16;
+		}
+	}
+	
+	[kosmobotfist]
+	{
+		[bump]
+		{
+			damage = 16;
+		}
+	}
+	
+	[KosmoBotHead]
+	{
+		startHealth = 4;
+	}
+	
+	[tentplane]
+	{
+		[bullet]
+		{
+			damage = 1;
+		}
+	}
+	
+
+	[minibrains]
+	{
+		[lightning]
+		{
+			damage = 1;
+		}
+	}
+	
+	[mainbrain]
+	{
+		// Starting health
+		startHealth = 50;
+
+		// Damage to vince from collision or attack.  Collision must always be named bump.
+		// Attack names should be the name of the attack
+		[bump]
+		{
+			damage = 1;
+		}
+
+		// Damage to this critter from the various weapons Vince can wield in this level.
+		[spin]
+		{
+			damage = 1;
+			knockbackmin = 5;
+			knockbackmax = 7;
+
+			// small/medium/large bead count
+			beads = 5/5/5;
+		}
+
+		[punch1]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 5/5/5;
+		}
+
+		[punch2]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 5/5/5;
+		}
+
+		[punch3]
+		{
+			damage = 2;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 5/5/5;
+		}
+
+		[headslam]
+		{
+			damage = 3;
+			knockbackmin = 3;
+			knockbackmax = 3;
+
+			// small/medium/large bead count
+			beads = 5/5/5;
+		}
+		[death]
+		{
+			damage = 0;
+			knockbackmin = 3;
+			knockbackmax = 5;
+
+			// small/medium/large bead count
+			beads = 50/50/50;
+			motes = 50;
+		}
+	}
+
+   
+	[LevelWhammys]
+	{
+		levelwhammy = whammypin;
+		levelwhammy = whammyangrygod;
+		levelwhammy = whammyfallingcow;
+		levelwhammy = whammyguillotine;
+		levelwhammy = whammyjackhammer;
+		levelwhammy = whammylaxative;
+		levelwhammy = whammylightening;
+		levelwhammy = whammymeatcleaver;
+		levelwhammy = whammymobhit;
+		levelwhammy = whammyscissors;
+		levelwhammy = whammyswamppepper;
+		levelwhammy = whammytoxic;
+	}
+}
+
+[voodooshop]
+{
+	[Vince]
+	{
+		// Idles
+		[Idles]
+		{
+			[Any]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle05;  // Smile and blink
+				idle = vince_idle06;  // Flex
+				idle = vince_idle07;  // Polish eye
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle09;  // Look around
+				idle = vince_idle10;  // Dip head and blink
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+		}		
+	}
+}
+
+
+[e3wrapper]
+{
+	[Vince]
+	{
+		// Idles
+		[Idles]
+		{
+			[Any]
+			{
+				idle = vince_idle02;  // Scratch butt
+				idle = vince_idle04;  // Tap foot
+				idle = vince_idle05;  // Smile and blink
+				idle = vince_idle06;  // Flex
+				idle = vince_idle07;  // Polish eye
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle08;  // Blink
+				idle = vince_idle09;  // Look around
+				idle = vince_idle10;  // Dip head and blink
+				idle = vince_idle11;  // Belch
+				idle = vince_idle12;  // Brush off
+				idle = vince_idle13;  // Toss eye
+			}
+		}		
+	}
+}
