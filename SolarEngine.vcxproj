@@ -1,0 +1,1058 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FC9FE282-6855-5B78-F149-554F5DFE517C}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SolarEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>Build\Release-windows-x86_64\SolarEngine\</OutDir>
+    <IntDir>Build\Intermediates\Release-windows-x86_64\SolarEngine\</IntDir>
+    <TargetName>SolarEngine</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>Build\Debug-windows-x86_64\SolarEngine\</OutDir>
+    <IntDir>Build\Intermediates\Debug-windows-x86_64\SolarEngine\</IntDir>
+    <TargetName>SolarEngine</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>PLATFORM_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Vendors;Vendors\GLFW\include;Vendors\imguii;Vendors\zlib_x64-windows-static\include;Vendors\JoltPhysics;Vendors\Assimp\include;Vendors\ImGui-Nodes\NodeEditor\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mt.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Vendors\GLFW\lib-vc2022;Vendors\zlib_x64-windows-static\lib;Vendors\Assimp\lib;Vendors\JoltPhysics\Jolt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>PLATFORM_WINDOWS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Vendors;Vendors\GLFW\include;Vendors\imguii;Vendors\zlib_x64-windows-static\include;Vendors\JoltPhysics;Vendors\Assimp\include;Vendors\ImGui-Nodes\NodeEditor\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mt.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Vendors\GLFW\lib-vc2022;Vendors\zlib_x64-windows-static\lib;Vendors\Assimp\lib;Vendors\JoltPhysics\Jolt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Actors\Actor.h" />
+    <ClInclude Include="Source\Actors\Lights\APointLight.h" />
+    <ClInclude Include="Source\Actors\Meshes\AStaticMesh.h" />
+    <ClInclude Include="Source\Components\Component.h" />
+    <ClInclude Include="Source\Components\Lights\LightComponent.h" />
+    <ClInclude Include="Source\Components\Meshes\StaticMeshComponent.h" />
+    <ClInclude Include="Source\Components\Movement\MovementComponent.h" />
+    <ClInclude Include="Source\Components\Movement\RigidBodyComponent.h" />
+    <ClInclude Include="Source\Package\Hot.h" />
+    <ClInclude Include="Source\Shaders\EBO.h" />
+    <ClInclude Include="Source\Shaders\FrameBuffer.h" />
+    <ClInclude Include="Source\Shaders\ShaderClass.h" />
+    <ClInclude Include="Source\Shaders\Texture.h" />
+    <ClInclude Include="Source\Shaders\VAO.h" />
+    <ClInclude Include="Source\Shaders\VBO.h" />
+    <ClInclude Include="Source\Temporary\Mesh.h" />
+    <ClInclude Include="Source\Temporary\Model.h" />
+    <ClInclude Include="Source\Utils\JoltHelpers.h" />
+    <ClInclude Include="Source\Utils\OpenGL_Stuff.h" />
+    <ClInclude Include="Source\Utils\ZLibHelpers.h" />
+    <ClInclude Include="Source\Windows\Log.hpp" />
+    <ClInclude Include="Source\Windows\Window.h" />
+    <ClInclude Include="Source\World\Camera.h" />
+    <ClInclude Include="Source\World\World.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\AABBTreeBuilder.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\AABBTreeToBuffer.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\NodeCodec\NodeCodecQuadTreeHalfFloat.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\TriangleCodec\TriangleCodecIndexed8BitPackSOA4Flags.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ConfigurationString.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\ARMNeon.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Array.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Atomics.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\BinaryHeap.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\ByteBuffer.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Color.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Core.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\FPControlWord.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\FPException.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\FPFlushDenormals.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Factory.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\FixedSizeFreeList.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\HashCombine.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\HashTable.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\InsertionSort.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\IssueReporting.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\JobSystem.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\JobSystemSingleThreaded.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\JobSystemThreadPool.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\JobSystemWithBarrier.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\LinearCurve.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\LockFreeHashMap.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Memory.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Mutex.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\MutexArray.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\NonCopyable.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Profiler.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\QuickSort.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\RTTI.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Reference.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Result.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\STLAlignedAllocator.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\STLAllocator.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\STLLocalAllocator.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\STLTempAllocator.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\ScopeExit.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\Semaphore.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\StaticArray.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\StreamIn.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\StreamOut.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\StreamUtils.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\StreamWrapper.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\StridedPtr.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\StringTools.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\TempAllocator.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\TickCounter.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\UnorderedMap.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Core\UnorderedSet.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\AABox.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\AABox4.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\ClipPoly.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\ClosestPoint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\ConvexHullBuilder.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\ConvexHullBuilder2D.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\ConvexSupport.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\EPAConvexHullBuilder.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\EPAPenetrationDepth.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\Ellipse.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\GJKClosestPoint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\IndexedTriangle.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\Indexify.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\MortonCode.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\OrientedBox.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\Plane.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\RayAABox.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\RayCapsule.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\RayCylinder.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\RaySphere.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\RayTriangle.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\Sphere.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Geometry\Triangle.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Jolt.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\BVec16.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\DMat44.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\DVec3.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Double3.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\DynMatrix.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\EigenValueSymmetric.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\FindRoot.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Float2.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Float3.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Float4.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\GaussianElimination.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\HalfFloat.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Mat44.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Math.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\MathTypes.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Matrix.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Quat.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Real.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Swizzle.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Trigonometry.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\UVec4.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Vec3.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Vec4.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Math\Vector.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\GetPrimitiveTypeOfType.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStream.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamBinaryIn.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamBinaryOut.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamIn.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamOut.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamTextIn.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamTextOut.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamTypes.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\SerializableAttribute.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\SerializableAttributeEnum.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\SerializableAttributeTyped.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\SerializableObject.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\ObjectStream\TypeDeclarations.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\AllowedDOFs.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\Body.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyAccess.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyActivationListener.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyCreationSettings.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyFilter.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyID.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyInterface.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyLock.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyLockInterface.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyLockMulti.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyManager.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyPair.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyType.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\MassProperties.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\MotionProperties.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\MotionQuality.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Body\MotionType.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Character\Character.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Character\CharacterBase.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Character\CharacterID.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Character\CharacterVirtual.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\AABoxCast.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ActiveEdgeMode.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ActiveEdges.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BackFaceMode.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhase.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhaseBruteForce.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhaseLayer.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhaseLayerInterfaceMask.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhaseLayerInterfaceTable.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhaseQuadTree.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhaseQuery.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\ObjectVsBroadPhaseLayerFilterMask.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\ObjectVsBroadPhaseLayerFilterTable.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\QuadTree.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CastConvexVsTriangles.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CastResult.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CastSphereVsTriangles.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollectFacesMode.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollideConvexVsTriangles.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollidePointResult.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollideShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollideShapeVsShapePerLeaf.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollideSoftBodyVertexIterator.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollideSoftBodyVerticesVsTriangles.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollideSphereVsTriangles.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollisionCollector.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollisionCollectorImpl.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollisionDispatch.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollisionGroup.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ContactListener.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\EstimateCollisionResponse.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\GroupFilter.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\GroupFilterTable.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\InternalEdgeRemovingCollector.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ManifoldBetweenTwoFaces.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\NarrowPhaseQuery.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\NarrowPhaseStats.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ObjectLayer.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ObjectLayerPairFilterMask.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ObjectLayerPairFilterTable.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\PhysicsMaterial.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\PhysicsMaterialSimple.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\RayCast.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\BoxShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\CapsuleShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\CompoundShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\CompoundShapeVisitors.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\ConvexHullShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\ConvexShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\CylinderShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\DecoratedShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\EmptyShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\GetTrianglesContext.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\HeightFieldShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\MeshShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\MutableCompoundShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\OffsetCenterOfMassShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\PlaneShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\PolyhedronSubmergedVolumeCalculator.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\RotatedTranslatedShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\ScaleHelpers.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\ScaledShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\Shape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\SphereShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\StaticCompoundShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\SubShapeID.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\SubShapeIDPair.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\TaperedCapsuleShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\TaperedCylinderShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\TriangleShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ShapeCast.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ShapeFilter.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\SimShapeFilter.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\SimShapeFilterWrapper.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\SortReverseAndStore.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Collision\TransformedShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\CalculateSolverSteps.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConeConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\Constraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintManager.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\AngleConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\AxisConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\DualAxisConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\GearConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\HingeRotationConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\IndependentAxisConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\PointConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\RackAndPinionConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\RotationEulerConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\RotationQuatConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\SpringPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintPart\SwingTwistConstraintPart.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ContactConstraintManager.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\DistanceConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\FixedConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\GearConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\HingeConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\MotorSettings.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PathConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PathConstraintPath.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PathConstraintPathHermite.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PointConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PulleyConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\RackAndPinionConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\SixDOFConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\SliderConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\SpringSettings.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\SwingTwistConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\TwoBodyConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\DeterminismLog.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\EActivation.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\EPhysicsUpdateError.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\IslandBuilder.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\LargeIslandSplitter.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsLock.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsScene.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsSettings.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsStepListener.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsSystem.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsUpdateContext.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Ragdoll\Ragdoll.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyContactListener.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyCreationSettings.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyManifold.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyMotionProperties.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyShape.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodySharedSettings.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyUpdateContext.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyVertex.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\StateRecorder.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\StateRecorderImpl.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\MotorcycleController.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\TrackedVehicleController.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleAntiRollBar.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleCollisionTester.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleConstraint.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleController.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleDifferential.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleEngine.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleTrack.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleTransmission.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\Wheel.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\WheeledVehicleController.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\RegisterTypes.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Renderer\DebugRenderer.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Renderer\DebugRendererPlayback.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Renderer\DebugRendererRecorder.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Renderer\DebugRendererSimple.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Skeleton\SkeletalAnimation.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Skeleton\Skeleton.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Skeleton\SkeletonMapper.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\Skeleton\SkeletonPose.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\TriangleSplitter\TriangleSplitter.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\TriangleSplitter\TriangleSplitterBinning.h" />
+    <ClInclude Include="Vendors\JoltPhysics\Jolt\TriangleSplitter\TriangleSplitterMean.h" />
+    <ClInclude Include="Vendors\imguii\imconfig.h" />
+    <ClInclude Include="Vendors\imguii\imgui.h" />
+    <ClInclude Include="Vendors\imguii\imgui_impl_glfw.h" />
+    <ClInclude Include="Vendors\imguii\imgui_impl_opengl3.h" />
+    <ClInclude Include="Vendors\imguii\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Vendors\imguii\imgui_internal.h" />
+    <ClInclude Include="Vendors\imguii\imstb_rectpack.h" />
+    <ClInclude Include="Vendors\imguii\imstb_textedit.h" />
+    <ClInclude Include="Vendors\imguii\imstb_truetype.h" />
+    <ClInclude Include="Vendors\stb_image\stb_image.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Actors\Actor.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Components\Component.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Components\Lights\LightComponent.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Components\Meshes\StaticMeshComponent.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Components\Movement\MovementComponent.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Shaders\EBO.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Shaders\FrameBuffer.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Shaders\ShaderClass.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Shaders\Texture.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Shaders\VAO.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Shaders\VBO.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\SolarEngine.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\Window.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\World\Camera.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\World\World.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\AABBTree\AABBTreeBuilder.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\Color.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\Factory.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\IssueReporting.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\JobSystemSingleThreaded.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\JobSystemThreadPool.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\JobSystemWithBarrier.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\LinearCurve.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\Memory.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\Profiler.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\RTTI.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\Semaphore.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\StringTools.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Core\TickCounter.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Geometry\ConvexHullBuilder.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Geometry\ConvexHullBuilder2D.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Geometry\Indexify.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Geometry\OrientedBox.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Math\Vec3.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStream.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamBinaryIn.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamBinaryOut.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamIn.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamOut.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamTextIn.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\ObjectStreamTextOut.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\SerializableObject.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\ObjectStream\TypeDeclarations.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Body\Body.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyCreationSettings.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyInterface.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Body\BodyManager.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Body\MassProperties.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Body\MotionProperties.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Character\Character.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Character\CharacterBase.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Character\CharacterVirtual.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhase.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhaseBruteForce.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\BroadPhaseQuadTree.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\BroadPhase\QuadTree.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CastConvexVsTriangles.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CastSphereVsTriangles.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollideConvexVsTriangles.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollideSphereVsTriangles.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollisionDispatch.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\CollisionGroup.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\EstimateCollisionResponse.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\GroupFilter.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\GroupFilterTable.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\ManifoldBetweenTwoFaces.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\NarrowPhaseQuery.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\NarrowPhaseStats.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\PhysicsMaterial.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\PhysicsMaterialSimple.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\BoxShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\CapsuleShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\CompoundShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\ConvexHullShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\ConvexShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\CylinderShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\DecoratedShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\EmptyShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\HeightFieldShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\MeshShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\MutableCompoundShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\OffsetCenterOfMassShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\PlaneShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\RotatedTranslatedShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\ScaledShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\Shape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\SphereShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\StaticCompoundShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\TaperedCapsuleShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\TaperedCylinderShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\Shape\TriangleShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Collision\TransformedShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConeConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\Constraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ConstraintManager.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\ContactConstraintManager.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\DistanceConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\FixedConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\GearConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\HingeConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\MotorSettings.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PathConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PathConstraintPath.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PathConstraintPathHermite.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PointConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\PulleyConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\RackAndPinionConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\SixDOFConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\SliderConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\SpringSettings.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\SwingTwistConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Constraints\TwoBodyConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\DeterminismLog.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\IslandBuilder.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\LargeIslandSplitter.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsScene.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsSystem.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\PhysicsUpdateContext.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Ragdoll\Ragdoll.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyCreationSettings.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyMotionProperties.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodyShape.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\SoftBody\SoftBodySharedSettings.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\StateRecorderImpl.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\MotorcycleController.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\TrackedVehicleController.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleAntiRollBar.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleCollisionTester.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleConstraint.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleController.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleDifferential.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleEngine.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleTrack.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\VehicleTransmission.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\Wheel.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Physics\Vehicle\WheeledVehicleController.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\RegisterTypes.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Renderer\DebugRenderer.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Renderer\DebugRendererPlayback.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Renderer\DebugRendererRecorder.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Renderer\DebugRendererSimple.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Skeleton\SkeletalAnimation.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Skeleton\Skeleton.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Skeleton\SkeletonMapper.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\Skeleton\SkeletonPose.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\TriangleSplitter\TriangleSplitter.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\TriangleSplitter\TriangleSplitterBinning.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\JoltPhysics\Jolt\TriangleSplitter\TriangleSplitterMean.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\glad.c">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\imguii\imgui.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\imguii\imgui_demo.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\imguii\imgui_draw.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\imguii\imgui_impl_glfw.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\imguii\imgui_impl_opengl3.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\imguii\imgui_tables.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\imguii\imgui_widgets.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Vendors\stb_image\stb_image.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

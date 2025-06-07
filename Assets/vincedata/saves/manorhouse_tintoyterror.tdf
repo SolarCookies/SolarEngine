@@ -1,0 +1,1043 @@
+[objects]
+{
+	[vince_base]
+	{
+		zone = 5;
+		location = 6.422163 2.382462 -2.370529;
+		rotation = 0.000000 -1.000000 -0.000000 0.000000;
+	}
+	[chairfloating_base]
+	{
+		zone = 5;
+		location = -16.413456 2.285181 -3.860907;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[chairfloating_base1]
+	{
+		zone = 5;
+		location = -16.413456 2.285181 -3.860907;
+		rotation = 0.000000 -0.500000 -0.000000 0.866025;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[chairfloating_base2]
+	{
+		zone = 5;
+		location = -16.413456 2.285181 -3.860907;
+		rotation = 0.000000 -0.866025 -0.000000 0.500000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[chairfloating_base3]
+	{
+		zone = 5;
+		location = -16.413456 2.285181 -3.860907;
+		rotation = 0.000000 -1.000000 -0.000000 0.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[chairfloating_base4]
+	{
+		zone = 5;
+		location = -16.413456 2.285181 -3.860907;
+		rotation = 0.000000 -0.866025 -0.000000 -0.500000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[chairfloating_base5]
+	{
+		zone = 5;
+		location = -16.413456 2.285181 -3.860907;
+		rotation = 0.000000 -0.500000 -0.000000 -0.866025;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[pianosfloating_base]
+	{
+		zone = 5;
+		location = -13.538527 2.694669 -7.859401;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+	}
+	[vincecut_base]
+	{
+		zone = 5;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = dummy;
+	}
+	[cobweb02_base]
+	{
+		zone = 5;
+		location = 6.473149 4.651885 -1.064874;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cobweb01_base]
+	{
+		zone = 5;
+		location = 6.107800 4.901551 -9.000368;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cobweb01_base1]
+	{
+		zone = 5;
+		location = 6.473127 4.882866 -9.177302;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cobweb03_base]
+	{
+		zone = 5;
+		location = 6.076451 4.883223 -12.443974;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cobweb01_base2]
+	{
+		zone = 5;
+		location = 3.398138 4.879682 -10.287446;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cobweb03_base1]
+	{
+		zone = 5;
+		location = 4.092801 4.879682 -10.625412;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cobweb02_base1]
+	{
+		zone = 5;
+		location = 0.664534 4.879683 -8.489475;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cobweb03_base2]
+	{
+		zone = 5;
+		location = 1.746046 4.879683 -8.983965;
+		rotation = 0.000000 -0.996672 -0.000000 -0.081515;
+	}
+	[cobweb03_base3]
+	{
+		zone = 5;
+		location = 0.433261 4.882866 -11.676230;
+		rotation = 0.000000 0.257026 -0.000000 0.966405;
+	}
+	[cobweb01_base3]
+	{
+		zone = 5;
+		location = -4.619967 4.879683 -9.813100;
+		rotation = 0.000000 -0.068322 -0.000000 0.997663;
+	}
+	[cobweb02_base2]
+	{
+		zone = 5;
+		location = -3.058256 4.879683 -9.364374;
+		rotation = 0.000000 0.155095 -0.000000 0.987900;
+	}
+	[cobweb03_base4]
+	{
+		zone = 5;
+		location = -4.194757 4.879683 -8.427351;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cobweb02_base3]
+	{
+		zone = 5;
+		location = -12.366098 4.886484 -5.686863;
+		rotation = 0.000000 0.370494 -0.000000 0.928835;
+	}
+	[cobweb03_base5]
+	{
+		zone = 5;
+		location = -11.914239 4.879683 -7.189769;
+		rotation = 0.000000 0.108425 -0.000000 0.994105;
+	}
+	[cobweb01_base4]
+	{
+		zone = 5;
+		location = -13.720735 4.879683 -8.211483;
+		rotation = 0.000000 0.193054 -0.000000 0.981188;
+	}
+	[cobweb02_base4]
+	{
+		zone = 5;
+		location = -13.763039 4.881353 -10.336494;
+		rotation = 0.000000 0.204336 -0.000000 0.978901;
+	}
+	[cobweb03_base6]
+	{
+		zone = 5;
+		location = -15.162161 4.882866 -10.978639;
+		rotation = 0.000000 0.316352 -0.000000 0.948642;
+	}
+	[bathroomstool01_base]
+	{
+		zone = 5;
+		location = -10.921919 0.919879 0.382019;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool02_base]
+	{
+		zone = 5;
+		location = -11.168745 0.919879 1.808901;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool03_base]
+	{
+		zone = 5;
+		location = -11.343641 0.919879 2.519948;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool04_base]
+	{
+		zone = 5;
+		location = -9.703989 0.919879 3.591423;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool05_base]
+	{
+		zone = 5;
+		location = -7.985389 0.919879 3.131568;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool06_base]
+	{
+		zone = 5;
+		location = -6.717427 0.919879 2.287216;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool07_base]
+	{
+		zone = 5;
+		location = -13.513782 0.919879 4.186778;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool08_base]
+	{
+		zone = 5;
+		location = -12.382070 0.919879 5.655736;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool09_base]
+	{
+		zone = 5;
+		location = -10.541260 0.919879 6.383103;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[bathroomstool10_base]
+	{
+		zone = 5;
+		location = -8.477671 0.919879 6.217577;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+		nonrandomidle = true;
+	}
+	[kosmoegg_base]
+	{
+		zone = 5;
+		location = 0.167518 2.436763 -13.970056;
+		rotation = 0.000000 0.251843 -0.000000 -0.967768;
+		instancename = eggaa;
+		movingplatform = true;
+	}
+	[kosmoegg_base1]
+	{
+		zone = 5;
+		location = -5.075928 2.436763 -13.599969;
+		rotation = 0.000000 -0.568119 -0.000000 -0.822946;
+		instancename = eggbb;
+		movingplatform = true;
+	}
+	[kosmoegg_base2]
+	{
+		zone = 5;
+		location = -3.300979 2.436763 -4.293548;
+		rotation = 0.000000 -0.956985 -0.000000 0.290139;
+		instancename = eggcc;
+		movingplatform = true;
+	}
+	[kosmoegg_base3]
+	{
+		zone = 5;
+		location = -19.956881 2.436763 -11.884237;
+		rotation = 0.000000 -0.663253 -0.000000 -0.748396;
+		instancename = eggdd;
+		movingplatform = true;
+	}
+	[switch_diningroom_base]
+	{
+		zone = 5;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectprelit = true;
+	}
+	[switch_bathroom_base]
+	{
+		zone = 5;
+		location = -0.000000 -0.002772 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectprelit = true;
+	}
+	[imp_base]
+	{
+		zone = 5;
+		location = 3.566635 2.392632 -9.802550;
+		rotation = 0.000000 -0.999175 -0.000000 0.040602;
+		eggname = eggaa;
+		instancename = eggimp;
+	}
+	[kosmoegg_base4]
+	{
+		zone = 5;
+		location = 9.175208 2.382763 -8.528436;
+		rotation = 0.000000 -0.280682 -0.000000 0.959801;
+		instancename = eggee;
+		movingplatform = true;
+	}
+	[imp_base2]
+	{
+		zone = 5;
+		location = 8.371250 2.534132 -7.874301;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggee;
+		instancename = eggimp;
+	}
+	[imp_base3]
+	{
+		zone = 5;
+		location = 8.371250 2.534132 -7.415798;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggee;
+		instancename = eggimp;
+	}
+	[imp_base5]
+	{
+		zone = 5;
+		location = 3.785725 2.493973 -9.511640;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggimp;
+	}
+	[imp_base7]
+	{
+		zone = 5;
+		location = -0.696485 2.498314 -12.547016;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggimp;
+	}
+	[imp_base8]
+	{
+		zone = 5;
+		location = -4.270826 2.398508 -12.741304;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggbb;
+		instancename = eggimp;
+	}
+	[imp_base9]
+	{
+		zone = 5;
+		location = 0.272339 2.466999 -12.741304;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggimp;
+	}
+	[imp_base10]
+	{
+		zone = 5;
+		location = -2.852718 2.438400 -6.581258;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggcc;
+		instancename = eggimp;
+	}
+	[imp_base11]
+	{
+		zone = 5;
+		location = -16.350809 2.439302 -13.439141;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggdd;
+		instancename = eggimp;
+	}
+	[imp_base12]
+	{
+		zone = 5;
+		location = -9.140777 2.477217 -3.112701;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggdd;
+		instancename = eggimp;
+	}
+	[imp_base13]
+	{
+		zone = 5;
+		location = -19.364374 2.503760 -11.519445;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggdd;
+		instancename = eggimp;
+	}
+	[firebug_base]
+	{
+		zone = 5;
+		location = 6.012393 2.964700 -13.226084;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+		instancename = eggfirebug;
+	}
+	[firebug_base1]
+	{
+		zone = 5;
+		location = -2.722759 3.114014 -13.809990;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggbb;
+		instancename = eggfirebug;
+	}
+	[firebug_base2]
+	{
+		zone = 5;
+		location = 1.307808 2.871839 -4.614657;
+		rotation = 0.000000 0.578734 -0.000000 0.815516;
+		eggname = eggbb;
+		instancename = eggfirebug;
+	}
+	[firebug_base3]
+	{
+		zone = 5;
+		location = -3.467387 2.962558 -12.942301;
+		rotation = 0.000000 0.548269 -0.000000 0.836302;
+		eggname = eggbb;
+		instancename = eggfirebug;
+	}
+	[firebug_base4]
+	{
+		zone = 5;
+		location = -5.882888 3.814250 -3.710647;
+		rotation = 0.000000 0.485643 -0.000000 0.874157;
+		eggname = eggdd;
+		instancename = eggfirebug;
+	}
+	[firebug_base5]
+	{
+		zone = 5;
+		location = -19.817572 3.136221 -10.226912;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggdd;
+		instancename = eggfirebug;
+	}
+	[firebug_base6]
+	{
+		zone = 5;
+		location = 6.524972 2.990593 -7.906507;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggee;
+		instancename = eggfirebug;
+	}
+	[firebug_base7]
+	{
+		zone = 5;
+		location = 7.863930 2.990593 -5.107155;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggee;
+		instancename = eggfirebug;
+	}
+	[firebug_base8]
+	{
+		zone = 5;
+		location = -2.871538 2.975280 -6.370256;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggcc;
+		instancename = eggfirebug;
+	}
+	[firebug_base9]
+	{
+		zone = 5;
+		location = -3.616668 2.975280 -5.857714;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggcc;
+		instancename = eggfirebug;
+	}
+	[powderkeg_base]
+	{
+		zone = 5;
+		location = 8.686160 2.413704 -8.792495;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggee;
+	}
+	[powderkeg_base1]
+	{
+		zone = 5;
+		location = -0.264189 2.401081 -14.205430;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		eggname = eggaa;
+	}
+	[powderkeg_base2]
+	{
+		zone = 5;
+		location = -5.310544 2.377720 -13.234143;
+		rotation = 0.000000 0.714321 -0.000000 0.699818;
+		eggname = eggbb;
+	}
+	[powderkeg_base3]
+	{
+		zone = 5;
+		location = -2.762893 2.435879 -4.414084;
+		rotation = 0.000000 -0.957262 -0.000000 0.289222;
+		eggname = eggcc;
+	}
+	[powderkeg_base4]
+	{
+		zone = 5;
+		location = -19.974060 2.449779 -11.351187;
+		rotation = -0.058651 0.722630 0.081231 0.683935;
+		eggname = eggdd;
+	}
+	[candelabrum_base]
+	{
+		zone = 5;
+		location = 9.480335 3.177576 -6.620306;
+		rotation = 0.000000 -0.725397 -0.000000 -0.688331;
+	}
+	[candelabrum_base2]
+	{
+		zone = 5;
+		location = 0.451227 3.740185 -8.198809;
+		rotation = 0.000000 -0.662655 -0.000000 0.748925;
+	}
+	[candelabrum_base3]
+	{
+		zone = 5;
+		location = -13.781266 3.255187 -7.791125;
+		rotation = 0.000000 -0.499958 -0.000000 0.866050;
+	}
+	[chandelier_base]
+	{
+		zone = 5;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectprelit = true;
+	}
+	[diningtable_base]
+	{
+		zone = 5;
+		location = -16.413456 3.065006 -3.860907;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		movingplatform = true;
+	}
+	[powericon_base]
+	{
+		zone = 5;
+		location = -19.300737 3.779129 -14.811196;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		powername = whammyscissors;
+	}
+	[candelabrum_base4]
+	{
+		zone = 5;
+		location = -9.083632 3.197666 -2.218315;
+		rotation = -0.017638 -0.256848 0.066200 0.964021;
+	}
+	[extralife_base]
+	{
+		zone = 5;
+		location = -13.224943 2.039718 -7.272038;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 8.658841 2.480000 -3.863940;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 5.851639 2.483741 -8.146656;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 5.673751 2.488748 -7.968225;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 5.663491 2.410177 -7.718482;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 4.756797 2.543411 -12.719907;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 5.045721 2.543411 -12.691531;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 3.906619 2.361212 -13.257476;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 1.867320 2.929882 -6.307403;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 1.562382 2.462279 -6.751175;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 2.042051 2.462279 -6.686053;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 0.289922 2.524717 -9.119381;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = 0.177390 2.524717 -9.342435;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -2.070709 2.490000 -15.257291;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -4.649549 2.975310 -10.795129;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -4.697379 2.984643 -11.041224;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -4.981494 3.177722 -10.909646;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -5.201884 3.332911 -10.789053;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -8.170682 2.218986 -1.952120;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -6.649797 2.361097 -2.180410;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -13.764173 2.696312 -8.324319;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -14.062229 3.319471 -8.479832;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -13.980991 2.545383 -2.111489;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -13.939485 2.545383 -1.913147;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -14.272430 2.545383 -1.667817;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -14.973322 2.519506 -0.726911;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -13.011693 1.778532 0.034961;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -11.699761 1.649736 -1.110823;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -4.905187 3.337278 3.177991;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -4.696644 2.338524 3.177991;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dustcluster_]
+	{
+		zone = 5;
+		location = -5.376153 2.046188 3.060151;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+}
+[regions]
+{
+	[tintoyterror]
+	{
+		zone = 5;
+		type = cube;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.010000 0.010000 0.010000;
+		instancename = tintoyterror;
+	}
+	[areaload]
+	{
+		zone = 5;
+		type = plane;
+		location = -4.614471 3.388820 6.191159;
+		rotation = -0.692911 0.140974 0.140974 0.692911;
+		scale = 1.149179 1.149179 2.403075;
+		activatechapter = 0;
+		instancename = areaload_playroom;
+		nextarea = playroom;
+		targetlocation = loadfromtintoyterror;
+		vinceanimation = vince_walkstop;
+	}
+	[areaload]
+	{
+		zone = 5;
+		type = plane;
+		location = 6.503455 3.593232 -0.853091;
+		rotation = -0.707088 -0.005176 -0.005176 0.707088;
+		scale = 1.258210 1.258210 2.467105;
+		instancename = areaload_tumblerroom;
+		nextarea = tumblerroom;
+		targetlocation = loadfromtintoyterror;
+		vinceanimation = vince_walkstop;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = 7.605854 3.747214 -5.114471;
+		rotation = 0.122788 -0.696364 0.696364 0.122788;
+		scale = 4.686742 1.880567 2.915662;
+		instancename = hwentry;
+		respawnat = hwentry;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = 6.192425 3.666738 -9.361455;
+		rotation = 0.000000 -0.707107 0.707107 0.000000;
+		scale = 1.880567 1.880567 2.915662;
+		instancename = hwpit1a;
+		respawnat = hwpit1a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = 3.736263 3.666738 -11.612969;
+		rotation = 0.638224 -0.304417 0.304417 0.638224;
+		scale = 2.766700 1.880567 2.915662;
+		instancename = hwpit2a;
+		respawnat = hwpit2a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = 1.313478 3.666738 -6.730078;
+		rotation = -0.080047 -0.702561 0.702561 -0.080047;
+		scale = 2.247585 1.880567 2.915662;
+		instancename = hwpit3a;
+		respawnat = hwpit3a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = 0.959389 3.666738 -12.005656;
+		rotation = 0.136618 -0.693783 0.693783 0.136618;
+		scale = 2.627441 1.880567 2.915662;
+		instancename = hwpit4a;
+		respawnat = hwpit4a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -3.272192 3.666738 -7.807596;
+		rotation = -0.703851 -0.067773 0.067773 -0.703851;
+		scale = 2.665184 1.880567 2.915662;
+		instancename = hwpit5a;
+		respawnat = hwpit5a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -8.847367 3.666738 -3.033547;
+		rotation = 0.495618 -0.504344 0.504344 0.495618;
+		scale = 2.665184 1.880567 2.915662;
+		instancename = hwpit6a;
+		respawnat = hwpit6a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -15.861569 3.666738 -12.729490;
+		rotation = 0.385118 -0.593030 0.593030 0.385118;
+		scale = 2.131473 1.880567 2.915662;
+		instancename = hwpit7a;
+		respawnat = hwpit7a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -19.731335 3.666738 -12.223532;
+		rotation = 0.615434 -0.348196 0.348196 0.615434;
+		scale = 4.089945 1.880567 2.915662;
+		instancename = hwpit8a;
+		respawnat = hwpit8a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -13.951163 3.666738 -1.051460;
+		rotation = 0.648459 0.281958 -0.281958 0.648459;
+		scale = 2.583987 1.880567 2.915662;
+		instancename = hwpit9a;
+		respawnat = hwpit9a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -6.506613 3.291860 4.191156;
+		rotation = 0.609264 0.358884 -0.358884 0.609264;
+		scale = 5.842882 1.880567 4.396810;
+		instancename = hwpit10a;
+		respawnat = hwpit10a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -6.621517 3.666738 -3.130803;
+		rotation = 0.670566 -0.224368 0.224368 0.670566;
+		scale = 4.451742 1.880567 2.915662;
+		instancename = hwpit11a;
+		respawnat = hwpit11a;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = 4.206600 3.666738 -13.577689;
+		rotation = -0.400943 -0.582447 0.582447 -0.400943;
+		scale = 2.766700 1.880567 2.915662;
+		instancename = hwpit2b;
+		respawnat = hwpit2b;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = 3.759421 3.666738 -7.644765;
+		rotation = 0.003209 0.707099 -0.707099 0.003209;
+		scale = 2.247585 1.880567 2.915662;
+		instancename = hwpit3b;
+		respawnat = hwpit3b;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = 1.063645 3.666738 -9.990279;
+		rotation = 0.706676 0.024678 -0.024678 0.706676;
+		scale = 2.627441 1.880567 2.915662;
+		instancename = hwpit4b;
+		respawnat = hwpit4b;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -3.811289 3.666738 -9.710595;
+		rotation = -0.108909 0.698669 -0.698669 -0.108909;
+		scale = 2.665184 1.880567 2.915662;
+		instancename = hwpit5b;
+		respawnat = hwpit5b;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -10.157552 3.666738 -3.727771;
+		rotation = -0.685095 -0.175058 0.175058 -0.685095;
+		scale = 2.665184 1.880567 2.915662;
+		instancename = hwpit6b;
+		respawnat = hwpit6b;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -17.149607 3.666738 -13.491789;
+		rotation = -0.416680 -0.571295 0.571295 -0.416680;
+		scale = 4.230429 1.880567 2.915662;
+		instancename = hwpit7b;
+		respawnat = hwpit7b;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -19.706053 3.666738 -9.689281;
+		rotation = 0.174746 -0.685174 0.685174 0.174746;
+		scale = 2.594281 1.880567 2.915662;
+		instancename = hwpit8b;
+		respawnat = hwpit8b;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -12.168428 3.071726 -0.286612;
+		rotation = -0.281958 0.648459 -0.648459 -0.281958;
+		scale = 2.583987 1.880567 4.887353;
+		instancename = hwpit9b;
+		respawnat = hwpit9b;
+	}
+	[fire]
+	{
+		zone = 5;
+		type = cube;
+		location = 0.454818 4.344990 -8.175075;
+		rotation = 0.000000 0.060123 -0.000000 0.998191;
+		scale = 0.150000 0.500000 0.400000;
+		flametime = 10.0;
+		instancename = fire;
+	}
+	[fire]
+	{
+		zone = 5;
+		type = cube;
+		location = -13.781648 3.877168 -7.790632;
+		rotation = 0.000000 0.274248 -0.000000 0.961659;
+		scale = 0.240438 0.500000 0.400000;
+		flametime = 10.0;
+		instancename = fire;
+	}
+	[fire]
+	{
+		zone = 5;
+		type = cube;
+		location = 9.476946 3.784850 -6.625534;
+		rotation = 0.000000 0.027284 -0.000000 0.999628;
+		scale = 0.150000 0.500000 0.400000;
+		flametime = 10.0;
+		instancename = fire;
+	}
+	[fire]
+	{
+		zone = 5;
+		type = cube;
+		location = -9.140257 3.807586 -2.243134;
+		rotation = 0.035408 -0.872207 0.058650 0.484315;
+		scale = 0.150000 0.500000 0.400000;
+		flametime = 10.0;
+		instancename = fire;
+	}
+	[water]
+	{
+		zone = 5;
+		type = plane;
+		location = 0.000000 0.000000 0.000000;
+		rotation = 0.000000 0.000000 0.000000 1.000000;
+		scale = 1.000000 1.000000 1.000000;
+		model = water;
+		color = 0.000000 0.023529 0.023529 0.785120;
+		instancename = water;
+		watersafedepth = 0.0;
+		waterspeed = 0.1;
+		waterturbulence = .001;
+		materialid = 2;
+	}
+	[healthwaypoint]
+	{
+		zone = 5;
+		type = plane;
+		location = -18.317917 3.666738 -7.237511;
+		rotation = 0.683013 0.183013 -0.183013 0.683013;
+		scale = 2.594281 1.880567 2.915662;
+		instancename = hwchairs;
+		respawnat = hwchairs;
+	}
+}

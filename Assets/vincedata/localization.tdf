@@ -1,0 +1,50 @@
+/*
+**	Information for handling custom language settings
+*/
+
+
+// Asian languages use a single font sheet in order to save space.  The game still references
+// the English fonts and expects the scaling to match.  So we do conversions for this.
+
+[FontConversions]
+{
+	[Counters]
+	{
+		[ja]
+		{
+			XScaling = 1.5;
+			YScaling = 1.5;
+			VerticalSpacing = 2;
+		}
+	}
+
+	[Font]
+	{
+		[ja]
+		{
+			XScaling = 1.5;
+			YScaling = 1.5;
+			VerticalSpacing = 2;
+		}
+	}
+
+	[Menus]
+	{
+		[ja]
+		{
+			XScaling = 1.5;
+			YScaling = 1.5;
+			VerticalSpacing = 2;
+		}
+	}
+
+	[Pausecounters]
+	{
+		[ja]
+		{
+			XScaling = 1.5;
+			YScaling = 1.5;
+			VerticalSpacing = 2;
+		}
+	}
+}

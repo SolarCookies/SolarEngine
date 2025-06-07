@@ -1,0 +1,130 @@
+// art fixes
+
+Version = 1;
+
+[Textures]
+{
+	[museumDetail02.dds]
+	{
+//		RenderLast = true;
+	}
+	[cryptfence300_001.dds]
+	{
+//		RenderLast = true;
+	}
+}
+
+[Objects]
+{
+	[oven]	
+	{
+	}
+}
+
+[Models]
+{	
+	[masquerademask_base]
+	{
+		RenderLast = true;
+	}
+	[oven_base]	
+	{
+		RenderLast = true;
+	}
+	[streetCrack_base]
+	{
+		Prelit = true;
+	}
+//	[skeletonjazzguy_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+//	[skeletonJazzGuyCollapse_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+	[allSeeingEye_base]
+	{
+		ColorOverride = 0.0 0.0 0.0 1.0;
+	}
+	[skull_base]
+	{
+ 		ColorOverride = 0.1 0.1 0.1 1.0;
+	}
+//	[balloon_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+//	[tunneltoola_base]
+//	{
+//		ColorOverride = 0.2 0.2 0.2 1.0;
+//	}
+//	[tunneltoolscissor_base]
+//	{
+//		ColorOverride = 0.2 0.2 0.2 1.0;
+//	}
+//	[tunneltoolscissordown_base]
+//	{
+//		ColorOverride = 0.2 0.2 0.2 1.0;
+//	}
+//	[tunneltoolscissorup_base]
+//	{
+//		ColorOverride = 0.2 0.2 0.2 1.0;
+//	}
+//	[tunneltooltorch_base]
+//	{
+//		ColorOverride = 0.2 0.2 0.2 1.0;
+//	}
+//	[carnivalarrow_base]
+//	{
+//		fieColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+//	[landorideslights_base]
+//	{
+//		ColorOverride = 0.3 0.3 0.3 1.0;
+//	}
+//	[controlroom_base]
+//	{
+//		ColorOverride = 0.3 0.3 0.3 1.0;
+//	}
+//	[kosmobothead_base]
+//	{
+//		ColorOverride = 0.4 0.4 0.4 1.0;
+//	}
+//	[kosmobotlegs_base]
+//	{
+//		ColorOverride = 0.4 0.4 0.4 1.0;
+//	}
+//	[kosmobotmidriff_base]
+//	{
+//		ColorOverride = 0.4 0.4 0.4 1.0;
+//	}
+//	[kosmobotupper_base]
+//	{
+//		ColorOverride = 0.4 0.4 0.4 1.0;
+//	}
+//	[hammers_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+//	[dollslicer_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+//	[discwall_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+//	[floatingplat_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+//	[floatingsingleplat_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+//	[weavingBridge_base]
+//	{
+//		ColorOverride = 0.1 0.1 0.1 1.0;
+//	}
+}

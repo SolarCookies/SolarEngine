@@ -1,0 +1,796 @@
+[objects]
+{
+	[zombiehulagirl_base]
+	{
+		zone = 3;
+		location = 38.175659 -4.550433 -64.052223;
+		rotation = 0.000000 1.000000 -0.000000 -0.000915;
+	}
+	[zombiebaker_base]
+	{
+		zone = 3;
+		location = 52.926975 -5.238905 -55.857742;
+		rotation = 0.000000 -0.662167 -0.000000 0.749357;
+	}
+	[zombieclown_base]
+	{
+		zone = 3;
+		location = 59.435997 -5.322053 -73.152000;
+		rotation = 0.000000 0.224154 -0.000000 0.974554;
+	}
+	[zombiebelle_base]
+	{
+		zone = 3;
+		location = 46.248970 -4.598256 -78.982925;
+		rotation = 0.000000 0.675599 -0.000000 0.737269;
+	}
+	[gbcml_base]
+	{
+		zone = 3;
+		location = 52.299335 -5.386000 -59.545921;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[cryptbelle_base]
+	{
+		zone = 3;
+		location = 61.888218 -5.214979 -79.619438;
+		rotation = 0.000000 -0.744859 -0.000000 0.667221;
+		instancename = cryptbelle;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[cryptclown_base]
+	{
+		zone = 3;
+		location = 64.572250 -5.268565 -63.601864;
+		rotation = 0.000000 -0.959599 -0.000000 -0.281371;
+		instancename = cryptclown;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[crypthula_base]
+	{
+		zone = 3;
+		location = 41.022903 -5.453963 -79.983116;
+		rotation = 0.000000 -0.383413 -0.000000 -0.923577;
+		instancename = crypthula;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[cryptfootball_base]
+	{
+		zone = 3;
+		location = 58.886105 -5.224413 -57.511776;
+		rotation = 0.000000 -0.405181 -0.000000 0.914237;
+		instancename = cryptfootball;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[zombiefootball_base]
+	{
+		zone = 3;
+		location = 35.894104 -4.789000 -67.260826;
+		rotation = 0.000000 0.537892 -0.000000 0.843014;
+	}
+	[debris_a_base]
+	{
+		zone = 3;
+		location = 53.045578 -6.824653 -47.096512;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[debris_b_base]
+	{
+		zone = 3;
+		location = 53.055962 -6.824653 -46.504807;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[debris_c_base]
+	{
+		zone = 3;
+		location = 53.035198 -6.824653 -45.923477;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[leafdead_a_base]
+	{
+		zone = 3;
+		location = 49.775612 -6.824653 -46.992706;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[leafdead_b_base]
+	{
+		zone = 3;
+		location = 49.785992 -6.824653 -46.650135;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[leafdead_c_base]
+	{
+		zone = 3;
+		location = 49.775612 -6.824653 -46.099953;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[cryptbaker_base]
+	{
+		zone = 3;
+		location = 39.538250 -5.317250 -57.435478;
+		rotation = 0.000000 0.376515 -0.000000 0.926410;
+		instancename = cryptbaker;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[vince_base]
+	{
+		zone = 3;
+		location = 52.387417 -5.377087 -59.146687;
+		rotation = 0.000000 -0.996195 -0.000000 0.087156;
+	}
+	[extralife_base]
+	{
+		zone = 3;
+		location = 35.688648 -4.458361 -52.438564;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[powericon_base]
+	{
+		zone = 3;
+		location = 51.637424 -5.189860 -82.170166;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = rewardzgc;
+		powername = whammyjackhammer;
+	}
+	[doorareaexit_base]
+	{
+		zone = 3;
+		location = 51.875225 -5.104894 -83.302216;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = doorexitzgc;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[magicstool_base]
+	{
+		zone = 3;
+		location = 57.011997 -5.270432 -55.654385;
+		rotation = 0.011685 0.372387 0.017065 0.927847;
+		instancename = stoolfootball;
+	}
+	[magicstool_base1]
+	{
+		zone = 3;
+		location = 65.742943 -5.328321 -65.710342;
+		rotation = 0.019756 0.466885 -0.023509 0.883785;
+		instancename = stoolclown;
+	}
+	[magicstool_base2]
+	{
+		zone = 3;
+		location = 59.385006 -5.358429 -79.749664;
+		rotation = 0.024334 -0.062169 0.020947 0.997549;
+		instancename = stoolbelle;
+	}
+	[magicstool_base3]
+	{
+		zone = 3;
+		location = 42.807007 -5.444839 -78.343254;
+		rotation = 0.000000 -0.385584 -0.000000 0.922673;
+		instancename = stoolhula;
+	}
+	[magicstool_base4]
+	{
+		zone = 3;
+		location = 41.613785 -5.255954 -55.419762;
+		rotation = 0.016212 -0.362141 0.013895 0.931879;
+		instancename = stoolbaker;
+	}
+	[activator_base1]
+	{
+		zone = 3;
+		location = 41.961479 -5.228063 -55.115761;
+		rotation = 0.005242 -0.911900 0.011653 0.410213;
+		instancename = activator_gbcmlbaker;
+		target = cryptbaker;
+	}
+	[activator_base2]
+	{
+		zone = 3;
+		location = 58.824680 -5.348001 -79.599976;
+		rotation = 0.017566 0.854138 0.001830 0.519747;
+		instancename = activator_gbcmlbelle;
+		target = cryptbelle;
+	}
+	[activator_base3]
+	{
+		zone = 3;
+		location = 65.730034 -5.296386 -66.291405;
+		rotation = 0.003625 0.012535 -0.015242 0.999799;
+		instancename = activator_gbcmlclown;
+		target = cryptclown;
+	}
+	[activator_base4]
+	{
+		zone = 3;
+		location = 56.599911 -5.252461 -55.355446;
+		rotation = 0.000000 0.891708 -0.000000 0.452611;
+		instancename = activator_gbcmlfootball;
+		target = cryptfootball;
+	}
+	[activator_base5]
+	{
+		zone = 3;
+		location = 43.179508 -5.421038 -77.998772;
+		rotation = 0.006903 -0.916185 0.015796 0.400385;
+		instancename = activator_gbcmlhula;
+		target = crypthula;
+	}
+	[imp_base]
+	{
+		zone = 3;
+		location = 50.854290 -4.896574 -63.014206;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = zgcimp;
+	}
+	[imp_base1]
+	{
+		zone = 3;
+		location = 56.602978 -5.023236 -66.205963;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = zgcimp;
+	}
+	[imp_base2]
+	{
+		zone = 3;
+		location = 56.605503 -4.922495 -72.567902;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = zgcimp;
+	}
+	[imp_base3]
+	{
+		zone = 3;
+		location = 46.337063 -4.424597 -73.596016;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = zgcimp;
+	}
+	[imp_base4]
+	{
+		zone = 3;
+		location = 45.193577 -4.848975 -65.154060;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = zgcimp;
+	}
+	[cryptimp_base]
+	{
+		zone = 3;
+		location = 50.912437 -5.360920 -69.414131;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[magicstool_base5]
+	{
+		zone = 3;
+		location = 50.929188 -5.160014 -64.893257;
+		rotation = -0.099796 -0.732330 0.020340 0.673290;
+		instancename = stoolimp;
+	}
+	[imp_base5]
+	{
+		zone = 3;
+		location = 44.534866 -4.624100 -68.859215;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = zgcimp;
+	}
+	[imp_base6]
+	{
+		zone = 3;
+		location = 51.431248 -4.958072 -74.712379;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = zgcimp;
+	}
+	[imp_base7]
+	{
+		zone = 3;
+		location = 57.753086 -4.708715 -69.395424;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		instancename = zgcimp;
+	}
+	[moth01_base]
+	{
+		zone = 3;
+		location = 56.737144 -4.961858 -55.122578;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[moth02_base]
+	{
+		zone = 3;
+		location = 56.538269 -4.696092 -55.474377;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly01_base]
+	{
+		zone = 3;
+		location = 56.394073 -4.895704 -55.355450;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly05_base]
+	{
+		zone = 3;
+		location = 65.581161 -5.146809 -66.272705;
+		rotation = 0.000000 -0.800868 -0.000000 -0.598841;
+	}
+	[dragonfly06_base]
+	{
+		zone = 3;
+		location = 66.048325 -4.996134 -66.433365;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[moth03_base]
+	{
+		zone = 3;
+		location = 65.888199 -4.981492 -66.278404;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly02_base]
+	{
+		zone = 3;
+		location = 58.713879 -5.081953 -79.586288;
+		rotation = 0.000000 0.150114 -0.000000 0.988669;
+	}
+	[moth06_base]
+	{
+		zone = 3;
+		location = 58.952541 -5.096186 -79.600006;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[moth01_base1]
+	{
+		zone = 3;
+		location = 58.825085 -4.956564 -79.677567;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly06_base1]
+	{
+		zone = 3;
+		location = 43.183289 -4.939826 -77.989655;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[moth02_base1]
+	{
+		zone = 3;
+		location = 43.179192 -4.802978 -77.750114;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly05_base1]
+	{
+		zone = 3;
+		location = 42.129002 -4.706214 -55.059628;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly01_base1]
+	{
+		zone = 3;
+		location = 41.837589 -4.833084 -54.865852;
+		rotation = 0.000000 -0.555940 -0.000000 0.831222;
+	}
+	[moth03_base1]
+	{
+		zone = 3;
+		location = 41.963680 -4.812228 -55.106308;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+	[dragonfly04_base]
+	{
+		zone = 3;
+		location = 43.190735 -4.866426 -77.691498;
+		rotation = 0.000000 -0.893791 -0.000000 -0.448484;
+	}
+	[dragonfly02_base1]
+	{
+		zone = 3;
+		location = 50.848484 -4.685681 -64.314117;
+		rotation = 0.000000 -0.724339 -0.000000 0.689444;
+	}
+	[dragonfly05_base2]
+	{
+		zone = 3;
+		location = 50.595261 -4.984676 -64.769615;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+}
+[regions]
+{
+	[zombieguidancecounselor]
+	{
+		zone = 3;
+		type = plane;
+		location = 51.815136 -1.560236 -49.331764;
+		rotation = -0.705737 -0.000000 -0.000000 0.708474;
+		scale = 0.372732 0.025627 0.437918;
+		instancename = zombieguidancecounselor;
+	}
+	[areaload]
+	{
+		zone = 3;
+		type = plane;
+		location = 51.530674 -4.054832 -83.625595;
+		rotation = 0.500000 0.500000 0.500000 0.500000;
+		scale = 2.265334 0.936929 0.936929;
+		activatechapter = 1;
+		activatetrolleys = 1;
+		instancename = areaload_gwistlethorpemausoleum;
+		nextarea = gwistlethorpemausoleum;
+		targetlocation = loadfromzombieguidancecounselor;
+		vinceanimation = vince_walkstop;
+	}
+	[areaload]
+	{
+		zone = 3;
+		type = plane;
+		location = 51.835552 -1.576963 -49.307777;
+		rotation = -0.500000 -0.500000 0.500000 0.500000;
+		scale = 0.686821 0.587098 0.587098;
+		instancename = areaload_sarcophagushustle;
+		nextarea = sarcophagushustle;
+		targetlocation = loadfromzombieguidancecounselor;
+	}
+	[camerahelper]
+	{
+		zone = 3;
+		type = cube;
+		location = 51.483746 -1.237819 -49.311798;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 4.062095 4.032413 0.812419;
+		cameraelevation = 0.75;
+		camerafixangle = 180;
+		cameraorbitradius = 1.5;
+		instancename = camera_exitwall;
+	}
+	[healthwaypoint]
+	{
+		zone = 3;
+		type = plane;
+		location = 52.142742 -5.240622 -59.125889;
+		rotation = -0.503381 0.496596 0.496596 0.503381;
+		scale = 0.787862 0.787862 4.503086;
+		instancename = hwpoopa;
+		respawnat = hwpoop;
+	}
+	[healthwaypoint]
+	{
+		zone = 3;
+		type = plane;
+		location = 52.632088 -5.240622 -59.119247;
+		rotation = -0.496596 -0.503381 -0.503381 0.496596;
+		scale = 0.787862 0.787862 4.503086;
+		instancename = hwpoopb;
+		respawnat = hwpoop;
+	}
+	[healthwaypoint]
+	{
+		zone = 3;
+		type = plane;
+		location = 52.387417 -5.240622 -59.367264;
+		rotation = -0.707107 0.000000 -0.000000 0.707107;
+		scale = 0.787862 0.787862 4.503086;
+		instancename = hwpoopc;
+		respawnat = hwpoop;
+	}
+	[healthwaypoint]
+	{
+		zone = 3;
+		type = plane;
+		location = 52.387417 -5.240622 -58.877872;
+		rotation = 0.000000 -0.707107 -0.707107 0.000000;
+		scale = 0.787862 0.787862 4.503086;
+		instancename = hwpoopd;
+		respawnat = hwpoop;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 57.880981 -2.519996 -56.623005;
+		rotation = -0.021702 -0.447101 0.004994 0.894206;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = cupcakeheaven011;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 40.478317 -2.646368 -56.495785;
+		rotation = 0.028149 -0.351326 0.034498 -0.935194;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = cupcakeheaven012;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 49.434132 -1.492550 -49.860249;
+		rotation = -0.032873 -0.997236 -0.061144 -0.026482;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = cammer;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 53.509430 -1.433270 -49.863605;
+		rotation = -0.008249 -0.998683 -0.050637 -0.000463;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = pickdilly;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 42.025547 -2.733244 -79.070145;
+		rotation = 0.028666 0.434397 -0.037091 0.899501;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = troutbisket;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 60.454674 -2.556522 -79.790939;
+		rotation = 0.046828 -0.753634 0.009647 0.655554;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = cormpomuy;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 52.225449 -3.791649 -82.970299;
+		rotation = 0.030519 0.054420 -0.005448 0.998037;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = chockf8ullfonuts;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 50.864201 -3.803199 -82.959930;
+		rotation = 0.054510 0.055232 -0.024303 0.996688;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = chockf8ullfonutshytt;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 65.323318 -2.693228 -64.801865;
+		rotation = -0.039072 -0.969845 -0.045114 -0.236302;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = chockf8ullfonutshytt3434;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 41.262268 -1.941083 -79.695061;
+		rotation = 0.020587 0.454151 0.040333 0.889773;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 40.724888 -1.958581 -80.516098;
+		rotation = -0.045638 0.538574 -0.104685 0.834803;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt02;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 61.558872 -1.862120 -79.749428;
+		rotation = -0.061271 0.462615 -0.054904 0.882734;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt003;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 62.416302 -1.854280 -79.601143;
+		rotation = -0.039374 0.174827 -0.006997 0.983787;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt004;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 64.743141 -1.764684 -63.959866;
+		rotation = -0.022958 -0.381627 0.009482 0.923983;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt005;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 64.248672 -1.760987 -63.120415;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt006;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 59.289200 -1.903425 -58.013073;
+		rotation = -0.043423 0.716537 -0.011586 0.696100;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt007;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 58.643715 -1.892785 -57.205742;
+		rotation = 0.000000 0.337041 -0.000000 0.941490;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt008;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 39.816963 -1.959388 -57.164055;
+		rotation = 0.000000 -0.000000 -0.058419 0.998292;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt009;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 39.239887 -1.906944 -58.006626;
+		rotation = -0.001075 0.832976 -0.110196 0.542223;
+		scale = 0.266835 0.266835 0.266835;
+		instancename = shitttttt0010;
+		shimmeron = true;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 52.203255 -3.809970 -68.074364;
+		rotation = 0.003651 -0.372690 0.035142 -0.927283;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = tick005;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 52.746098 -3.352442 -69.467049;
+		rotation = -0.011243 -0.708764 0.059632 -0.702831;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = tick005;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 52.232193 -3.980775 -70.748573;
+		rotation = 0.027307 -0.917043 0.022418 -0.397220;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = tick005;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 50.879204 -3.323669 -71.218170;
+		rotation = 0.027600 -0.991459 -0.058068 0.113469;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = tick005;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 49.557892 -3.837350 -70.717232;
+		rotation = 0.013808 -0.912672 -0.052712 0.405044;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = tick005;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 49.077995 -3.369235 -69.294525;
+		rotation = 0.042890 -0.676394 -0.006711 0.735260;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = tick005;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 49.566116 -3.770560 -68.092415;
+		rotation = 0.022237 -0.391142 -0.027455 0.919652;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = tick005;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+	[shimmer]
+	{
+		zone = 3;
+		type = sphere;
+		location = 50.863495 -3.332850 -67.566307;
+		rotation = 0.021851 -0.089040 0.008893 -0.995749;
+		scale = 0.250000 0.250000 0.250000;
+		instancename = tick005;
+		shimmeron = true;
+		shimmerpass1 = 1.0 1.0 0.0 -0.87 1.0 1.0;
+		shimmerpass2 = 10.0 10.0 0.0 0.87.0 2.0 2.0;
+	}
+}

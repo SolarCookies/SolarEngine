@@ -1,0 +1,11 @@
+[intro]
+{
+	movie = mslogo.xmv;
+	movie = beeplogo.xmv;
+	pause = 1;
+}
+
+[attract]
+{
+	movie = attract001.xmv;
+}

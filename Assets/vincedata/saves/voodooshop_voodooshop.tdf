@@ -1,0 +1,70 @@
+[objects]
+{
+	[vince_base]
+	{
+		zone = 1;
+		location = 3.183956 1.758037 -1.073052;
+		rotation = 0.084614 -0.352133 0.022756 0.931840;
+	}
+	[charmainsign_base]
+	{
+		zone = 1;
+		location = 1.207981 2.222730 5.121819;
+		rotation = 0.029194 0.077554 0.000001 0.996561;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[bugjar_base2]
+	{
+		zone = 1;
+		location = -1.628906 0.757837 0.666003;
+		rotation = -0.027339 0.934204 -0.010404 0.355539;
+		objectcastshadows = true;
+		objectprelit = true;
+		soundrange = 300;
+	}
+	[hearttailjar_base]
+	{
+		zone = 1;
+		location = -1.803113 0.742463 0.423752;
+		rotation = 0.034875 -0.801454 0.025956 -0.596475;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[zombiemusk_base]
+	{
+		zone = 1;
+		location = -2.052843 1.995076 0.650808;
+		rotation = 0.000000 -0.864832 -0.000000 -0.502062;
+		objectprelit = true;
+	}
+	[shopfrontnonglow_base]
+	{
+		zone = 1;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[streetcrack_base]
+	{
+		zone = 1;
+		location = -0.000000 0.000000 0.000000;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectcastshadows = true;
+		objectprelit = true;
+	}
+	[ceilingfanshop_base]
+	{
+		zone = 1;
+		location = 1.798877 2.036300 1.124237;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+		objectprelit = true;
+	}
+	[chapterbook_base]
+	{
+		zone = 1;
+		location = 1.781733 1.590886 -1.403505;
+		rotation = 0.000000 -0.000000 -0.000000 1.000000;
+	}
+}

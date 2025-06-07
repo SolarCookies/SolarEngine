@@ -1,0 +1,40 @@
+// area settings (override settings found in Maya file)
+
+Version = 1;
+
+[Fog]
+{
+	[Distance]
+	{
+		FogNearZ = 100;
+		float FogFarZ = 100;
+		FogColor = 0 0 0;
+	}
+	FogZoneDensity = 0.5;
+}
+
+[Render]
+{
+	RenderAlphaNodesFirst = false;
+}
+
+[Water]
+{
+	WaterColor = 0.001 0.11 0.03 0.98;
+	WaterReflectivity = 0.35;
+	GridSizeX = 256;
+	GridSizeY = 256;
+	WaveStrength = 0.245;
+	WaveElevation = 0.085;
+	WaveScale = 10.0;
+    WaveFalloff = 0.5;
+    WaveAnimSpeed = 1.00;
+    WaveTimeMultiplier = 1.3;
+    WaveNoiseNumOctaves = 4;
+	SunColor = 1.0 0.9 0.0 0.9;
+	SunDir = 9.0 -140 0.0;
+	SunLightDir = 0.577 0.577 0.577;
+	SunShininess = 50.0;
+	SunStrength = 0.0;
+	MaskWater = true;
+}
