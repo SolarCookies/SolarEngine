@@ -32,7 +32,7 @@ void VinceWindow::init()
 	glfwMakeContextCurrent(window.get());
 	Log("GLFW Hooked, Window Created", EType::BLUE);
 
-	glfwSwapInterval(0); // Enable vsync
+	glfwSwapInterval(1); // Enable vsync
 	//Log("VSync Enabled", EType::Normal);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {

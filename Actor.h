@@ -41,7 +41,8 @@ public:
         return glm::vec3(WorldTransform[3]); // Extract translation from the matrix
 	}
 
-    void SetWorldPosition(const glm::vec3& Position) {
+    void SetWorldPosition(glm::vec3 Position) {
+		WorldTransform = glm::mat4(1.0f); // Reset to identity
         WorldTransform = glm::translate(glm::mat4(1.0f), Position);
 	}
 

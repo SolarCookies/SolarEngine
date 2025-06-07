@@ -1,0 +1,3 @@
+[submodule "vender/JoltPhysics"]
+	path = vender/JoltPhysics
+	url = https://github.com/jrouwe/JoltPhysics.git
