@@ -98,7 +98,7 @@ int main(int, char**)
 
 	World world;
 
-	Vince::LoadWorld("Assets/vincedata/levels/voodooshop/area_voodooshop/world.hot", world);
+	Vince::LoadWorld("Assets/vincedata/levels/frenchquarter/area_mainstreet/world.hot", world);
 
 
 	auto lightActor = std::make_unique<APointLight>();
@@ -107,6 +107,7 @@ int main(int, char**)
 
 	world.AddActor(std::move(lightActor));
 
+	///*
 	auto DragonMeshActor = std::make_unique<AStaticMesh>("Assets/Models/Dragon/model2.obj", "Default");
 	Texture ColorTexture("Assets/Models/Dragon/Color.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 	Texture NormalTexture("Assets/Models/Dragon/Normal.png", GL_TEXTURE_2D, GL_TEXTURE1, GL_RGB, GL_UNSIGNED_BYTE);
