@@ -85,6 +85,6 @@ public:
        return data;
    }
 
-   VE::Model model;
+   Model model;
 private:  
 };

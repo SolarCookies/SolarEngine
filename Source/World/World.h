@@ -27,8 +27,8 @@ public:
 		return FoundActors;
 	}
 
-	void AddActor(Actor& actor) {
-		Actors.push_back(std::unique_ptr<Actor>(&actor));
+	void AddActor(std::unique_ptr<Actor> actor) {
+		Actors.push_back(std::move(actor));
 	}
 
 	void Render(VinceWindow* window, Camera* Cam) {

@@ -100,6 +100,8 @@
     <ClInclude Include="Source\Actors\Meshes\AStaticMesh.h" />
     <ClInclude Include="Source\Components\Component.h" />
     <ClInclude Include="Source\Components\Lights\LightComponent.h" />
+    <ClInclude Include="Source\Components\Meshes\DynamicMeshComponent.h" />
+    <ClInclude Include="Source\Components\Meshes\GatorMeshComponent.h" />
     <ClInclude Include="Source\Components\Meshes\StaticMeshComponent.h" />
     <ClInclude Include="Source\Components\Movement\MovementComponent.h" />
     <ClInclude Include="Source\Components\Movement\RigidBodyComponent.h" />
@@ -118,6 +120,7 @@
     <ClInclude Include="Source\Windows\Log.hpp" />
     <ClInclude Include="Source\Windows\Window.h" />
     <ClInclude Include="Source\World\Camera.h" />
+    <ClInclude Include="Source\World\LoadVinceWorld.h" />
     <ClInclude Include="Source\World\World.h" />
     <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\AABBTreeBuilder.h" />
     <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\AABBTreeToBuffer.h" />
@@ -435,6 +438,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+    <ClCompile Include="Source\Components\Meshes\DynamicMeshComponent.cpp" />
     <ClCompile Include="Source\Components\Meshes\StaticMeshComponent.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>

@@ -21,9 +21,12 @@
 #include "Components/Movement/MovementComponent.h"
 #include "Components/Movement/RigidBodyComponent.h"
 
+#include "Components/Meshes/GatorMeshComponent.h"
+
 #include "Utils/JoltHelpers.h"
 
 #include "Package/Hot.h"
+#include "World/LoadVinceWorld.h"
 
 float window_width = 800;
 float window_height = 800;
@@ -56,36 +59,55 @@ int main(int, char**)
 	bool wireframe = false;
 	bool unlit = false;
 
-	//Load level from package ""C:\Projects\VinceEngine\vincedata\levels\voodooshop\area_voodooshop\world.hot"
-	HotFile map = Hot::ReadFile("Assets/vincedata/levels/voodooshop/area_voodooshop/world.hot");
 
-	HotFile Verts = Hot::ReadFile(map.Files[0]);
+	std::vector<unsigned char> gatorMeshFile;
+
+	
+	//Load level from package ""C:\Projects\VinceEngine\vincedata\levels\voodooshop\area_voodooshop\world.hot"
+	HotFile map = Hot::ReadFile("Assets/vincedata/levels/carnival/area_midway/modelsAndAnims.hot");
+
+	HotFile Verts = Hot::ReadFile(map.Files[1]);
 
 	for(const HotFileInfo& file : Verts.Files) {
-		//write file to disk
-		std::ofstream outFile("Models/Test/" + file.Name, std::ios::binary);
-		if (outFile) {
-			outFile.write(reinterpret_cast<const char*>(file.Data.data()), file.Data.size());
-			outFile.close();
-			Log("Extracted: " + file.Name, EType::Normal);
-		} else {
-			Log("Failed to extract: " + file.Name, EType::Error);
+		if(file.Name.find(".gator") != std::string::npos) {
+			gatorMeshFile = file.Data; // Store the gator mesh file data
+			Log("Found Gator Mesh: " + file.Name, EType::Normal);
 		}
 
 	}
+
+	// --- Before main loop, after loading Verts ---
+	std::vector<std::vector<unsigned char>> gatorMeshes;
+	std::vector<std::string> gatorMeshNames;
+	for (const HotFileInfo& file : Verts.Files) {
+		if (file.Name.find(".gator") != std::string::npos) {
+			gatorMeshes.push_back(file.Data);
+			gatorMeshNames.push_back(file.Name);
+			//Log("Found Gator Mesh: " + file.Name, EType::Normal);
+		}
+	}
+
+	// Use the first mesh by default
+	size_t currentMeshIndex = 0;
+	// --- Add these variables for timing ---
+	float meshSwitchTimer = 0.0f;
+	const float meshSwitchInterval = 1.0f;
 
 	//init window here
 	VinceWindow window(window_width, window_height, "VinceEngine");
 
 	World world;
 
-	APointLight lightActor;
+	Vince::LoadWorld("Assets/vincedata/levels/voodooshop/area_voodooshop/world.hot", world);
 
-	world.AddActor(lightActor);
 
-	LightComponent* light = dynamic_cast<LightComponent*>(lightActor.GetComponentByIndex(0));
+	auto lightActor = std::make_unique<APointLight>();
 
-	AStaticMesh DragonMeshActor("Assets/Models/Dragon/model2.obj", "Default");
+	LightComponent* light = dynamic_cast<LightComponent*>(lightActor->GetComponentByIndex(0));
+
+	world.AddActor(std::move(lightActor));
+
+	auto DragonMeshActor = std::make_unique<AStaticMesh>("Assets/Models/Dragon/model2.obj", "Default");
 	Texture ColorTexture("Assets/Models/Dragon/Color.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 	Texture NormalTexture("Assets/Models/Dragon/Normal.png", GL_TEXTURE_2D, GL_TEXTURE1, GL_RGB, GL_UNSIGNED_BYTE);
 
@@ -101,30 +123,30 @@ int main(int, char**)
 			JPH::ObjectLayer(0)
 		);
 		auto rigidBodyComponent = std::make_shared<RigidBodyComponent>(&physics_system, bodySettings);
-		DragonMeshActor.AddComponent(rigidBodyComponent);
+		DragonMeshActor->AddComponent(rigidBodyComponent);
 
-	StaticMeshComponent* DragonmeshComponent = dynamic_cast<StaticMeshComponent*>(DragonMeshActor.GetComponentByIndex(0));
+	StaticMeshComponent* DragonmeshComponent = dynamic_cast<StaticMeshComponent*>(DragonMeshActor->GetComponentByIndex(0));
 	DragonmeshComponent->ColorTexture = &ColorTexture;
 	DragonmeshComponent->NormalTexture = &NormalTexture;
 
 	//auto movementComponent = std::make_shared<MovementComponent>();
 	//DragonMeshActor.AddComponent(movementComponent);
 
-	world.AddActor(DragonMeshActor);
 
-	AStaticMesh SkyboxActor("Assets/Textures/sky.obj", "Sky");
+	world.AddActor(std::move(DragonMeshActor));
+
+	auto SkyboxActor = std::make_unique<AStaticMesh>("Assets/Textures/sky.obj", "Sky");
 	Texture SkyboxTexture("Assets/Textures/sky.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 
-	StaticMeshComponent* SkyboxMeshComponent = dynamic_cast<StaticMeshComponent*>(SkyboxActor.GetComponentByIndex(0));
+	StaticMeshComponent* SkyboxMeshComponent = dynamic_cast<StaticMeshComponent*>(SkyboxActor->GetComponentByIndex(0));
 	SkyboxMeshComponent->ColorTexture = &SkyboxTexture;
 
-	world.AddActor(SkyboxActor);
+	SkyboxActor->SetWorldScale(glm::vec3(5.0f, 5.0f, 5.0f));
 
-	SkyboxActor.SetWorldScale(glm::vec3(5.0f, 5.0f, 5.0f));
+	world.AddActor(std::move(SkyboxActor));
 
-
-	AStaticMesh floorMeshActor("Assets/Models/floor.obj", "Color");
-	StaticMeshComponent* floormeshComponent = dynamic_cast<StaticMeshComponent*>(floorMeshActor.GetComponentByIndex(0));
+	auto floorMeshActor = std::make_unique<AStaticMesh>("Assets/Models/floor.obj", "Color");
+	StaticMeshComponent* floormeshComponent = dynamic_cast<StaticMeshComponent*>(floorMeshActor->GetComponentByIndex(0));
 	floormeshComponent->ColorTexture = &ColorTexture;
 	floormeshComponent->NormalTexture = &NormalTexture;
 
@@ -140,12 +162,18 @@ int main(int, char**)
 		JPH::ObjectLayer(1)
 	);
 	auto rigidBodyComponent2 = std::make_shared<RigidBodyComponent>(&physics_system, bodySettings2);
-	floorMeshActor.AddComponent(rigidBodyComponent2);
+	floorMeshActor->AddComponent(rigidBodyComponent2);
 
 
-	world.AddActor(floorMeshActor);
+	world.AddActor(std::move(floorMeshActor));
 
+	auto TestDynamicMeshActor = std::make_unique<Actor>();
 
+	//Add Gator Mesh component to the actor
+	auto gatorMeshComponent = std::make_shared<GatorMeshComponent>(gatorMeshFile);
+	TestDynamicMeshActor->AddComponent(gatorMeshComponent);
+
+	world.AddActor(std::move(TestDynamicMeshActor));
 
 	world.ConstructWorld();
 
@@ -246,7 +274,7 @@ int main(int, char**)
 
 			if (ImGui::Button("Respawn")) {
 				//Set the dragon's position to 0,0,0
-				DragonMeshActor.SetWorldPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+				DragonMeshActor->SetWorldPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 				rigidBodyComponent.get()->SetBodyPosition(glm::vec3(0, 0, 0));
 			}
 			//gravity slider
@@ -283,9 +311,19 @@ int main(int, char**)
 		camera.Inputs(window.getWindow());
 		camera.updateMatrix(45.0f, 0.01f, 100000.0f);
 
+		// --- Inside main loop, after deltaTime calculation ---
+		meshSwitchTimer += deltaTime;
+		if (meshSwitchTimer >= meshSwitchInterval && !gatorMeshes.empty()) {
+			meshSwitchTimer = 0.0f;
+			currentMeshIndex = (currentMeshIndex + 1) % gatorMeshes.size();
+			gatorMeshComponent->LoadGatorMesh(gatorMeshes[currentMeshIndex]);
+			//gatorMeshComponent->ReInitializeModel();
+			//Log("Switched to Gator Mesh: " + gatorMeshNames[currentMeshIndex], EType::Normal);
+		}
+
 		// Update the physics
 		// If you take larger steps than 1 / 60th of a second you need to do multiple collision steps in order to keep the simulation stable.
-		const int cCollisionSteps = 1;
+		const int cCollisionSteps = 2;
 		physics_system.Update(deltaTime, cCollisionSteps, &temp_allocator, &job_system);
 
 		world.TickWorld(deltaTime);

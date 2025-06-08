@@ -61,10 +61,10 @@ public:
 	}
 
     void SetWorldRotation(const glm::vec3& Rotation) {
-        WorldTransform = glm::mat4(1.0f);
         WorldTransform = glm::rotate(WorldTransform, Rotation.x, glm::vec3(1, 0, 0)); // Pitch
         WorldTransform = glm::rotate(WorldTransform, Rotation.y, glm::vec3(0, 1, 0)); // Yaw
         WorldTransform = glm::rotate(WorldTransform, Rotation.z, glm::vec3(0, 0, 1)); // Roll
+
 	}
 
     void AddWorldPosition(const glm::vec3& Position) {

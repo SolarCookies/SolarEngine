@@ -34,87 +34,82 @@ struct meshData {
 	std::vector<GLuint> indices;
 };
 
-namespace VE {
-	class Model
+class Model
+{
+public:
+	Model(const char* VertexShader, const char* FragmentShader, std::vector<GLfloat> verts, std::vector<GLuint> ind)
+		: shaderProgram(VertexShader, FragmentShader), vertices(std::move(verts)), indices(std::move(ind)),
+		ModelVBO(vertices), ModelEBO(indices)
 	{
-	public:
-		Model(const char* VertexShader, const char* FragmentShader, std::vector<GLfloat> verts, std::vector<GLuint> ind)
-			: shaderProgram(VertexShader, FragmentShader), vertices(std::move(verts)), indices(std::move(ind)),
-			ModelVBO(vertices), ModelEBO(indices)
+		Log("Shader Program Created using: " + std::string(VertexShader) + " and " + std::string(FragmentShader), EType::BLUE);
+
+		ModelVAO.Bind();
+		ModelVBO.Bind();
+		ModelEBO.Bind();
+
+		ModelVAO.LinkAttrib(ModelVBO, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+		ModelVAO.LinkAttrib(ModelVBO, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+		ModelVAO.LinkAttrib(ModelVBO, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+		ModelVAO.LinkAttrib(ModelVBO, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+		ModelVAO.Unbind();
+		ModelVBO.Unbind();
+		ModelEBO.Unbind();
+	}
+
+	void Draw() {
+		ModelVAO.Bind();
+		if (shaderProgram.ID != 0)
 		{
-			Log("Shader Program Created using: " + std::string(VertexShader) + " and " + std::string(FragmentShader), EType::BLUE);
-
-			ModelVAO.Bind();
-			ModelVBO.Bind();
-			ModelEBO.Bind();
-
-			ModelVAO.LinkAttrib(ModelVBO, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
-			ModelVAO.LinkAttrib(ModelVBO, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
-			ModelVAO.LinkAttrib(ModelVBO, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
-			ModelVAO.LinkAttrib(ModelVBO, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
-			ModelVAO.Unbind();
-			ModelVBO.Unbind();
-			ModelEBO.Unbind();
+			glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
 		}
+	}
 
-		void Draw() {
-			ModelVAO.Bind();
-			if (shaderProgram.ID != 0)
-			{
-				glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
-			}
-		}
+	void SetMaterialParameter(const char* name, glm::vec3 value) {
+		shaderProgram.Activate();
+		glUniform3f(glGetUniformLocation(shaderProgram.ID, name), value.x, value.y, value.z);
+	}
+	void SetMaterialParameter(const char* name, glm::vec4 value) {
+		shaderProgram.Activate();
+		glUniform4f(glGetUniformLocation(shaderProgram.ID, name), value.x, value.y, value.z, value.w);
+	}
+	void SetMaterialParameter(const char* name, float value) {
+		shaderProgram.Activate();
+		glUniform1f(glGetUniformLocation(shaderProgram.ID, name), value);
+	}
+	void SetMaterialParameter(const char* name, int value) {
+		shaderProgram.Activate();
+		glUniform1i(glGetUniformLocation(shaderProgram.ID, name), value);
+	}
+	void SetMaterialParameter(const char* name, Texture texture) {
+		shaderProgram.Activate();
+		texture.texUnit(shaderProgram, "tex0", 0);
+	}
+	void SetMaterialParameter(const char* name, glm::mat4 value) {
+		shaderProgram.Activate();
+		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, name), 1, GL_FALSE, glm::value_ptr(value));
+	}
 
-		void SetMaterialParameter(const char* name, glm::vec3 value) {
-			shaderProgram.Activate();
-			glUniform3f(glGetUniformLocation(shaderProgram.ID, name), value.x, value.y, value.z);
-		}
-		void SetMaterialParameter(const char* name, glm::vec4 value) {
-			shaderProgram.Activate();
-			glUniform4f(glGetUniformLocation(shaderProgram.ID, name), value.x, value.y, value.z, value.w);
-		}
-		void SetMaterialParameter(const char* name, float value) {
-			shaderProgram.Activate();
-			glUniform1f(glGetUniformLocation(shaderProgram.ID, name), value);
-		}
-		void SetMaterialParameter(const char* name, int value) {
-			shaderProgram.Activate();
-			glUniform1i(glGetUniformLocation(shaderProgram.ID, name), value);
-		}
-		void SetMaterialParameter(const char* name, Texture texture) {
-			shaderProgram.Activate();
-			texture.texUnit(shaderProgram, "tex0", 0);
-		}
-		void SetMaterialParameter(const char* name, glm::mat4 value) {
-			shaderProgram.Activate();
-			glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, name), 1, GL_FALSE, glm::value_ptr(value));
-		}
+	void Destroy() {
+		shaderProgram.Delete();
+		ModelVAO.Delete();
+		ModelVBO.Delete();
+		ModelEBO.Delete();
+	}
 
-		void Destroy() {
-			shaderProgram.Delete();
-			ModelVAO.Delete();
-			ModelVBO.Delete();
-			ModelEBO.Delete();
-		}
+	Shader shaderProgram;
 
+private:
+	// Vertices coordinates
+	//     COORDINATES vec3     /        COLORS vec3         /    TexCoord vec2  /        NORMALS vec3      //
+	std::vector <GLfloat> vertices;
 
-		Shader shaderProgram;
+	// Indices for vertices order
+	std::vector <GLuint> indices;
 
-	private:
-		// Vertices coordinates
-		//     COORDINATES vec3     /        COLORS vec3         /    TexCoord vec2  /        NORMALS vec3      //
-		std::vector <GLfloat> vertices;
-
-		// Indices for vertices order
-		std::vector <GLuint> indices;
-
-
-		VAO ModelVAO;
-		VBO ModelVBO;
-		EBO ModelEBO;
-	};
-
-}
+	VAO ModelVAO;
+	VBO ModelVBO;
+	EBO ModelEBO;
+};
 
 /*
 // Vertices coordinates
@@ -152,7 +147,6 @@ GLuint indices[] =
 	10, 12, 11, // Right side
 	13, 15, 14 // Facing side
 };
-
 
 GLfloat lightVertices[] =
 { //     COORDINATES     //
