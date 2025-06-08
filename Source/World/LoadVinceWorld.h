@@ -20,6 +20,16 @@ struct ObjectMeshData {
 	std::vector<unsigned char> gatorMesh;
 };;
 
+inline static void ExportUnsignedCharVectorToFile(const std::vector<unsigned char>& data, const std::string& filename) {
+	std::ofstream file(filename, std::ios::binary);
+	if (file.is_open()) {
+		file.write(reinterpret_cast<const char*>(data.data()), data.size());
+		file.close();
+	} else {
+		Log("Failed to open file for writing: " + filename, EType::Error);
+	}
+}
+
 namespace Vince
 {
 	std::vector<ObjectEntry> LoadObjectEntriesFromIndex(const std::vector<unsigned char>& IndexFile) {
@@ -98,6 +108,7 @@ namespace Vince
 		Log("Loading Vince World Models from " + Path + "modelsAndAnims.hot", EType::PURPLE);
 
 		HotFile Models = Hot::ReadFile(modelsAndAnims.Files[1]);
+		HotFile Anims = Hot::ReadFile(modelsAndAnims.Files[0]);
 
 		for (const HotFileInfo& file : Models.Files) {
 			if (file.Name.find("gator") != std::string::npos) {
@@ -108,22 +119,23 @@ namespace Vince
 				models.push_back(meshData);
 			}
 		}
-		Log("Number of Models in Zone modelsAndAnims: " + std::to_string(models.size()), EType::PURPLE);
+		Log("Number of Models in Zone Models: " + std::to_string(models.size()), EType::PURPLE);
 
 		//Now go a folder up and get /common/modelsAndAnims.hot
 		std::string NewPath = Path.substr(0, Path.find_last_of("/\\"));
-		std::string CommonPath = NewPath.substr(0, NewPath.find_last_of("/\\") + 1) + "common/modelsAndAnims.hot";
+		std::string CommonPath = NewPath.substr(0, NewPath.find_last_of("/\\") + 1) + "common/";
 		Log(CommonPath, EType::PURPLE);
 		//check to see if common/modelsAndAnims.hot exists
-		if(!std::filesystem::exists(CommonPath)) {
+		if (!std::filesystem::exists(CommonPath + "modelsAndAnims.hot")) {
 			Log("Common modelsAndAnims.hot not found at " + CommonPath, EType::Error);
 			return models; // Return empty if not found
 		}
 
-		HotFile commonModelsAndAnims = Hot::ReadFile(CommonPath);
+		HotFile commonModelsAndAnims = Hot::ReadFile(CommonPath + "modelsAndAnims.hot");
 		Log("Loading Vince World Common Models from " + CommonPath, EType::PURPLE);
 
 		HotFile CommonModels = Hot::ReadFile(commonModelsAndAnims.Files[1]);
+		HotFile CommonAnims = Hot::ReadFile(commonModelsAndAnims.Files[0]);
 
 		for (const HotFileInfo& file : CommonModels.Files) {
 			if (file.Name.find("gator") != std::string::npos) {
@@ -134,7 +146,22 @@ namespace Vince
 				models.push_back(meshData);
 			}
 		}
-		Log("Number of Models in Common modelsAndAnims: " + std::to_string(models.size()), EType::PURPLE);
+		Log("Number of Models in Common Models: " + std::to_string(models.size()), EType::PURPLE);
+
+		HotFile CommonTextures = Hot::ReadFile(CommonPath + "textures.hot");
+		Log("Loading Vince World Common Textures from " + CommonPath + "textures.hot", EType::PURPLE);
+		Log("Number of Textures: " + std::to_string(CommonTextures.Files.size()), EType::PURPLE);
+
+		for(const HotFileInfo& file : CommonTextures.Files) {
+			ExportUnsignedCharVectorToFile(file.Data, "Test/Textures/" + file.Name);
+		}
+
+		HotFile NormalTextures = Hot::ReadFile(NewPath + "/textures.hot");
+		Log("Loading Vince World Textures from " + NewPath + "/textures.hot", EType::PURPLE);
+		Log("Number of Textures: " + std::to_string(NormalTextures.Files.size()), EType::PURPLE);
+		for(const HotFileInfo& file : NormalTextures.Files) {
+			ExportUnsignedCharVectorToFile(file.Data, "Test/Textures/" + file.Name);
+		}
 
 		return models;
 	}
@@ -148,13 +175,17 @@ namespace Vince
 
 			//Log all names
 			for (HotFileInfo& fileInfo : World.Files) {
+				
+
 				if (fileInfo.Name == "data.hot") {
 					HotFile Data = Hot::ReadFile(fileInfo);
 					//Log all names in data.hot
 					for (HotFileInfo& dataInfo : Data.Files) {
 						if (dataInfo.Name.find("index") != std::string::npos) {
 							Log("Retrieved Level Index File: " + dataInfo.Name, EType::Success);
+
 							std::vector<ObjectEntry> Objects = LoadObjectEntriesFromIndex(dataInfo.Data);
+
 							Log("Number of Objects: " + std::to_string(Objects.size()), EType::PURPLE);
 
 							std::vector<ObjectMeshData> models = GetAllModelsInVinceWorld(filename);
@@ -201,7 +232,6 @@ namespace Vince
 											glm::vec3 euler = glm::eulerAngles(q); // Quaternion to Euler
 											meshActor->SetWorldRotation(euler);
 											world.AddActor(std::move(meshActor));
-
 										}
 									}
 								}

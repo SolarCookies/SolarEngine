@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <chrono>  
+//#include <gli/gli.hpp>
 
 // Include VivaEngine Shaders
 #include "Shaders/ShaderClass.h"
@@ -27,6 +28,7 @@
 
 #include "Package/Hot.h"
 #include "World/LoadVinceWorld.h"
+
 
 float window_width = 800;
 float window_height = 800;
@@ -111,6 +113,7 @@ int main(int, char**)
 	auto DragonMeshActor = std::make_unique<AStaticMesh>("Assets/Models/Dragon/model2.obj", "Default");
 	Texture ColorTexture("Assets/Models/Dragon/Color.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 	Texture NormalTexture("Assets/Models/Dragon/Normal.png", GL_TEXTURE_2D, GL_TEXTURE1, GL_RGB, GL_UNSIGNED_BYTE);
+	Texture TestTexture("Test/Textures/00_hollowball_fixed.dds", GL_TEXTURE_2D, GL_TEXTURE2, GL_RGBA, GL_UNSIGNED_BYTE);
 
 	// Create a simple box shape for the dragon's collision
 	JPH::BoxShapeSettings boxShapeSettings(JPH::Vec3(1.0f, 0.4f, 1.0f));
@@ -272,12 +275,6 @@ int main(int, char**)
 			if (ImGui::DragFloat3("Light Position", (float*)&lightPos, 0.1f, -10.0f, 10.0f)) {
 				light->SetPosition(lightPos);
 			}
-
-			if (ImGui::Button("Respawn")) {
-				//Set the dragon's position to 0,0,0
-				DragonMeshActor->SetWorldPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-				rigidBodyComponent.get()->SetBodyPosition(glm::vec3(0, 0, 0));
-			}
 			//gravity slider
 			float gravity = physics_system.GetGravity().GetY();
 			if( ImGui::DragFloat("Gravity", &gravity, 0.1f, -20.0f, 20.0f)) {
@@ -299,6 +296,12 @@ int main(int, char**)
 		ImGui::BeginChild("Log", ImVec2(0, 0), true);
 		DrawLog();
 		ImGui::EndChild();
+		ImGui::End();
+
+		ImGui::Begin("Debug Texture");
+		//display the debug texture
+		ImVec2 size = ImGui::GetContentRegionAvail();
+		ImGui::Image((ImTextureID)(intptr_t)TestTexture.ID, size, ImVec2(0, 1), ImVec2(1, 0));
 		ImGui::End();
 
 		//Render ImGui

@@ -13,6 +13,8 @@ struct HotFileInfo
 	uint32_t Offset;
 	uint32_t C_Size; //Compressed size
 	uint32_t U_Size; //Uncompressed size
+	uint32_t HeaderSize;
+	uint32_t HeaderOffset;
 	BYTES Data; //Decompressed data of file
 };
 
@@ -70,10 +72,24 @@ namespace Hot
 				TempBytes = Vince::CopyBytes(buffer, FileHeaderOffset + 16 + 8, 4); // Offset
 				FileInfo.Offset = Vince::ConvertBytesToInt(TempBytes, false);
 
+				//Header size
+				TempBytes = Vince::CopyBytes(buffer, FileHeaderOffset + 8, 4); // HeaderSize
+				FileInfo.HeaderSize = Vince::ConvertBytesToInt(TempBytes, false);
+
+				TempBytes = Vince::CopyBytes(buffer, FileHeaderOffset + 12, 4); // HeaderOffset
+				FileInfo.HeaderOffset = Vince::ConvertBytesToInt(TempBytes, false);
+
 				//Check to see if the file needs to be decompressed
 				if (FileInfo.C_Size == 0) {
-					//File is already uncompressed
-					FileInfo.Data = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.U_Size);
+					if(FileInfo.HeaderSize > 0) {
+						//File is already uncompressed with header
+						FileInfo.Data = Vince::CopyBytes(buffer, FileInfo.HeaderOffset, FileInfo.HeaderSize);
+						FileInfo.Data.insert(FileInfo.Data.end(), buffer.begin() + FileInfo.Offset, buffer.begin() + FileInfo.Offset + FileInfo.U_Size);
+					}
+					else {
+						//File is already uncompressed
+						FileInfo.Data = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.U_Size);
+					}
 				}
 				//decompress the file
 				else if (FileInfo.C_Size > 0 && FileInfo.U_Size > 0 && FileInfo.Offset > 0) {
@@ -141,17 +157,36 @@ namespace Hot
 			TempBytes = Vince::CopyBytes(buffer, FileHeaderOffset + 16 + 8, 4); // Offset
 			FileInfo.Offset = Vince::ConvertBytesToInt(TempBytes, false);
 
+			//Header size
+			TempBytes = Vince::CopyBytes(buffer, FileHeaderOffset + 8, 4); // HeaderSize
+			FileInfo.HeaderSize = Vince::ConvertBytesToInt(TempBytes, false);
+
+			TempBytes = Vince::CopyBytes(buffer, FileHeaderOffset + 12, 4); // HeaderOffset
+			FileInfo.HeaderOffset = Vince::ConvertBytesToInt(TempBytes, false);
+
 			//Check to see if the file needs to be decompressed
 			if (FileInfo.C_Size == 0) {
 				//File is already uncompressed
-				FileInfo.Data = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.U_Size);
+				if (FileInfo.HeaderSize > 0) {
+					FileInfo.Data = Vince::CopyBytes(buffer, FileInfo.HeaderOffset, FileInfo.HeaderSize);
+					FileInfo.Data.insert(FileInfo.Data.end(), buffer.begin() + FileInfo.Offset, buffer.begin() + FileInfo.Offset + FileInfo.U_Size);
+				}
+				else {
+					FileInfo.Data = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.U_Size);
+				}
 			}
 			//decompress the file
 			else if (FileInfo.C_Size > 0 && FileInfo.U_Size > 0 && FileInfo.Offset > 0) {
 				BYTES CompressedData = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.C_Size);
 				BYTES DecompressedData = Vince::DecompressData(CompressedData, FileInfo.U_Size);
 				if (!DecompressedData.empty()) {
-					FileInfo.Data = DecompressedData;
+					if (FileInfo.HeaderSize > 0) {
+						FileInfo.Data = Vince::CopyBytes(buffer, FileInfo.HeaderOffset, FileInfo.HeaderSize);
+						FileInfo.Data.insert(FileInfo.Data.end(), DecompressedData.begin(), DecompressedData.end());
+					}
+					else {
+						FileInfo.Data = DecompressedData;
+					}
 				}
 				else {
 					std::cerr << "Failed to decompress file." << std::endl;

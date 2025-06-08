@@ -138,6 +138,12 @@
     <ClInclude Include="Source\Components\Lights\LightComponent.h">
       <Filter>SolarEngine\Components\Lights</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Components\Meshes\DynamicMeshComponent.h">
+      <Filter>SolarEngine\Components\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\Meshes\GatorMeshComponent.h">
+      <Filter>SolarEngine\Components\Meshes</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Components\Meshes\StaticMeshComponent.h">
       <Filter>SolarEngine\Components\Meshes</Filter>
     </ClInclude>
@@ -190,6 +196,9 @@
       <Filter>SolarEngine\Windows</Filter>
     </ClInclude>
     <ClInclude Include="Source\World\Camera.h">
+      <Filter>SolarEngine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\World\LoadVinceWorld.h">
       <Filter>SolarEngine\World</Filter>
     </ClInclude>
     <ClInclude Include="Source\World\World.h">
@@ -1101,9 +1110,6 @@
     <ClInclude Include="Vendors\stb_image\stb_image.h">
       <Filter>Vendors\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Components\Meshes\DynamicMeshComponent.h" />
-    <ClInclude Include="Source\Components\Meshes\GatorMeshComponent.h" />
-    <ClInclude Include="Source\World\LoadVinceWorld.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Actors\Actor.cpp">
@@ -1114,6 +1120,9 @@
     </ClCompile>
     <ClCompile Include="Source\Components\Lights\LightComponent.cpp">
       <Filter>SolarEngine\Components\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\Meshes\DynamicMeshComponent.cpp">
+      <Filter>SolarEngine\Components\Meshes</Filter>
     </ClCompile>
     <ClCompile Include="Source\Components\Meshes\StaticMeshComponent.cpp">
       <Filter>SolarEngine\Components\Meshes</Filter>
@@ -1577,6 +1586,5 @@
     <ClCompile Include="Vendors\stb_image\stb_image.cpp">
       <Filter>Vendors\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Components\Meshes\DynamicMeshComponent.cpp" />
   </ItemGroup>
 </Project>
