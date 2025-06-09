@@ -6,7 +6,7 @@ namespace gli
 	{}
 
 	inline texture1d_array::texture1d_array(format_type Format, extent_type const& Extent, size_type Layers, swizzles_type const& Swizzles)
-		: texture(TARGET_1D_ARRAY, Format, texture::extent_type(Extent.x, 1, 1), Layers, 1, gli::levels(Extent), Swizzles)
+		: texture(TARGET_1D_ARRAY, Format, texture::extent_type(Extent.x, 1, 1), Layers, 1, gli::levels(Extent.x), Swizzles)
 	{}
 
 	inline texture1d_array::texture1d_array(format_type Format, extent_type const& Extent, size_type Layers, size_type Levels, swizzles_type const& Swizzles)

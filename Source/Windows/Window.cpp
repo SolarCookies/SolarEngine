@@ -18,7 +18,7 @@ void VinceWindow::init()
 
 	// Create window with graphics context using unique_ptr and custom deleter
 	window = std::unique_ptr<GLFWwindow, decltype(&glfwDestroyWindow)>(
-		glfwCreateWindow(frameBuffer.WIDTH, frameBuffer.HEIGHT, "VivaEngine GLFW OpenGL3", nullptr, nullptr),
+		glfwCreateWindow(frameBuffer.WIDTH, frameBuffer.HEIGHT, "Solar Engine", nullptr, nullptr),
 		&glfwDestroyWindow
 	);
 	if (!window) {

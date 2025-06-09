@@ -1110,6 +1110,8 @@
     <ClInclude Include="Vendors\stb_image\stb_image.h">
       <Filter>Vendors\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Windows\ContentWindow.h" />
+    <ClInclude Include="Source\Windows\DetailsPannel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Actors\Actor.cpp">
@@ -1586,5 +1588,7 @@
     <ClCompile Include="Vendors\stb_image\stb_image.cpp">
       <Filter>Vendors\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Windows\ContentWindow.cpp" />
+    <ClCompile Include="Source\Windows\DetailsPannel.cpp" />
   </ItemGroup>
 </Project>

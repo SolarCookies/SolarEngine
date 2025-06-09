@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <chrono>  
-//#include <gli/gli.hpp>
+#include <gli/gli.hpp>
 
 // Include VivaEngine Shaders
 #include "Shaders/ShaderClass.h"
@@ -28,6 +28,9 @@
 
 #include "Package/Hot.h"
 #include "World/LoadVinceWorld.h"
+
+#include "Windows/ContentWindow.h"
+#include "Windows/DetailsPannel.h"
 
 
 float window_width = 800;
@@ -64,44 +67,12 @@ int main(int, char**)
 
 	std::vector<unsigned char> gatorMeshFile;
 
-	
-	//Load level from package ""C:\Projects\VinceEngine\vincedata\levels\voodooshop\area_voodooshop\world.hot"
-	HotFile map = Hot::ReadFile("Assets/vincedata/levels/carnival/area_midway/modelsAndAnims.hot");
-
-	HotFile Verts = Hot::ReadFile(map.Files[1]);
-
-	for(const HotFileInfo& file : Verts.Files) {
-		if(file.Name.find(".gator") != std::string::npos) {
-			gatorMeshFile = file.Data; // Store the gator mesh file data
-			Log("Found Gator Mesh: " + file.Name, EType::Normal);
-		}
-
-	}
-
-	// --- Before main loop, after loading Verts ---
-	std::vector<std::vector<unsigned char>> gatorMeshes;
-	std::vector<std::string> gatorMeshNames;
-	for (const HotFileInfo& file : Verts.Files) {
-		if (file.Name.find(".gator") != std::string::npos) {
-			gatorMeshes.push_back(file.Data);
-			gatorMeshNames.push_back(file.Name);
-			//Log("Found Gator Mesh: " + file.Name, EType::Normal);
-		}
-	}
-
-	// Use the first mesh by default
-	size_t currentMeshIndex = 0;
-	// --- Add these variables for timing ---
-	float meshSwitchTimer = 0.0f;
-	const float meshSwitchInterval = 1.0f;
-
 	//init window here
-	VinceWindow window(window_width, window_height, "VinceEngine");
+	VinceWindow window(window_width, window_height, "SolarEngine");
 
 	World world;
 
 	Vince::LoadWorld("Assets/vincedata/levels/frenchquarter/area_mainstreet/world.hot", world);
-
 
 	auto lightActor = std::make_unique<APointLight>();
 
@@ -109,33 +80,32 @@ int main(int, char**)
 
 	world.AddActor(std::move(lightActor));
 
-	///*
 	auto DragonMeshActor = std::make_unique<AStaticMesh>("Assets/Models/Dragon/model2.obj", "Default");
 	Texture ColorTexture("Assets/Models/Dragon/Color.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 	Texture NormalTexture("Assets/Models/Dragon/Normal.png", GL_TEXTURE_2D, GL_TEXTURE1, GL_RGB, GL_UNSIGNED_BYTE);
-	Texture TestTexture("Test/Textures/00_hollowball_fixed.dds", GL_TEXTURE_2D, GL_TEXTURE2, GL_RGBA, GL_UNSIGNED_BYTE);
+	DragonMeshActor->ActorTags.push_back("Dragon");
+
+	Texture TestTexture("Test/Textures/steamroller01.dds");
 
 	// Create a simple box shape for the dragon's collision
 	JPH::BoxShapeSettings boxShapeSettings(JPH::Vec3(1.0f, 0.4f, 1.0f));
 	JPH::ShapeSettings::ShapeResult shapeResult = boxShapeSettings.Create();
-		JPH::Ref<JPH::Shape> shape = shapeResult.Get();
-		JPH::BodyCreationSettings bodySettings(
-			shape,
-			JPH::RVec3(0, 5, 0),
-			JPH::Quat::sIdentity(),
-			JPH::EMotionType::Dynamic,
-			JPH::ObjectLayer(0)
-		);
-		auto rigidBodyComponent = std::make_shared<RigidBodyComponent>(&physics_system, bodySettings);
-		DragonMeshActor->AddComponent(rigidBodyComponent);
+	JPH::Ref<JPH::Shape> shape = shapeResult.Get();
+
+	JPH::BodyCreationSettings bodySettings(
+		shape,
+		JPH::RVec3(0, 5, 0),
+		JPH::Quat::sIdentity(),
+		JPH::EMotionType::Dynamic,
+		JPH::ObjectLayer(0)
+	);
+
+	auto rigidBodyComponent = std::make_shared<RigidBodyComponent>(&physics_system, bodySettings);
+	DragonMeshActor->AddComponent(rigidBodyComponent);
 
 	StaticMeshComponent* DragonmeshComponent = dynamic_cast<StaticMeshComponent*>(DragonMeshActor->GetComponentByIndex(0));
 	DragonmeshComponent->ColorTexture = &ColorTexture;
 	DragonmeshComponent->NormalTexture = &NormalTexture;
-
-	//auto movementComponent = std::make_shared<MovementComponent>();
-	//DragonMeshActor.AddComponent(movementComponent);
-
 
 	world.AddActor(std::move(DragonMeshActor));
 
@@ -154,7 +124,6 @@ int main(int, char**)
 	floormeshComponent->ColorTexture = &ColorTexture;
 	floormeshComponent->NormalTexture = &NormalTexture;
 
-	// Create a simple box shape for the dragon's collision
 	JPH::BoxShapeSettings boxShapeSettings2(JPH::Vec3(100.0f, 0.1f, 100.0f));
 	JPH::ShapeSettings::ShapeResult shapeResult2 = boxShapeSettings2.Create();
 	JPH::Ref<JPH::Shape> shape2 = shapeResult2.Get();
@@ -165,36 +134,29 @@ int main(int, char**)
 		JPH::EMotionType::Static,
 		JPH::ObjectLayer(1)
 	);
+
 	auto rigidBodyComponent2 = std::make_shared<RigidBodyComponent>(&physics_system, bodySettings2);
 	floorMeshActor->AddComponent(rigidBodyComponent2);
 
 
 	world.AddActor(std::move(floorMeshActor));
 
-	auto TestDynamicMeshActor = std::make_unique<Actor>();
-
-	//Add Gator Mesh component to the actor
-	auto gatorMeshComponent = std::make_shared<GatorMeshComponent>(gatorMeshFile);
-	TestDynamicMeshActor->AddComponent(gatorMeshComponent);
-
-	world.AddActor(std::move(TestDynamicMeshActor));
-
 	world.ConstructWorld();
 
 	window.InitFrameBuffer();
 	window.SetupImGuiIO();
-	
 
+	ContentWindow Content;
+	DetailsWindow Details;
+	
 	Log("Starting Main Loop...", EType::Success);
 
 	glEnable(GL_DEPTH_TEST);
 
 	Camera camera(window_width, window_height, glm::vec3(0.0f, 0.0f, 2.0f));
 
-	//init delta time
 	using clock = std::chrono::high_resolution_clock;
 	auto lastTime = clock::now();
-
 	while (!glfwWindowShouldClose(window.getWindow()))
 	{
 		// Calculate delta time
@@ -235,18 +197,7 @@ int main(int, char**)
 					wireframe = false;
 				}
 			}
-			if (!unlit) {
-				if (ImGui::Button("Unlit")) {
-					unlit = true;
-				}
-			}
-			else {
-				if (ImGui::Button("Lit")) {
-					unlit = false;
-				}
-			}
 			
-
 			window.getFrameBuffer()->rescale_framebuffer(window_width, window_height);
 			glViewport(0, 0, window_width, window_height);
 
@@ -281,6 +232,17 @@ int main(int, char**)
 				//Set the gravity of the physics system
 				physics_system.SetGravity(JPH::Vec3(0, gravity, 0));
 			}
+			if (ImGui::Button("Reset Dragon")) {
+				std::vector<Actor*> actors = world.GetAllActorsWithTag("Dragon");
+				for(Actor* actor : actors) {
+					if (actor) {
+						RigidBodyComponent* rb = dynamic_cast<RigidBodyComponent*>(actor->GetComponentByIndex(1));
+						rb->SetBodyPosition({0,0,0});
+						actor->SetWorldPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+					}
+				}
+
+			}
 			//for each actor in the world, display its name and transform
 			ImGui::Text("Actors in World: %d", world.GetActorCount());
 
@@ -304,6 +266,10 @@ int main(int, char**)
 		ImGui::Image((ImTextureID)(intptr_t)TestTexture.ID, size, ImVec2(0, 1), ImVec2(1, 0));
 		ImGui::End();
 
+		Content.RenderContentWindow();
+		world.RenderWorldOutliner();
+		Details.RenderDetailsWindow(world);
+
 		//Render ImGui
 		ImGui::Render();
 
@@ -314,16 +280,6 @@ int main(int, char**)
 		
 		camera.Inputs(window.getWindow());
 		camera.updateMatrix(45.0f, 0.01f, 100000.0f);
-
-		// --- Inside main loop, after deltaTime calculation ---
-		meshSwitchTimer += deltaTime;
-		if (meshSwitchTimer >= meshSwitchInterval && !gatorMeshes.empty()) {
-			meshSwitchTimer = 0.0f;
-			currentMeshIndex = (currentMeshIndex + 1) % gatorMeshes.size();
-			gatorMeshComponent->LoadGatorMesh(gatorMeshes[currentMeshIndex]);
-			//gatorMeshComponent->ReInitializeModel();
-			//Log("Switched to Gator Mesh: " + gatorMeshNames[currentMeshIndex], EType::Normal);
-		}
 
 		// Update the physics
 		// If you take larger steps than 1 / 60th of a second you need to do multiple collision steps in order to keep the simulation stable.

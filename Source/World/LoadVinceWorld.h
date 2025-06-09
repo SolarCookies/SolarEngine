@@ -105,8 +105,6 @@ namespace Vince
 		std::vector<ObjectMeshData> models;
 		std::string Path = filename.substr(0, filename.find_last_of("/\\") + 1);
 		HotFile modelsAndAnims = Hot::ReadFile(Path + "modelsAndAnims.hot");
-		Log("Loading Vince World Models from " + Path + "modelsAndAnims.hot", EType::PURPLE);
-
 		HotFile Models = Hot::ReadFile(modelsAndAnims.Files[1]);
 		HotFile Anims = Hot::ReadFile(modelsAndAnims.Files[0]);
 
@@ -119,20 +117,18 @@ namespace Vince
 				models.push_back(meshData);
 			}
 		}
-		Log("Number of Models in Zone Models: " + std::to_string(models.size()), EType::PURPLE);
 
 		//Now go a folder up and get /common/modelsAndAnims.hot
 		std::string NewPath = Path.substr(0, Path.find_last_of("/\\"));
 		std::string CommonPath = NewPath.substr(0, NewPath.find_last_of("/\\") + 1) + "common/";
-		Log(CommonPath, EType::PURPLE);
+
 		//check to see if common/modelsAndAnims.hot exists
 		if (!std::filesystem::exists(CommonPath + "modelsAndAnims.hot")) {
-			Log("Common modelsAndAnims.hot not found at " + CommonPath, EType::Error);
-			return models; // Return empty if not found
+			Log("Common modelsAndAnims.hot not found at " + CommonPath, EType::Warning);
+			return models;
 		}
 
 		HotFile commonModelsAndAnims = Hot::ReadFile(CommonPath + "modelsAndAnims.hot");
-		Log("Loading Vince World Common Models from " + CommonPath, EType::PURPLE);
 
 		HotFile CommonModels = Hot::ReadFile(commonModelsAndAnims.Files[1]);
 		HotFile CommonAnims = Hot::ReadFile(commonModelsAndAnims.Files[0]);
@@ -141,24 +137,20 @@ namespace Vince
 			if (file.Name.find("gator") != std::string::npos) {
 				ObjectMeshData meshData;
 				meshData.Name = file.Name;
-				//Log("Found Gator Model: " + meshData.Name, EType::GREEN);
 				meshData.gatorMesh = file.Data;
 				models.push_back(meshData);
 			}
 		}
-		Log("Number of Models in Common Models: " + std::to_string(models.size()), EType::PURPLE);
 
+		return models;
+
+		//Export all textures to Test/Textures folder (Debugging purposes)
 		HotFile CommonTextures = Hot::ReadFile(CommonPath + "textures.hot");
-		Log("Loading Vince World Common Textures from " + CommonPath + "textures.hot", EType::PURPLE);
-		Log("Number of Textures: " + std::to_string(CommonTextures.Files.size()), EType::PURPLE);
-
 		for(const HotFileInfo& file : CommonTextures.Files) {
 			ExportUnsignedCharVectorToFile(file.Data, "Test/Textures/" + file.Name);
 		}
 
 		HotFile NormalTextures = Hot::ReadFile(NewPath + "/textures.hot");
-		Log("Loading Vince World Textures from " + NewPath + "/textures.hot", EType::PURPLE);
-		Log("Number of Textures: " + std::to_string(NormalTextures.Files.size()), EType::PURPLE);
 		for(const HotFileInfo& file : NormalTextures.Files) {
 			ExportUnsignedCharVectorToFile(file.Data, "Test/Textures/" + file.Name);
 		}
@@ -171,36 +163,18 @@ namespace Vince
 		//check to see if file name is "world.hot"
 		if (filename.find("world.hot") != std::string::npos) {
 			HotFile World = Hot::ReadFile(filename);
-			Log("Loading Vince World from " + filename, EType::PURPLE);
 
-			//Log all names
 			for (HotFileInfo& fileInfo : World.Files) {
-				
-
 				if (fileInfo.Name == "data.hot") {
 					HotFile Data = Hot::ReadFile(fileInfo);
 					//Log all names in data.hot
 					for (HotFileInfo& dataInfo : Data.Files) {
+						ExportUnsignedCharVectorToFile(dataInfo.Data, "Test/World/Data/" + dataInfo.Name);
 						if (dataInfo.Name.find("index") != std::string::npos) {
-							Log("Retrieved Level Index File: " + dataInfo.Name, EType::Success);
-
 							std::vector<ObjectEntry> Objects = LoadObjectEntriesFromIndex(dataInfo.Data);
-
-							Log("Number of Objects: " + std::to_string(Objects.size()), EType::PURPLE);
-
 							std::vector<ObjectMeshData> models = GetAllModelsInVinceWorld(filename);
 
 							for (const ObjectEntry& entry : Objects) {
-								std::string DebugString = "Object: " + entry.Name + ", Zone: " + std::to_string(entry.Zone) +
-									", Location: (" + std::to_string(entry.Location.x) + ", " +
-									std::to_string(entry.Location.y) + ", " +
-									std::to_string(entry.Location.z) + "), Rotation: (" +
-									std::to_string(entry.rotation.x) + ", " +
-									std::to_string(entry.rotation.y) + ", " +
-									std::to_string(entry.rotation.z) + ", " +
-									std::to_string(entry.rotation.w) + ")";
-								Log(DebugString, EType::BLUE);
-
 								for (const ObjectMeshData& model : models) {
 									//Log("Checking model: " + model.Name, EType::GREEN);
 									std::string modelName = model.Name.substr(0, model.Name.find_last_of('.'));
@@ -221,14 +195,13 @@ namespace Vince
 												Log("Skipping model: " + model.Name + " (not a gator model)", EType::Warning);
 												continue;
 											}
-											Log("Found matching model: " + model.Name, EType::GREEN);
 											// Create a mesh component and add it to the actor
 											auto gatorMeshComponent = std::make_shared<GatorMeshComponent>(model.gatorMesh);
 											auto meshActor = std::make_unique<Actor>();
 											meshActor->AddComponent(gatorMeshComponent);
 											meshActor->AddWorldPosition(entry.Location);
 											//meshActor->SetRotation(entry.rotation);
-											glm::quat q = glm::quat(entry.rotation); // Euler to quaternion
+											glm::quat q = glm::quat(entry.rotation.w, entry.rotation.x, entry.rotation.y, entry.rotation.z); // Convert vec4 to quaternion
 											glm::vec3 euler = glm::eulerAngles(q); // Quaternion to Euler
 											meshActor->SetWorldRotation(euler);
 											world.AddActor(std::move(meshActor));

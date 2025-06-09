@@ -2,6 +2,7 @@
 #include "../Actors/Actor.h"
 //#include <rpc.h>
 #include "../Windows/Window.h"
+#include <imgui.h>
 
 class LightComponent;
 
@@ -27,7 +28,28 @@ public:
 		return FoundActors;
 	}
 
+	std::vector<Actor*> GetAllActorsWithTag(std::string Tag) {
+		std::vector<Actor*> FoundActors;
+		for (auto& actor : Actors) {
+			for(const std::string& actorTag : actor->ActorTags) {
+				if (actorTag == Tag) {
+					FoundActors.push_back(actor.get());
+					break;
+				}
+			}
+		}
+		return FoundActors;
+	}
+
 	void AddActor(std::unique_ptr<Actor> actor) {
+		//Name the actor
+		int index = 0;
+		for(auto& Actor : Actors) {
+			if (Actor->GetClassName() == actor->GetClassName()) {
+				index++;
+			}
+		}
+		actor->ActorName = actor->GetClassName() + std::to_string(index);
 		Actors.push_back(std::move(actor));
 	}
 
@@ -54,6 +76,10 @@ public:
 	uint32_t GetActorCount() {
 		return static_cast<uint32_t>(Actors.size());
 	}
+
+	void RenderWorldOutliner();
+
+	Actor* CurrentlySelectedActor = nullptr;
 
 private:
 	std::vector<std::unique_ptr<Actor>> Actors;

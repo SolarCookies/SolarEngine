@@ -7,6 +7,7 @@
 //#include "rpc.h"
 #include "../Windows/Window.h"
 #include "../World/Camera.h"
+#include <imgui.h>
 
 class World;
 
@@ -31,6 +32,11 @@ public:
     //const UUID GetID() const { return GUID; }
 	//void SetID(const UUID& id) { GUID = id; }
 
+    void UpdateTransform() {
+        WorldTransform = glm::translate(glm::mat4(1.0f), WorldPosition)
+            * glm::mat4_cast(WorldRotation)
+            * glm::scale(glm::mat4(1.0f), WorldScale);
+    }
 
     // Transform utilities
     glm::mat4 GetTransform() const {
@@ -38,37 +44,25 @@ public:
     }
 
     glm::vec3 GetWorldPosition() const {
-        return glm::vec3(WorldTransform[3]); // Extract translation from the matrix
-	}
-
-    void SetWorldPosition(glm::vec3 Position) {
-		WorldTransform = glm::mat4(1.0f); // Reset to identity
-        WorldTransform = glm::translate(glm::mat4(1.0f), Position);
+        return WorldPosition; // Extract translation from the matrix
 	}
 
     glm::vec3 GetWorldScale() const {
-        return glm::vec3(glm::length(WorldTransform[0]), glm::length(WorldTransform[1]), glm::length(WorldTransform[2]));
+        return WorldScale;
     }
 
-    void SetWorldScale(const glm::vec3& Scale) {
-        WorldTransform = glm::scale(glm::mat4(1.0f), Scale);
-    }
-
-    glm::vec3 GetWorldRotation() const {
-        // Extract rotation from the matrix (assuming no scaling)
-        glm::mat3 rotationMatrix = glm::mat3(WorldTransform);
-        return glm::eulerAngles(glm::quat_cast(rotationMatrix)); // Convert to Euler angles
+    glm::quat GetWorldRotation() const {
+		return WorldRotation;
 	}
 
-    void SetWorldRotation(const glm::vec3& Rotation) {
-        WorldTransform = glm::rotate(WorldTransform, Rotation.x, glm::vec3(1, 0, 0)); // Pitch
-        WorldTransform = glm::rotate(WorldTransform, Rotation.y, glm::vec3(0, 1, 0)); // Yaw
-        WorldTransform = glm::rotate(WorldTransform, Rotation.z, glm::vec3(0, 0, 1)); // Roll
-
-	}
+    void SetWorldPosition(const glm::vec3& pos) { WorldPosition = pos; UpdateTransform(); }
+    void SetWorldScale(const glm::vec3& scale) { WorldScale = scale; UpdateTransform(); }
+    void SetWorldRotation(const glm::vec3& eulerRadians) { WorldRotation = glm::quat(eulerRadians); UpdateTransform(); }
+    void SetWorldRotation(const glm::quat& quat) { WorldRotation = quat; UpdateTransform(); }
 
     void AddWorldPosition(const glm::vec3& Position) {
-		WorldTransform = glm::translate(WorldTransform, Position);
+        WorldPosition += Position;
+		UpdateTransform();
 	}
 
     // Component management
@@ -102,11 +96,33 @@ public:
         return nullptr;
 	}
 
+    void RenderDetails() {
+		
+        if (ImGui::SliderFloat3("Position", &WorldPosition.x, -100.0f, 100.0f)) {
+			UpdateTransform();
+        }
+        if (ImGui::SliderFloat3("Rotation", &WorldRotation.x, -3.14f, 3.14f)) {
+        //    UpdateTransform();
+			Log("Rotation doesn't work yet, need to convert to quaternion (Pain)");
+		}
+        if (ImGui::SliderFloat3("Scale", &WorldScale.x, 0.1f, 10.0f)) {
+            UpdateTransform();
+        }
+    }
+
+	bool Selected = false;
+    std::vector<std::string> ActorTags;
+    std::string ActorName = "No Name";
 protected:
     std::vector<std::shared_ptr<Component>> components;
     bool hasBegunPlay = false;
 	std::string className = "Actor";
     glm::mat4 WorldTransform = glm::mat4(1.0f); // World transform matrix
+
+    glm::vec3 WorldPosition = glm::vec3(0.0f);
+    glm::vec3 WorldScale = glm::vec3(1.0f);
+    glm::quat WorldRotation = glm::quat(glm::vec3(0.0f));
+
 
 private:
    // UUID GUID;

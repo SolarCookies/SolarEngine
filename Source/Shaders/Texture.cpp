@@ -1,4 +1,5 @@
 #include"Texture.h"
+#include <gli/gli.hpp>
 
 Texture::Texture(const char* image, GLenum texType, GLenum slot, GLenum format, GLenum pixelType)
 {
@@ -40,6 +41,53 @@ Texture::Texture(const char* image, GLenum texType, GLenum slot, GLenum format, 
 
 	// Unbinds the OpenGL Texture object so that it can't accidentally be modified
 	glBindTexture(texType, 0);
+}
+
+Texture::Texture(const char* DDSimage)
+{
+	gli::texture texture = gli::load(DDSimage);
+	if (texture.empty()) {
+		std::cerr << "Failed to load texture with gli." << std::endl;
+	}
+
+	// Create OpenGL texture
+	GLuint testTextureID = 0;
+
+	gli::gl GL(gli::gl::PROFILE_GL33);
+	gli::gl::format const format = GL.translate(texture.format(), texture.swizzles());
+	GLenum target = GL.translate(texture.target());
+
+	glGenTextures(1, &testTextureID);
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(target, testTextureID);
+
+	glm::tvec3<GLsizei> extent = texture.extent();
+	glTexParameteri(target, GL_TEXTURE_BASE_LEVEL, 0);
+	glTexParameteri(target, GL_TEXTURE_MAX_LEVEL, static_cast<GLint>(texture.levels() - 1));
+	glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	for (std::size_t level = 0; level < texture.levels(); ++level) {
+		glm::tvec3<GLsizei> levelExtent = texture.extent(level);
+		if (gli::is_compressed(texture.format())) {
+			glCompressedTexImage2D(
+				target, static_cast<GLint>(level), format.Internal,
+				levelExtent.x, levelExtent.y, 0,
+				static_cast<GLsizei>(texture.size(level)),
+				texture.data(0, 0, level)
+			);
+		}
+		else {
+			glTexImage2D(
+				target, static_cast<GLint>(level), format.Internal,
+				levelExtent.x, levelExtent.y, 0,
+				format.External, format.Type,
+				texture.data(0, 0, level)
+			);
+		}
+	}
+
+	ID = testTextureID;
 }
 
 void Texture::texUnit(Shader& shader, const char* uniform, GLuint unit)

@@ -17,3 +17,28 @@ LightComponent* World::GetLightSource()
 	}
 	return nullptr;
 }
+
+void World::RenderWorldOutliner()
+{
+	ImGui::Begin("WorldOutliner");
+	for(auto& actor : Actors) {
+		ImGui::Text(actor->ActorName.c_str());
+		ImGui::SameLine();
+		if(actor->Selected) {
+			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Selected");
+		}
+		else {
+			if (ImGui::Button(("Select##" + actor->ActorName).c_str())) {
+				// Select the actor in the editor
+				if (CurrentlySelectedActor) {
+					CurrentlySelectedActor->Selected = false;
+				}
+				CurrentlySelectedActor = actor.get();
+				CurrentlySelectedActor->Selected = true;
+
+			}
+		}
+		
+	}
+	ImGui::End();
+}

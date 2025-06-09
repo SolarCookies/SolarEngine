@@ -117,6 +117,8 @@
     <ClInclude Include="Source\Utils\JoltHelpers.h" />
     <ClInclude Include="Source\Utils\OpenGL_Stuff.h" />
     <ClInclude Include="Source\Utils\ZLibHelpers.h" />
+    <ClInclude Include="Source\Windows\ContentWindow.h" />
+    <ClInclude Include="Source\Windows\DetailsPannel.h" />
     <ClInclude Include="Source\Windows\Log.hpp" />
     <ClInclude Include="Source\Windows\Window.h" />
     <ClInclude Include="Source\World\Camera.h" />
@@ -478,6 +480,8 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+    <ClCompile Include="Source\Windows\ContentWindow.cpp" />
+    <ClCompile Include="Source\Windows\DetailsPannel.cpp" />
     <ClCompile Include="Source\Windows\Window.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
