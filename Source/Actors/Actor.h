@@ -8,6 +8,7 @@
 #include "../Windows/Window.h"
 #include "../World/Camera.h"
 #include <imgui.h>
+#include "../Windows/Log.hpp"
 
 class World;
 
