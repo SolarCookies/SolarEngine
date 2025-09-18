@@ -2,6 +2,7 @@
 #include "World.h"
 #include "../Actors/Actor.h"
 #include "../Components/Meshes/GatorMeshComponent.h"
+#include "../Components/Meshes/VinceMapMeshComponent.h"
 #include "../Package/Hot.h"
 #include "../Windows/Log.hpp"
 #include <sstream>
@@ -18,20 +19,24 @@ struct ObjectEntry
 struct ObjectMeshData {
 	std::string Name;
 	std::vector<unsigned char> gatorMesh;
-};;
+};
 
-inline static void ExportUnsignedCharVectorToFile(const std::vector<unsigned char>& data, const std::string& filename) {
-	std::ofstream file(filename, std::ios::binary);
-	if (file.is_open()) {
-		file.write(reinterpret_cast<const char*>(data.data()), data.size());
-		file.close();
-	} else {
-		Log("Failed to open file for writing: " + filename, EType::Error);
-	}
-}
-
-namespace Vince
+class VinceWorldLoader
 {
+public:
+	std::vector<HotFileInfo> TextureData;
+
+	void ExportUnsignedCharVectorToFile(const std::vector<unsigned char>& data, const std::string& filename) {
+		std::ofstream file(filename, std::ios::binary);
+		if (file.is_open()) {
+			file.write(reinterpret_cast<const char*>(data.data()), data.size());
+			file.close();
+		}
+		else {
+			Log("Failed to open file for writing: " + filename, EType::Error);
+		}
+	}
+
 	std::vector<ObjectEntry> LoadObjectEntriesFromIndex(const std::vector<unsigned char>& IndexFile) {
 		std::vector<ObjectEntry> entries;
 		std::string content(IndexFile.begin(), IndexFile.end());
@@ -102,6 +107,9 @@ namespace Vince
 
 	//Get all models in the Vince world (modelsAndAnims.hot)
 	std::vector<ObjectMeshData> GetAllModelsInVinceWorld(const std::string& filename) {
+
+		TextureData.clear();
+
 		std::vector<ObjectMeshData> models;
 		std::string Path = filename.substr(0, filename.find_last_of("/\\") + 1);
 		HotFile modelsAndAnims = Hot::ReadFile(Path + "modelsAndAnims.hot");
@@ -142,17 +150,19 @@ namespace Vince
 			}
 		}
 
-		return models;
+		//return models;
 
 		//Export all textures to Test/Textures folder (Debugging purposes)
 		HotFile CommonTextures = Hot::ReadFile(CommonPath + "textures.hot");
 		for(const HotFileInfo& file : CommonTextures.Files) {
-			ExportUnsignedCharVectorToFile(file.Data, "Test/Textures/" + file.Name);
+			//ExportUnsignedCharVectorToFile(file.Data, "Test/Textures/" + file.Name);
+			TextureData.push_back(file);
 		}
 
 		HotFile NormalTextures = Hot::ReadFile(NewPath + "/textures.hot");
 		for(const HotFileInfo& file : NormalTextures.Files) {
-			ExportUnsignedCharVectorToFile(file.Data, "Test/Textures/" + file.Name);
+			//ExportUnsignedCharVectorToFile(file.Data, "Test/Textures/" + file.Name);
+			TextureData.push_back(file);
 		}
 
 		return models;
@@ -169,7 +179,7 @@ namespace Vince
 					HotFile Data = Hot::ReadFile(fileInfo);
 					//Log all names in data.hot
 					for (HotFileInfo& dataInfo : Data.Files) {
-						ExportUnsignedCharVectorToFile(dataInfo.Data, "Test/World/Data/" + dataInfo.Name);
+						//ExportUnsignedCharVectorToFile(dataInfo.Data, "Test/World/Data/" + dataInfo.Name);
 						if (dataInfo.Name.find("index") != std::string::npos) {
 							std::vector<ObjectEntry> Objects = LoadObjectEntriesFromIndex(dataInfo.Data);
 							std::vector<ObjectMeshData> models = GetAllModelsInVinceWorld(filename);
@@ -196,7 +206,7 @@ namespace Vince
 												continue;
 											}
 											// Create a mesh component and add it to the actor
-											auto gatorMeshComponent = std::make_shared<GatorMeshComponent>(model.gatorMesh);
+											auto gatorMeshComponent = std::make_shared<GatorMeshComponent>(model.gatorMesh, model.Name, this);
 											auto meshActor = std::make_unique<Actor>();
 											meshActor->AddComponent(gatorMeshComponent);
 											meshActor->AddWorldPosition(entry.Location);
@@ -212,7 +222,18 @@ namespace Vince
 						}
 					}
 				}
+				if (fileInfo.Name == "verts.hot") {
+					HotFile verts = Hot::ReadFile(fileInfo);
+					for (HotFileInfo& dataInfo : verts.Files) {
+						if (dataInfo.Name.find("vertices.raw") != std::string::npos) {
+							auto meshActor = std::make_unique<Actor>();
+							auto vinceMapMeshComponent = std::make_shared<VinceMapMeshComponent>(dataInfo.Data);
+							meshActor->AddComponent(vinceMapMeshComponent);
+							world.AddActor(std::move(meshActor));
+						}
+					}
+				}
 			}
 		}
-	} // namespace VinceWorld
-}
+	}
+};

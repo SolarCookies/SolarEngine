@@ -239,5 +239,18 @@ inline static void Log(string str, EType Type)
 	ForceDown = true;
 }
 
+inline static void DrawLogAdvanced() {
+	//Log Window
+	ImGui::Begin("Log");
+	if (ImGui::Button("Clear Log")) {
+		ClearLog();
+	}
+	//Add background color to the log
+	ImGui::BeginChild("Log", ImVec2(0, 0), true);
+	DrawLog();
+	ImGui::EndChild();
+	ImGui::End();
+}
+
 
 

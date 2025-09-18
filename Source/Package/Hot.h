@@ -15,7 +15,7 @@ struct HotFileInfo
 	uint32_t U_Size; //Uncompressed size
 	uint32_t HeaderSize;
 	uint32_t HeaderOffset;
-	BYTES Data; //Decompressed data of file
+	std::vector<unsigned char> Data; //Decompressed data of file
 };
 
 struct HotFile
@@ -25,7 +25,7 @@ struct HotFile
 
 namespace Hot
 {
-	HotFile ReadFile(const std::string& filePath)
+	inline static HotFile ReadFile(const std::string& filePath)
 	{
 		std::ifstream file(filePath, std::ios::binary | std::ios::ate);
 		if (!file) {
@@ -119,7 +119,7 @@ namespace Hot
 		return HotFile(); // Return an empty HotFile on failure
 	}
 
-	HotFile ReadFile(HotFileInfo a)
+	inline static HotFile ReadFile(HotFileInfo a)
 	{
 		BYTES buffer = a.Data;
 		std::cout << "File read successfully: " << a.Name << std::endl;

@@ -54,13 +54,22 @@ public:
 		ModelVAO.Unbind();
 		ModelVBO.Unbind();
 		ModelEBO.Unbind();
+		vertexShader = VertexShader;
+		fragmentShader = FragmentShader;
 	}
 
-	void Draw() {
+	void Draw(bool TriStrip = false, int Tris = 0) {
 		ModelVAO.Bind();
 		if (shaderProgram.ID != 0)
 		{
-			glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
+			if (TriStrip) {
+				glDrawArrays(GL_TRIANGLE_STRIP, Tris, static_cast<GLsizei>(vertices.size() / 11)); // Each vertex has 11 attributes
+				return;
+			}
+			else {
+				glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
+			}
+			
 		}
 	}
 
@@ -82,7 +91,7 @@ public:
 	}
 	void SetMaterialParameter(const char* name, Texture texture) {
 		shaderProgram.Activate();
-		texture.texUnit(shaderProgram, "tex0", 0);
+		texture.texUnit(shaderProgram, name, 0);
 	}
 	void SetMaterialParameter(const char* name, glm::mat4 value) {
 		shaderProgram.Activate();
@@ -94,6 +103,21 @@ public:
 		ModelVAO.Delete();
 		ModelVBO.Delete();
 		ModelEBO.Delete();
+	}
+
+	int GetNumVertices() const {
+		return static_cast<int>(vertices.size() / 11); // Each vertex has 11 attributes
+	}
+
+	int GetNumIndices() const {
+		return static_cast<int>(indices.size());
+	}
+
+	const char* GetVertexShader() const {
+		return vertexShader;
+	}
+	const char* GetFragmentShader() const {
+		return fragmentShader;
 	}
 
 	Shader shaderProgram;
@@ -109,6 +133,8 @@ private:
 	VAO ModelVAO;
 	VBO ModelVBO;
 	EBO ModelEBO;
+	const char* vertexShader;
+	const char* fragmentShader;
 };
 
 /*

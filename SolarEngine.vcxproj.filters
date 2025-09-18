@@ -1110,8 +1110,20 @@
     <ClInclude Include="Vendors\stb_image\stb_image.h">
       <Filter>Vendors\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Windows\ContentWindow.h" />
+    <ClInclude Include="Source\Windows\Content\ContentWindow.h" />
     <ClInclude Include="Source\Windows\DetailsPannel.h" />
+    <ClInclude Include="Source\Shaders\DebugDraw.h" />
+    <ClInclude Include="Source\Components\Meshes\VinceMapMeshComponent.h" />
+    <ClInclude Include="Source\Temporary\Debug.h" />
+    <ClInclude Include="Source\Windows\WorldSettingsWindow.h" />
+    <ClInclude Include="Source\Windows\ViewportWindow.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\VREF.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\VDAT.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\VLUT.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\VGPU.h" />
+    <ClInclude Include="Source\Package\VP\CAFF.h" />
+    <ClInclude Include="Source\Package\VP\PKG.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\Chunk.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Actors\Actor.cpp">
@@ -1588,7 +1600,13 @@
     <ClCompile Include="Vendors\stb_image\stb_image.cpp">
       <Filter>Vendors\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Windows\ContentWindow.cpp" />
+    <ClCompile Include="Source\Windows\Content\ContentWindow.cpp" />
     <ClCompile Include="Source\Windows\DetailsPannel.cpp" />
+    <ClCompile Include="Source\Components\Meshes\GatorMeshComponent.cpp" />
+    <ClCompile Include="Source\Package\VP\CAFF\VREF.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\LitAlbedo.vert" />
+    <None Include="Assets\Shaders\LitAlbedo.frag" />
   </ItemGroup>
 </Project>

@@ -103,24 +103,36 @@
     <ClInclude Include="Source\Components\Meshes\DynamicMeshComponent.h" />
     <ClInclude Include="Source\Components\Meshes\GatorMeshComponent.h" />
     <ClInclude Include="Source\Components\Meshes\StaticMeshComponent.h" />
+    <ClInclude Include="Source\Components\Meshes\VinceMapMeshComponent.h" />
     <ClInclude Include="Source\Components\Movement\MovementComponent.h" />
     <ClInclude Include="Source\Components\Movement\RigidBodyComponent.h" />
     <ClInclude Include="Source\Package\Hot.h" />
+    <ClInclude Include="Source\Package\VP\CAFF.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\Chunk.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\VDAT.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\VGPU.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\VLUT.h" />
+    <ClInclude Include="Source\Package\VP\CAFF\VREF.h" />
+    <ClInclude Include="Source\Package\VP\PKG.h" />
+    <ClInclude Include="Source\Shaders\DebugDraw.h" />
     <ClInclude Include="Source\Shaders\EBO.h" />
     <ClInclude Include="Source\Shaders\FrameBuffer.h" />
     <ClInclude Include="Source\Shaders\ShaderClass.h" />
     <ClInclude Include="Source\Shaders\Texture.h" />
     <ClInclude Include="Source\Shaders\VAO.h" />
     <ClInclude Include="Source\Shaders\VBO.h" />
+    <ClInclude Include="Source\Temporary\Debug.h" />
     <ClInclude Include="Source\Temporary\Mesh.h" />
     <ClInclude Include="Source\Temporary\Model.h" />
     <ClInclude Include="Source\Utils\JoltHelpers.h" />
     <ClInclude Include="Source\Utils\OpenGL_Stuff.h" />
     <ClInclude Include="Source\Utils\ZLibHelpers.h" />
-    <ClInclude Include="Source\Windows\ContentWindow.h" />
+    <ClInclude Include="Source\Windows\Content\ContentWindow.h" />
     <ClInclude Include="Source\Windows\DetailsPannel.h" />
     <ClInclude Include="Source\Windows\Log.hpp" />
+    <ClInclude Include="Source\Windows\ViewportWindow.h" />
     <ClInclude Include="Source\Windows\Window.h" />
+    <ClInclude Include="Source\Windows\WorldSettingsWindow.h" />
     <ClInclude Include="Source\World\Camera.h" />
     <ClInclude Include="Source\World\LoadVinceWorld.h" />
     <ClInclude Include="Source\World\World.h" />
@@ -444,6 +456,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+    <ClCompile Include="Source\Components\Meshes\GatorMeshComponent.cpp" />
     <ClCompile Include="Source\Components\Meshes\StaticMeshComponent.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -452,6 +465,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+    <ClCompile Include="Source\Package\VP\CAFF\VREF.cpp" />
     <ClCompile Include="Source\Shaders\EBO.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -480,7 +494,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-    <ClCompile Include="Source\Windows\ContentWindow.cpp" />
+    <ClCompile Include="Source\Windows\Content\ContentWindow.cpp" />
     <ClCompile Include="Source\Windows\DetailsPannel.cpp" />
     <ClCompile Include="Source\Windows\Window.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -1062,6 +1076,10 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\LitAlbedo.frag" />
+    <None Include="Assets\Shaders\LitAlbedo.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

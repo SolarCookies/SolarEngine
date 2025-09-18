@@ -9,6 +9,12 @@ void Actor::Construct() {
 		comp->owner = this;
         comp->Construct();
     }
+    //move any delayed components to the main components list
+    for (auto& comp : delayedComponents) {
+        comp->owner = this;
+        components.push_back(comp);
+    }
+    delayedComponents.clear();
 }
 
 void Actor::BeginPlay() {

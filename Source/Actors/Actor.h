@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
@@ -97,8 +97,11 @@ public:
         return nullptr;
 	}
 
+    void AddComponent(Component* component) {
+        components.push_back(std::shared_ptr<Component>(component));
+    }
+
     void RenderDetails() {
-		
         if (ImGui::SliderFloat3("Position", &WorldPosition.x, -100.0f, 100.0f)) {
 			UpdateTransform();
         }
@@ -109,6 +112,20 @@ public:
         if (ImGui::SliderFloat3("Scale", &WorldScale.x, 0.1f, 10.0f)) {
             UpdateTransform();
         }
+		//render components
+        ImGui::Text("Components: %d", components.size());
+        for (const auto& comp : components) {
+            if (comp) {
+                ImGui::Separator();
+				ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]); // Assuming index 1 is a larger font
+				ImGui::SetCursorPosX(ImGui::GetCursorPosX() + ImGui::GetWindowWidth() / 2 - ImGui::CalcTextSize(std::string("--------" + comp->GetName() + "--------").c_str()).x / 2);
+				ImGui::Text(std::string("--------" + comp->GetName() + "--------").c_str());
+				ImGui::PopFont();
+
+                comp->RenderDetails();
+                ImGui::Separator();
+            }
+		}
     }
 
 	bool Selected = false;
@@ -116,6 +133,7 @@ public:
     std::string ActorName = "No Name";
 protected:
     std::vector<std::shared_ptr<Component>> components;
+    std::vector<std::shared_ptr<Component>> delayedComponents;
     bool hasBegunPlay = false;
 	std::string className = "Actor";
     glm::mat4 WorldTransform = glm::mat4(1.0f); // World transform matrix

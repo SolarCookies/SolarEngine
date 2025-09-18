@@ -61,6 +61,7 @@ public:
 			convertedVertices,
 			Triangles
 		);
+		OBJ->SetMaterialParameter("tex0", ColorTexture);
 	}
 
 	void AddTriangle(GLuint v1, GLuint v2, GLuint v3, bool isDirty)
@@ -85,18 +86,43 @@ public:
 		this->Triangles = Triangles;
 		ReInitializeModel(); //Only reinitialize if the model is dirty Aka this is the last triangle to add
 	}
+	void SetMeshSilently(std::vector<DynamicVertex> Vertices, std::vector<GLuint> Triangles)
+	{
+		this->Vertices = Vertices;
+		this->Triangles = Triangles;
+	}
+
+	void RenderDetails() override {
+		ImGui::Text("Number of Vertices: %d", Vertices.size());
+		ImGui::Text("Number of Triangles: %d", Triangles.size() / 3);
+		ImGui::Text("Shader Name: %s", shaderName.c_str());
+
+		if(ColorTexture.ID != 0) {
+			//Draw the texture
+
+			ImGui::BeginChild("Debug Texture");
+			//display the debug texture
+			ImVec2 size = ImGui::GetContentRegionAvail();
+			ImGui::Image((ImTextureID)(intptr_t)ColorTexture.ID, size, ImVec2(0, 1), ImVec2(1, 0));
+			ImGui::EndChild();
+			
+		} else {
+			ImGui::Text("Color Texture: None");
+		}
+	}
 
 	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::mat4 Mat = glm::mat4(1.0f);
-	//Texture* ColorTexture;
-	//Texture* NormalTexture;
 
+	bool isTriangleStrip = false;
 protected:
 	//Model* OBJ;
 	std::unique_ptr<Model> OBJ; // Temporary model for reinitialization
 	std::string shaderName;
 	std::vector <DynamicVertex> Vertices;
 	std::vector <GLuint> Triangles; // Aka Indices
+	Texture ColorTexture;
+	Texture NormalTexture;
 	// Vertices coordinates
 	std::vector<GLfloat> ErrorVertices =
 	{ //     COORDINATES     /        COLORS          /    TexCoord   /        NORMALS       //

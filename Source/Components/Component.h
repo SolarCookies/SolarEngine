@@ -20,6 +20,7 @@ public:
 	virtual void Render(VinceWindow* window, Camera* Cam) {}
     virtual void Draw() {};
 	virtual std::string GetName() const { return name; }
+    virtual void RenderDetails() {};
 
     Actor* Owner;
 protected:

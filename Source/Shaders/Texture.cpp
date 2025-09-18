@@ -16,7 +16,6 @@ Texture::Texture(const char* image, GLenum texType, GLenum slot, GLenum format, 
 	// Generates an OpenGL texture object
 	glGenTextures(1, &ID);
 	// Assigns the texture to a Texture Unit
-	glActiveTexture(slot);
 	glBindTexture(texType, ID);
 
 	// Configures the type of algorithm that is used to make the image smaller or bigger
@@ -45,6 +44,7 @@ Texture::Texture(const char* image, GLenum texType, GLenum slot, GLenum format, 
 
 Texture::Texture(const char* DDSimage)
 {
+	type = GL_TEXTURE_2D;
 	gli::texture texture = gli::load(DDSimage);
 	if (texture.empty()) {
 		std::cerr << "Failed to load texture with gli." << std::endl;
@@ -55,23 +55,21 @@ Texture::Texture(const char* DDSimage)
 
 	gli::gl GL(gli::gl::PROFILE_GL33);
 	gli::gl::format const format = GL.translate(texture.format(), texture.swizzles());
-	GLenum target = GL.translate(texture.target());
 
 	glGenTextures(1, &testTextureID);
-	glActiveTexture(GL_TEXTURE2);
-	glBindTexture(target, testTextureID);
+	glBindTexture(GL_TEXTURE_2D, testTextureID);
 
 	glm::tvec3<GLsizei> extent = texture.extent();
-	glTexParameteri(target, GL_TEXTURE_BASE_LEVEL, 0);
-	glTexParameteri(target, GL_TEXTURE_MAX_LEVEL, static_cast<GLint>(texture.levels() - 1));
-	glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, static_cast<GLint>(texture.levels() - 1));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	for (std::size_t level = 0; level < texture.levels(); ++level) {
 		glm::tvec3<GLsizei> levelExtent = texture.extent(level);
 		if (gli::is_compressed(texture.format())) {
 			glCompressedTexImage2D(
-				target, static_cast<GLint>(level), format.Internal,
+				GL_TEXTURE_2D, static_cast<GLint>(level), format.Internal,
 				levelExtent.x, levelExtent.y, 0,
 				static_cast<GLsizei>(texture.size(level)),
 				texture.data(0, 0, level)
@@ -79,7 +77,58 @@ Texture::Texture(const char* DDSimage)
 		}
 		else {
 			glTexImage2D(
-				target, static_cast<GLint>(level), format.Internal,
+				GL_TEXTURE_2D, static_cast<GLint>(level), format.Internal,
+				levelExtent.x, levelExtent.y, 0,
+				format.External, format.Type,
+				texture.data(0, 0, level)
+			);
+		}
+	}
+
+	ID = testTextureID;
+}
+
+Texture::Texture(const std::vector<unsigned char>& DDSdata)
+{
+	type = GL_TEXTURE_2D;
+	//Load DDS from memory
+	gli::texture texture = gli::load(reinterpret_cast<const char*>(DDSdata.data()), DDSdata.size());
+	if (texture.empty()) {
+		std::cerr << "Failed to load texture with gli." << std::endl;
+	}
+
+	// Create OpenGL texture
+	GLuint testTextureID = 0;
+
+	gli::gl GL(gli::gl::PROFILE_GL33);
+	gli::gl::format const format = GL.translate(texture.format(), texture.swizzles());
+
+	glGenTextures(1, &testTextureID);
+	glBindTexture(GL_TEXTURE_2D, testTextureID);
+
+	glm::tvec3<GLsizei> extent = texture.extent();
+
+	// Configures the type of algorithm that is used to make the image smaller or bigger
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	// Configures the way the texture repeats (if it does at all)
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	for (std::size_t level = 0; level < texture.levels(); ++level) {
+		glm::tvec3<GLsizei> levelExtent = texture.extent(level);
+		if (gli::is_compressed(texture.format())) {
+			glCompressedTexImage2D(
+				GL_TEXTURE_2D, static_cast<GLint>(level), format.Internal,
+				levelExtent.x, levelExtent.y, 0,
+				static_cast<GLsizei>(texture.size(level)),
+				texture.data(0, 0, level)
+			);
+		}
+		else {
+			glTexImage2D(
+				GL_TEXTURE_2D, static_cast<GLint>(level), format.Internal,
 				levelExtent.x, levelExtent.y, 0,
 				format.External, format.Type,
 				texture.data(0, 0, level)

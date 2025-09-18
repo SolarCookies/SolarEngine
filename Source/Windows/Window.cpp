@@ -60,6 +60,8 @@ void VinceWindow::SetupImGuiIO()
 
 		//add comic sans
 		io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\comic.ttf", 18.0f);
+		//add big font
+		io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\comic.ttf", 24.0f);
 
 		// Setup Platform/Renderer back-ends
 		ImGui_ImplGlfw_InitForOpenGL(window.get(), true);

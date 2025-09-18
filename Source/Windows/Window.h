@@ -56,9 +56,8 @@ class VinceWindow {
 	}
 	const char* glsl_version;
 
-
+	int width, height;
 private:
-		int width, height;
 		const char* title;
 		std::unique_ptr<GLFWwindow, void(*)(GLFWwindow*)> window; // Use custom deleter type
 		FrameBuffer frameBuffer;
