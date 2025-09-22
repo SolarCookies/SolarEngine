@@ -47,7 +47,7 @@ void LightComponent::Render(VinceWindow* window, Camera* Cam)
 	// Set the model matrix for the light mesh
 	lightMesh.model.SetMaterialParameter("model", lightModel);
 
-	Cam->Matrix(lightMesh.model.shaderProgram, "camMatrix");
+	Cam->Matrix(*lightMesh.model.shaderProgram.get(), "camMatrix");
 
 	SunTexture.Bind();
 

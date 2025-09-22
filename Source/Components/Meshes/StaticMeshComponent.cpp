@@ -9,11 +9,11 @@ void StaticMeshComponent::Construct()
 	Mat = glm::translate(Mat, Position);
 	OBJ.model.SetMaterialParameter("model", Mat);
 
-	if (ColorTexture != nullptr)
+	if (ColorTexture != nullptr && ColorTexture != reinterpret_cast<Texture*>(-1))
 	{
 		OBJ.model.SetMaterialParameter("tex0", *ColorTexture);
 	}
-	if (NormalTexture != nullptr)
+    if (NormalTexture != nullptr && NormalTexture != reinterpret_cast<Texture*>(-1))
 	{
 		OBJ.model.SetMaterialParameter("tex1", *NormalTexture);
 	}
@@ -51,7 +51,7 @@ void StaticMeshComponent::Render(VinceWindow* window, Camera* Cam)
 	OBJ.model.SetMaterialParameter("unlit", 0);
 
 	OBJ.model.SetMaterialParameter("cameraPos", Cam->Position);
-	Cam->Matrix(OBJ.model.shaderProgram, "camMatrix");
+	Cam->Matrix(*OBJ.model.shaderProgram.get(), "camMatrix");
 
 	if (ColorTexture != nullptr)
 	{

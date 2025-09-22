@@ -1,12 +1,14 @@
 #include <iostream>
 #include <stdio.h>
 #include <chrono>  
-#include <gli/gli.hpp>
+#include "Package/VP/UI/GUI.h"
 
 #include "Utils/JoltHelpers.h"
 
 #include "World/World.h"
 #include "World/Camera.h"
+
+#include "GlobalSettings.h"
 
 #include "Windows/Content/ContentWindow.h"
 #include "Windows/DetailsPannel.h"
@@ -16,13 +18,13 @@
 #include "Windows/Window.h"
 
 #include "Temporary/Debug.h"
-#include "Package/Hot.h"
-#include "World/LoadVinceWorld.h"
 
-#include "Package/VP/PKG.h"
+#include "Actors/Meshes/aid_model.h"
 
-float window_width = 800;
-float window_height = 800;
+//#include "Package/VP/UI/Pages/PackageManager/FileBrowser/FileBrowser.h"
+//#include "Package/VP/UI/GUI.h"
+
+
 
 
 // Main code
@@ -48,29 +50,22 @@ int main(int, char**)
 	// Now we can create the actual Jolt physics system.
 	physics_system.Init(cMaxBodies, cNumBodyMutexes, cMaxBodyPairs, cMaxContactConstraints, broad_phase_layer_interface, object_vs_broadphase_layer_filter, object_vs_object_layer_filter);
 
-
-	//init window here
-	VinceWindow window(window_width, window_height, "SolarEngine");
-
 	World world;
 
-	PKG pkg;
-	pkg.Load("F://CrackedGames//Viva Pinata//bundles_packages//1.pkg");
-
 	MainDebug debug;
-	debug.Init(world, window, physics_system);
+	debug.Init(world, globals::window1, physics_system);
 
-	// Debug Vince World "Assets\vincedata\levels\frenchquarter\area_mainstreet\world.hot"
-	VinceWorldLoader vince_loader;
-	vince_loader.LoadWorld("Assets/vincedata/levels/frenchquarter/area_mainstreet/world.hot", world);
+	//Add aid_model to world
+	std::unique_ptr<Aid_Model> model = std::make_unique<Aid_Model>();
+	world.AddActor(std::move(model));
 
 	world.ConstructWorld();
 
-	window.InitFrameBuffer();
-	window.SetupImGuiIO();
+	globals::window1.InitFrameBuffer();
+	globals::window1.SetupImGuiIO();
 
 	// Initialize Engine Windows
-	ContentWindow Content;
+	//ContentWindow Content;
 	DetailsWindow Details;
 	WorldSettingsWindow worldsettings;
 	ViewportWindow viewportWindow;
@@ -80,10 +75,13 @@ int main(int, char**)
 	glEnable(GL_DEPTH_TEST);
 
 	Camera camera(window_width, window_height, glm::vec3(0.0f, 0.0f, 2.0f));
+	globals::cam = &camera;
+
+	GUI m_GUI;
 
 	using clock = std::chrono::high_resolution_clock;
 	auto lastTime = clock::now();
-	while (!glfwWindowShouldClose(window.getWindow()))
+	while (!glfwWindowShouldClose(globals::window1.getWindow()))
 	{
 		// Calculate delta time
 		auto currentTime = clock::now();
@@ -92,34 +90,40 @@ int main(int, char**)
 		lastTime = currentTime;
 
 		glfwPollEvents();
-		if (glfwGetWindowAttrib(window.getWindow(), GLFW_ICONIFIED) != 0)
+		if (glfwGetWindowAttrib(globals::window1.getWindow(), GLFW_ICONIFIED) != 0)
 		{
 			//ImGui_ImplGlfw_Sleep(10);
 			continue;
 		}
 
-		window.NewFrame();
+		globals::window1.NewFrame();
 
 		//Render Viewport
-		viewportWindow.Draw(window_width, window_height, camera, window);
+		viewportWindow.Draw(window_width, window_height, camera, globals::window1);
 		
 
 		//Render Engine Windows
-		worldsettings.Draw(world, window, physics_system);
+		worldsettings.Draw(world, globals::window1, physics_system);
 		DrawLogAdvanced();
-		Content.RenderContentWindow();
+		//Content.RenderContentWindow();
 		world.RenderWorldOutliner();
 		Details.RenderDetailsWindow(world);
+
+		if (!m_GUI.HasInitialized) {
+			m_GUI.init();
+		}
+
+		m_GUI.render();
 
 		//Render ImGui
 		ImGui::Render();
 
 		//Begin rendering to viewport frame-buffer
-		window.getFrameBuffer()->Bind();
+		globals::window1.getFrameBuffer()->Bind();
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
-		camera.Inputs(window.getWindow());
+		camera.Inputs(globals::window1.getWindow());
 		camera.updateMatrix(45.0f, 0.01f, 100000.0f);
 
 		// Update the physics
@@ -128,11 +132,11 @@ int main(int, char**)
 		physics_system.Update(deltaTime, cCollisionSteps, &temp_allocator, &job_system);
 
 		world.TickWorld(deltaTime);
-		world.Render(&window, &camera);
+		world.Render(&globals::window1, &camera);
 
-		debug.Update(camera, world, window);
-		
-		window.EndFrame();
+		//debug.Update(camera, world, globals::window1);
+
+		globals::window1.EndFrame();
 	}
 
 	// Cleanup
@@ -141,9 +145,9 @@ int main(int, char**)
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
 
-		window.getFrameBuffer()->Delete();
+		globals::window1.getFrameBuffer()->Delete();
 
-		glfwDestroyWindow(window.getWindow());
+		glfwDestroyWindow(globals::window1.getWindow());
 		glfwTerminate();
 	}
 

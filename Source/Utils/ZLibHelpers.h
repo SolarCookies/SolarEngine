@@ -10,13 +10,10 @@
 
 namespace Vince {
 
-	#define BYTE unsigned char
-	#define BYTES std::vector<BYTE>
-
 	// Compresses data based on input size
-	inline static BYTES CompressData(BYTES& data) {
+	inline static std::vector<unsigned char> CompressData(std::vector<unsigned char>& data) {
 
-		BYTES Result;
+		std::vector<unsigned char> Result;
 		const size_t Buffer_Size = 128 * 1024;
 		Byte Temp_Buffer[Buffer_Size];
 
@@ -62,7 +59,7 @@ namespace Vince {
 	}
 
     // Decompresses data based on input size
-    inline static BYTES DecompressData(BYTES& data, uint32_t DecompressSize) {
+    inline static std::vector<unsigned char> DecompressData(std::vector<unsigned char>& data, uint32_t DecompressSize) {
         if (DecompressSize == data.size()) {
             return data;
         }
@@ -71,7 +68,7 @@ namespace Vince {
 			return {};
 		}
 
-        BYTES Result(DecompressSize);
+        std::vector<unsigned char> Result(DecompressSize);
 
         z_stream Stream = {};
         Stream.avail_in = static_cast<uInt>(data.size());
@@ -109,7 +106,7 @@ namespace Vince {
     }
 
 	// For 32 bit/4 byte ints
-	inline static uint32_t ConvertBytesToInt(BYTES& data, bool isBigEndian) {
+	inline static uint32_t ConvertBytesToInt(std::vector<unsigned char>& data, bool isBigEndian) {
 		if (data.size() != sizeof(uint32_t)) {
 			return 0;
 		}
@@ -124,7 +121,7 @@ namespace Vince {
 		return value;
 	}
 
-	inline static uint32_t ConvertBytesToInt(BYTES& data, uint32_t startOffset, bool isBigEndian) {
+	inline static uint32_t ConvertBytesToInt(std::vector<unsigned char>& data, uint32_t startOffset, bool isBigEndian) {
 		if (data.size() < startOffset + sizeof(uint32_t)) {
 			return 0;
 		}
@@ -140,7 +137,7 @@ namespace Vince {
 	}
 
 	// For 32 bit/4 byte floats
-	inline static float ConvertBytesToFloat(BYTES& data, bool isBigEndian) {
+	inline static float ConvertBytesToFloat(std::vector<unsigned char>& data, bool isBigEndian) {
 		if (data.size() != sizeof(float)) {
 			return 0;
 		}
@@ -156,7 +153,7 @@ namespace Vince {
 		return value;
 	}
 
-	inline static float ConvertBytesToFloat(BYTES& data, uint32_t startOffset, bool isBigEndian) {
+	inline static float ConvertBytesToFloat(std::vector<unsigned char>& data, uint32_t startOffset, bool isBigEndian) {
 		if (data.size() < startOffset + sizeof(float)) {
 			return 0;
 		}
@@ -173,7 +170,7 @@ namespace Vince {
 	}
 
 	// For 16 bit/2 byte ints
-	inline static int_least16_t ConvertBytesToShort(BYTES& data, bool isBigEndian) {
+	inline static int_least16_t ConvertBytesToShort(std::vector<unsigned char>& data, bool isBigEndian) {
 		if (data.size() != sizeof(int_least16_t)) {
 			return 0;
 		}
@@ -188,7 +185,7 @@ namespace Vince {
 		return value;
 	}
 
-	inline static int_least16_t ConvertBytesToShort(BYTES& data, uint32_t startOffset, bool isBigEndian) {
+	inline static int_least16_t ConvertBytesToShort(std::vector<unsigned char>& data, uint32_t startOffset, bool isBigEndian) {
 		if (data.size() < startOffset + sizeof(int_least16_t)) {
 			return 0;
 		}
@@ -204,46 +201,46 @@ namespace Vince {
 	}
 
 	// Converts bytes to ASCII string
-	inline static std::string ConvertBytesToString(BYTES& data) {
+	inline static std::string ConvertBytesToString(std::vector<unsigned char>& data) {
 		return std::string(data.begin(), data.end());
 	}
 
 	// For 32 bit/4 byte ints
-	inline static BYTES ConvertIntToBytes(uint32_t value, bool isBigEndian) {
+	inline static std::vector<unsigned char> ConvertIntToBytes(uint32_t value, bool isBigEndian) {
 		if (isBigEndian) {
 			value = _byteswap_ulong(value);
 		}
 
-		BYTES data(sizeof(uint32_t));
+		std::vector<unsigned char> data(sizeof(uint32_t));
 		memcpy(data.data(), &value, sizeof(uint32_t));
 		return data;
 	}
 
 	// For 32 bit/4 byte floats
-	inline static BYTES ConvertFloatToBytes(float value, bool isBigEndian) {
+	inline static std::vector<unsigned char> ConvertFloatToBytes(float value, bool isBigEndian) {
 		if (isBigEndian) {
 			uint32_t temp = _byteswap_ulong(*reinterpret_cast<uint32_t*>(&value));
 			value = *reinterpret_cast<float*>(&temp);
 		}
 
-		BYTES data(sizeof(float));
+		std::vector<unsigned char> data(sizeof(float));
 		memcpy(data.data(), &value, sizeof(float));
 		return data;
 	}
 
 	// For 16 bit/2 byte ints
-	inline static BYTES ConvertShortToBytes(int_least16_t value, bool isBigEndian) {
+	inline static std::vector<unsigned char> ConvertShortToBytes(int_least16_t value, bool isBigEndian) {
 		if (isBigEndian) {
 			value = _byteswap_ushort(value);
 		}
 
-		BYTES data(sizeof(int_least16_t));
+		std::vector<unsigned char> data(sizeof(int_least16_t));
 		memcpy(data.data(), &value, sizeof(int_least16_t));
 		return data;
 	}
 
-	inline static BYTES CopyBytes(BYTES& Data, uint32_t StartOffset, uint32_t Length) {
-		BYTES Result;
+	inline static std::vector<unsigned char> CopyBytes(std::vector<unsigned char>& Data, uint32_t StartOffset, uint32_t Length) {
+		std::vector<unsigned char> Result;
 		for (int i = StartOffset; i < StartOffset + Length; i++) {
 			if (Data.size() > i) {
 				Result.push_back(Data[i]);

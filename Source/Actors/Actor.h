@@ -90,6 +90,16 @@ public:
 		return foundComponents;
 	}
 
+    void RemoveAllComponentsByName(const std::string& name) {
+        for(auto it = components.begin(); it != components.end(); ) {
+            if ((*it)->GetName() == name) {
+                it = components.erase(it);
+            } else {
+                ++it;
+            }
+		}
+	}
+
     Component* GetComponentByIndex(int index) const {
         if (index >= 0 && index < components.size()) {
             return components[index].get();
@@ -101,7 +111,7 @@ public:
         components.push_back(std::shared_ptr<Component>(component));
     }
 
-    void RenderDetails() {
+    virtual void RenderDetails() {
         if (ImGui::SliderFloat3("Position", &WorldPosition.x, -100.0f, 100.0f)) {
 			UpdateTransform();
         }

@@ -1,5 +1,7 @@
 #pragma once
+#ifndef __gl_h_
 #include "glad/glad.h"
+#endif
 #include "stb_image/stb_image.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -123,7 +125,7 @@ namespace Debug {
 		lineModel.SetMaterialParameter("model", Mat);
 
 		lineModel.SetMaterialParameter("cameraPos", cam.Position);
-		cam.Matrix(lineModel.shaderProgram, "camMatrix");
+		cam.Matrix(*lineModel.shaderProgram.get(), "camMatrix");
 
 
 		glDisable(GL_DEPTH_TEST);
@@ -190,7 +192,7 @@ namespace Debug {
         boxModel.SetMaterialParameter("model", Mat);
 
         boxModel.SetMaterialParameter("cameraPos", cam.Position);
-        cam.Matrix(boxModel.shaderProgram, "camMatrix");
+        cam.Matrix(*boxModel.shaderProgram.get(), "camMatrix");
         if (infront) {
             glDisable(GL_DEPTH_TEST);
         }
@@ -226,7 +228,7 @@ namespace Debug {
         boxModel.SetMaterialParameter("model", Mat);
 
         boxModel.SetMaterialParameter("cameraPos", cam.Position);
-        cam.Matrix(boxModel.shaderProgram, "camMatrix");
+        cam.Matrix(*boxModel.shaderProgram.get(), "camMatrix");
         if (infront) {
             glDisable(GL_DEPTH_TEST);
         }
@@ -303,7 +305,7 @@ namespace Debug {
         glm::mat4 Mat = glm::mat4(1.0f);
         squareModel.SetMaterialParameter("model", Mat);
         squareModel.SetMaterialParameter("cameraPos", cam.Position);
-        cam.Matrix(squareModel.shaderProgram, "camMatrix");
+        cam.Matrix(*squareModel.shaderProgram.get(), "camMatrix");
 
         glDisable(GL_DEPTH_TEST);
         squareModel.Draw();

@@ -1,5 +1,7 @@
 #pragma once
+#ifndef __gl_h_
 #include "glad/glad.h"
+#endif
 #include "GLFW/glfw3.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

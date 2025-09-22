@@ -59,7 +59,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>PLATFORM_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Vendors;Vendors\GLFW\include;Vendors\imguii;Vendors\zlib_x64-windows-static\include;Vendors\JoltPhysics;Vendors\Assimp\include;Vendors\ImGui-Nodes\NodeEditor\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\include;Vendors;Vendors\GLFW\include;Vendors\imguii;Vendors\zlib_x64-windows-static\include;Vendors\JoltPhysics;Vendors\Assimp\include;Vendors\ImGui-Nodes\NodeEditor\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -72,7 +72,7 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mt.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mt.lib;zlib.lib;C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\lib\x64\release\libfbxsdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>Vendors\GLFW\lib-vc2022;Vendors\zlib_x64-windows-static\lib;Vendors\Assimp\lib;Vendors\JoltPhysics\Jolt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -97,6 +97,7 @@
   <ItemGroup>
     <ClInclude Include="Source\Actors\Actor.h" />
     <ClInclude Include="Source\Actors\Lights\APointLight.h" />
+    <ClInclude Include="Source\Actors\Meshes\aid_model.h" />
     <ClInclude Include="Source\Actors\Meshes\AStaticMesh.h" />
     <ClInclude Include="Source\Components\Component.h" />
     <ClInclude Include="Source\Components\Lights\LightComponent.h" />
@@ -106,14 +107,35 @@
     <ClInclude Include="Source\Components\Meshes\VinceMapMeshComponent.h" />
     <ClInclude Include="Source\Components\Movement\MovementComponent.h" />
     <ClInclude Include="Source\Components\Movement\RigidBodyComponent.h" />
+    <ClInclude Include="Source\GlobalSettings.h" />
     <ClInclude Include="Source\Package\Hot.h" />
-    <ClInclude Include="Source\Package\VP\CAFF.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\Chunk.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\VDAT.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\VGPU.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\VLUT.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\VREF.h" />
-    <ClInclude Include="Source\Package\VP\PKG.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\CAFF.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\Streams.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\VDAT.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\VGPU.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\VREF.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\VUNK.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Chunk.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Images\DDS\DDS_Chunk.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Modelloader.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Model_Chunk.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\VertexTypes.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\File.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\GlobalPackages.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\PKG\PKG.h" />
+    <ClInclude Include="Source\Package\VP\UI\GUI.h" />
+    <ClInclude Include="Source\Package\VP\UI\Page.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\EditorSelectionPage.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\ExtractAllPage.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\FileBrowser.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\imgui_memory_editor.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\PackageManager.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\WelcomePage.h" />
+    <ClInclude Include="Source\Package\VP\Utils\OpenFIleDialog.h" />
+    <ClInclude Include="Source\Package\VP\Utils\ZLibHelpers.h" />
+    <ClInclude Include="Source\Package\VP\Utils\ini.h" />
     <ClInclude Include="Source\Shaders\DebugDraw.h" />
     <ClInclude Include="Source\Shaders\EBO.h" />
     <ClInclude Include="Source\Shaders\FrameBuffer.h" />
@@ -124,9 +146,11 @@
     <ClInclude Include="Source\Temporary\Debug.h" />
     <ClInclude Include="Source\Temporary\Mesh.h" />
     <ClInclude Include="Source\Temporary\Model.h" />
+    <ClInclude Include="Source\Utils\Crypto\sha256.h" />
     <ClInclude Include="Source\Utils\JoltHelpers.h" />
     <ClInclude Include="Source\Utils\OpenGL_Stuff.h" />
     <ClInclude Include="Source\Utils\ZLibHelpers.h" />
+    <ClInclude Include="Source\Utils\ini.h" />
     <ClInclude Include="Source\Windows\Content\ContentWindow.h" />
     <ClInclude Include="Source\Windows\DetailsPannel.h" />
     <ClInclude Include="Source\Windows\Log.hpp" />
@@ -136,6 +160,7 @@
     <ClInclude Include="Source\World\Camera.h" />
     <ClInclude Include="Source\World\LoadVinceWorld.h" />
     <ClInclude Include="Source\World\World.h" />
+    <ClInclude Include="Vendors\half\half.hpp" />
     <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\AABBTreeBuilder.h" />
     <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\AABBTreeToBuffer.h" />
     <ClInclude Include="Vendors\JoltPhysics\Jolt\AABBTree\NodeCodec\NodeCodecQuadTreeHalfFloat.h" />
@@ -438,6 +463,7 @@
     <ClInclude Include="Vendors\imguii\imstb_textedit.h" />
     <ClInclude Include="Vendors\imguii\imstb_truetype.h" />
     <ClInclude Include="Vendors\stb_image\stb_image.h" />
+    <ClInclude Include="Vendors\stb_image\stb_image_write.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Actors\Actor.cpp">
@@ -456,7 +482,10 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-    <ClCompile Include="Source\Components\Meshes\GatorMeshComponent.cpp" />
+    <ClCompile Include="Source\Components\Meshes\GatorMeshComponent.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
     <ClCompile Include="Source\Components\Meshes\StaticMeshComponent.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -465,7 +494,33 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-    <ClCompile Include="Source\Package\VP\CAFF\VREF.cpp" />
+    <ClCompile Include="Source\Package\VP\FileSystem\CAFF\Streams\VREF.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Chunk.cpp" />
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.cpp" />
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.cpp" />
+    <ClCompile Include="Source\Package\VP\UI\GUI.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\EditorSelectionPage.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\ExtractAllPage.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\PackageManager.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\WelcomePage.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
     <ClCompile Include="Source\Shaders\EBO.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -494,8 +549,18 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-    <ClCompile Include="Source\Windows\Content\ContentWindow.cpp" />
-    <ClCompile Include="Source\Windows\DetailsPannel.cpp" />
+    <ClCompile Include="Source\Utils\Crypto\sha256.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\Content\ContentWindow.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\DetailsPannel.cpp">
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
     <ClCompile Include="Source\Windows\Window.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -1076,10 +1141,6 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\LitAlbedo.frag" />
-    <None Include="Assets\Shaders\LitAlbedo.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

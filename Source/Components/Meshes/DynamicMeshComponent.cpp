@@ -54,10 +54,10 @@ void DynamicMeshComponent::Tick(float deltaTime, World* World)
 void DynamicMeshComponent::Render(VinceWindow* window, Camera* Cam)
 {
 	//OBJ.model.SetMaterialParameter("unlit", unlit ? 1 : 0);
-	OBJ->SetMaterialParameter("unlit", 0);
+	//OBJ->SetMaterialParameter("unlit", 0);
 
 	OBJ->SetMaterialParameter("cameraPos", Cam->Position);
-	Cam->Matrix(OBJ->shaderProgram, "camMatrix");
+	Cam->Matrix(*OBJ->shaderProgram.get(), "camMatrix");
 
 	glActiveTexture(GL_TEXTURE0);
 	ColorTexture.Bind();

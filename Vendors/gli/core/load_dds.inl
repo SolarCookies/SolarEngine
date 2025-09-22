@@ -2,6 +2,7 @@
 #include "file.hpp"
 #include <cstdio>
 #include <cassert>
+#include <iostream>
 
 namespace gli{
 namespace detail
@@ -292,6 +293,9 @@ namespace detail
 
 		std::size_t const SourceSize = Offset + Texture.size();
 		GLI_ASSERT(SourceSize == Size);
+
+		if (Texture.size() == 0)
+			return texture();
 
 		std::memcpy(Texture.data(), Data + Offset, Texture.size());
 

@@ -20,25 +20,44 @@ LightComponent* World::GetLightSource()
 
 void World::RenderWorldOutliner()
 {
-	ImGui::Begin("WorldOutliner");
-	for(auto& actor : Actors) {
-		ImGui::Text(actor->ActorName.c_str());
-		ImGui::SameLine();
-		if(actor->Selected) {
-			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Selected");
-		}
-		else {
-			if (ImGui::Button(("Select##" + actor->ActorName).c_str())) {
-				// Select the actor in the editor
-				if (CurrentlySelectedActor) {
-					CurrentlySelectedActor->Selected = false;
-				}
-				CurrentlySelectedActor = actor.get();
-				CurrentlySelectedActor->Selected = true;
+    ImGui::Begin("WorldOutliner");
 
-			}
-		}
-		
-	}
-	ImGui::End();
+    // Prepare list of actor names
+    std::vector<const char*> actorNames;
+    for (const auto& actor : Actors) {
+        actorNames.push_back(actor->ActorName.c_str());
+    }
+
+    // Find currently selected index
+    int selectedIndex = -1;
+    for (size_t i = 0; i < Actors.size(); ++i) {
+        if (Actors[i].get() == CurrentlySelectedActor) {
+            selectedIndex = static_cast<int>(i);
+            break;
+        }
+    }
+
+    // Get available size for the list box
+    ImVec2 listBoxSize = ImGui::GetContentRegionAvail();
+
+    // Use ImGui::BeginListBox and ImGui::EndListBox instead of ListBoxHeader/ListBoxFooter
+    if (ImGui::BeginListBox("", listBoxSize)) {
+        for (int i = 0; i < static_cast<int>(actorNames.size()); ++i) {
+            bool isSelected = (selectedIndex == i);
+            if (ImGui::Selectable(actorNames[i], isSelected)) {
+                // Update selection
+                if (CurrentlySelectedActor) {
+                    CurrentlySelectedActor->Selected = false;
+                }
+                CurrentlySelectedActor = Actors[i].get();
+                CurrentlySelectedActor->Selected = true;
+            }
+            if (isSelected) {
+                ImGui::SetItemDefaultFocus();
+            }
+        }
+        ImGui::EndListBox();
+    }
+
+    ImGui::End();
 }

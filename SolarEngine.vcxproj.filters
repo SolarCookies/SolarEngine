@@ -28,6 +28,48 @@
     <Filter Include="SolarEngine\Package">
       <UniqueIdentifier>{57235A91-C384-379F-4CF2-7D51B8526E5E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SolarEngine\Package\VP">
+      <UniqueIdentifier>{4CCB7B5E-38C5-A4B0-2132-3BC10DCB0A1D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem">
+      <UniqueIdentifier>{E085C431-4CF4-19B1-95DD-D4B0018B0F4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\CAFF">
+      <UniqueIdentifier>{BF8C5B38-ABDE-3228-94FD-6F3880EE4B11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\CAFF\Streams">
+      <UniqueIdentifier>{6D0316C6-5981-665F-4279-24F72E96A887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\Chunks">
+      <UniqueIdentifier>{5BF24DC0-476F-4103-70EC-41175CC8DD96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\Chunks\Images">
+      <UniqueIdentifier>{A07E75D2-0CBA-D595-15AF-522581695AC6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\Chunks\Images\DDS">
+      <UniqueIdentifier>{CABE6EF8-36D0-169F-BF21-A9DE2B32A0D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\Chunks\Images\RAW">
+      <UniqueIdentifier>{F9F96EF8-650B-179F-EE5C-A9DE5A6DA0D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\PKG">
+      <UniqueIdentifier>{F1996FEA-5D5E-6EDA-26C4-9EA492470A10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\UI">
+      <UniqueIdentifier>{F96A1680-652D-4A0A-AEDD-D8961ADF22E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\UI\Pages">
+      <UniqueIdentifier>{F813A4A8-64F7-B2E8-6DFA-E024D95C7939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\UI\Pages\PackageManager">
+      <UniqueIdentifier>{CE9E109C-BA1C-6135-A314-1FCD8F31A35D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\UI\Pages\PackageManager\FileBrowser">
+      <UniqueIdentifier>{41C1C81B-2D81-59C0-969E-41CB827D6CD2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\Utils">
+      <UniqueIdentifier>{AC1518CB-98D0-0777-4188-80C12D225207}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SolarEngine\Shaders">
       <UniqueIdentifier>{D5007588-4162-5296-CACF-984836308955}</UniqueIdentifier>
     </Filter>
@@ -37,11 +79,26 @@
     <Filter Include="SolarEngine\Utils">
       <UniqueIdentifier>{5CAE574A-C8C4-55E0-113C-E1017D912668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SolarEngine\Utils\Crypto">
+      <UniqueIdentifier>{8C675ECF-788C-AD4F-A1D7-92DF8D5BAC6D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SolarEngine\Windows">
       <UniqueIdentifier>{36869EBF-A2E7-7BCD-2B55-C27F97B5B28C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SolarEngine\Windows\Content">
+      <UniqueIdentifier>{80D58CC3-ECE2-BAA9-75C9-B694E1D58660}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SolarEngine\World">
       <UniqueIdentifier>{B347794A-1F5E-77E0-68D5-0202D42A4868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{56EB95D1-428D-C0A7-2B48-D4FB178947F8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utils">
+      <UniqueIdentifier>{369510F3-22F8-9F97-CB7D-D84DB7BF6B1A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utils\Crypto">
+      <UniqueIdentifier>{26D567CE-9236-45DC-1BA4-8B8E87047C9B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vendors">
       <UniqueIdentifier>{665268D3-D231-E76E-DB49-724547A84DD0}</UniqueIdentifier>
@@ -147,14 +204,92 @@
     <ClInclude Include="Source\Components\Meshes\StaticMeshComponent.h">
       <Filter>SolarEngine\Components\Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Components\Meshes\VinceMapMeshComponent.h">
+      <Filter>SolarEngine\Components\Meshes</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Components\Movement\MovementComponent.h">
       <Filter>SolarEngine\Components\Movement</Filter>
     </ClInclude>
     <ClInclude Include="Source\Components\Movement\RigidBodyComponent.h">
       <Filter>SolarEngine\Components\Movement</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GlobalSettings.h">
+      <Filter>SolarEngine</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Package\Hot.h">
       <Filter>SolarEngine\Package</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\CAFF.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\CAFF</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\Streams.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\CAFF\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\VDAT.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\CAFF\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\VGPU.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\CAFF\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\VREF.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\CAFF\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\CAFF\Streams\VUNK.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\CAFF\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Chunk.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Images\DDS\DDS_Chunk.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks\Images\DDS</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks\Images\RAW</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\File.h">
+      <Filter>SolarEngine\Package\VP\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\PKG\PKG.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\PKG</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\GUI.h">
+      <Filter>SolarEngine\Package\VP\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Page.h">
+      <Filter>SolarEngine\Package\VP\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\EditorSelectionPage.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\ExtractAllPage.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\FileBrowser.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages\PackageManager\FileBrowser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\imgui_memory_editor.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages\PackageManager\FileBrowser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\PackageManager.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages\PackageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\WelcomePage.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\Utils\OpenFIleDialog.h">
+      <Filter>SolarEngine\Package\VP\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\Utils\ZLibHelpers.h">
+      <Filter>SolarEngine\Package\VP\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\Utils\ini.h">
+      <Filter>SolarEngine\Package\VP\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shaders\DebugDraw.h">
+      <Filter>SolarEngine\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="Source\Shaders\EBO.h">
       <Filter>SolarEngine\Shaders</Filter>
@@ -174,11 +309,17 @@
     <ClInclude Include="Source\Shaders\VBO.h">
       <Filter>SolarEngine\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Temporary\Debug.h">
+      <Filter>SolarEngine\Temporary</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Temporary\Mesh.h">
       <Filter>SolarEngine\Temporary</Filter>
     </ClInclude>
     <ClInclude Include="Source\Temporary\Model.h">
       <Filter>SolarEngine\Temporary</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Crypto\sha256.h">
+      <Filter>SolarEngine\Utils\Crypto</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utils\JoltHelpers.h">
       <Filter>SolarEngine\Utils</Filter>
@@ -189,10 +330,25 @@
     <ClInclude Include="Source\Utils\ZLibHelpers.h">
       <Filter>SolarEngine\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Utils\ini.h">
+      <Filter>SolarEngine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Windows\Content\ContentWindow.h">
+      <Filter>SolarEngine\Windows\Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Windows\DetailsPannel.h">
+      <Filter>SolarEngine\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Windows\Log.hpp">
       <Filter>SolarEngine\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Windows\ViewportWindow.h">
+      <Filter>SolarEngine\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Windows\Window.h">
+      <Filter>SolarEngine\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Windows\WorldSettingsWindow.h">
       <Filter>SolarEngine\Windows</Filter>
     </ClInclude>
     <ClInclude Include="Source\World\Camera.h">
@@ -1110,20 +1266,15 @@
     <ClInclude Include="Vendors\stb_image\stb_image.h">
       <Filter>Vendors\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Windows\Content\ContentWindow.h" />
-    <ClInclude Include="Source\Windows\DetailsPannel.h" />
-    <ClInclude Include="Source\Shaders\DebugDraw.h" />
-    <ClInclude Include="Source\Components\Meshes\VinceMapMeshComponent.h" />
-    <ClInclude Include="Source\Temporary\Debug.h" />
-    <ClInclude Include="Source\Windows\WorldSettingsWindow.h" />
-    <ClInclude Include="Source\Windows\ViewportWindow.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\VREF.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\VDAT.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\VLUT.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\VGPU.h" />
-    <ClInclude Include="Source\Package\VP\CAFF.h" />
-    <ClInclude Include="Source\Package\VP\PKG.h" />
-    <ClInclude Include="Source\Package\VP\CAFF\Chunk.h" />
+    <ClInclude Include="Vendors\stb_image\stb_image_write.h">
+      <Filter>Vendors\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Model_Chunk.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Modelloader.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\VertexTypes.h" />
+    <ClInclude Include="Vendors\half\half.hpp" />
+    <ClInclude Include="Source\Actors\Meshes\aid_model.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\GlobalPackages.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Actors\Actor.cpp">
@@ -1138,11 +1289,32 @@
     <ClCompile Include="Source\Components\Meshes\DynamicMeshComponent.cpp">
       <Filter>SolarEngine\Components\Meshes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Components\Meshes\GatorMeshComponent.cpp">
+      <Filter>SolarEngine\Components\Meshes</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Components\Meshes\StaticMeshComponent.cpp">
       <Filter>SolarEngine\Components\Meshes</Filter>
     </ClCompile>
     <ClCompile Include="Source\Components\Movement\MovementComponent.cpp">
       <Filter>SolarEngine\Components\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\FileSystem\CAFF\Streams\VREF.cpp">
+      <Filter>SolarEngine\Package\VP\FileSystem\CAFF\Streams</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\GUI.cpp">
+      <Filter>SolarEngine\Package\VP\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\EditorSelectionPage.cpp">
+      <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\ExtractAllPage.cpp">
+      <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\PackageManager.cpp">
+      <Filter>SolarEngine\Package\VP\UI\Pages\PackageManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\WelcomePage.cpp">
+      <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
     </ClCompile>
     <ClCompile Include="Source\Shaders\EBO.cpp">
       <Filter>SolarEngine\Shaders</Filter>
@@ -1164,6 +1336,15 @@
     </ClCompile>
     <ClCompile Include="Source\SolarEngine.cpp">
       <Filter>SolarEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utils\Crypto\sha256.cpp">
+      <Filter>Source\Utils\Crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\Content\ContentWindow.cpp">
+      <Filter>SolarEngine\Windows\Content</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\DetailsPannel.cpp">
+      <Filter>SolarEngine\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Source\Windows\Window.cpp">
       <Filter>SolarEngine\Windows</Filter>
@@ -1600,13 +1781,8 @@
     <ClCompile Include="Vendors\stb_image\stb_image.cpp">
       <Filter>Vendors\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Windows\Content\ContentWindow.cpp" />
-    <ClCompile Include="Source\Windows\DetailsPannel.cpp" />
-    <ClCompile Include="Source\Components\Meshes\GatorMeshComponent.cpp" />
-    <ClCompile Include="Source\Package\VP\CAFF\VREF.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\LitAlbedo.vert" />
-    <None Include="Assets\Shaders\LitAlbedo.frag" />
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Chunk.cpp" />
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.cpp" />
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.cpp" />
   </ItemGroup>
 </Project>

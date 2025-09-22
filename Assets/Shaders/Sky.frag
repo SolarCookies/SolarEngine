@@ -2,24 +2,30 @@
 
 out vec4 FragColor;
 
-in vec3 color;
+in vec3 viewDir;
 
-in vec2 texCoord;
-
-in vec3 Normal;
-in vec3 crntPos;
-
-uniform sampler2D tex0; // DiffuseMap
-
-uniform sampler2D tex1; // NormalMap
-
-uniform vec4 lightColor;
-uniform vec3 lightPos;
-uniform vec3 cameraPos;
-uniform int unlit; // Unlit flag
+uniform vec3 uSunDirection = vec3(0.5, 0.5, 0.0); // Constant sun direction
 
 void main()
 {
-    vec4 texColor = texture(tex0, texCoord * vec2(1.0f, -1.0f)); // Flip Y for correct texture sampling
-    FragColor = texColor; // Use the color input directly
+    // Gradient: mix horizon (light blue) and zenith (deep blue)
+    vec3 horizonColor = vec3(0.7, 0.85, 1.0); // light blue
+    vec3 zenithColor = vec3(0.05, 0.2, 0.6);  // deep blue
+    float t = clamp(viewDir.y * 0.5 + 0.5, 0.0, 1.0); // -1..1 -> 0..1
+    vec3 skyColor = mix(horizonColor, zenithColor, t);
+
+    // Sun disk parameters
+    float sunDiskRadius = 0.02; // radians, adjust for size
+    float sunSoftness = 0.008;  // edge softness
+    vec3 sunColor = vec3(1.0, 0.95, 0.7);
+
+    float sunDot = dot(normalize(viewDir), normalize(uSunDirection));
+    float sunDisk = smoothstep(sunDiskRadius + sunSoftness, sunDiskRadius - sunSoftness, acos(sunDot));
+    skyColor = mix(skyColor, sunColor, sunDisk);
+
+    // Optional: subtle sun glow
+    float sunGlow = pow(max(sunDot, 0.0), 32.0) * 0.5;
+    skyColor += sunColor * sunGlow;
+
+    FragColor = vec4(skyColor, 1.0);
 }

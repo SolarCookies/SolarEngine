@@ -30,8 +30,6 @@ using namespace JPH;
 // If you want your code to compile using single or double precision write 0.0_r to get a Real value that compiles to double or float depending if JPH_DOUBLE_PRECISION is set or not.
 using namespace JPH::literals;
 
-// We're also using STL classes in this example
-using namespace std;
 
 // Callback for traces, connect this to your own trace function if you have one
 static void TraceImpl(const char* inFMT, ...)
@@ -44,7 +42,7 @@ static void TraceImpl(const char* inFMT, ...)
 	va_end(list);
 
 	// Print to the TTY
-	cout << buffer << endl;
+	std::cout << buffer << std::endl;
 }
 
 #ifdef JPH_ENABLE_ASSERTS
@@ -168,7 +166,7 @@ public:
 	// See: ContactListener
 	virtual ValidateResult	OnContactValidate(const Body& inBody1, const Body& inBody2, RVec3Arg inBaseOffset, const CollideShapeResult& inCollisionResult) override
 	{
-		cout << "Contact validate callback" << endl;
+		std::cout << "Contact validate callback" << std::endl;
 
 		// Allows you to ignore a contact before it is created (using layers to not make objects collide is cheaper!)
 		return ValidateResult::AcceptAllContactsForThisBodyPair;
@@ -176,17 +174,17 @@ public:
 
 	virtual void			OnContactAdded(const Body& inBody1, const Body& inBody2, const ContactManifold& inManifold, ContactSettings& ioSettings) override
 	{
-		cout << "A contact was added" << endl;
+		std::cout << "A contact was added" << std::endl;
 	}
 
 	virtual void			OnContactPersisted(const Body& inBody1, const Body& inBody2, const ContactManifold& inManifold, ContactSettings& ioSettings) override
 	{
-		cout << "A contact was persisted" << endl;
+		std::cout << "A contact was persisted" << std::endl;
 	}
 
 	virtual void			OnContactRemoved(const SubShapeIDPair& inSubShapePair) override
 	{
-		cout << "A contact was removed" << endl;
+		std::cout << "A contact was removed" << std::endl;
 	}
 };
 
@@ -196,12 +194,12 @@ class MyBodyActivationListener : public BodyActivationListener
 public:
 	virtual void		OnBodyActivated(const BodyID& inBodyID, uint64 inBodyUserData) override
 	{
-		cout << "A body got activated" << endl;
+		std::cout << "A body got activated" << std::endl;
 	}
 
 	virtual void		OnBodyDeactivated(const BodyID& inBodyID, uint64 inBodyUserData) override
 	{
-		cout << "A body went to sleep" << endl;
+		std::cout << "A body went to sleep" << std::endl;
 	}
 };
 

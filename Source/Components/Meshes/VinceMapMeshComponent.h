@@ -40,9 +40,9 @@ public:
         // Build all vertices
         for (int i = 0; i < VertexCount; i += 1) {
             DynamicVertex vertex;
-            BYTES xBytes = Vince::CopyBytes(Mesh, i * VertexSpacing, 4);
-            BYTES yBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 4, 4);
-            BYTES zBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 8, 4);
+            std::vector<unsigned char> xBytes = Vince::CopyBytes(Mesh, i * VertexSpacing, 4);
+            std::vector<unsigned char> yBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 4, 4);
+            std::vector<unsigned char> zBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 8, 4);
             float x = Vince::ConvertBytesToFloat(xBytes, false);
             float y = Vince::ConvertBytesToFloat(yBytes, false);
             float z = Vince::ConvertBytesToFloat(zBytes, false);
@@ -50,9 +50,9 @@ public:
             vertex.position = glm::vec3(x, y, z);
 
             // Color
-            BYTES rBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 48, 1);
-            BYTES gBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 49, 1);
-            BYTES bBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 50, 1);
+            std::vector<unsigned char> rBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 48, 1);
+            std::vector<unsigned char> gBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 49, 1);
+            std::vector<unsigned char> bBytes = Vince::CopyBytes(Mesh, i * VertexSpacing + 50, 1);
             float r = static_cast<float>(rBytes[0]) / 255.0f;
             float g = static_cast<float>(gBytes[0]) / 255.0f;
             float b = static_cast<float>(bBytes[0]) / 255.0f;

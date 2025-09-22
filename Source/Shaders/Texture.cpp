@@ -1,5 +1,12 @@
 #include"Texture.h"
-#include <gli/gli.hpp>
+#ifndef __gl_h_
+#include "glad/glad.h"
+#endif
+#include "stb_image/stb_image.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <stdexcept>
 
 Texture::Texture(const char* image, GLenum texType, GLenum slot, GLenum format, GLenum pixelType)
 {
@@ -109,8 +116,8 @@ Texture::Texture(const std::vector<unsigned char>& DDSdata)
 	glm::tvec3<GLsizei> extent = texture.extent();
 
 	// Configures the type of algorithm that is used to make the image smaller or bigger
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // or GL_NEAREST
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // or GL_NEAREST
 
 	// Configures the way the texture repeats (if it does at all)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -138,6 +145,33 @@ Texture::Texture(const std::vector<unsigned char>& DDSdata)
 
 	ID = testTextureID;
 }
+
+//Load Raw RGBA 4bytes per pixel from memory
+Texture::Texture(std::vector<unsigned char>& Rawdata, GLenum pixelType, int widthImg, int heightImg)
+{
+	type = GL_TEXTURE_2D;
+	// Generates an OpenGL texture object
+	glGenTextures(1, &ID);
+	// Assigns the texture to a Texture Unit
+	glBindTexture(GL_TEXTURE_2D, ID);
+	// Configures the type of algorithm that is used to make the image smaller or bigger
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // or GL_NEAREST
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // or GL_NEAREST
+	// Configures the way the texture repeats (if it does at all)
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	// Extra lines in case you choose to use GL_CLAMP_TO_BORDER
+	// float flatColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	// glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, flatColor);
+	// Assigns the image to the OpenGL Texture object
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, widthImg, heightImg, 0, GL_RGBA, pixelType, Rawdata.data());
+	// Generates MipMaps
+	glGenerateMipmap(GL_TEXTURE_2D);
+	// Unbinds the OpenGL Texture object so that it can't accidentally be modified
+	glBindTexture(GL_TEXTURE_2D, 0);
+	
+}
+
 
 void Texture::texUnit(Shader& shader, const char* uniform, GLuint unit)
 {

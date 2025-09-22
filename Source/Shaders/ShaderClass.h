@@ -1,6 +1,8 @@
 #pragma once
 
-#include<glad/glad.h>
+#ifndef __gl_h_
+#include "glad/glad.h"
+#endif
 #include<string>
 #include<fstream>
 #include<sstream>

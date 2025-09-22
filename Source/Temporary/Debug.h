@@ -10,11 +10,19 @@ public:
 	void Init(World& world, VinceWindow& Window, PhysicsSystem& physics_system) {
 		// Initialize debug features here
 
+		//Spawn Skybox
+		auto SkyboxActor = std::make_unique<AStaticMesh>("Assets/Textures/sky.obj", "Sky");
+		SkyboxTexture = Texture("Assets/Textures/sky.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
+		StaticMeshComponent* SkyboxMeshComponent = dynamic_cast<StaticMeshComponent*>(SkyboxActor->GetComponentByIndex(0));
+		SkyboxMeshComponent->ColorTexture = &SkyboxTexture;
+		SkyboxActor->SetWorldScale(glm::vec3(5.0f, 5.0f, 5.0f));
+		world.AddActor(std::move(SkyboxActor));
+
 	//Spawn Light
 		auto lightActor = std::make_unique<APointLight>();
 		LightComponent* light = dynamic_cast<LightComponent*>(lightActor->GetComponentByIndex(0));
 		world.AddActor(std::move(lightActor));
-		
+
 		//Spawn Dragon, With physics body and textures
 		auto DragonMeshActor = std::make_unique<AStaticMesh>("Assets/Models/Dragon/model2.obj", "Default");
 		ColorTexture = Texture("Assets/Models/Dragon/Color.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
@@ -31,14 +39,6 @@ public:
 		DragonmeshComponent->NormalTexture = &NormalTexture;
 		world.AddActor(std::move(DragonMeshActor));
 		
-		//Spawn Skybox
-		auto SkyboxActor = std::make_unique<AStaticMesh>("Assets/Textures/sky.obj", "Sky");
-		SkyboxTexture = Texture("Assets/Textures/sky.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
-		StaticMeshComponent* SkyboxMeshComponent = dynamic_cast<StaticMeshComponent*>(SkyboxActor->GetComponentByIndex(0));
-		SkyboxMeshComponent->ColorTexture = &SkyboxTexture;
-		SkyboxActor->SetWorldScale(glm::vec3(5.0f, 5.0f, 5.0f));
-		world.AddActor(std::move(SkyboxActor));
-
 		
 		//Spawn Floor, With static physics body
 		auto floorMeshActor = std::make_unique<AStaticMesh>("Assets/Models/floor.obj", "Color");

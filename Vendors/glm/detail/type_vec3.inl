@@ -741,6 +741,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator/(vec<1, T, Q> const& scalar, vec<3, T, Q> const& v)
 	{
+		//valid check
+		if(v.x == T(0) || v.y == T(0) || v.z == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			scalar.x / v.x,
 			scalar.x / v.y,
@@ -750,6 +753,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator/(vec<3, T, Q> const& v1, vec<3, T, Q> const& v2)
 	{
+		//valid check
+		if(v2.x == T(0) || v2.y == T(0) || v2.z == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			v1.x / v2.x,
 			v1.y / v2.y,
@@ -761,6 +767,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator%(vec<3, T, Q> const& v, T scalar)
 	{
+		//valid check
+		if(scalar == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			v.x % scalar,
 			v.y % scalar,
@@ -770,6 +779,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator%(vec<3, T, Q> const& v, vec<1, T, Q> const& scalar)
 	{
+		//valid check
+		if(scalar.x == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			v.x % scalar.x,
 			v.y % scalar.x,
@@ -779,6 +791,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator%(T scalar, vec<3, T, Q> const& v)
 	{
+		//valid check
+		if(v.x == T(0) || v.y == T(0) || v.z == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			scalar % v.x,
 			scalar % v.y,
@@ -788,6 +803,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator%(vec<1, T, Q> const& scalar, vec<3, T, Q> const& v)
 	{
+		//valid check
+		if(v.x == T(0) || v.y == T(0) || v.z == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			scalar.x % v.x,
 			scalar.x % v.y,
@@ -806,6 +824,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator&(vec<3, T, Q> const& v, T scalar)
 	{
+		//valid check
+		if(scalar == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			v.x & scalar,
 			v.y & scalar,
@@ -815,6 +836,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator&(vec<3, T, Q> const& v, vec<1, T, Q> const& scalar)
 	{
+		//valid check
+		if(scalar.x == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			v.x & scalar.x,
 			v.y & scalar.x,
@@ -824,6 +848,9 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<3, T, Q> operator&(T scalar, vec<3, T, Q> const& v)
 	{
+		//valid check
+		if(v.x == T(0) || v.y == T(0) || v.z == T(0))
+			return vec<3, T, Q>(T(0));
 		return vec<3, T, Q>(
 			scalar & v.x,
 			scalar & v.y,

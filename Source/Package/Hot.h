@@ -34,13 +34,13 @@ namespace Hot
 		std::streamsize size = file.tellg();
 		file.seekg(0, std::ios::beg);
 
-		BYTES buffer(static_cast<size_t>(size));
+		std::vector<unsigned char> buffer(static_cast<size_t>(size));
 		if (size > 0 && file.read(reinterpret_cast<char*>(buffer.data()), size)) {
 			std::cout << "File read successfully: " << filePath << std::endl;
 			std::cout << "File size: " << size << " bytes" << std::endl;
 
 			//Get how many files are in the hot file
-			BYTES TempBytes = Vince::CopyBytes(buffer, 24, 4); // File count
+			std::vector<unsigned char> TempBytes = Vince::CopyBytes(buffer, 24, 4); // File count
 			uint32_t FileCount = Vince::ConvertBytesToInt(TempBytes, false);
 
 			HotFile hotFile;
@@ -93,8 +93,8 @@ namespace Hot
 				}
 				//decompress the file
 				else if (FileInfo.C_Size > 0 && FileInfo.U_Size > 0 && FileInfo.Offset > 0) {
-					BYTES CompressedData = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.C_Size);
-					BYTES DecompressedData = Vince::DecompressData(CompressedData, FileInfo.U_Size);
+					std::vector<unsigned char> CompressedData = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.C_Size);
+					std::vector<unsigned char> DecompressedData = Vince::DecompressData(CompressedData, FileInfo.U_Size);
 					if (!DecompressedData.empty()) {
 						FileInfo.Data = DecompressedData;
 					}
@@ -121,11 +121,11 @@ namespace Hot
 
 	inline static HotFile ReadFile(HotFileInfo a)
 	{
-		BYTES buffer = a.Data;
+		std::vector<unsigned char> buffer = a.Data;
 		std::cout << "File read successfully: " << a.Name << std::endl;
 
 		//Get how many files are in the hot file
-		BYTES TempBytes = Vince::CopyBytes(buffer, 24, 4); // File count
+		std::vector<unsigned char> TempBytes = Vince::CopyBytes(buffer, 24, 4); // File count
 		uint32_t FileCount = Vince::ConvertBytesToInt(TempBytes, false);
 
 		HotFile hotFile;
@@ -177,8 +177,8 @@ namespace Hot
 			}
 			//decompress the file
 			else if (FileInfo.C_Size > 0 && FileInfo.U_Size > 0 && FileInfo.Offset > 0) {
-				BYTES CompressedData = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.C_Size);
-				BYTES DecompressedData = Vince::DecompressData(CompressedData, FileInfo.U_Size);
+				std::vector<unsigned char> CompressedData = Vince::CopyBytes(buffer, FileInfo.Offset, FileInfo.C_Size);
+				std::vector<unsigned char> DecompressedData = Vince::DecompressData(CompressedData, FileInfo.U_Size);
 				if (!DecompressedData.empty()) {
 					if (FileInfo.HeaderSize > 0) {
 						FileInfo.Data = Vince::CopyBytes(buffer, FileInfo.HeaderOffset, FileInfo.HeaderSize);

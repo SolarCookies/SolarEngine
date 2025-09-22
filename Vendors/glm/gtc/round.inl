@@ -308,6 +308,8 @@ namespace detail
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<L, T, Q> ceilMultiple(vec<L, T, Q> const& Source, vec<L, T, Q> const& Multiple)
 	{
+		if (any(lessThanEqual(Multiple, vec<L, T, Q>(0))))
+			return vec<L, T, Q>(std::numeric_limits<T>::quiet_NaN());
 		return detail::functor2<vec, L, T, Q>::call(ceilMultiple, Source, Multiple);
 	}
 

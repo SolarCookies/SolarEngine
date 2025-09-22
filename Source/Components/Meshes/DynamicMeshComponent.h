@@ -1,7 +1,7 @@
 #pragma once
 #include "../Component.h"
 #include "../../Temporary/Model.h"
-#include "../Component.h"
+#include "../../Windows/Log.hpp"
 
 
 // Forward declaration
@@ -61,7 +61,10 @@ public:
 			convertedVertices,
 			Triangles
 		);
+
+		ColorTexture = Texture("Assets/Textures/Error.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 		OBJ->SetMaterialParameter("tex0", ColorTexture);
+		
 	}
 
 	void AddTriangle(GLuint v1, GLuint v2, GLuint v3, bool isDirty)
@@ -80,12 +83,18 @@ public:
 			ReInitializeModel(); //Only reinitialize if the model is dirty Aka this is the last vertex to add
 	}
 
-	void ConstructMesh(std::vector<DynamicVertex> Vertices, std::vector<GLuint> Triangles, bool isDirty = true)
+	void ConstructMesh(std::vector<DynamicVertex> vertices1, std::vector<GLuint> triangles1, bool isDirty = true)
 	{
-		this->Vertices = Vertices;
-		this->Triangles = Triangles;
+		if(vertices1.size() == 0 || triangles1.size() == 0) {
+			std::cout << "Error: Cannot construct mesh with zero vertices or triangles." << std::endl;
+			std::cout << "Vertices size: " << vertices1.size() << std::endl;
+			std::cout << "Triangles size: " << triangles1.size() << std::endl;
+		}
+		Vertices = vertices1;
+		Triangles = triangles1;
 		ReInitializeModel(); //Only reinitialize if the model is dirty Aka this is the last triangle to add
 	}
+
 	void SetMeshSilently(std::vector<DynamicVertex> Vertices, std::vector<GLuint> Triangles)
 	{
 		this->Vertices = Vertices;
