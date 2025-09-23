@@ -37,6 +37,7 @@ protected:
 public:
 	std::vector<unsigned char> VDAT;
 	std::vector<unsigned char> VGPU;
+	int CAFFIndex = 0;
 	int FileIndex = 0; //Index of the chunk in the vref
 	bool PendingUpdate = false; //If true, the chunk has been modified and needs to be saved back to the archive
 	std::string Name;
@@ -47,7 +48,7 @@ public:
 
 	Chunk() : File() {};
 	Chunk(const std::vector<unsigned char>& rawFile) : File(rawFile) {};
-	Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info);
+	Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info, int cAFFIndex);
 	
 	void LoadFile(const std::vector<unsigned char>& rawFile) override {
 

@@ -5,6 +5,7 @@
 #include "../../Windows/Log.hpp"
 #include "../../GlobalSettings.h"
 #include "../../Temporary/Debug.h"
+#include "../../Package/VP/FileSystem/GlobalPackages.h"
 
 class Aid_Model : public Actor
 {
@@ -36,7 +37,13 @@ public:
 			for(int l = 0; l < numModels; l++) {
 
 				auto dynamicMeshComponent = std::make_shared<DynamicMeshComponent>("LitAlbedo");
-				
+				Texture* texture = LookupTexture(CurrentModel[l].ColorTextureName);
+				if(texture != nullptr) {
+					dynamicMeshComponent->ColorTexture = *texture;
+				}
+				else {
+					std::cout << "Texture not found: " << CurrentModel[l].ColorTextureName << std::endl;
+				}
 
 				std::vector<DynamicVertex> Vertices;
 				std::vector<GLuint> Triangles;
@@ -110,6 +117,26 @@ public:
 				FileViewBuffer = model.rawIndexBlock;
 				GlobalSaveFunction = [this](const std::vector<unsigned char>& data) {};
 			}
+
+			if (ImGui::Button("Export Vertex Block")) {
+				FileName = "Vertex Block";
+				FileViewType = 1;
+				FileViewBuffer = model.rawVertBlock;
+				GlobalSaveFunction = [this](const std::vector<unsigned char>& data) {};
+			}
+			if (ImGui::Button("Export Indices Block")) {
+				FileName = "Indices Block";
+				FileViewType = 1;
+				FileViewBuffer = model.rawIndexBlock;
+				GlobalSaveFunction = [this](const std::vector<unsigned char>& data) {};
+			}
+
+			//Text that shows the first u and v coordinate of the texture coordinates
+			if(model.objectsVerts.size() > 0) {
+				ImGui::Text(("First UV Coordinate: " + std::to_string(model.objectsVerts[0].texCoord.u) + ", " + std::to_string(model.objectsVerts[0].texCoord.v)).c_str());
+				ImGui::Text(("UV Offset: " + std::to_string(model.objectsVerts[0].extraData.texCoordOffset)).c_str());
+			}
+
 			ImGui::EndChild();
 			f++;
 		}

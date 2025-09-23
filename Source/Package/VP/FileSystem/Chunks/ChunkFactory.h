@@ -20,7 +20,8 @@ struct ChunkInfo;
 		const std::vector<unsigned char>& rawVGPU,
 		bool& IsBig,
 		std::string& name,
-		ChunkInfo& Info
+		ChunkInfo& Info,
+		int CAFFIndex
 	) {
 
 		//std::cout << "Creating chunk: " << name << std::endl;
@@ -66,13 +67,13 @@ struct ChunkInfo;
 
 			//if first 4 bites are " dds" then file is a dds_chunk
 			if (rawVGPU.size() >= 4 && rawVGPU[1] == 'd' && rawVGPU[2] == 'd' && rawVGPU[3] == 's') {
-				return std::make_unique<DDS_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info);
+				return std::make_unique<DDS_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 			}
 			if (Encoding == 1 || Encoding == 2 || Encoding == 3) { //dds
-				return std::make_unique<DDS_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info);
+				return std::make_unique<DDS_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 			}
 			if (Encoding >= 4) {
-				return std::make_unique<RGBA_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info);
+				return std::make_unique<RGBA_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 			}
 			goto loc_chunk;
 		}
@@ -80,9 +81,9 @@ struct ChunkInfo;
 	loc_model:
 		{
 			if (rawVGPU.size() < 4) goto loc_chunk;
-			return std::make_unique<Model_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info);
+			return std::make_unique<Model_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 		}
 
 	loc_chunk:
-		return std::make_unique<Chunk>(rawVDAT, rawVGPU, IsBig, name, Info);
+		return std::make_unique<Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 	}

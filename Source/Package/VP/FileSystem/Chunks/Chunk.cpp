@@ -1,7 +1,7 @@
 #include "Chunk.h"
 
-Chunk::Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info)
-	: File(rawVDAT, IsBig), VDAT(rawVDAT), VGPU(rawVGPU), Name(name), info(Info)
+Chunk::Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info,int cAFFIndex)
+	: File(rawVDAT, IsBig), VDAT(rawVDAT), VGPU(rawVGPU), Name(name), info(Info), CAFFIndex(cAFFIndex)
 {
 	//set timestamp from name
 	size_t firstComma = name.find(',');

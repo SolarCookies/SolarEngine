@@ -62,7 +62,9 @@ public:
 			Triangles
 		);
 
-		ColorTexture = Texture("Assets/Textures/Error.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+		if (ColorTexture.ID == 0) {
+			ColorTexture = Texture("Assets/Textures/Error.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+		}
 		OBJ->SetMaterialParameter("tex0", ColorTexture);
 		
 	}
@@ -124,14 +126,14 @@ public:
 	glm::mat4 Mat = glm::mat4(1.0f);
 
 	bool isTriangleStrip = false;
+	Texture ColorTexture;
+	Texture NormalTexture;
 protected:
 	//Model* OBJ;
 	std::unique_ptr<Model> OBJ; // Temporary model for reinitialization
 	std::string shaderName;
 	std::vector <DynamicVertex> Vertices;
 	std::vector <GLuint> Triangles; // Aka Indices
-	Texture ColorTexture;
-	Texture NormalTexture;
 	// Vertices coordinates
 	std::vector<GLfloat> ErrorVertices =
 	{ //     COORDINATES     /        COLORS          /    TexCoord   /        NORMALS       //

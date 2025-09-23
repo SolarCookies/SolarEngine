@@ -55,8 +55,7 @@ public:
 			//add padding to caffData to avoid out of bounds reads
 			caffData.resize(entry.Size + 50000, 0);
 			//std::cout << "Loading CAFF: " << index << " at offset " << entry.Offset << " with size " << entry.Size << std::endl;
-			CAFF caff = CAFF(caffData, IsBigEndianFile);
-
+			CAFF caff = CAFF(caffData, IsBigEndianFile, index - 1);
 			CAFFs.push_back(std::move(caff));
 		}
 	}

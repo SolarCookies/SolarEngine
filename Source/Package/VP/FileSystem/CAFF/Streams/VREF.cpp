@@ -120,7 +120,7 @@ void VREF::LoadChunks(CAFF& caff)
 			
 		if (chunkI.VDat.ID > 0 && chunkI.VDat.ID <= Names.size()) {
 			std::string& name = Names[chunkI.VDat.ID - 1];
-			std::unique_ptr <Chunk> C = CreateChunk(chunkVDAT, chunkVGPU, IsBigEndianFile, Names[chunkI.VDat.ID - 1], chunkI);
+			std::unique_ptr <Chunk> C = CreateChunk(chunkVDAT, chunkVGPU, IsBigEndianFile, Names[chunkI.VDat.ID - 1], chunkI, CAFFIndex);
 			caff.chunks.push_back(std::move(C));
 		}
 		else {

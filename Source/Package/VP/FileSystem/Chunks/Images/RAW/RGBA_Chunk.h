@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Chunk.h"
+#include "../../../GlobalPackages.h"
 
 
 
@@ -32,8 +33,8 @@ public:
 
     RGBA_Chunk() : Chunk() {};
     RGBA_Chunk(const std::vector<unsigned char>& rawFile) : Chunk(rawFile) {};
-    RGBA_Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info)
-        : Chunk(rawVDAT, rawVGPU, IsBig, name, Info)
+    RGBA_Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info, int cAFFIndex)
+        : Chunk(rawVDAT, rawVGPU, IsBig, name, Info, cAFFIndex)
     {
 		
         memcpy(&SizeX, &rawVDAT.data()[0] + 8, sizeof(uint16_t));
@@ -62,6 +63,7 @@ public:
 			int h = SizeY;
 			if (!ExtractAll) {
 				RGBATexture = Texture(RGBAImage, pixelType, w, h);
+				AddTexture(CAFFIndex, Info.VDat.ID, &RGBATexture);
 				loaded = true;
 			}
 		}
@@ -79,6 +81,7 @@ public:
 			int h = SizeY;
 			if (!ExtractAll) {
 				RGBATexture = Texture(RGBAImage, pixelType, w, h);
+				AddTexture(CAFFIndex, Info.VDat.ID, &RGBATexture);
 				loaded = true;
 			}
 		}

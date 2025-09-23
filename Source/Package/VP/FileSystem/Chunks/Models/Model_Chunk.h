@@ -412,6 +412,8 @@ private:
 
 		std::vector<std::vector<ModelInfo>> Objects; //Holds all the objects which each have multiple modelblocks (vert + indice definitions)
 
+		std::string ColorName = "CAFF" + std::to_string(CAFFIndex) + "_chunk" + std::to_string(info.VDat.ID + 1) + "_texture";
+
         for (ModelInfo& mi : modelblocks) {
             std::vector<ModelInfo> Objectblocks;
 			Objectblocks.push_back(mi); //Add the root modelblock to the object
@@ -451,12 +453,7 @@ private:
 					indice.push_back(ind);
                 }
 			}
-            std::cout << "Vertex Count: " << std::to_string(vert.vertexCount) << std::endl;
-			std::cout << "Vertex size: " << std::to_string(vert.entrySize) << std::endl;
-            std::cout << "_______________________________________________________________________________" << std::endl;
-			std::cout << "Vertex offset: " << std::to_string(vert.vertexOffset) << std::endl;
-			std::cout << "Vertex Table Length: " << std::to_string(vert.vertTableLength) << std::endl;
-            std::cout << "_______________________________________________________________________________" << std::endl;
+            
             std::vector<Vertex1> vertices1;
 
             vertices1.resize(vert.vertexCount);
@@ -483,7 +480,9 @@ private:
                     VertexBlock block = ConstructVertexBlockFromSize(vert.entrySize, BigEndian, VertBlockData);
                     v.position = block.position;
                     v.normal = block.normal;
-                    v.texCoord = block.texCoord;
+                    v.texCoord.u = block.texCoord.u;
+                    v.texCoord.v = block.texCoord.v * -1;
+					v.extraData = block;
                     vertices1[i] = v;
                 }
             }
@@ -517,12 +516,7 @@ private:
                     indiceDataTemp.resize(ind.IndicesCount2 * 2);
                     memcpy(indiceDataTemp.data(), &VGPU.data()[ind.IndicesOffset2], ind.IndicesCount2 * 2);
                     indiceData.insert(indiceData.end(), indiceDataTemp.begin(), indiceDataTemp.end());
-                    std::cout << "_______________________________________________________________________________" << std::endl;
-					std::cout << "Indice block 2 used." << std::endl;
-					std::cout << "Indice Count: " << std::to_string(ind.IndicesCount2) << std::endl;
-					std::cout << "Indice Offset: " << std::to_string(ind.IndicesOffset2) << std::endl;
-                    std::cout << "Indice Block Size: " << std::to_string(ind.IndicesCount2 * 2) << std::endl;
-                    std::cout << "_______________________________________________________________________________" << std::endl;
+                   
                     
                 }
 
@@ -536,12 +530,7 @@ private:
                     indiceDataTemp.resize(ind.IndicesCount3*2);
                     memcpy(indiceDataTemp.data(), &VGPU.data()[ind.IndicesOffset3], ind.IndicesCount3*2);
                     indiceData.insert(indiceData.end(), indiceDataTemp.begin(), indiceDataTemp.end());
-                    std::cout << "_______________________________________________________________________________" << std::endl;
-					std::cout << "Indice block 3 used." << std::endl;
-					std::cout << "Indice Count: " << std::to_string(ind.IndicesCount3) << std::endl;
-					std::cout << "Indice Offset: " << std::to_string(ind.IndicesOffset3) << std::endl;
-					std::cout << "Indice Block Size: " << std::to_string(ind.IndicesCount3 * 2) << std::endl;
-                    std::cout << "_______________________________________________________________________________" << std::endl;
+                    
 				}
                 else if (ind.IndicesOffset4 != 0) {
                     //use count2 *3 for indice count
@@ -554,12 +543,7 @@ private:
                     indiceDataTemp.resize(ind.IndicesCount2 * 3 * 2);
                     memcpy(indiceDataTemp.data(), &VGPU.data()[ind.IndicesOffset4], ind.IndicesCount2 * 3 * 2);
                     indiceData.insert(indiceData.end(), indiceDataTemp.begin(), indiceDataTemp.end());
-                    std::cout << "_______________________________________________________________________________" << std::endl;
-					std::cout << "Indice block 4 used." << std::endl;
-					std::cout << "Indice Count: " << std::to_string(ind.IndicesCount2) << std::endl;
-					std::cout << "Indice Offset: " << std::to_string(ind.IndicesOffset4) << std::endl;
-                    std::cout << "Indice Block Size: " << std::to_string(ind.IndicesCount2 * 3 * 2) << std::endl;
-                    std::cout << "_______________________________________________________________________________" << std::endl;
+                    
                 }
                 
             }
@@ -570,10 +554,10 @@ private:
 			obj.VertexSize = vert.entrySize;
 			obj.rawIndexBlock = indiceData;
 			obj.rawVertBlock = vertexData;
+            obj.ColorTextureName = ColorName;
 			MODEL.objects.push_back(obj);
 
-			std::cout << "Loaded Object with " << std::to_string(vertices1.size()) << " vertices and " << std::to_string(indices1.size() / 3) << " faces." << std::endl;
-            
+			
         }
             
         
@@ -583,8 +567,8 @@ private:
 
     Model_Chunk() : Chunk() {};
     Model_Chunk(const std::vector<unsigned char>& rawFile) : Chunk(rawFile) {};
-    Model_Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info)
-        : Chunk(rawVDAT, rawVGPU, IsBig, name, Info)
+    Model_Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info, int cAFFIndex)
+        : Chunk(rawVDAT, rawVGPU, IsBig, name, Info, cAFFIndex)
     {
 		LoadModelNew(rawVDAT, rawVGPU, IsBig);
     };

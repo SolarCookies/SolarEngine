@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Chunk.h"
 #include <math.h>
+#include "../../../GlobalPackages.h"
 
 class DDS_Chunk : public Chunk
 {
@@ -136,8 +137,8 @@ public:
 
     DDS_Chunk() : Chunk() {};
     DDS_Chunk(const std::vector<unsigned char>& rawFile) : Chunk(rawFile) {};
-    DDS_Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info) 
-        : Chunk(rawVDAT, rawVGPU, IsBig, name, Info) 
+    DDS_Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info, int cAFFIndex)
+        : Chunk(rawVDAT, rawVGPU, IsBig, name, Info, cAFFIndex)
     {
         memcpy(&SizeX, &rawVDAT.data()[0] + 8, sizeof(uint16_t));
         memcpy(&SizeY, &rawVDAT.data()[0] + 10, sizeof(uint16_t));
@@ -152,6 +153,7 @@ public:
             DDSImage = std::vector<unsigned char>(VGPU.begin() + 4, VGPU.end());
             if (!ExtractAll) {
                 DDSTexture = Texture(DDSImage); //This only works if the data has a header
+				AddTexture(CAFFIndex, Info.VDat.ID, &DDSTexture);
                 hasloaded = true;
             }
         }
@@ -167,6 +169,7 @@ public:
 
                 if (!ExtractAll) {
                     DDSTexture = Texture(DDSImage); //This only works if the data has a header
+                    AddTexture(CAFFIndex, Info.VDat.ID, &DDSTexture);
                     hasloaded = true;
                 }
             }
@@ -182,6 +185,7 @@ public:
 
                 if (!ExtractAll) {
                     DDSTexture = Texture(DDSImage); //This only works if the data has a header
+                    AddTexture(CAFFIndex, Info.VDat.ID, &DDSTexture);
                     hasloaded = true;
                 }
 				
@@ -196,6 +200,7 @@ public:
 
                 if (!ExtractAll) {
                     DDSTexture = Texture(DDSImage); //This only works if the data has a header
+                    AddTexture(CAFFIndex, Info.VDat.ID, &DDSTexture);
                     hasloaded = true;
                 }
             }

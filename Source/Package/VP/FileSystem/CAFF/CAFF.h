@@ -28,6 +28,7 @@ protected:
 public:
 
 	CAFFHeader header;
+	int CAFFIndex = 0;
 	std::vector<std::unique_ptr<Chunk>> chunks;
 	std::unique_ptr <VREF> vref;
 	std::unique_ptr <VDAT> vdat;
@@ -37,7 +38,7 @@ public:
 	// Adding a constructor to accept rawFile data
 	CAFF() : File() {};
 	CAFF(const std::vector<unsigned char>& rawFile) : File(rawFile) {};
-    CAFF(const std::vector<unsigned char>& rawFile, bool IsBig) : File(rawFile,IsBig) {
+    CAFF(const std::vector<unsigned char>& rawFile, bool IsBig, int Index) : File(rawFile,IsBig), CAFFIndex(Index) {
 		LoadFile(rawFile);
 	};
 
@@ -69,7 +70,7 @@ public:
 			VREFData = Vince::DecompressData(CompressedVREF, header.VREF_Uncompressed_Size);
 		}
 
-		vref = std::make_unique<VREF>(VREFData, IsBigEndianFile, header.ChunkCount);
+		vref = std::make_unique<VREF>(VREFData, IsBigEndianFile, header.ChunkCount, CAFFIndex);
 
 		//Load VUNK
 		std::vector<unsigned char> VUNKData;

@@ -39,7 +39,7 @@ public:
 	VREF() : File() {};
 	VREF(const std::vector<unsigned char>& rawFile) : File(rawFile) {};
 
-	VREF(const std::vector<unsigned char>& rawFile, bool IsBig, int ChunkCount) : File(rawFile, IsBig), chunkCount(ChunkCount){
+	VREF(const std::vector<unsigned char>& rawFile, bool IsBig, int ChunkCount, int Index) : File(rawFile, IsBig), chunkCount(ChunkCount), CAFFIndex(Index){
 		LoadFile(rawFile);
 	};
 	void LoadFile(const std::vector<unsigned char>& rawFile) override;

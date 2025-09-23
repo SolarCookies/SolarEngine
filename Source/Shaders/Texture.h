@@ -14,6 +14,7 @@ class Texture
 public:
 	GLuint ID;
 	GLenum type;
+	std::string NameOfTexture; // used for lookups
 	Texture() = default;
 	Texture(const char* image, GLenum texType, GLenum slot, GLenum format, GLenum pixelType);
 	Texture(const char* DDSimage);

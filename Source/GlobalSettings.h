@@ -107,6 +107,7 @@ struct Vertex1 {
 	Vector3 position; // 12 bytes
 	Vector3 normal; // 12 bytes
 	Vector2 texCoord; // 8 bytes
+	VertexBlock extraData; 
 };
 
 struct Object1 {
@@ -115,6 +116,7 @@ struct Object1 {
 	std::vector<unsigned char> rawVertBlock;
 	std::vector<unsigned char> rawIndexBlock;
 	int VertexSize;
+	std::string ColorTextureName; 
 };
 
 inline std::string CurrentModelName = "";
