@@ -126,6 +126,99 @@ struct Model_Viva {
     Rendergraph RG;
 };
 
+struct ModelSection {
+    ModelVertDef verts;
+    std::vector<ModelIndicesDef> indice;
+};
+
+//traverses all model blocks starting from StartOffset and returns a list of all unique offsets found
+inline std::vector<int> GetAllBlockOffsets(std::vector<unsigned char> VDAT, int StartOffset, bool BigEndian) {
+    std::vector<int> offsets;
+    std::vector<int> toVisit;
+    toVisit.push_back(StartOffset);
+
+    while (!toVisit.empty()) {
+
+        int currentOffset = toVisit.back();
+        toVisit.pop_back();
+
+        // Check if we've already visited this offset
+        if (std::find(offsets.begin(), offsets.end(), currentOffset) != offsets.end()) {
+            continue; // Already visited
+        }
+
+        offsets.push_back(currentOffset);
+
+        ModelInfo mi;
+
+        if (currentOffset + sizeof(ModelInfo) > VDAT.size()) {
+            std::cout << "Current offset exceeds VDAT size, stopping traversal." << std::endl;
+            break;
+        }
+
+        memcpy(&mi, &VDAT.data()[currentOffset], sizeof(ModelInfo));
+
+        // Queue both Next and Additional offsets if they are valid and not already visited
+        if (mi.NextOffset != 0 && std::find(offsets.begin(), offsets.end(), mi.NextOffset) == offsets.end()) {
+            toVisit.push_back(mi.NextOffset);
+        }
+        if (mi.AdditonalOffset != 0 && std::find(offsets.begin(), offsets.end(), mi.AdditonalOffset) == offsets.end()) {
+            toVisit.push_back(mi.AdditonalOffset);
+        }
+    }
+    return offsets;
+}
+
+inline std::vector<ModelSection> GetAllModelSections(std::vector<unsigned char> VDAT, std::vector<int> BlockOffsets) {
+
+	std::vector<ModelInfo> ModelInfos;
+    for(int offset : BlockOffsets) {
+        ModelInfo mi;
+        memcpy(&mi, &VDAT.data()[offset], sizeof(ModelInfo));
+        mi.CurrentOffset = offset; // Store where we found this block for reference
+		ModelInfos.push_back(mi);
+	}
+
+    std::vector<ModelInfo> SortedModelInfos;
+
+	//use Index in model info to sort the blocks into the correct order
+	SortedModelInfos.resize(ModelInfos.size());
+    for (const ModelInfo& mi : ModelInfos) {
+        if (mi.Index < SortedModelInfos.size()) {
+            SortedModelInfos[mi.Index] = mi;
+        }
+    }
+
+	//Models start with vertex definition (type 2) and are followed by multiple indice definitions (type 6 or 7) once we hit another type 2 that is the begining of a new model
+	std::vector<ModelSection> ModelSections;
+    ModelSection currentSection;
+    bool inSection = false;
+    for (const ModelInfo& mi : SortedModelInfos) {
+        if (mi.Type == 2) {
+            // If we were already in a section, save it before starting a new one
+            if (inSection) {
+                ModelSections.push_back(currentSection);
+                currentSection = ModelSection(); // Reset for the new section
+            }
+            // Start a new section with the vertex definition
+            memcpy(&currentSection.verts, &VDAT.data()[mi.CurrentOffset], sizeof(ModelVertDef));
+            inSection = true;
+        }
+        else if ((mi.Type == 6 || mi.Type == 7) && inSection) {
+            // Add indice definitions to the current section
+            ModelIndicesDef indice;
+            memcpy(&indice, &VDAT.data()[mi.CurrentOffset], sizeof(ModelIndicesDef));
+            currentSection.indice.push_back(indice);
+        }
+        // If we encounter other types, we ignore them for now
+    }
+    // Don't forget to add the last section if we were in one
+    if (inSection) {
+        ModelSections.push_back(currentSection);
+    }
+	return ModelSections;
+}
+
 
 class Model_Chunk : public Chunk
 {
@@ -362,138 +455,56 @@ private:
         if (ExtractAll) return; //Skip loading model if we are extracting all files (Saves time and atm this isnt stable enough to always run)
         MODEL.RG = GetRendergraph(VDAT, BigEndian);
 
-		//Get First ModelOffset from Rendergraph
+		//Get First ModelOffset from Rendergraph useally type 0 block or type 5 block
 		int CurrentOffset = MODEL.RG.ModelInfoOffset;
-		ModelInfo miRoot;
-		memcpy(&miRoot, &VDAT.data()[CurrentOffset], sizeof(ModelInfo));
-		miRoot.CurrentOffset = CurrentOffset; //Store where we found this block for reference
-		CurrentOffset = miRoot.NextOffset;
-
-        ModelInfo TestRoot;
-		memcpy(&TestRoot, &VDAT.data()[CurrentOffset], sizeof(ModelInfo)); //check first model block for type 1 (root)
-
-        if(TestRoot.Type != 1) {
-            std::cout << "Warning: Expected root model info type 1 but found type " << std::to_string(TestRoot.Type) << ". This may cause issues." << std::endl;
-			std::cout << "Trying to find the first type 1 block..." << std::endl;
-			int numtries = 0;
-			int maxtries = 10; //Prevent infinite loops
-            while (TestRoot.Type != 1 && numtries < maxtries) {
-				numtries++;
-                ModelInfo miCheck;
-                memcpy(&miCheck, &VDAT.data()[CurrentOffset], sizeof(ModelInfo));
-                if (miCheck.Type == 1) {
-                    TestRoot = miCheck;
-					TestRoot.CurrentOffset = CurrentOffset; //Store where we found this block for reference
-                    std::cout << "Found type 1 block at offset " << std::to_string(CurrentOffset) << std::endl;
-                    CurrentOffset = TestRoot.NextOffset;
-                    break;
-                }
-                CurrentOffset = miCheck.NextOffset;
-			}
-			CurrentOffset = TestRoot.CurrentOffset;
-
-            if(numtries >= maxtries) {
-                std::cout << "Error: Could not find a type 1 model info block after " << std::to_string(maxtries) << " tries. Aborting model load." << std::endl;
-				std::cerr << "Model root not found for: " << NameWithoutMetadata << std::endl;
-                return;
-			}
-		}
-
-		std::vector<ModelInfo> modelblocks; //Holds all the roots for each model aka type 01
-
-		//Each 01 model info block has a additional offset to the next object in the model until the last one which has 0
-        while (CurrentOffset != 0) {
-            ModelInfo mi;
-            memcpy(&mi, &VDAT.data()[CurrentOffset], sizeof(ModelInfo));
-			modelblocks.push_back(mi);
-			std::cout << "Found root block of type " << std::to_string(mi.Type) << " at offset " << std::to_string(CurrentOffset) << std::endl;
-            CurrentOffset = mi.AdditonalOffset;
-        }
-
-		std::vector<std::vector<ModelInfo>> Objects; //Holds all the objects which each have multiple modelblocks (vert + indice definitions)
-
+		
 		std::string ColorName = "CAFF" + std::to_string(CAFFIndex) + "_chunk" + std::to_string(info.VDat.ID + 1) + "_texture";
+		std::string NormalName = "CAFF" + std::to_string(CAFFIndex) + "_chunk" + std::to_string(info.VDat.ID + 2) + "_texture"; //normals are usually after the color texture
 
-        for (ModelInfo& mi : modelblocks) {
-            std::vector<ModelInfo> Objectblocks;
-			Objectblocks.push_back(mi); //Add the root modelblock to the object
-			mi.CurrentOffset = CurrentOffset; //Store where we found this block for reference
-            CurrentOffset = mi.NextOffset;
-            while (CurrentOffset != 0)
-            {
-                ModelInfo mi2;
-                memcpy(&mi2, &VDAT.data()[CurrentOffset], sizeof(ModelInfo));
-                mi2.CurrentOffset = CurrentOffset; //Store where we found this block for reference
-                Objectblocks.push_back(mi2);
-				std::cout << "Found sub-block of type " << std::to_string(mi2.Type) << " at offset " << std::to_string(CurrentOffset) << std::endl;
-                CurrentOffset = mi2.NextOffset;
-            }
-			Objects.push_back(Objectblocks);
+		std::vector<int> BlockOffsets = GetAllBlockOffsets(VDAT, CurrentOffset, BigEndian);
+		std::vector<ModelSection> ModelSections = GetAllModelSections(VDAT, BlockOffsets);
 
-			//Load the one 02 type (Vertex Definition) and all of the 06 types (Indice Definition)
-			int VertTypesFound = 0;
-			int IndiceTypesFound = 0;
-
-
-            //Load Object data
-            ModelVertDef vert;
-            std::vector<ModelIndicesDef> indice; //models can have multiple face blocks
-            for(const ModelInfo& block : Objectblocks) {
-
-                if (block.Type == 2){
-                    VertTypesFound++;
-                    memcpy(&vert, &VDAT.data()[block.CurrentOffset], sizeof(ModelVertDef));
-                }
-
-
-                if (block.Type == 6 || block.Type == 7) {
-                    IndiceTypesFound++;
-					ModelIndicesDef ind;
-					memcpy(&ind, &VDAT.data()[block.CurrentOffset], sizeof(ModelIndicesDef));
-					indice.push_back(ind);
-                }
-			}
-            
+        
+        for(const ModelSection& sec : ModelSections) {
+               
             std::vector<Vertex1> vertices1;
 
-            vertices1.resize(vert.vertexCount);
+            vertices1.resize(sec.verts.vertexCount);
 
-			int VertexBlockSize = vert.entrySize * vert.vertexCount;
+		    int VertexBlockSize = sec.verts.entrySize * sec.verts.vertexCount;
 
             std::vector<unsigned char> vertexData;
             vertexData.resize(VertexBlockSize);
-            memcpy(vertexData.data(), &VGPU.data()[vert.vertexOffset], VertexBlockSize);
+            memcpy(vertexData.data(), &VGPU.data()[sec.verts.vertexOffset], VertexBlockSize);
 
-			//convert object data into a usable format
-            if (VertTypesFound != 1) {
-                std::cout << "Warning: Found " << std::to_string(VertTypesFound) << " vertex definitions in object, expected 1. This may cause issues." << std::endl;
-            }
-            else {
-                for (uint32_t i = 0; i < vert.vertexCount; i++) {
-                    Vertex1 v;
+			    
+            for (uint32_t i = 0; i < sec.verts.vertexCount; i++) {
+                Vertex1 v;
 
-                    std::vector<unsigned char> VertBlockData;
-                    VertBlockData.resize(vert.entrySize);
+                std::vector<unsigned char> VertBlockData;
+                VertBlockData.resize(sec.verts.entrySize);
 
-                    memcpy(VertBlockData.data(), &vertexData[i * vert.entrySize], vert.entrySize);
+                memcpy(VertBlockData.data(), &vertexData[i * sec.verts.entrySize], sec.verts.entrySize);
 
-                    VertexBlock block = ConstructVertexBlockFromSize(vert.entrySize, BigEndian, VertBlockData);
-                    v.position = block.position;
-                    v.normal = block.normal;
-                    v.texCoord.u = block.texCoord.u;
-                    v.texCoord.v = block.texCoord.v * -1;
-					v.extraData = block;
-                    vertices1[i] = v;
-                }
+                VertexBlock block = ConstructVertexBlockFromSize(sec.verts.entrySize, BigEndian, VertBlockData);
+                v.position = block.position;
+                v.normal = block.normal;
+                v.texCoord.u = block.texCoord.u;
+                v.texCoord.v = block.texCoord.v * -1;
+			    v.extraData = block;
+                vertices1[i] = v;
             }
 
 			std::vector<unsigned char> indiceData; //Holds the raw indice data from VGPU
 			std::vector<GLuint> indices1; // this is the combined indice list
-            for (const ModelIndicesDef& ind : indice) {
+            for (const ModelIndicesDef& ind : sec.indice) {
                 std::vector<unsigned char> indiceDataTemp; //Holds the raw indice data from VGPU
 
 				//figure out what offsets are valid to use, If the offset is 0 it is not used 
                 if(ind.IndicesOffset != 0) {
+                    if (ind.IndicesOffset + ind.IndicesCount * 3 * 2 > VGPU.size()) {
+                        continue;
+					}
                     for(int i = 0; i < ind.IndicesCount * 3; i++) {
                         //add indices to indiceData
                         uint16 index1 = 0;
@@ -502,10 +513,13 @@ private:
 					}
 					indiceDataTemp.resize(ind.IndicesCount * 3 * 2);
 					memcpy(indiceDataTemp.data(), &VGPU.data()[ind.IndicesOffset], ind.IndicesCount * 3 * 2);
-					indiceData.insert(indiceData.end(), indiceDataTemp.begin(), indiceDataTemp.end());
+				    indiceData.insert(indiceData.end(), indiceDataTemp.begin(), indiceDataTemp.end());
                 }
 				
                 else if (ind.IndicesOffset2 != 0) {
+                    if (ind.IndicesOffset2 + ind.IndicesCount2 * 2 > VGPU.size()) {
+                        continue;
+                    }
                     for (int i = 0; i < ind.IndicesCount2; i++) {
                         //add indices to indiceData
                         uint16 index1 = 0;
@@ -516,11 +530,12 @@ private:
                     indiceDataTemp.resize(ind.IndicesCount2 * 2);
                     memcpy(indiceDataTemp.data(), &VGPU.data()[ind.IndicesOffset2], ind.IndicesCount2 * 2);
                     indiceData.insert(indiceData.end(), indiceDataTemp.begin(), indiceDataTemp.end());
-                   
-                    
                 }
 
                 else if (ind.IndicesOffset3 != 0) {
+                    if (ind.IndicesOffset3 + ind.IndicesCount3 * 2 > VGPU.size()) {
+                        continue;
+                    }
                     for (int i = 0; i < ind.IndicesCount3/3; i++) {
                         //add indices to indiceData
                         uint16 index1 = 0;
@@ -530,9 +545,11 @@ private:
                     indiceDataTemp.resize(ind.IndicesCount3*2);
                     memcpy(indiceDataTemp.data(), &VGPU.data()[ind.IndicesOffset3], ind.IndicesCount3*2);
                     indiceData.insert(indiceData.end(), indiceDataTemp.begin(), indiceDataTemp.end());
-                    
-				}
+				    }
                 else if (ind.IndicesOffset4 != 0) {
+                    if (ind.IndicesOffset4 + ind.IndicesCount2 * 3 * 2 > VGPU.size()) {
+                        continue;
+                    }
                     //use count2 *3 for indice count
                     for(int i = 0; i < ind.IndicesCount2; i++) {
                         //add indices to indiceData
@@ -543,21 +560,18 @@ private:
                     indiceDataTemp.resize(ind.IndicesCount2 * 3 * 2);
                     memcpy(indiceDataTemp.data(), &VGPU.data()[ind.IndicesOffset4], ind.IndicesCount2 * 3 * 2);
                     indiceData.insert(indiceData.end(), indiceDataTemp.begin(), indiceDataTemp.end());
-                    
                 }
-                
             }
-
             Object1 obj;
 			obj.objectsVerts = vertices1;
 			obj.objectsIndices = indices1;
-			obj.VertexSize = vert.entrySize;
+			obj.VertexSize = sec.verts.entrySize;
 			obj.rawIndexBlock = indiceData;
 			obj.rawVertBlock = vertexData;
             obj.ColorTextureName = ColorName;
-			MODEL.objects.push_back(obj);
+			obj.NormalTextureName = NormalName;
+		    MODEL.objects.push_back(obj);
 
-			
         }
             
         

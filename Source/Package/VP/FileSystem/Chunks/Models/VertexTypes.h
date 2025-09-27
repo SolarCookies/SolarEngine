@@ -133,13 +133,20 @@ inline VertexBlock ConstructVertexBlockFromSize(int size, bool bigEndian, std::v
 			Vert.texCoordOffset = 36; //This isnt correct at 40
 			std::vector<unsigned char> data;
 			data.resize(6);
-			memcpy(&data[0], &block[36], 6); // Read Normal (3 signed shorts, 6 bytes)
+			memcpy(&data[0], &block[12], 6); // Read Normal (3 signed shorts, 6 bytes)
 			Vert.normal = ReadVector3FromSignedShorts(data);
 		}
 		else if (size == 56) {
-			memcpy(&Vert.texCoord, &block[36], sizeof(Vector2));
+			float uv[2];
+			memcpy(&uv, &block[36], sizeof(float) * 2);
+			Vert.texCoord.u = uv[0];
+			Vert.texCoord.v = uv[1];
 			Vert.hasTexCoord = true;
-			Vert.texCoordOffset = 36;
+			Vert.texCoordOffset = 36; //This isnt correct at 40
+			std::vector<unsigned char> data;
+			data.resize(6);
+			memcpy(&data[0], &block[12], 6); // Read Normal (3 signed shorts, 6 bytes)
+			Vert.normal = ReadVector3FromSignedShorts(data);
 		}
 		else if (size == 52) {
 			float uv[2];
@@ -148,11 +155,22 @@ inline VertexBlock ConstructVertexBlockFromSize(int size, bool bigEndian, std::v
 			Vert.texCoord.v = uv[1];
 			Vert.hasTexCoord = true;
 			Vert.texCoordOffset = 36;
+			std::vector<unsigned char> data;
+			data.resize(6);
+			memcpy(&data[0], &block[12], 6); // Read Normal (3 signed shorts, 6 bytes)
+			Vert.normal = ReadVector3FromSignedShorts(data);
 		}
 		else if (size == 48) {
-			memcpy(&Vert.texCoord, &block[28], sizeof(Vector2)); // maybe sometimes 20? 28 I think 20 is the fur UVs
+			float uv[2];
+			memcpy(&uv, &block[36], sizeof(float) * 2);
+			Vert.texCoord.u = uv[0];
+			Vert.texCoord.v = uv[1];
 			Vert.hasTexCoord = true;
-			Vert.texCoordOffset = 28;
+			Vert.texCoordOffset = 36; //This isnt correct at 40
+			std::vector<unsigned char> data;
+			data.resize(6);
+			memcpy(&data[0], &block[12], 6); // Read Normal (3 signed shorts, 6 bytes)
+			Vert.normal = ReadVector3FromSignedShorts(data);
 		}
 		else if (size == 44) {
 			memcpy(&Vert.texCoord, &block[20], sizeof(Vector2));
@@ -160,7 +178,10 @@ inline VertexBlock ConstructVertexBlockFromSize(int size, bool bigEndian, std::v
 			Vert.texCoordOffset = 24;
 		}
 		else if (size == 40) {
-			memcpy(&Vert.texCoord, &block[24], sizeof(Vector2));
+			unsigned char uv[2];
+			memcpy(&uv, &block[24], 2);
+			Vert.texCoord.u = static_cast<float>(uv[0]) / 255.0f; // Normalize to 0.0 to 1.0
+			Vert.texCoord.v = static_cast<float>(uv[1]) / 255.0f;
 			Vert.hasTexCoord = true;
 			Vert.texCoordOffset = 24;
 		}

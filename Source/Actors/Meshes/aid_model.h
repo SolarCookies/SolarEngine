@@ -37,12 +37,20 @@ public:
 			for(int l = 0; l < numModels; l++) {
 
 				auto dynamicMeshComponent = std::make_shared<DynamicMeshComponent>("LitAlbedo");
-				Texture* texture = LookupTexture(CurrentModel[l].ColorTextureName);
-				if(texture != nullptr) {
-					dynamicMeshComponent->ColorTexture = *texture;
+				Texture* texture1 = LookupTexture(CurrentModel[l].ColorTextureName);
+				if(texture1 != nullptr) {
+					dynamicMeshComponent->ColorTexture = *texture1;
+					
+					//Texture* texture2 = LookupTexture(CurrentModel[l].NormalTextureName);
+					//if(texture2 != nullptr) {
+						//dynamicMeshComponent->NormalTexture = *texture2;
+					//}
+					//else {
+					//	std::cout << "Normal Texture not found: " << CurrentModel[l].NormalTextureName << std::endl;
+					//}
 				}
 				else {
-					std::cout << "Texture not found: " << CurrentModel[l].ColorTextureName << std::endl;
+					//std::cout << "Color Texture not found: " << CurrentModel[l].ColorTextureName << std::endl;
 				}
 
 				std::vector<DynamicVertex> Vertices;
@@ -56,9 +64,9 @@ public:
 					v.position.y = (vertex.position.y / 100.0);
 					v.position.z = (vertex.position.z / 100.0);
 
-					v.normal.x = 1.0f;
-					v.normal.y = 1.0f;
-					v.normal.z = 1.0f;
+					v.normal.x = vertex.normal.x;
+					v.normal.y = vertex.normal.y;
+					v.normal.z = vertex.normal.z;
 
 					v.color.x = 1.0f;
 					v.color.y = 1.0f;

@@ -6,6 +6,7 @@
 #include <filesystem>
 #include "../../../../../../GlobalSettings.h"
 #include "../../../../FileSystem/GlobalPackages.h"
+#include "../../../../FileDatabase.h"
 
 
 #include <random>
@@ -137,7 +138,7 @@ public:
 							ImGui::EndChild();
 						}
 
-						//No CAFF Selected
+						///No CAFF Selected
 						else {
 							//add scrollable area
 							ImGui::BeginChild("Scrolling");
@@ -174,7 +175,9 @@ public:
 									//set text to black for better visibility
 									ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
 								}
-								if (ImGui::Button(std::string("CAFF " + std::to_string(i + 1)).c_str())) {
+								std::string CAFFName = FileDatabase::GetName(pkg->CAFFs[i].FileHash);
+								if (CAFFName == "") CAFFName = "CAFF " + std::to_string(i + 1);
+								if (ImGui::Button(CAFFName.c_str())) {
 									ImGui::OpenPopup("caffpopup");
 								}
 								if (hasChanges) {
@@ -182,6 +185,33 @@ public:
 								}
 								if (ImGui::BeginPopup("caffpopup")) {
 									pkg->CAFFs[i].RenderListClick(CurrentCAFF, i);
+									if (ImGui::Button("Rename")) {
+										ImGui::OpenPopup("renamecaffpopup");
+									}
+									if (ImGui::BeginPopup("renamecaffpopup")) {
+										static char newname[256] = "";
+										if(newname[0] == '\0')
+										{
+											//set newname to CAFFName
+											strncpy(newname, CAFFName.c_str(), sizeof(newname) - 1);
+										}
+
+										ImGui::InputText("New Name", newname, 256);
+										if (ImGui::Button("Confirm")) {
+											FileDatabase::AddEntry(pkg->CAFFs[i].FileHash, std::string(newname));
+											ImGui::CloseCurrentPopup();
+										}
+										ImGui::SameLine();
+										if (ImGui::Button("Cancel")) {
+											ImGui::CloseCurrentPopup();
+										}
+										ImGui::SameLine();
+										if (ImGui::Button("Delete")) {
+											FileDatabase::RemoveEntry(pkg->CAFFs[i].FileHash);
+											ImGui::CloseCurrentPopup();
+										}
+										ImGui::EndPopup();
+									}
 									ImGui::EndPopup();
 								}
 
@@ -195,7 +225,7 @@ public:
 						}
 					}
 
-					//No PKG selected
+					///No PKG selected
 					else {
 						//add scrollable area
 						ImGui::BeginChild("Scrolling");
@@ -222,7 +252,11 @@ public:
 
 							//center height
 							//ImGui::SetCursorPosY(ImGui::GetCursorPosY() + (50 - ImGui::GetTextLineHeight()) / 2);
-							if (ImGui::Button(FileNames[i].c_str()))
+
+							std::string PKGName = FileDatabase::GetName(FileNames[i]);
+							if (PKGName == "") PKGName = FileNames[i];
+
+							if (ImGui::Button(PKGName.c_str()))
 							{
 								ImGui::OpenPopup("pkgpopup");
 							}
@@ -247,7 +281,34 @@ public:
 									}
 									
 								}
-								ImGui::SameLine();
+								if (ImGui::Button("Rename")) {
+									ImGui::OpenPopup("renamepkgpopup");
+								}
+								if(ImGui::BeginPopup("renamepkgpopup")) {
+									static char newname[256] = "";
+									if(newname[0] == '\0')
+									{
+										//set newname to PKGName
+										strncpy(newname, PKGName.c_str(), sizeof(newname) - 1);
+									}
+									
+
+									ImGui::InputText("New Name", newname, 256);
+									if (ImGui::Button("Confirm")) {
+										FileDatabase::AddEntry(FileNames[i], std::string(newname));
+										ImGui::CloseCurrentPopup();
+									}
+									ImGui::SameLine();
+									if (ImGui::Button("Cancel")) {
+										ImGui::CloseCurrentPopup();
+									}
+									ImGui::SameLine();
+									if (ImGui::Button("Delete")) {
+										FileDatabase::RemoveEntry(FileNames[i]);
+										ImGui::CloseCurrentPopup();
+									}
+									ImGui::EndPopup();
+								}
 								/*
 								if (std::filesystem::exists("Backups\\PackageBundles\\" + files[i].substr(pkg->Path.find_last_of("\\") + 1)))
 								{

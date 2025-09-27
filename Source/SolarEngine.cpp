@@ -1,6 +1,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <chrono>  
+#include "Package/VP/FileDatabase.h"
+
 #include "Package/VP/UI/GUI.h"
 
 #include "Utils/JoltHelpers.h"
@@ -21,6 +23,7 @@
 
 #include "Actors/Meshes/aid_model.h"
 
+
 //#include "Package/VP/UI/Pages/PackageManager/FileBrowser/FileBrowser.h"
 //#include "Package/VP/UI/GUI.h"
 
@@ -30,6 +33,7 @@
 // Main code
 int main(int, char**)
 {
+	FileDatabase::Load("FileNameDatabase.ini");
 	//Jolt Physics Engine Requires this
 	RegisterDefaultAllocator();
 	Trace = TraceImpl;
@@ -138,6 +142,8 @@ int main(int, char**)
 
 		globals::window1.EndFrame();
 	}
+
+	FileDatabase::Save("FileNameDatabase.ini");
 
 	// Cleanup
 	{

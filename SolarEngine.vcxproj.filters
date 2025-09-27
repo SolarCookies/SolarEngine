@@ -1784,5 +1784,6 @@
     <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Chunk.cpp" />
     <ClCompile Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.cpp" />
     <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.cpp" />
+    <ClCompile Include="Source\Package\VP\FileDatabase.h" />
   </ItemGroup>
 </Project>

@@ -22,7 +22,7 @@ public:
 		auto lightActor = std::make_unique<APointLight>();
 		LightComponent* light = dynamic_cast<LightComponent*>(lightActor->GetComponentByIndex(0));
 		world.AddActor(std::move(lightActor));
-
+		/*
 		//Spawn Dragon, With physics body and textures
 		auto DragonMeshActor = std::make_unique<AStaticMesh>("Assets/Models/Dragon/model2.obj", "Default");
 		ColorTexture = Texture("Assets/Models/Dragon/Color.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
@@ -52,7 +52,7 @@ public:
 		auto rigidBodyComponent2 = std::make_shared<RigidBodyComponent>(&physics_system, bodySettings2);
 		floorMeshActor->AddComponent(rigidBodyComponent2);
 		world.AddActor(std::move(floorMeshActor));
-		
+		*/
 
 	}
 	void Update(Camera& camera, World& world, VinceWindow& window) {

@@ -43,7 +43,7 @@ void main()
     // Specular
     vec3 viewDir = normalize(cameraPos - crntPos);
     vec3 reflectDir = reflect(-sunDir, normal);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0f), 32.0f); // Shininess = 32
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0f), 64.0f); // Shininess = 32
 
     vec4 texColor = texture(tex0, flippedTexCoord);
 

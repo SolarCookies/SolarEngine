@@ -494,6 +494,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+    <ClCompile Include="Source\Package\VP\FileDatabase.h" />
     <ClCompile Include="Source\Package\VP\FileSystem\CAFF\Streams\VREF.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>

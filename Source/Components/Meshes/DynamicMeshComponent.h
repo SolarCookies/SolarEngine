@@ -66,6 +66,11 @@ public:
 			ColorTexture = Texture("Assets/Textures/Error.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 		}
 		OBJ->SetMaterialParameter("tex0", ColorTexture);
+
+		if (NormalTexture.ID != 0) {
+			OBJ->SetMaterialParameter("tex1", NormalTexture);
+		}
+
 		
 	}
 
@@ -88,9 +93,9 @@ public:
 	void ConstructMesh(std::vector<DynamicVertex> vertices1, std::vector<GLuint> triangles1, bool isDirty = true)
 	{
 		if(vertices1.size() == 0 || triangles1.size() == 0) {
-			std::cout << "Error: Cannot construct mesh with zero vertices or triangles." << std::endl;
-			std::cout << "Vertices size: " << vertices1.size() << std::endl;
-			std::cout << "Triangles size: " << triangles1.size() << std::endl;
+			//std::cout << "Error: Cannot construct mesh with zero vertices or triangles." << std::endl;
+			//std::cout << "Vertices size: " << vertices1.size() << std::endl;
+			//std::cout << "Triangles size: " << triangles1.size() << std::endl;
 		}
 		Vertices = vertices1;
 		Triangles = triangles1;

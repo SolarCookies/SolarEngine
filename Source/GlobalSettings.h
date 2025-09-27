@@ -117,6 +117,7 @@ struct Object1 {
 	std::vector<unsigned char> rawIndexBlock;
 	int VertexSize;
 	std::string ColorTextureName; 
+	std::string NormalTextureName;
 };
 
 inline std::string CurrentModelName = "";

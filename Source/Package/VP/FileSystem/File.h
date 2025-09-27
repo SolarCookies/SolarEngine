@@ -51,9 +51,10 @@ class File {
 public:
 	bool IsBigEndianFile = false;
 	const std::vector<unsigned char> RawFile;
+	std::string FileHash;
 
 	virtual void LoadFile(const std::vector<unsigned char>& rawFile) {
-
+		FileHash = HashData(rawFile);
 	}
 
 	File() = default;
