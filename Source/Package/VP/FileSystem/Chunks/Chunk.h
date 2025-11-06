@@ -59,10 +59,12 @@ public:
 			case 0:
 				UpdatedVDAT = data;
 				PendingUpdate = true;
+				PendingChange = true;
 				break;
 			case 1:
 				UpdatedVGPU = data;
 				PendingUpdate = true;
+				PendingChange = true;
 				break;
 		}
 	}
@@ -122,6 +124,7 @@ public:
 					UpdatedVDAT = std::vector<unsigned char>((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 					file.close();
 					PendingUpdate = true;
+					PendingChange = true;
 				}
 			}
 		}
@@ -153,6 +156,7 @@ public:
 						UpdatedVGPU = std::vector<unsigned char>((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 						file.close();
 						PendingUpdate = true;
+						PendingChange = true;
 					}
 				}
 			}

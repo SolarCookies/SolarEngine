@@ -9,13 +9,13 @@ void StaticMeshComponent::Construct()
 	Mat = glm::translate(Mat, Position);
 	OBJ.model.SetMaterialParameter("model", Mat);
 
-	if (ColorTexture != nullptr && ColorTexture != reinterpret_cast<Texture*>(-1))
+	if (ColorTexture != nullptr)
 	{
-		OBJ.model.SetMaterialParameter("tex0", *ColorTexture);
-	}
-    if (NormalTexture != nullptr && NormalTexture != reinterpret_cast<Texture*>(-1))
-	{
-		OBJ.model.SetMaterialParameter("tex1", *NormalTexture);
+		if (ColorTexture->IsValid) {
+			if (OBJ.model.GetNumVertices() != 0) {
+				OBJ.model.SetMaterialParameter("tex0", *ColorTexture);
+			}
+		}
 	}
 }
 
@@ -51,23 +51,18 @@ void StaticMeshComponent::Render(VinceWindow* window, Camera* Cam)
 	OBJ.model.SetMaterialParameter("unlit", 0);
 
 	OBJ.model.SetMaterialParameter("cameraPos", Cam->Position);
-	Cam->Matrix(*OBJ.model.shaderProgram.get(), "camMatrix");
+	Cam->Matrix(*OBJ.model.material->shaderProgram.get(), "camMatrix");
 
 	if (ColorTexture != nullptr)
 	{
 		glActiveTexture(GL_TEXTURE0);
 		ColorTexture->Bind();
 	}
-	if (NormalTexture != nullptr)
-	{
-		glActiveTexture(GL_TEXTURE1);
-		NormalTexture->Bind();
-	}
-
-	Draw();
+	Draw(Cam->ShadowPerspective,window,Cam);
 }
 
-void StaticMeshComponent::Draw()
+void StaticMeshComponent::Draw(bool shadow, VinceWindow* window, Camera* Cam)
 {
-	OBJ.model.Draw();
+	
+	OBJ.model.Draw(false,0,shadow,window,Cam);
 }

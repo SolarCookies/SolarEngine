@@ -6,7 +6,7 @@ void ExtractPage::render(GUI& gui)
 {
 	LoadSettings();
 	ExtractAll = true;
-	bool ExportFileTypes = false;
+	
 	ImGui::Begin("Welcome");
 	//center the text
 	ImGui::SetWindowFontScale(1.0f);
@@ -92,6 +92,7 @@ void ExtractPage::render(GUI& gui)
 		for(size_t i = 0; i < CurrentPkg.CAFFs.size(); i++)
 		{
 			CAFF& caff = CurrentPkg.CAFFs[i];
+			caff.Open();
 
 			for (size_t j = 0; j < caff.chunks.size(); j++) {
 				ExportInfo chunkfile = caff.chunks[j]->ExportChunk();
@@ -108,7 +109,7 @@ void ExtractPage::render(GUI& gui)
 					}
 				}
 locexport:
-				if (ExportFileTypes) {
+				if (!ExportFileTypes) {
 					std::string fullpath1 = Path + "\\" + "PKG_" + std::to_string(PKGIndex) + "CAFF_" + std::to_string(i + 1) + chunkfile.Name + "." + "vdat";
 					std::string fullpath2 = Path + "\\" + "PKG_" + std::to_string(PKGIndex) + "CAFF_" + std::to_string(i + 1) + chunkfile.Name + "." + "vgpu";
 					//create directories if they don't exist

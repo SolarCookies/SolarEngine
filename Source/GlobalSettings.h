@@ -10,12 +10,14 @@
 #include "World/Camera.h"
 #include "Package/VP/FileSystem/Chunks/Models/VertexTypes.h"
 
-inline float window_width = 1920;
-inline float window_height = 1080;
+inline float window_width1 = 800;
+inline float window_height1 = 600;
 
 inline bool ExtractAll = false; // True when extracting all files from a package, this is to prevent unnecessary gpu loading as extracting all files does not have a view to display them anyway
 
 inline Texture* PreviewTexture = nullptr; //If Valid, texture is previewed in viewport
+
+inline bool PendingChange = false; //If Valid, texture is previewed in viewport
 
 
 inline std::function<void(const std::vector<unsigned char>&)> GlobalSaveFunction = nullptr;
@@ -124,6 +126,7 @@ inline std::string CurrentModelName = "";
 inline std::vector<Object1> CurrentModel; // Current object being viewed in the viewport
 
 namespace globals {
-	inline VinceWindow window1(window_width, window_height, "SolarEngine");
+	inline VinceWindow window1(window_width1, window_height1, "SolarEngine");
 	inline Camera* cam = nullptr;
+	inline Camera* cam2 = nullptr; //used for shadows
 }

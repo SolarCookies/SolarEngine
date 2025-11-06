@@ -21,6 +21,13 @@ public:
 	vec3 Up = vec3(0.0f, 1.0f, 0.0f);
 	glm::mat4 cameraMatrix = glm::mat4(1.0f);
 
+
+	bool ShadowPerspective = false;
+	bool TestShadowPerspective = false;
+	//glm::mat4 orthonalProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 50.0f);
+	//glm::mat4 directonalLightView = glm::lookAt(vec3(-20.0f, 20.0f, 20.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
+	//glm::mat4 lightProjection = orthonalProjection * directonalLightView;
+
 	float width;
 	float height;
 

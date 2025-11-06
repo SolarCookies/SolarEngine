@@ -169,7 +169,6 @@ Texture::Texture(std::vector<unsigned char>& Rawdata, GLenum pixelType, int widt
 	glGenerateMipmap(GL_TEXTURE_2D);
 	// Unbinds the OpenGL Texture object so that it can't accidentally be modified
 	glBindTexture(GL_TEXTURE_2D, 0);
-	
 }
 
 
@@ -186,14 +185,17 @@ void Texture::texUnit(Shader& shader, const char* uniform, GLuint unit)
 void Texture::Bind()
 {
 	glBindTexture(type, ID);
+	IsValid = true;
 }
 
 void Texture::Unbind()
 {
 	glBindTexture(type, 0);
+	IsValid = false;
 }
 
 void Texture::Delete()
 {
 	glDeleteTextures(1, &ID);
+	IsValid = false;
 }

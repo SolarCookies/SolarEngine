@@ -140,9 +140,15 @@ public:
     DDS_Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info, int cAFFIndex)
         : Chunk(rawVDAT, rawVGPU, IsBig, name, Info, cAFFIndex)
     {
+		if (rawVGPU.size() <= 0) return; // no gpu data
         memcpy(&SizeX, &rawVDAT.data()[0] + 8, sizeof(uint16_t));
         memcpy(&SizeY, &rawVDAT.data()[0] + 10, sizeof(uint16_t));
         memcpy(&Encoding, &rawVDAT.data()[0], sizeof(uint32_t));
+        if (IsBig) {
+			SizeX = _byteswap_ushort(SizeX);
+			SizeY = _byteswap_ushort(SizeY);
+			Encoding = _byteswap_ulong(Encoding);
+        }
 
         char first4[4];
 		memcpy(&first4, &rawVGPU.data()[0], sizeof(first4));
@@ -160,7 +166,7 @@ public:
         else {
             // harder case: swizzled raw data
 
-            if (Encoding == 1) { // DXT1
+            if (Encoding == 1 || Encoding == 12) { // DXT1
                 int blockSize = 8;
                 auto linear = DeswizzleDXT(VGPU, SizeX, SizeY, blockSize);
                 uint32_t mipCount = DetectMipCount(SizeX, SizeY, blockSize, linear.size());
@@ -204,6 +210,7 @@ public:
                     hasloaded = true;
                 }
             }
+
 
         }
         if (NameWithoutMetadata.find("madeup") != std::string::npos) {
@@ -251,6 +258,7 @@ public:
                     UpdatedVDAT = std::vector<unsigned char>((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
                     file.close();
                     PendingUpdate = true;
+                    PendingChange = true;
                 }
             }
         }
@@ -282,11 +290,33 @@ public:
                         UpdatedVGPU = std::vector<unsigned char>((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
                         file.close();
                         PendingUpdate = true;
+                        PendingChange = true;
                     }
                 }
             }
             if (ImGui::Button("View Texture")) {
                 PreviewTexture = &DDSTexture;
+            }
+            if (ImGui::Button("Export Texture"))
+            {
+                ExportInfo ex = ExportChunk();
+
+                //Get desktop path
+                std::string DumpPath;
+                char* userProfile = nullptr;
+                size_t len = 0;
+                _dupenv_s(&userProfile, &len, "USERPROFILE");
+                if (userProfile) {
+                    DumpPath = std::string(userProfile) + "\\Desktop\\" + ex.Name + ".dds";
+                    free(userProfile);
+                }
+                else {
+                    DumpPath = ex.Name + ".dds";
+                }
+
+                std::ofstream outfile(DumpPath, std::ios::binary);
+                outfile.write((char*)ex.Data.data(), ex.Data.size());
+                outfile.close();
             }
         }
     };

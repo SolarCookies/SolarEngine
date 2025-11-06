@@ -5,9 +5,12 @@ out vec4 FragColor;
 in vec3 color;
 
 in vec2 texCoord;
+in vec4 fragPosLight;
 
 in vec3 Normal;
 in vec3 crntPos;
+
+uniform sampler2D ShadowMap; // ShadowMap
 
 uniform vec4 lightColor;
 uniform vec3 lightPos;
@@ -48,6 +51,20 @@ void main()
     vec3 diffuseColor = texColor.rgb * lightColor.rgb * diffuse;
     vec3 specular = lightColor.rgb * spec * 0.5; // Specular strength
 
-    vec3 result = ambient + diffuseColor + specular;
+    float shadow = 0.0f;
+    vec3 lightCoords = fragPosLight.xyz / fragPosLight.w;
+    if(lightCoords.z <= 1.0f){
+        lightCoords = (lightCoords + 1.0f) / 2.0f;
+
+        float closestDepth = texture(ShadowMap, lightCoords.xy).r;
+        float currentDepth = lightCoords.z;
+
+        float bias = 0.005f;
+        if(currentDepth > closestDepth + bias){
+            shadow = 1.0;
+        }
+    }
+
+    vec3 result = ambient + (diffuseColor * (1.0f - shadow)) + specular;
     FragColor = vec4(result, texColor.a);
 }

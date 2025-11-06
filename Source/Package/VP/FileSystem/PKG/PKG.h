@@ -32,8 +32,11 @@ public:
 		//append rawFile and add 50000 bytes of padding to avoid out of bounds reads
 		std::vector<unsigned char> paddedFile = rawFile;
 		paddedFile.resize(rawFile.size() + 50000, 0);
-
+		
 		memcpy(&Header, paddedFile.data(), sizeof(PKGHeader));
+
+		IsBigEndian();
+
 		if (IsBigEndianFile) {
 			Header.Version = _byteswap_ulong(Header.Version);
 			Header.CAFFCount = _byteswap_ulong(Header.CAFFCount);

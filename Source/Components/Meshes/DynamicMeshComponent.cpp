@@ -57,25 +57,25 @@ void DynamicMeshComponent::Render(VinceWindow* window, Camera* Cam)
 	//OBJ->SetMaterialParameter("unlit", 0);
 
 	OBJ->SetMaterialParameter("cameraPos", Cam->Position);
-	Cam->Matrix(*OBJ->shaderProgram.get(), "camMatrix");
+	Cam->Matrix(*OBJ->material->shaderProgram.get(), "camMatrix");
 
 	glActiveTexture(GL_TEXTURE0);
 	ColorTexture.Bind();
 
-	Draw();
+	Draw(Cam->ShadowPerspective,window,Cam);
 }
 
-void DynamicMeshComponent::Draw()
+void DynamicMeshComponent::Draw(bool shadow, VinceWindow* window, Camera* Cam)
 {
 	if (isTriangleStrip){
 		//OBJ->Draw(true,0); //Skip this because it messes up oter meshes that are not triangle strips
 		glEnable(GL_BLEND);
 		glBlendEquation(GL_FUNC_ADD);
-		OBJ->Draw(true, 0);
+		OBJ->Draw(true, 0,shadow,window,Cam);
 	}
 	else {
 		glEnable(GL_BLEND);
 		glBlendEquation(GL_FUNC_ADD);
-		OBJ->Draw();
+		OBJ->Draw(false,0,shadow,window,Cam);
 	}
 }

@@ -81,10 +81,42 @@ public:
 				{
 					ImGui::Text("Current Path: ");
 					ImGui::SameLine();
-					if (ImGui::Button(std::string(Bundlepath).substr(std::string(Bundlepath).find_last_of("\\") + 1).c_str()))
+					if (ImGui::Button("Bundles"))
 					{
-						CurrentPKG = "";
-						CurrentCAFF = "";
+						if (PendingChange) {
+							ImGui::OpenPopup("ChangeFilePopup");
+						}
+						else
+						{
+							CurrentCAFF = "";
+							CurrentPKG = "";
+							CurrentModel.clear();
+							CurrentModelName = "";
+							chunkTextures.clear();
+						}
+					}
+
+					// This should be outside the button block, but inside the window
+					if (ImGui::BeginPopup("ChangeFilePopup")) {
+						ImGui::Text("Are you sure you want to patch this file?");
+						if (ImGui::Button("Yes")) {
+							PendingChange = false;
+							CurrentCAFF = "";
+							CurrentPKG = "";
+							CurrentModel.clear();
+							CurrentModelName = "";
+							chunkTextures.clear();
+							ImGui::CloseCurrentPopup();
+						}
+						ImGui::SameLine();
+						if (ImGui::Button("No")) {
+							ImGui::CloseCurrentPopup();
+						}
+						ImGui::SameLine();
+						if (ImGui::Button("Delete")) {
+							ImGui::CloseCurrentPopup();
+						}
+						ImGui::EndPopup();
 					}
 
 					if (CurrentPKG != "")

@@ -8,12 +8,14 @@ layout (location = 3) in vec3 aNormal;
 out vec3 color;
 
 out vec2 texCoord;
+out vec4 fragPosLight;
 
 out vec3 Normal;
 out vec3 crntPos;
 
 uniform mat4 camMatrix;
 uniform mat4 model;
+uniform mat4 lightProjection;
 
 void main()
 {
@@ -23,4 +25,5 @@ void main()
 	color = acolor;
 	texCoord = aTex;
 	Normal = aNormal;
+	fragPosLight = lightProjection * vec4(crntPos,1.0f);
 }

@@ -1275,6 +1275,10 @@
     <ClInclude Include="Vendors\half\half.hpp" />
     <ClInclude Include="Source\Actors\Meshes\aid_model.h" />
     <ClInclude Include="Source\Package\VP\FileSystem\GlobalPackages.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\DebugPack\DebugPack.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\DebugPackManager\DebugPackManager.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\DebugPackExtractAll\ExtractAllPageDebug.h" />
+    <ClInclude Include="Source\Shaders\Material.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Actors\Actor.cpp">
@@ -1785,5 +1789,11 @@
     <ClCompile Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.cpp" />
     <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.cpp" />
     <ClCompile Include="Source\Package\VP\FileDatabase.h" />
+    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\DebugPack_FileBrowser.h" />
+    <ClCompile Include="Source\Package\VP\UI\Pages\DebugPackManager\DebugPackManager.cpp" />
+    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\DebugPack_FileBrowser.cpp" />
+    <ClCompile Include="Source\Package\VP\FileSystem\DebugPack\DebugPack.cpp" />
+    <ClCompile Include="Source\Package\VP\UI\Pages\DebugPackExtractAll\ExtractAllPageDebug.cpp" />
+    <ClCompile Include="Source\Windows\ViewportWindow.cpp" />
   </ItemGroup>
 </Project>

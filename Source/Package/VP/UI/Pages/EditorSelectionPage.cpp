@@ -1,246 +1,142 @@
 #include "EditorSelectionPage.h"
 #include "../../../../GlobalSettings.h"
 #include "PackageManager/PackageManager.h"
+#include "DebugPackManager/DebugPackManager.h"
+#include "DebugPackExtractAll/ExtractAllPageDebug.h"
 #include "../GUI.h"
 //#include "BundleManager/BundleManager.h"
 #include"ExtractAllPage.h"
 
 void EditorPage::render(GUI& gui)
 {
-	ImGui::Begin("Editor Selection");
+    ImGui::Begin("Editor Selection");
 
-	{
-		//Set child background color to white
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.6f, 0.6f, 1.0f, 1.0f));
-		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 0.0f, 1.0f, 1.0f)); // Set border color to black
-		ImGui::BeginChild("PackageManagerButton", ImVec2(300, 120), true);
-		//make button blue
+    // Use a vertical list layout for all options
+    struct ListEntry {
+        const char* child_id;
+        ImVec4 bg_color;
+        ImVec4 border_color;
+        ImVec4 button_color;
+        const char* desc1;
+        const char* desc2;
+        const char* button_text;
+        bool enabled;
+        std::function<void()> on_click;
+    };
 
-		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f)); // Set text color to black
-		//Add Decription Text
-		ImGui::TextWrapped("Used to browse and modify");
+    std::vector<ListEntry> entries = {
+        {
+            "PackageManagerButton",
+            ImVec4(0.6f, 0.6f, 1.0f, 1.0f),
+            ImVec4(0.0f, 0.0f, 1.0f, 1.0f),
+            ImVec4(0.2f, 0.2f, 0.8f, 1.0f),
+            "Used to browse and modify",
+            ".pkg files",
+            "Open",
+            true,
+            [&]() { gui.CurrentPage = std::make_unique<PackageManager>(); }
+        },
+        {
+            "DebugManagerButton",
+            ImVec4(0.4f, 0.4f, 0.4f, 1.0f),
+            ImVec4(0.0f, 0.0f, 0.0f, 1.0f),
+            ImVec4(0.25f, 0.25f, 0.25f, 1.0f),
+            "Used to browse and modify the",
+            "debug_pack.bin",
+            "Open",
+            true,
+            [&]() { gui.CurrentPage = std::make_unique<DebugPackManager>(); }
+        },
+        {
+            "DebugExtractButton",
+            ImVec4(0.4f, 0.4f, 0.4f, 1.0f),
+            ImVec4(0.0f, 0.0f, 0.0f, 1.0f),
+            ImVec4(0.25f, 0.25f, 0.25f, 1.0f),
+            "Used to Extract All the",
+            "debug_pack.bin",
+            "Open",
+            true,
+            [&]() { gui.CurrentPage = std::make_unique<ExtractPageDebug>(); }
+        },
+        {
+            "BundleManagerButton",
+            ImVec4(0.6f, 1.0f, 0.6f, 1.0f),
+            ImVec4(0.0f, 1.0f, 0.0f, 1.0f),
+            ImVec4(0.1f, 0.5f, 0.1f, 1.0f),
+            "Used to browse and modify the",
+            "Localization Bundles",
+            "Coming soon",
+            true,
+            []() { /* gui.CurrentPage = std::make_unique<BundleManager>(); */ }
+        }
+    };
 
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize(".pkg files").x) / 2); // Center the text horizontally
-		ImGui::Text(".pkg files");
-		ImGui::PopStyleColor();
+    if (!IsTIP()) {
+        entries.push_back({
+            "ShaderManagerButton",
+            ImVec4(0.4f, 0.4f, 0.4f, 1.0f),
+            ImVec4(0.0f, 0.0f, 0.0f, 1.0f),
+            ImVec4(0.25f, 0.25f, 0.25f, 1.0f),
+            "Used to browse and modify the",
+            "Shader .wad",
+            "Coming Soon",
+            false,
+            []() {}
+        });
+        entries.push_back({
+            "SaveManagerButton",
+            ImVec4(0.4f, 0.4f, 0.4f, 1.0f),
+            ImVec4(0.0f, 0.0f, 0.0f, 1.0f),
+            ImVec4(0.25f, 0.25f, 0.25f, 1.0f),
+            "Used to browse and modify the",
+            "Save Files",
+            "Coming Soon",
+            false,
+            []() {}
+        });
+    }
 
-		//Center the button on the bottom of the child window
-		ImGui::SetCursorPosY(ImGui::GetWindowHeight() - 60); // Adjust the Y position to place the button at the bottom
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 200) / 2); // Center the button horizontally
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.2f, 0.8f, 1.0f));
-		if (ImGui::Button("Package", ImVec2(200, 50))) {
-			gui.CurrentPage = std::make_unique<PackageManager>();
-		}
-		ImGui::PopStyleColor();
-		ImGui::EndChild();
-		ImGui::PopStyleColor();
-		ImGui::PopStyleColor();
-	}
+    entries.push_back({
+        "ExportManagerButton",
+        ImVec4(0.4f, 0.4f, 0.4f, 1.0f),
+        ImVec4(0.0f, 0.0f, 0.0f, 1.0f),
+        ImVec4(0.25f, 0.25f, 0.25f, 1.0f),
+        "Used to mass export the",
+        ".pkg Files",
+        "Extract",
+        true,
+        [&]() { gui.CurrentPage = std::make_unique<ExtractPage>(); }
+    });
 
-	//ImGui::SameLine();
+    // Render each entry as a vertical list item
+    for (const auto& entry : entries) {
+        ImGui::PushStyleColor(ImGuiCol_ChildBg, entry.bg_color);
+        ImGui::PushStyleColor(ImGuiCol_Border, entry.border_color);
 
-	{
-		//Set position of the second child window to the right of the first one
-		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 320); // Move to the right of the first child
-		ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 125); // Keep the Y position the same
+        // Remove scroll box by setting NoScrollbar and NoScrollWithMouse flags
+        ImGuiWindowFlags child_flags = ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse;
+        ImGui::BeginChild(entry.child_id, ImVec2(ImGui::GetContentRegionAvail().x, 120), true, child_flags);
 
+        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
+        ImGui::TextWrapped("%s", entry.desc1);
+        ImGui::Text("%s", entry.desc2);
+        ImGui::PopStyleColor();
 
-		//Set child background color to white
-		//ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(1.0f, 0.6f, 0.6f, 1.0f));
-		//ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
+        ImGui::Dummy(ImVec2(0, 10)); // Add some vertical space
 
-		//Deactivated colors
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.4f, 0.4f, 0.4f, 1.0f));
-		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
+        ImGui::PushStyleColor(ImGuiCol_Button, entry.button_color);
+        ImGui::BeginDisabled(!entry.enabled);
+        if (ImGui::Button(entry.button_text, ImVec2(200, 50)) && entry.enabled) {
+            entry.on_click();
+        }
+        ImGui::EndDisabled();
+        ImGui::PopStyleColor();
 
-		ImGui::BeginChild("DebugManagerButton", ImVec2(300, 120), true);
-		//make button blue
+        ImGui::EndChild();
+        ImGui::PopStyleColor(2);
 
-		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f)); // Set text color to black
-		//Add Decription Text
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("Used to browse and modify the").x) / 2); // Center the text horizontally
-		ImGui::Text("Used to browse and modify the");
-		//set the text to center
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("debug_pack.bin").x) / 2); // Center the text horizontally
-		ImGui::Text("debug_pack.bin");
-		ImGui::PopStyleColor();
+        ImGui::Spacing(); // Space between list items
+    }
 
-		//Center the button on the bottom of the child window
-		ImGui::SetCursorPosY(ImGui::GetWindowHeight() - 60); // Adjust the Y position to place the button at the bottom
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 200) / 2); // Center the button horizontally
-		//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.2f, 0.2f, 1.0f));
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.25f, 0.25f, 0.25f, 1.0f));
-		if (ImGui::Button("Coming Soon", ImVec2(200, 50))) {
-			// Handle button click
-		}
-		ImGui::PopStyleColor();
-		ImGui::EndChild();
-		ImGui::PopStyleColor();
-		ImGui::PopStyleColor();
-	}
-
-	{
-		//Set position of the second child window to the right of the first one
-		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 320 * 2); // Move to the right of the first child
-		ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 125); // Keep the Y position the same
-
-
-		//Set child background color to white
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.6f, 1.0f, 0.6f, 1.0f));
-		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 1.0f, 0.0f, 1.0f));
-
-		ImGui::BeginChild("BundleManagerButton", ImVec2(300, 120), true);
-		//make button blue
-
-		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f)); // Set text color to black
-		//Add Decription Text
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("Used to browse and modify the").x) / 2); // Center the text horizontally
-		ImGui::Text("Used to browse and modify the");
-		//set the text to center
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("Localization Bundles").x) / 2); // Center the text horizontally
-		ImGui::Text("Localization Bundles");
-		ImGui::PopStyleColor();
-
-		//Center the button on the bottom of the child window
-		ImGui::SetCursorPosY(ImGui::GetWindowHeight() - 60); // Adjust the Y position to place the button at the bottom
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 200) / 2); // Center the button horizontally
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.1f, 0.5f, 0.1f, 1.0f));
-		//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.25f, 0.25f, 0.25f, 1.0f));
-		if (ImGui::Button("Bundle", ImVec2(200, 50))) {
-			// Handle button click
-			//gui.CurrentPage = std::make_unique<BundleManager>();
-		}
-		ImGui::PopStyleColor();
-		ImGui::EndChild();
-		ImGui::PopStyleColor();
-		ImGui::PopStyleColor();
-	}
-
-	if(!IsTIP())
-	{
-		//Set position of the second child window to the right of the first one
-		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 320 * 3); // Move to the right of the first child
-		ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 125); // Keep the Y position the same
-
-
-		//Set child background color to white
-		//ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.6f, 0.3f, 0.7f, 1.0f));
-		//ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(1.0f, 0.0f, 1.0f, 1.0f)); // Set border color to black
-
-		//Deactivated colors
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.4f, 0.4f, 0.4f, 1.0f));
-		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
-
-		ImGui::BeginChild("ShaderManagerButton", ImVec2(300, 120), true);
-		//make button blue
-
-		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f)); // Set text color to black
-		//Add Decription Text
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("Used to browse and modify the").x) / 2); // Center the text horizontally
-		ImGui::Text("Used to browse and modify the");
-		//set the text to center
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("shader data.wad").x) / 2); // Center the text horizontally
-		ImGui::Text("Shader .wad");
-		ImGui::PopStyleColor();
-
-		//Center the button on the bottom of the child window
-		ImGui::SetCursorPosY(ImGui::GetWindowHeight() - 60); // Adjust the Y position to place the button at the bottom
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 200) / 2); // Center the button horizontally
-		//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.25f, 0.1f, 0.25f, 1.0f));
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.25f, 0.25f, 0.25f, 1.0f));
-		if (ImGui::Button("Coming Soon", ImVec2(200, 50))) {
-			// Handle button click
-		}
-		ImGui::PopStyleColor();
-		ImGui::EndChild();
-		ImGui::PopStyleColor();
-		ImGui::PopStyleColor();
-	}
-
-	if (!IsTIP())
-	{
-		//Set position of the second child window to the right of the first one
-		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 320 * 4); // Move to the right of the first child
-		ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 125); // Keep the Y position the same
-
-
-		//Set child background color to white
-		//ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.6f, 0.6f, 0.6f, 1.0f));
-		//ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(1.0f, 1.0f, 1.0f, 1.0f)); // Set border color to black
-
-		//Deactivated colors
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.4f, 0.4f, 0.4f, 1.0f));
-		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
-
-		ImGui::BeginChild("SaveManagerButton", ImVec2(300, 120), true);
-		//make button blue
-
-		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f)); // Set text color to black
-		//Add Decription Text
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("Used to browse and modify the").x) / 2); // Center the text horizontally
-		ImGui::Text("Used to browse and modify the");
-		//set the text to center
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("Save Files").x) / 2); // Center the text horizontally
-		ImGui::Text("Save Files");
-		ImGui::PopStyleColor();
-
-		//Center the button on the bottom of the child window
-		ImGui::SetCursorPosY(ImGui::GetWindowHeight() - 60); // Adjust the Y position to place the button at the bottom
-		ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 200) / 2); // Center the button horizontally
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.25f, 0.25f, 0.25f, 1.0f));
-		if (ImGui::Button("Coming Soon", ImVec2(200, 50))) {
-			// Handle button click
-			
-		}
-		ImGui::PopStyleColor();
-		ImGui::EndChild();
-		ImGui::PopStyleColor();
-		ImGui::PopStyleColor();
-
-
-
-
-		
-	}
-
-	//Set position of the second child window to the right of the first one
-	ImGui::SetCursorPosX(ImGui::GetCursorPosX()); // Move to the right of the first child
-	ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 125 + 125); // Keep the Y position the same
-
-
-	//Set child background color to white
-	//ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.6f, 0.6f, 0.6f, 1.0f));
-	//ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(1.0f, 1.0f, 1.0f, 1.0f)); // Set border color to black
-
-	//Deactivated colors
-	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.4f, 0.4f, 0.4f, 1.0f));
-	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
-
-	ImGui::BeginChild("ExportManagerButton", ImVec2(300, 120), true);
-	//make button blue
-
-	ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f)); // Set text color to black
-	//Add Decription Text
-	ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("Used to mass export the").x) / 2); // Center the text horizontally
-	ImGui::Text("Used to mass export the");
-	//set the text to center
-	ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize(".pkg Files").x) / 2); // Center the text horizontally
-	ImGui::Text(".pkg Files");
-	ImGui::PopStyleColor();
-
-	//Center the button on the bottom of the child window
-	ImGui::SetCursorPosY(ImGui::GetWindowHeight() - 60); // Adjust the Y position to place the button at the bottom
-	ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 200) / 2); // Center the button horizontally
-	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.25f, 0.25f, 0.25f, 1.0f));
-	if (ImGui::Button("Extract", ImVec2(200, 50))) {
-		// Handle button click
-		gui.CurrentPage = std::make_unique<ExtractPage>();
-	}
-	ImGui::PopStyleColor();
-	ImGui::EndChild();
-	ImGui::PopStyleColor();
-	ImGui::PopStyleColor();
-
-	ImGui::End();
-
+    ImGui::End();
 }

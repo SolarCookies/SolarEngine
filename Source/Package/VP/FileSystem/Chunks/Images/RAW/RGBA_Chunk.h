@@ -41,6 +41,12 @@ public:
         memcpy(&SizeY, &rawVDAT.data()[0] + 10, sizeof(uint16_t));
 		memcpy(&Encoding, &rawVDAT.data()[0], sizeof(uint32_t));
 
+		if (IsBig) {
+			SizeX = _byteswap_ushort(SizeX);
+			SizeY = _byteswap_ushort(SizeY);
+			Encoding = _byteswap_ulong(Encoding);
+		}
+
 		RGBAImage.resize(SizeX * SizeY * 4);
 		ARGBImage = rawVGPU;
 		RGBAImage.resize(ARGBImage.size());
@@ -130,6 +136,7 @@ public:
 					UpdatedVDAT = std::vector<unsigned char>((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 					file.close();
 					PendingUpdate = true;
+					PendingChange = true;
 				}
 			}
 		}
@@ -161,6 +168,7 @@ public:
 						UpdatedVGPU = std::vector<unsigned char>((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 						file.close();
 						PendingUpdate = true;
+						PendingChange = true;
 					}
 				}
 			}
@@ -168,6 +176,25 @@ public:
 			if(ImGui::Button("View Texture"))
 			{
 				PreviewTexture = &RGBATexture;
+			}
+			if (ImGui::Button("Export Texture"))
+			{
+				ExportInfo ex = ExportChunk();
+				
+				//Get desktop path
+				std::string DumpPath;
+				char* userProfile = nullptr;
+				size_t len = 0;
+				_dupenv_s(&userProfile, &len, "USERPROFILE");
+				if (userProfile) {
+					DumpPath = std::string(userProfile) + "\\Desktop\\" + NameWithoutMetadata + ".png";
+					free(userProfile);
+				}
+				else {
+					DumpPath = NameWithoutMetadata + ".png";
+				}
+
+				ex.SaveFunction(DumpPath);
 			}
 		}
     };

@@ -1,3 +1,4 @@
+#pragma once
 #include "Streams/Streams.h"
 #include "../File.h"
 #include "../../Utils/ZLibHelpers.h"
@@ -34,17 +35,23 @@ public:
 	std::unique_ptr <VDAT> vdat;
 	std::unique_ptr <VGPU> vgpu;
 	std::unique_ptr <VUNK> vunk;
+	bool LoadWhenOpened = false;
 
 	// Adding a constructor to accept rawFile data
 	CAFF() : File() {};
 	CAFF(const std::vector<unsigned char>& rawFile) : File(rawFile) {};
-    CAFF(const std::vector<unsigned char>& rawFile, bool IsBig, int Index) : File(rawFile,IsBig), CAFFIndex(Index) {
-		LoadFile(rawFile);
+    CAFF(const std::vector<unsigned char>& rawFile, bool IsBig, int Index, bool LoadOnOpen = false) : File(rawFile,IsBig), CAFFIndex(Index), LoadWhenOpened(LoadOnOpen) {
+		if(!LoadOnOpen) LoadFile(rawFile);
+	};
+
+	void Open(){
+		if(LoadWhenOpened) LoadFile(RawFile);
 	};
 
 	void LoadFile(const std::vector<unsigned char>& rawFile) override {
 		memcpy(&header, rawFile.data(), sizeof(CAFFHeader));
-        if(IsBigEndianFile) {
+        if(header.VREF_Offset != 120) { //Header size is always 120 so we can use this to determine endianness
+			IsBigEndianFile = true;
 			header.VREF_Offset = _byteswap_ulong(header.VREF_Offset);
 			header.ChunkCount = _byteswap_ulong(header.ChunkCount);
 			header.ChunkSpreadCount = _byteswap_ulong(header.ChunkSpreadCount);
@@ -52,6 +59,9 @@ public:
 			header.VREF_Compressed_Size = _byteswap_ulong(header.VREF_Compressed_Size);
 			header.VUNK_Uncompressed_Size = _byteswap_ulong(header.VUNK_Uncompressed_Size);
 			header.VUNK_Compressed_Size = _byteswap_ulong(header.VUNK_Compressed_Size);
+		}
+		else {
+			IsBigEndianFile = false;
 		}
 
 		//Load VREF
@@ -101,6 +111,11 @@ public:
 		std::vector<unsigned char> VDATData;
 		if (vref->VDAT_Data.Compressed_Size != 0) {
 			VDATData.resize(vref->VDAT_Data.Compressed_Size);
+			if(VDATData.size() + VUNKSize + VUNKOffset > rawFile.size()) {
+				std::cout << "Error: VDAT data goes out of bounds, aborting load (CAFF.h)" << std::endl;
+				return; //Something went wrong, don't try to read out of bounds data
+			}
+			else
 			memcpy(VDATData.data(), rawFile.data() + VUNKOffset + VUNKSize, vref->VDAT_Data.Compressed_Size);
 			vdat = std::make_unique<VDAT>(VDATData, IsBigEndianFile, vref->VDAT_Data.Uncompressed_Size, vref->VDAT_Data.Compressed_Size);
 		}

@@ -35,7 +35,7 @@ class VinceWindow {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 
-		glClearColor(0.45f, 0.55f, 0.60f, 1.00f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.00f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		ImGui::NewFrame();
@@ -55,6 +55,9 @@ class VinceWindow {
 	FrameBuffer* getFrameBuffer() const {
 		return const_cast<FrameBuffer*>(&frameBuffer);
 	}
+	FrameBuffer* getFrameBuffer2() const {
+		return const_cast<FrameBuffer*>(&frameBuffer2);
+	}
 	const char* glsl_version;
 
 	int width, height;
@@ -62,5 +65,6 @@ private:
 		const char* title;
 		std::unique_ptr<GLFWwindow, void(*)(GLFWwindow*)> window; // Use custom deleter type
 		FrameBuffer frameBuffer;
+		FrameBuffer frameBuffer2; //Used for shadows
 };
 

@@ -122,11 +122,14 @@
     <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Modelloader.h" />
     <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Model_Chunk.h" />
     <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\VertexTypes.h" />
+    <ClInclude Include="Source\Package\VP\FileSystem\DebugPack\DebugPack.h" />
     <ClInclude Include="Source\Package\VP\FileSystem\File.h" />
     <ClInclude Include="Source\Package\VP\FileSystem\GlobalPackages.h" />
     <ClInclude Include="Source\Package\VP\FileSystem\PKG\PKG.h" />
     <ClInclude Include="Source\Package\VP\UI\GUI.h" />
     <ClInclude Include="Source\Package\VP\UI\Page.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\DebugPackExtractAll\ExtractAllPageDebug.h" />
+    <ClInclude Include="Source\Package\VP\UI\Pages\DebugPackManager\DebugPackManager.h" />
     <ClInclude Include="Source\Package\VP\UI\Pages\EditorSelectionPage.h" />
     <ClInclude Include="Source\Package\VP\UI\Pages\ExtractAllPage.h" />
     <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\FileBrowser.h" />
@@ -139,6 +142,7 @@
     <ClInclude Include="Source\Shaders\DebugDraw.h" />
     <ClInclude Include="Source\Shaders\EBO.h" />
     <ClInclude Include="Source\Shaders\FrameBuffer.h" />
+    <ClInclude Include="Source\Shaders\Material.h" />
     <ClInclude Include="Source\Shaders\ShaderClass.h" />
     <ClInclude Include="Source\Shaders\Texture.h" />
     <ClInclude Include="Source\Shaders\VAO.h" />
@@ -502,10 +506,13 @@
     <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Chunk.cpp" />
     <ClCompile Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.cpp" />
     <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.cpp" />
+    <ClCompile Include="Source\Package\VP\FileSystem\DebugPack\DebugPack.cpp" />
     <ClCompile Include="Source\Package\VP\UI\GUI.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\DebugPackExtractAll\ExtractAllPageDebug.cpp" />
+    <ClCompile Include="Source\Package\VP\UI\Pages\DebugPackManager\DebugPackManager.cpp" />
     <ClCompile Include="Source\Package\VP\UI\Pages\EditorSelectionPage.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -514,6 +521,8 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\DebugPack_FileBrowser.cpp" />
+    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\DebugPack_FileBrowser.h" />
     <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\PackageManager.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -562,6 +571,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
+    <ClCompile Include="Source\Windows\ViewportWindow.cpp" />
     <ClCompile Include="Source\Windows\Window.cpp">
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>

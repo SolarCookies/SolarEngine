@@ -11,6 +11,7 @@ public:
        : model(  
            std::string("Assets/Shaders/" + std::string(ShaderName) + ".vert").c_str(),  
            std::string("Assets/Shaders/" + std::string(ShaderName) + ".frag").c_str(),  
+           std::string("Assets/Shaders/" + std::string(ShaderName) + ".geom").c_str(),
            loadOBJ(OBJ_Path).vertices,  
            loadOBJ(OBJ_Path).indices  
        )  

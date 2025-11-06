@@ -32,7 +32,7 @@ void VinceWindow::init()
 	glfwMakeContextCurrent(window.get());
 	Log("GLFW Hooked, Window Created", EType::BLUE);
 
-	glfwSwapInterval(1); // Enable vsync
+	//glfwSwapInterval(1); // Enable vsync
 	//Log("VSync Enabled", EType::Normal);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -138,6 +138,7 @@ void VinceWindow::SetupImGuiIO()
 void VinceWindow::InitFrameBuffer()
 {
 	//Gets the frame-buffer ready to start
-	frameBuffer.create_framebuffer();
-	Log("Frame-buffer Created", EType::BLUE);
+	frameBuffer.create_framebuffer(0);
+	frameBuffer2.create_framebuffer(1);
+	Log("Frame-buffers Created", EType::BLUE);
 }

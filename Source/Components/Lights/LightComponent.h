@@ -17,7 +17,7 @@ public:
 	void EndPlay() override;
 	void Tick(float deltaTime, World* World) override;
 	void Render(VinceWindow* window, Camera* Cam) override;
-	void Draw() override;
+	void Draw(bool shadow, VinceWindow* window, Camera* Cam) override;
 	void SetColor(const glm::vec4& color) { lightColor = color; }
 	glm::vec4 GetColor() const { return lightColor; }
 	void SetPosition(const glm::vec3& position) { lightPos = position; }

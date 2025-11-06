@@ -7,22 +7,34 @@
 void VREF::LoadFile(const std::vector<unsigned char>& rawFile)
 {
 	CheckType();
-	memcpy(&VDAT_Data, &RawFile[0], sizeof(VREFSubStreamData));
-	if (!Type) memcpy(&VGPU_Data, &RawFile[33], sizeof(VREFSubStreamData));
 
-	int NameInfoBlockOffset = 0;
-	int NameBlockOffset = 0;
-	int infoBlockOffset = 0;
-	if (!Type) memcpy(&infoBlockOffset, &RawFile[77], 4);
-	else memcpy(&infoBlockOffset, &RawFile[39], 4);
+	memcpy(&VDAT_Data, &RawFile[0], sizeof(VREFSubStreamData));
 
 	if (IsBigEndianFile) {
 		VDAT_Data.Uncompressed_Size = _byteswap_ulong(VDAT_Data.Uncompressed_Size);
 		VDAT_Data.Compressed_Size = _byteswap_ulong(VDAT_Data.Compressed_Size);
+	}
+
+	if (!Type) memcpy(&VGPU_Data, &RawFile[33], sizeof(VREFSubStreamData));
+	if (IsBigEndianFile) {
+		VGPU_Data.Uncompressed_Size = _byteswap_ulong(VGPU_Data.Uncompressed_Size);
+		VGPU_Data.Compressed_Size = _byteswap_ulong(VGPU_Data.Compressed_Size);
+	}
+
+	int NameInfoBlockOffset = 0;
+	int NameBlockOffset = 0;
+	int infoBlockOffset = 0;
+	if (!Type) {
+		memcpy(&infoBlockOffset, &RawFile[77], 4);
+	}
+	else {
+		memcpy(&infoBlockOffset, &RawFile[39], 4);
+	}
+
+	if (IsBigEndianFile) {
+		infoBlockOffset = _byteswap_ulong(infoBlockOffset);
 		NameInfoBlockOffset = 43;
 		if (!Type) {
-			VGPU_Data.Uncompressed_Size = _byteswap_ulong(VGPU_Data.Uncompressed_Size);
-			VGPU_Data.Compressed_Size = _byteswap_ulong(VGPU_Data.Compressed_Size);
 			NameInfoBlockOffset = 81;
 		}
 	}
@@ -66,14 +78,35 @@ void VREF::LoadFile(const std::vector<unsigned char>& rawFile)
 
 	for (int i = 0; i < chunkCount; i++) {
 		ChunkInfo VDatInfo;
+		if (offset + sizeof(VDatInfo.VDat) > RawFile.size()) {
+			std::cout << "Error: VREF chunk info goes out of bounds!" << std::endl;
+			break;
+		}
+
 		memcpy(&VDatInfo.VDat, &RawFile[offset], sizeof(VDatInfo.VDat));
+		if (IsBigEndianFile) {
+			VDatInfo.VDat.ID = _byteswap_ulong(VDatInfo.VDat.ID);
+			VDatInfo.VDat.Offset = _byteswap_ulong(VDatInfo.VDat.Offset);
+			VDatInfo.VDat.Size = _byteswap_ulong(VDatInfo.VDat.Size);
+		}
+
 		VDatInfo.Offset1 = offset;
 		offset += sizeof(VDatInfo.VDat);
 		int nextID = 0;
+
 		memcpy(&nextID, &RawFile[offset], 4);
+		if (IsBigEndianFile) nextID = _byteswap_ulong(nextID);
+
 		if (nextID == VDatInfo.VDat.ID) {
 			VDatInfo.Offset2 = offset;
+
 			memcpy(&VDatInfo.VGpu, &RawFile[offset], sizeof(VDatInfo.VGpu));
+			if (IsBigEndianFile) {
+				VDatInfo.VGpu.ID = _byteswap_ulong(VDatInfo.VGpu.ID);
+				VDatInfo.VGpu.Offset = _byteswap_ulong(VDatInfo.VGpu.Offset);
+				VDatInfo.VGpu.Size = _byteswap_ulong(VDatInfo.VGpu.Size);
+			}
+
 			VDatInfo.HasGpu = true;
 			offset += sizeof(VDatInfo.VGpu);
 		}
@@ -84,16 +117,6 @@ void VREF::LoadFile(const std::vector<unsigned char>& rawFile)
 			VDatInfo.HasGpu = false;
 		}
 
-		if (IsBigEndianFile) {
-			VDatInfo.VDat.ID = _byteswap_ulong(VDatInfo.VDat.ID);
-			VDatInfo.VDat.Offset = _byteswap_ulong(VDatInfo.VDat.Offset);
-			VDatInfo.VDat.Size = _byteswap_ulong(VDatInfo.VDat.Size);
-			if (VDatInfo.HasGpu) {
-				VDatInfo.VGpu.ID = _byteswap_ulong(VDatInfo.VGpu.ID);
-				VDatInfo.VGpu.Offset = _byteswap_ulong(VDatInfo.VGpu.Offset);
-				VDatInfo.VGpu.Size = _byteswap_ulong(VDatInfo.VGpu.Size);
-			}
-		}
 
 		ChunkInfos[i] = VDatInfo;
 
@@ -108,12 +131,20 @@ void VREF::LoadChunks(CAFF& caff)
 	int chunkIndex = 0;
 	for(ChunkInfo& chunkI : ChunkInfos)
 	{
-
+		if (chunkI.VDat.Offset + chunkI.VDat.Size > caff.vdat->UncompressedData.size() || chunkI.VDat.Offset < 0) {
+			std::cerr << "Error: VDAT data goes out of bounds! Skipping chunk." << std::endl;
+			continue;
+		}
 		std::vector<unsigned char> chunkVDAT;
 		chunkVDAT.resize(chunkI.VDat.Size);
 		memcpy(chunkVDAT.data(), caff.vdat->UncompressedData.data() + chunkI.VDat.Offset, chunkI.VDat.Size);
+		
 		std::vector<unsigned char> chunkVGPU;
 		if (chunkI.VGpu.Size > 0 && Type == 0) {
+			if(chunkI.VGpu.Size + chunkI.VGpu.Offset > caff.vgpu->UncompressedData.size()) {
+				std::cout << "Warning: VREF chunk VGPU data goes out of bounds! Skipping VGPU data for chunk ID " << chunkI.VDat.ID << std::endl;
+				chunkI.VGpu.Size = 0;
+			}
 			chunkVGPU.resize(chunkI.VGpu.Size);
 			memcpy(chunkVGPU.data(), caff.vgpu->UncompressedData.data() + chunkI.VGpu.Offset, chunkI.VGpu.Size);
 		}

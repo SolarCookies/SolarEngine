@@ -64,23 +64,29 @@ struct ChunkInfo;
 			memcpy(&SizeX, &rawVDAT.data()[0] + 8, sizeof(uint16_t));
 			memcpy(&SizeY, &rawVDAT.data()[0] + 10, sizeof(uint16_t));
 			memcpy(&Encoding, &rawVDAT.data()[0], sizeof(uint32_t));
-
-			//if first 4 bites are " dds" then file is a dds_chunk
+			if (IsBig) {
+				Encoding = _byteswap_ulong(Encoding);
+				SizeX = _byteswap_ushort(SizeX);
+				SizeY = _byteswap_ushort(SizeY);
+			}
+			
 			if (rawVGPU.size() >= 4 && rawVGPU[1] == 'd' && rawVGPU[2] == 'd' && rawVGPU[3] == 's') {
 				return std::make_unique<DDS_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 			}
-			if (Encoding == 1 || Encoding == 2 || Encoding == 3) { //dds
+			if (Encoding == 1 || Encoding == 2 || Encoding == 3 || Encoding == 12) { //dds
 				return std::make_unique<DDS_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 			}
 			if (Encoding >= 4) {
 				return std::make_unique<RGBA_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 			}
+
 			goto loc_chunk;
 		}
 
 	loc_model:
 		{
 			if (rawVGPU.size() < 4) goto loc_chunk;
+			if (IsBig) goto loc_chunk;
 			return std::make_unique<Model_Chunk>(rawVDAT, rawVGPU, IsBig, name, Info, CAFFIndex);
 		}
 

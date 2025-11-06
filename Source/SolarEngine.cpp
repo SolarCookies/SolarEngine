@@ -21,7 +21,7 @@
 
 #include "Temporary/Debug.h"
 
-#include "Actors/Meshes/aid_model.h"
+//#include "Actors/Meshes/aid_model.h"
 
 
 //#include "Package/VP/UI/Pages/PackageManager/FileBrowser/FileBrowser.h"
@@ -60,8 +60,8 @@ int main(int, char**)
 	debug.Init(world, globals::window1, physics_system);
 
 	//Add aid_model to world
-	std::unique_ptr<Aid_Model> model = std::make_unique<Aid_Model>();
-	world.AddActor(std::move(model));
+	//std::unique_ptr<Aid_Model> model = std::make_unique<Aid_Model>();
+	//world.AddActor(std::move(model));
 
 	world.ConstructWorld();
 
@@ -73,20 +73,31 @@ int main(int, char**)
 	DetailsWindow Details;
 	WorldSettingsWindow worldsettings;
 	ViewportWindow viewportWindow;
+	ViewportWindow ShadowWindow;
 	
 	Log("Starting Main Loop...", EType::Success);
 
 	glEnable(GL_DEPTH_TEST);
 
-	Camera camera(window_width, window_height, glm::vec3(0.0f, 0.0f, 2.0f));
-	globals::cam = &camera;
+	float window_width = 0, window_height = 0;
+	float Shadow_width = 512, Shadow_height = 512;
 
-	GUI m_GUI;
+
+	Camera camera(window_width, window_height, glm::vec3(0.0f, 0.0f, 2.0f));
+	Camera camera2(Shadow_width, Shadow_height, glm::vec3(0.0f, 0.0f, 2.0f));
+	globals::cam = &camera;
+	globals::cam2 = &camera2;
+	camera.ShadowPerspective = false;
+	camera2.ShadowPerspective = false;
+	camera2.TestShadowPerspective = true;
+
+	//GUI m_GUI;
 
 	using clock = std::chrono::high_resolution_clock;
 	auto lastTime = clock::now();
 	while (!glfwWindowShouldClose(globals::window1.getWindow()))
 	{
+		//glfwSwapInterval(0); // Enable vsync
 		// Calculate delta time
 		auto currentTime = clock::now();
 		std::chrono::duration<float> elapsed = currentTime - lastTime;
@@ -103,8 +114,9 @@ int main(int, char**)
 		globals::window1.NewFrame();
 
 		//Render Viewport
-		viewportWindow.Draw(window_width, window_height, camera, globals::window1);
-		
+		viewportWindow.Draw(window_width, window_height, camera, globals::window1,false);
+
+		ShadowWindow.Draw(Shadow_width, Shadow_height, camera2, globals::window1, true, "ShadowView");
 
 		//Render Engine Windows
 		worldsettings.Draw(world, globals::window1, physics_system);
@@ -113,20 +125,27 @@ int main(int, char**)
 		world.RenderWorldOutliner();
 		Details.RenderDetailsWindow(world);
 
-		if (!m_GUI.HasInitialized) {
-			m_GUI.init();
-		}
+		//if (!m_GUI.HasInitialized) {
+		//	m_GUI.init();
+		//}
 
-		m_GUI.render();
+		//m_GUI.render();
 
 		//Render ImGui
 		ImGui::Render();
 
+		globals::window1.getFrameBuffer2()->Bind();
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glViewport(0, 0, 4096, 4096);
+		world.Render(&globals::window1, &camera2);
+		globals::window1.getFrameBuffer2()->Unbind();
+
+		glViewport(0, 0, window_width, window_height);
+
 		//Begin rendering to viewport frame-buffer
 		globals::window1.getFrameBuffer()->Bind();
-
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
+
 		camera.Inputs(globals::window1.getWindow());
 		camera.updateMatrix(45.0f, 0.01f, 100000.0f);
 
@@ -138,9 +157,10 @@ int main(int, char**)
 		world.TickWorld(deltaTime);
 		world.Render(&globals::window1, &camera);
 
-		//debug.Update(camera, world, globals::window1);
+		
 
 		globals::window1.EndFrame();
+		
 	}
 
 	FileDatabase::Save("FileNameDatabase.ini");

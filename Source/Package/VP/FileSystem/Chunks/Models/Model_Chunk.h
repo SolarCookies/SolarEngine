@@ -6,6 +6,7 @@
 #include "../../../../../Windows/Log.hpp"
 
 
+
 //Located at 0x0 in vdat
 struct ModelHeader {
     uint32_t FooterOffset;
@@ -157,6 +158,12 @@ inline std::vector<int> GetAllBlockOffsets(std::vector<unsigned char> VDAT, int 
         }
 
         memcpy(&mi, &VDAT.data()[currentOffset], sizeof(ModelInfo));
+        if (BigEndian) {
+            mi.NextOffset = _byteswap_ulong(mi.NextOffset);
+            mi.AdditonalOffset = _byteswap_ulong(mi.AdditonalOffset);
+            mi.LastOffset = _byteswap_ulong(mi.LastOffset);
+            mi.Index = _byteswap_ushort(mi.Index);
+        }
 
         // Queue both Next and Additional offsets if they are valid and not already visited
         if (mi.NextOffset != 0 && std::find(offsets.begin(), offsets.end(), mi.NextOffset) == offsets.end()) {
@@ -169,12 +176,18 @@ inline std::vector<int> GetAllBlockOffsets(std::vector<unsigned char> VDAT, int 
     return offsets;
 }
 
-inline std::vector<ModelSection> GetAllModelSections(std::vector<unsigned char> VDAT, std::vector<int> BlockOffsets) {
+inline std::vector<ModelSection> GetAllModelSections(std::vector<unsigned char> VDAT, std::vector<int> BlockOffsets, bool BigEndian) {
 
 	std::vector<ModelInfo> ModelInfos;
     for(int offset : BlockOffsets) {
         ModelInfo mi;
         memcpy(&mi, &VDAT.data()[offset], sizeof(ModelInfo));
+        if (BigEndian) {
+            mi.NextOffset = _byteswap_ulong(mi.NextOffset);
+            mi.AdditonalOffset = _byteswap_ulong(mi.AdditonalOffset);
+            mi.LastOffset = _byteswap_ulong(mi.LastOffset);
+            mi.Index = _byteswap_ushort(mi.Index);
+        }
         mi.CurrentOffset = offset; // Store where we found this block for reference
 		ModelInfos.push_back(mi);
 	}
@@ -202,12 +215,43 @@ inline std::vector<ModelSection> GetAllModelSections(std::vector<unsigned char> 
             }
             // Start a new section with the vertex definition
             memcpy(&currentSection.verts, &VDAT.data()[mi.CurrentOffset], sizeof(ModelVertDef));
+            if (BigEndian) {
+                currentSection.verts.info.NextOffset = _byteswap_ulong(currentSection.verts.info.NextOffset);
+                currentSection.verts.info.AdditonalOffset = _byteswap_ulong(currentSection.verts.info.AdditonalOffset);
+                currentSection.verts.info.LastOffset = _byteswap_ulong(currentSection.verts.info.LastOffset);
+                currentSection.verts.info.Index = _byteswap_ushort(currentSection.verts.info.Index);
+                currentSection.verts.vertexCount = _byteswap_ulong(currentSection.verts.vertexCount);
+                currentSection.verts.dataOffset = _byteswap_ulong(currentSection.verts.dataOffset);
+                currentSection.verts.vertexOffset = _byteswap_ulong(currentSection.verts.vertexOffset);
+                currentSection.verts.vertTableLength = _byteswap_ulong(currentSection.verts.vertTableLength);
+                currentSection.verts.entrySize = _byteswap_ushort(currentSection.verts.entrySize);
+                currentSection.verts.unk1 = _byteswap_ushort(currentSection.verts.unk1);
+                currentSection.verts.unk2 = _byteswap_ushort(currentSection.verts.unk2);
+                currentSection.verts.unk5 = _byteswap_ushort(currentSection.verts.unk5);
+            }
             inSection = true;
         }
         else if ((mi.Type == 6 || mi.Type == 7) && inSection) {
             // Add indice definitions to the current section
             ModelIndicesDef indice;
             memcpy(&indice, &VDAT.data()[mi.CurrentOffset], sizeof(ModelIndicesDef));
+            if (BigEndian) {
+                indice.info.NextOffset = _byteswap_ulong(indice.info.NextOffset);
+                indice.info.AdditonalOffset = _byteswap_ulong(indice.info.AdditonalOffset);
+                indice.info.LastOffset = _byteswap_ulong(indice.info.LastOffset);
+                indice.info.Index = _byteswap_ushort(indice.info.Index);
+                indice.IndicesSize = _byteswap_ulong(indice.IndicesSize);
+                indice.IndicesCount = _byteswap_ulong(indice.IndicesCount);
+                indice.IndicesCount2UNK = _byteswap_ulong(indice.IndicesCount2UNK);
+                indice.IndicesOffset = _byteswap_ulong(indice.IndicesOffset);
+                indice.IndicesOffset2 = _byteswap_ulong(indice.IndicesOffset2);
+                indice.IndicesOffset3 = _byteswap_ulong(indice.IndicesOffset3);
+                indice.IndicesOffset4 = _byteswap_ulong(indice.IndicesOffset4);
+                indice.IndicesCount2 = _byteswap_ulong(indice.IndicesCount2);
+                indice.IndicesCount3 = _byteswap_ulong(indice.IndicesCount3);
+                indice.unk4 = _byteswap_ulong(indice.unk4);
+                indice.unk6 = _byteswap_ulong(indice.unk6);
+            }
             currentSection.indice.push_back(indice);
         }
         // If we encounter other types, we ignore them for now
@@ -462,7 +506,7 @@ private:
 		std::string NormalName = "CAFF" + std::to_string(CAFFIndex) + "_chunk" + std::to_string(info.VDat.ID + 2) + "_texture"; //normals are usually after the color texture
 
 		std::vector<int> BlockOffsets = GetAllBlockOffsets(VDAT, CurrentOffset, BigEndian);
-		std::vector<ModelSection> ModelSections = GetAllModelSections(VDAT, BlockOffsets);
+		std::vector<ModelSection> ModelSections = GetAllModelSections(VDAT, BlockOffsets, BigEndian);
 
         
         for(const ModelSection& sec : ModelSections) {
@@ -509,6 +553,7 @@ private:
                         //add indices to indiceData
                         uint16 index1 = 0;
                         memcpy(&index1, &VGPU.data()[ind.IndicesOffset + i * 2], sizeof(uint16));
+                        if (BigEndian) index1 = _byteswap_ushort(index1);
                         indices1.push_back(static_cast<GLuint>(index1));
 					}
 					indiceDataTemp.resize(ind.IndicesCount * 3 * 2);
@@ -524,7 +569,7 @@ private:
                         //add indices to indiceData
                         uint16 index1 = 0;
                         memcpy(&index1, &VGPU.data()[ind.IndicesOffset2 + i * 2], sizeof(uint16));
-                        
+                        if (BigEndian) index1 = _byteswap_ushort(index1);
                         indices1.push_back(static_cast<GLuint>(index1));
                     }
                     indiceDataTemp.resize(ind.IndicesCount2 * 2);
@@ -540,6 +585,7 @@ private:
                         //add indices to indiceData
                         uint16 index1 = 0;
                         memcpy(&index1, &VGPU.data()[ind.IndicesOffset3 + i * 2], sizeof(uint16));
+                        if (BigEndian) index1 = _byteswap_ushort(index1);
                         indices1.push_back(static_cast<GLuint>(index1));
                     }
                     indiceDataTemp.resize(ind.IndicesCount3*2);
@@ -555,6 +601,7 @@ private:
                         //add indices to indiceData
 						uint16 index1 = 0;
 						memcpy(&index1, &VGPU.data()[ind.IndicesOffset4 + i * 2], sizeof(uint16));
+						if (BigEndian) index1 = _byteswap_ushort(index1);
 						indices1.push_back(static_cast<GLuint>(index1));
 					}
                     indiceDataTemp.resize(ind.IndicesCount2 * 3 * 2);
@@ -584,6 +631,7 @@ private:
     Model_Chunk(const std::vector<unsigned char>& rawVDAT, const std::vector<unsigned char>& rawVGPU, bool& IsBig, std::string& name, ChunkInfo& Info, int cAFFIndex)
         : Chunk(rawVDAT, rawVGPU, IsBig, name, Info, cAFFIndex)
     {
+        
 		LoadModelNew(rawVDAT, rawVGPU, IsBig);
     };
 
@@ -643,362 +691,3 @@ private:
         }
 	}
 };
-
-
-
-
-
-
-
-
-
-
-
-/*
-void LoadModel(std::vector<unsigned char> VDAT, std::vector<unsigned char> VGPU, bool BigEndian)
-    {
-        if (ExtractAll) return; //Skip loading model if we are extracting all files (Saves time and atm this isnt stable enough to always run)
-        MODEL.RG = GetRendergraph(VDAT, BigEndian);
-
-        AddOffsetToVisit(MODEL.RG.ModelInfoOffset);
-
-        int currentOffset;
-        int LocalOffset;
-
-        std::vector<ModelVertDef> verts;
-        std::vector<ModelIndicesDef> indices;
-        std::vector<unsigned char> rawVertexBlock;
-        std::vector<unsigned char> rawIndiceBlock;
-
-
-        //Main Model Traversal Loop
-        while (offsetCount > 0) {
-            currentOffset = offsetsToVisit[--offsetCount];
-
-            ModelInfo mi;
-            if(currentOffset + sizeof(ModelInfo) > VDAT.size()) {
-                std::cout << "Current offset exceeds VDAT size, stopping traversal." << std::endl;
-                break;
-            }
-            memcpy(&mi, &VDAT.data()[currentOffset], sizeof(ModelInfo));
-
-            if (BigEndian) {
-                mi.NextOffset = _byteswap_ulong(mi.NextOffset);
-                mi.AdditonalOffset = _byteswap_ulong(mi.AdditonalOffset);
-                mi.LastOffset = _byteswap_ulong(mi.LastOffset);
-            }
-
-            LocalOffset = currentOffset + 16;
-            if (mi.Type == 2) {
-                ModelVertDef vert;
-                memcpy(&vert, &VDAT.data()[currentOffset], sizeof(ModelVertDef));
-                if (BigEndian) {
-                    vert.info.NextOffset = _byteswap_ulong(vert.info.NextOffset);
-                    vert.info.AdditonalOffset = _byteswap_ulong(vert.info.AdditonalOffset);
-                    vert.info.LastOffset = _byteswap_ulong(vert.info.LastOffset);
-                    vert.vertexCount = _byteswap_ulong(vert.vertexCount);
-                    vert.dataOffset = _byteswap_ulong(vert.dataOffset);
-                    vert.vertexOffset = _byteswap_ulong(vert.vertexOffset);
-                    vert.vertTableLength = _byteswap_ulong(vert.vertTableLength);
-                    vert.entrySize = _byteswap_ushort(vert.entrySize);
-                }
-                verts.push_back(vert);
-            }
-            else if (mi.Type == 6 || mi.Type == 7) {
-                ModelIndicesDef indice;
-                memcpy(&indice, &VDAT.data()[currentOffset], sizeof(ModelIndicesDef));
-                if (BigEndian) {
-                    indice.info.NextOffset = _byteswap_ulong(indice.info.NextOffset);
-                    indice.info.AdditonalOffset = _byteswap_ulong(indice.info.AdditonalOffset);
-                    indice.info.LastOffset = _byteswap_ulong(indice.info.LastOffset);
-                    indice.IndicesSize = _byteswap_ulong(indice.IndicesSize);
-                    indice.IndicesCount = _byteswap_ulong(indice.IndicesCount);
-                    //indice.IndicesCount2 = _byteswap_ulong(indice.IndicesCount2);
-                    indice.IndicesOffset = _byteswap_ulong(indice.IndicesOffset);
-                    indice.IndicesOffset2 = _byteswap_ulong(indice.IndicesOffset2);
-                    indice.IndicesOffset3 = _byteswap_ulong(indice.IndicesOffset3);
-                }
-                indices.push_back(indice);
-            }
-
-            // Queue both Next and Additional offsets
-            AddOffsetToVisit(mi.NextOffset);
-            AddOffsetToVisit(mi.AdditonalOffset);
-        }
-
-        //for each vert definition, export the vertices
-        int y = 0;
-        for (const auto& vert : verts) {
-            ModelBlock mb;
-            mb.VertDef = vert;
-
-            int CurrentOffset = vert.info.NextOffset;
-            ModelInfo mi_check;
-            while (1) {
-                memcpy(&mi_check, &VDAT.data()[CurrentOffset], sizeof(ModelInfo));
-                if (BigEndian) {
-                    mi_check.NextOffset = _byteswap_ulong(mi_check.NextOffset);
-                    mi_check.AdditonalOffset = _byteswap_ulong(mi_check.AdditonalOffset);
-                    mi_check.LastOffset = _byteswap_ulong(mi_check.LastOffset);
-                }
-                if (mi_check.Type == 6) { //Found indice definition
-                    break;
-                }
-                else if (mi_check.NextOffset == 0) { //No more next offsets to check, stop looking
-                    break;
-                }
-                else { //Keep looking
-                    CurrentOffset = mi_check.NextOffset;
-                }
-            }
-
-            ModelIndicesDef mi3;
-            if (mi_check.Type == 6) {
-                memcpy(&mi3, &VDAT.data()[CurrentOffset], sizeof(ModelIndicesDef));
-                mb.IndiceDef = mi3;
-            }
-
-
-            if(mb.IndiceDef.info.Type != 6) {
-                std::cout << "Warning: Expected indice definition type 6" << std::to_string(mb.IndiceDef.info.Type) << ". This may cause issues." << std::endl;
-            }
-
-
-
-            if (BigEndian) {
-                mb.IndiceDef.info.NextOffset = _byteswap_ulong(mb.IndiceDef.info.NextOffset);
-                mb.IndiceDef.info.AdditonalOffset = _byteswap_ulong(mb.IndiceDef.info.AdditonalOffset);
-                mb.IndiceDef.info.LastOffset = _byteswap_ulong(mb.IndiceDef.info.LastOffset);
-                mb.IndiceDef.IndicesSize = _byteswap_ulong(mb.IndiceDef.IndicesSize);
-                mb.IndiceDef.IndicesCount = _byteswap_ulong(mb.IndiceDef.IndicesCount);
-                //mb.IndiceDef.IndicesCount2 = _byteswap_ulong(mb.IndiceDef.IndicesCount2);
-                mb.IndiceDef.IndicesOffset = _byteswap_ulong(mb.IndiceDef.IndicesOffset);
-                mb.IndiceDef.IndicesOffset2 = _byteswap_ulong(mb.IndiceDef.IndicesOffset2);
-                mb.IndiceDef.IndicesOffset3 = _byteswap_ulong(mb.IndiceDef.IndicesOffset3);
-                mb.IndiceDef.IndicesOffset4 = _byteswap_ulong(mb.IndiceDef.IndicesOffset4);
-            }
-
-            std::vector<Vertex1> vertices1;
-            vertices1.resize(mb.VertDef.vertexCount);
-
-
-            std::vector<unsigned char> vertexData;
-            vertexData.resize(mb.VertDef.vertexCount * mb.VertDef.entrySize);
-            memcpy(vertexData.data(), &VGPU.data()[mb.VertDef.vertexOffset], mb.VertDef.vertexCount * mb.VertDef.entrySize);
-
-            rawVertexBlock = vertexData; //Save raw vertex block for potential future use
-
-
-            for (uint32_t i = 0; i < mb.VertDef.vertexCount; i++) {
-                Vertex1 v;
-
-                std::vector<unsigned char> VertBlockData;
-                VertBlockData.resize(mb.VertDef.entrySize);
-
-                memcpy(VertBlockData.data(), &vertexData[i * mb.VertDef.entrySize], mb.VertDef.entrySize);
-
-                VertexBlock block = ConstructVertexBlockFromSize(mb.VertDef.entrySize, BigEndian, VertBlockData);
-                v.position = block.position;
-                v.normal = block.normal;
-                v.texCoord = block.texCoord;
-                vertices1[i] = v;
-            }
-
-            //std::cout << "Vert offset: " << std::to_string(mb.VertDef.vertexOffset) << std::endl;
-            //std::cout << "Vertex count: " << std::to_string(mb.VertDef.vertexCount) << std::endl;
-            //std::cout << "Entry size: " << std::to_string(mb.VertDef.entrySize) << std::endl;
-            //std::cout << "Model Index: " << std::to_string(y) << std::endl;
-
-            int IndicesOffset = 0;
-            int IndicesCount = mb.IndiceDef.IndicesCount;
-
-            if (mb.IndiceDef.IndicesOffset != 0) {
-                std::cout << "Indice block 1 used." << std::endl;
-            }
-            if (mb.IndiceDef.IndicesOffset2 != 0) {
-                std::cout << "Indice block 2 used." << std::endl;
-            }
-            if (mb.IndiceDef.IndicesOffset3 != 0) {
-                std::cout << "Indice block 3 used." << std::endl;
-            }
-            if (mb.IndiceDef.IndicesOffset4 != 0) {
-                std::cout << "Indice block 4 used." << std::endl;
-            }
-            std::cout << "Face Type: " << std::to_string(mb.IndiceDef.unk1) << std::endl;
-            std::cout << "Flag: " << std::to_string(mi_check.Flag2) << std::endl;
-
-            std::cout << "Indice count 1: " << std::to_string(mb.IndiceDef.IndicesCount) << std::endl;
-            std::cout << "Indice count 2: " << std::to_string(mb.IndiceDef.IndicesCount2) << std::endl;
-            std::cout << "Indice count 3: " << std::to_string(mb.IndiceDef.IndicesCount3) << std::endl;
-
-            std::cout << "IndicesOffset1: " << std::to_string(mb.IndiceDef.IndicesOffset) << std::endl;
-            std::cout << "IndicesOffset2: " << std::to_string(mb.IndiceDef.IndicesOffset2) << std::endl;
-            std::cout << "IndicesOffset3: " << std::to_string(mb.IndiceDef.IndicesOffset3) << std::endl;
-            std::cout << "IndicesOffset4: " << std::to_string(mb.IndiceDef.IndicesOffset4) << std::endl;
-
-            std::cout << "Vertex Offset: " << std::to_string(mb.VertDef.vertexOffset) << std::endl;
-            std::cout << "Vertex Count: " << std::to_string(mb.VertDef.vertexCount) << std::endl;
-            std::cout << "Vertex Entry Size: " << std::to_string(mb.VertDef.entrySize) << std::endl;
-
-            return;
-
-
-
-            std::cout << "IndicesOffset: " << std::to_string(IndicesOffset) << std::endl;
-            std::cout << "IndicesCount: " << std::to_string(IndicesCount) << std::endl;
-
-            std::cout << "IndiceDef Hex: ";
-            unsigned char* p = (unsigned char*)&mb.IndiceDef;
-            for (size_t i = 0; i < sizeof(ModelIndicesDef); i++) {
-                printf("%02X ", p[i]);
-            }
-
-            std::vector<GLuint> indices1;
-            int CurrentIndiceOffset = IndicesOffset;
-            bool use32BitIndices = mb.VertDef.vertexCount > std::numeric_limits<uint16_t>::max();
-            rawIndiceBlock.resize(IndicesCount * (use32BitIndices ? 4 : 2)); //Each indice is 2 or 4 bytes, and there are 3 indices per triangle
-            memcpy(rawIndiceBlock.data(), &VGPU.data()[IndicesOffset], IndicesCount * (use32BitIndices ? 4 : 2));
-
-            if (!use32BitIndices) {
-                std::vector<uint16_t> tempIndices;
-                tempIndices.resize(IndicesCount);
-                memcpy(tempIndices.data(), &VGPU.data()[IndicesOffset], (IndicesCount) * sizeof(uint16_t));
-                if (BigEndian) {
-                    for (auto& index : tempIndices) {
-                        index = _byteswap_ushort(index);
-                    }
-                }
-                for (const auto& index : tempIndices) {
-                    indices1.push_back(static_cast<GLuint>(index));
-                }
-            }
-            else {
-                std::vector<uint32_t> tempIndices;
-                tempIndices.resize(IndicesCount);
-                memcpy(tempIndices.data(), &VGPU.data()[IndicesOffset], (IndicesCount) * sizeof(uint32_t));
-                if (BigEndian) {
-                    for (auto& index : tempIndices) {
-                        index = _byteswap_ulong(index);
-                    }
-                }
-                for (const auto& index : tempIndices) {
-                    indices1.push_back(static_cast<GLuint>(index));
-                }
-            }
-
-            std::cout << "Extracted indices count: " << indices1.size() << std::endl;
-            if (!indices1.empty()) {
-                std::cout << "First few indices: ";
-                for (size_t i = 0; i < std::min<size_t>(indices1.size(), 9); ++i)
-                    std::cout << indices1[i] << " ";
-                std::cout << std::endl;
-            }
-
-            //old indice extraction method, kept for reference
-            if (indices1.empty()) {
-                std::cout << "No indices extracted, attempting old extraction method." << std::endl;
-                int IndicesOffset = 0;
-                int IndicesCount = mb.IndiceDef.IndicesCount;
-                if (mb.IndiceDef.IndicesOffset != 0) {
-                    IndicesOffset = mb.IndiceDef.IndicesOffset;
-                }
-                else {
-                    if (mb.IndiceDef.IndicesOffset2 != 0) {
-                        if (mb.IndiceDef.IndicesOffset3 != 0) {
-                            if (mb.IndiceDef.IndicesOffset3 < mb.IndiceDef.IndicesOffset2) {
-                                 IndicesOffset = mb.IndiceDef.IndicesOffset3;
-
-                            }
-                            else {
-                                 IndicesOffset = mb.IndiceDef.IndicesOffset2;
-                            }
-                        }
-                        else {
-                             IndicesOffset = mb.IndiceDef.IndicesOffset2;
-                        }
-                    }
-                    else if (mb.IndiceDef.IndicesOffset3 != 0) {
-                          IndicesOffset = mb.IndiceDef.IndicesOffset3;
-                    }
-                }
-
-                while (true) {
-                    if (use32BitIndices) {
-                        if (CurrentIndiceOffset + 11 >= VGPU.size()) {
-                            std::cout << "Reached end of VGPU data or next vertex offset, stopping indice extraction." << std::endl;
-                            break;
-                        }
-                        else if (verts.size() - 1 >= y + 1) {
-                            if (CurrentIndiceOffset + 11 >= GetNextVertexBlock(verts[y], verts).vertexOffset) {
-                                std::cout << "Reached next vertex offset, stopping indice extraction." << std::endl;
-                                break;
-                            }
-                        }
-
-                        int32_t index1, index2, index3;
-                        memcpy(&index1, &VGPU.data()[CurrentIndiceOffset], sizeof(int32_t));
-                        memcpy(&index2, &VGPU.data()[CurrentIndiceOffset + 4], sizeof(int32_t));
-                        memcpy(&index3, &VGPU.data()[CurrentIndiceOffset + 8], sizeof(int32_t));
-                        if (BigEndian) {
-                            index1 = _byteswap_ulong(index1);
-                            index2 = _byteswap_ulong(index2);
-                            index3 = _byteswap_ulong(index3);
-                        }
-
-                        if (index1 == 0 && index2 == 0 && index3 == 0) {
-                            std::cout << "Reached 0,0,0 indice, stopping indice extraction." << std::endl;
-                            break;
-                        }
-
-                        indices1.push_back(static_cast<GLuint>(index1));
-                        indices1.push_back(static_cast<GLuint>(index2));
-                        indices1.push_back(static_cast<GLuint>(index3));
-                        CurrentIndiceOffset += 12;
-                    }
-                    else {
-                        if (CurrentIndiceOffset + 5 >= VGPU.size()) {
-                            std::cout << "Reached end of VGPU data or next vertex offset, stopping indice extraction." << std::endl;
-                            break;
-                        }
-                        else if (verts.size() - 1 >= y + 1) {
-                            if (CurrentIndiceOffset + 5 >= GetNextVertexBlock(verts[y], verts).vertexOffset) {
-                                std::cout << "Reached next vertex offset, stopping indice extraction." << std::endl;
-                                break;
-                            }
-                        }
-
-                        uint16_t index1, index2, index3;
-                        memcpy(&index1, &VGPU.data()[CurrentIndiceOffset], sizeof(uint16_t));
-                        memcpy(&index2, &VGPU.data()[CurrentIndiceOffset + 2], sizeof(uint16_t));
-                        memcpy(&index3, &VGPU.data()[CurrentIndiceOffset + 4], sizeof(uint16_t));
-                        if (BigEndian) {
-                            index1 = _byteswap_ushort(index1);
-                            index2 = _byteswap_ushort(index2);
-                            index3 = _byteswap_ushort(index3);
-                        }
-
-                        if (index1 == 0 && index2 == 0 && index3 == 0) {
-                            std::cout << "Reached 0,0,0 indice, stopping indice extraction." << std::endl;
-                            break;
-                        }
-
-                        indices1.push_back(index1);
-                        indices1.push_back(index2);
-                        indices1.push_back(index3);
-                        CurrentIndiceOffset += 6;
-                    }
-                }
-            }
-Object1 obj;
-obj.objectsVerts = vertices1;
-obj.objectsIndices = indices1;
-obj.VertexSize = mb.VertDef.entrySize;
-obj.rawVertBlock = rawVertexBlock;
-obj.rawIndexBlock = rawIndiceBlock;
-MODEL.objects.push_back(obj);
-
-y++;
-        }
-    };
-
-*/

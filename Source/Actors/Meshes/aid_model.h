@@ -22,7 +22,10 @@ public:
 		Actor::Tick(deltaTime, world);
 
 
-		if (CurrentModelName == "") return;
+		if (CurrentModelName == "") {
+			//clear all models from components
+			RemoveAllComponentsByName("DynamicMesh");
+		}
 
 		if (Name != CurrentModelName) {
 			Name = CurrentModelName;

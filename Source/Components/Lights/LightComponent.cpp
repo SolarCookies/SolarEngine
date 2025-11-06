@@ -47,14 +47,14 @@ void LightComponent::Render(VinceWindow* window, Camera* Cam)
 	// Set the model matrix for the light mesh
 	lightMesh.model.SetMaterialParameter("model", lightModel);
 
-	Cam->Matrix(*lightMesh.model.shaderProgram.get(), "camMatrix");
+	Cam->Matrix(*lightMesh.model.material->shaderProgram.get(), "camMatrix");
 
 	SunTexture.Bind();
 
-	Draw();
+	Draw(false,window,Cam);
 }
 
-void LightComponent::Draw()
+void LightComponent::Draw(bool shadow, VinceWindow* window, Camera* Cam)
 {
-	lightMesh.model.Draw();
+	lightMesh.model.Draw(false,0,shadow,window,Cam);
 }

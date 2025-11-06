@@ -14,6 +14,7 @@ class Texture
 public:
 	GLuint ID;
 	GLenum type;
+	bool IsValid = false;
 	std::string NameOfTexture; // used for lookups
 	Texture() = default;
 	Texture(const char* image, GLenum texType, GLenum slot, GLenum format, GLenum pixelType);

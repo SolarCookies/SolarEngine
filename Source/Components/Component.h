@@ -18,7 +18,7 @@ public:
     virtual void Tick(float deltaTime, World* World) {}
 	virtual void EndPlay() {}
 	virtual void Render(VinceWindow* window, Camera* Cam) {}
-    virtual void Draw() {};
+    virtual void Draw(bool shadow, VinceWindow* window, Camera* Cam) {};
 	virtual std::string GetName() const { return name; }
     virtual void RenderDetails() {};
 

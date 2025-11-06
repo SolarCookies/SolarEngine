@@ -30,6 +30,8 @@
 
 #include "../Windows/Log.hpp"
 
+#include "../Shaders/Material.h"
+
 struct meshData {
 	std::vector<GLfloat> vertices;
 	std::vector<GLuint> indices;
@@ -38,9 +40,10 @@ struct meshData {
 class Model
 {
 public:
-	Model(const char* VertexShader, const char* FragmentShader, std::vector<GLfloat> verts, std::vector<GLuint> ind)
+	Model(const char* VertexShader, const char* FragmentShader, const char* GeoShader, std::vector<GLfloat> verts, std::vector<GLuint> ind)
 	{
-		shaderProgram = std::make_unique<Shader>(VertexShader, FragmentShader);
+		material = std::make_unique<Material>();
+		material->SetShader(VertexShader, FragmentShader, GeoShader);
 		vertices = verts;
 		indices = ind;
 		ModelVAO = std::make_unique<VAO>();
@@ -61,18 +64,20 @@ public:
 		ModelEBO->Unbind();
 		vertexShader = VertexShader;
 		fragmentShader = FragmentShader;
+		geoShader = GeoShader;
 	}
 
-	void ReInitialize(const char* VertexShader, const char* FragmentShader, std::vector<GLfloat> verts, std::vector<GLuint> ind) {
+	void ReInitialize(const char* VertexShader, const char* FragmentShader, const char* GeoShader, std::vector<GLfloat> verts, std::vector<GLuint> ind) {
 		Destroy();
-		shaderProgram = std::make_unique<Shader>(VertexShader, FragmentShader);
+		material = std::make_unique<Material>();
+		material->SetShader(VertexShader, FragmentShader, GeoShader);
 		vertices = verts;
 		indices = ind;
 		ModelVAO = std::make_unique<VAO>();
 		ModelVBO = std::make_unique<VBO>(vertices);
 		ModelEBO = std::make_unique<EBO>(indices);
 
-		Log("Shader Program Created From: " + std::string(VertexShader) + " and " + std::string(FragmentShader), EType::BLUE);
+		//Log("Shader Program Created From: " + std::string(VertexShader) + " and " + std::string(FragmentShader) + " and " + std::string(GeoShader), "Model");
 
 		ModelVAO->Bind();
 		ModelVBO->Bind();
@@ -88,57 +93,90 @@ public:
 		ModelEBO->Unbind();
 		vertexShader = VertexShader;
 		fragmentShader = FragmentShader;
+		geoShader = GeoShader;
 
 	}
 
-	void Draw(bool TriStrip = false, int Tris = 0) {
-		shaderProgram->Activate();
-		ModelVAO->Bind();
-		if (shaderProgram->ID != 0)
-		{
-			if (TriStrip) {
-				glDrawArrays(GL_TRIANGLE_STRIP, Tris, static_cast<GLsizei>(vertices.size() / 11)); // Each vertex has 11 attributes
-				return;
+	void Draw(bool TriStrip = false, int Tris = 0,bool shadow = false, VinceWindow* window = nullptr, Camera* Cam = nullptr) {
+		if (shadow) {
+			material->ShadowShaderProgram->Activate();
+			ModelVAO->Bind();
+			if (material->ShadowShaderProgram->ID != 0)
+			{
+				if (TriStrip) {
+					glDrawArrays(GL_TRIANGLE_STRIP, Tris, static_cast<GLsizei>(vertices.size() / 11)); // Each vertex has 11 attributes
+					return;
+				}
+				else {
+					glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
+				}
+
 			}
-			else {
-				glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
-			}
-			
 		}
-		
+		else {
+			glm::mat4 orthonalProjection = glm::ortho(-5.0f, 5.0f, -5.0f, 5.0f, 0.1f, 50.0f);
+			glm::mat4 directonalLightView = glm::lookAt(vec3(-20.0f, 20.0f, 20.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
+			glm::mat4 lightProjection = orthonalProjection * directonalLightView;
+			glUniformMatrix4fv(glGetUniformLocation(material->shaderProgram->ID, "lightProjection"), 1, GL_FALSE, value_ptr(lightProjection));
+			if (material->ShadowTextureIndex != -1) {
+				//Bind the shadow map texture and pass it to the shader
+				glActiveTexture(GL_TEXTURE0 + material->ShadowTextureIndex);
+				glBindTexture(GL_TEXTURE_2D, window->getFrameBuffer2()->texture_id);
+				glUniform1f(glGetUniformLocation(material->shaderProgram->ID, "shadowMap"), 2);
+			}
+
+			material->shaderProgram->Activate();
+			ModelVAO->Bind();
+			if (material->shaderProgram->ID != 0)
+			{
+				if (TriStrip) {
+					glDrawArrays(GL_TRIANGLE_STRIP, Tris, static_cast<GLsizei>(vertices.size() / 11)); // Each vertex has 11 attributes
+					return;
+				}
+				else {
+					glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
+				}
+
+			}
+		}
 	}
 
 	void SetMaterialParameter(const char* name, glm::vec3 value) {
-		shaderProgram->Activate();
-		glUniform3f(glGetUniformLocation(shaderProgram->ID, name), value.x, value.y, value.z);
+		material->shaderProgram->Activate();
+		glUniform3f(glGetUniformLocation(material->shaderProgram->ID, name), value.x, value.y, value.z);
 	}
 	void SetMaterialParameter(const char* name, glm::vec4 value) {
-		shaderProgram->Activate();
-		glUniform4f(glGetUniformLocation(shaderProgram->ID, name), value.x, value.y, value.z, value.w);
+		material->shaderProgram->Activate();
+		glUniform4f(glGetUniformLocation(material->shaderProgram->ID, name), value.x, value.y, value.z, value.w);
 	}
 	void SetMaterialParameter(const char* name, float value) {
-		shaderProgram->Activate();
-		glUniform1f(glGetUniformLocation(shaderProgram->ID, name), value);
+		material->shaderProgram->Activate();
+		glUniform1f(glGetUniformLocation(material->shaderProgram->ID, name), value);
 	}
 	void SetMaterialParameter(const char* name, int value) {
-		shaderProgram->Activate();
-		glUniform1i(glGetUniformLocation(shaderProgram->ID, name), value);
+		material->shaderProgram->Activate();
+		glUniform1i(glGetUniformLocation(material->shaderProgram->ID, name), value);
 	}
 	void SetMaterialParameter(const char* name, Texture texture) {
-		shaderProgram->Activate();
-		texture.texUnit(*shaderProgram.get(), name, 0);
+		material->shaderProgram->Activate();
+		texture.texUnit(*material->shaderProgram.get(), name, 0);
 	}
 	void SetMaterialParameter(const char* name, glm::mat4 value) {
-		shaderProgram->Activate();
-		glUniformMatrix4fv(glGetUniformLocation(shaderProgram->ID, name), 1, GL_FALSE, glm::value_ptr(value));
+		material->shaderProgram->Activate();
+		glUniformMatrix4fv(glGetUniformLocation(material->shaderProgram->ID, name), 1, GL_FALSE, glm::value_ptr(value));
+		material->ShadowShaderProgram->Activate();
+		glUniformMatrix4fv(glGetUniformLocation(material->ShadowShaderProgram->ID, name), 1, GL_FALSE, glm::value_ptr(value));
+
 	}
 
 	void Destroy() {
-		shaderProgram->Delete();
+		material->shaderProgram->Delete();
+		material->ShadowShaderProgram->Delete();
 		ModelVAO->Delete();
 		ModelVBO->Delete();
 		ModelEBO->Delete();
-		shaderProgram = nullptr;
+		material->shaderProgram = nullptr;
+		material->ShadowShaderProgram = nullptr;
 		ModelVAO = nullptr;
 		ModelVBO = nullptr;
 		ModelEBO = nullptr;
@@ -159,7 +197,10 @@ public:
 		return fragmentShader;
 	}
 
-	std::unique_ptr<Shader> shaderProgram;
+	const char* GetGeoShader() const {
+		return geoShader;
+	}
+	std::unique_ptr<Material> material;
 
 private:
 	// Vertices coordinates
@@ -174,6 +215,7 @@ private:
 	std::unique_ptr<EBO> ModelEBO;
 	const char* vertexShader;
 	const char* fragmentShader;
+	const char* geoShader;
 };
 
 /*

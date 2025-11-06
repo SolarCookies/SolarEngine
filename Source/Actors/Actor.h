@@ -93,6 +93,7 @@ public:
     void RemoveAllComponentsByName(const std::string& name) {
         for(auto it = components.begin(); it != components.end(); ) {
             if ((*it)->GetName() == name) {
+				(*it)->EndPlay();
                 it = components.erase(it);
             } else {
                 ++it;

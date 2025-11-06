@@ -12,9 +12,9 @@ public:
 
 		//Spawn Skybox
 		auto SkyboxActor = std::make_unique<AStaticMesh>("Assets/Textures/sky.obj", "Sky");
-		SkyboxTexture = Texture("Assets/Textures/sky.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
+		SkyboxTexture1 = Texture("Assets/Textures/sky.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 		StaticMeshComponent* SkyboxMeshComponent = dynamic_cast<StaticMeshComponent*>(SkyboxActor->GetComponentByIndex(0));
-		SkyboxMeshComponent->ColorTexture = &SkyboxTexture;
+		SkyboxMeshComponent->ColorTexture = &SkyboxTexture1;
 		SkyboxActor->SetWorldScale(glm::vec3(5.0f, 5.0f, 5.0f));
 		world.AddActor(std::move(SkyboxActor));
 
@@ -22,11 +22,10 @@ public:
 		auto lightActor = std::make_unique<APointLight>();
 		LightComponent* light = dynamic_cast<LightComponent*>(lightActor->GetComponentByIndex(0));
 		world.AddActor(std::move(lightActor));
-		/*
+		
 		//Spawn Dragon, With physics body and textures
-		auto DragonMeshActor = std::make_unique<AStaticMesh>("Assets/Models/Dragon/model2.obj", "Default");
-		ColorTexture = Texture("Assets/Models/Dragon/Color.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
-		NormalTexture = Texture("Assets/Models/Dragon/Normal.png", GL_TEXTURE_2D, GL_TEXTURE1, GL_RGB, GL_UNSIGNED_BYTE);
+		auto DragonMeshActor = std::make_unique<AStaticMesh>("Assets/Models/Dragon/model2.obj", "GeoTest");
+		ColorTexture1 = Texture("Assets/Models/Dragon/Fur.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 		DragonMeshActor->ActorTags.push_back("Dragon");
 		JPH::BoxShapeSettings boxShapeSettings(JPH::Vec3(1.0f, 0.4f, 1.0f));
 		JPH::ShapeSettings::ShapeResult shapeResult = boxShapeSettings.Create();
@@ -35,16 +34,14 @@ public:
 		auto rigidBodyComponent = std::make_shared<RigidBodyComponent>(&physics_system, bodySettings);
 		DragonMeshActor->AddComponent(rigidBodyComponent);
 		StaticMeshComponent* DragonmeshComponent = dynamic_cast<StaticMeshComponent*>(DragonMeshActor->GetComponentByIndex(0));
-		DragonmeshComponent->ColorTexture = &ColorTexture;
-		DragonmeshComponent->NormalTexture = &NormalTexture;
+		DragonmeshComponent->ColorTexture = &ColorTexture1;
 		world.AddActor(std::move(DragonMeshActor));
 		
 		
 		//Spawn Floor, With static physics body
 		auto floorMeshActor = std::make_unique<AStaticMesh>("Assets/Models/floor.obj", "Color");
 		StaticMeshComponent* floormeshComponent = dynamic_cast<StaticMeshComponent*>(floorMeshActor->GetComponentByIndex(0));
-		floormeshComponent->ColorTexture = &ColorTexture;
-		floormeshComponent->NormalTexture = &NormalTexture;
+		floormeshComponent->ColorTexture = &ColorTexture1;
 		JPH::BoxShapeSettings boxShapeSettings2(JPH::Vec3(100.0f, 0.1f, 100.0f));
 		JPH::ShapeSettings::ShapeResult shapeResult2 = boxShapeSettings2.Create();
 		JPH::Ref<JPH::Shape> shape2 = shapeResult2.Get();
@@ -52,7 +49,7 @@ public:
 		auto rigidBodyComponent2 = std::make_shared<RigidBodyComponent>(&physics_system, bodySettings2);
 		floorMeshActor->AddComponent(rigidBodyComponent2);
 		world.AddActor(std::move(floorMeshActor));
-		*/
+		
 
 	}
 	void Update(Camera& camera, World& world, VinceWindow& window) {
@@ -69,8 +66,12 @@ public:
 	}
 
 
-	Texture ColorTexture;
-	Texture NormalTexture;
-	Texture SkyboxTexture;
+	Texture ColorTexture1;
+	Texture NormalTexture1;
+	Texture SkyboxTexture1;
+	Texture ColorTexture2;
+	Texture NormalTexture2;
+	Texture ColorTexture3;
+	Texture NormalTexture3;
 
 };

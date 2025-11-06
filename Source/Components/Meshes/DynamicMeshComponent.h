@@ -31,7 +31,7 @@ public:
 	void BeginPlay() override;
 	void Tick(float deltaTime, World* World) override;
 	void Render(VinceWindow* window, Camera* Cam) override;
-	void Draw() override;
+	void Draw(bool shadow, VinceWindow* window, Camera* Cam) override;
 
 	void ReInitializeModel()
 	{
@@ -58,6 +58,7 @@ public:
 		// Create a new Model instance with the converted vertices and triangles
 		OBJ = std::make_unique<Model>(std::string("Assets/Shaders/" + std::string(shaderName) + ".vert").c_str(),
 			std::string("Assets/Shaders/" + std::string(shaderName) + ".frag").c_str(),
+			"",
 			convertedVertices,
 			Triangles
 		);
@@ -125,6 +126,12 @@ public:
 		} else {
 			ImGui::Text("Color Texture: None");
 		}
+	}
+
+	void EndPlay() override {
+		Vertices.clear();
+		Triangles.clear();
+		ReInitializeModel(); // Reset to error model
 	}
 
 	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);

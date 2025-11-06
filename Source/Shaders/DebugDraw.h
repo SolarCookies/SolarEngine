@@ -114,6 +114,7 @@ namespace Debug {
 		Model lineModel(
 			"Assets/Shaders/line.vert",
 			"Assets/Shaders/line.frag",
+            "",
 			vertices,
 			indices
 		);
@@ -125,7 +126,7 @@ namespace Debug {
 		lineModel.SetMaterialParameter("model", Mat);
 
 		lineModel.SetMaterialParameter("cameraPos", cam.Position);
-		cam.Matrix(*lineModel.shaderProgram.get(), "camMatrix");
+		cam.Matrix(*lineModel.material->shaderProgram.get(), "camMatrix");
 
 
 		glDisable(GL_DEPTH_TEST);
@@ -181,6 +182,7 @@ namespace Debug {
         Model boxModel(
             "Assets/Shaders/line.vert",
             "Assets/Shaders/line.frag",
+            "",
             vertices,
             indices
         );
@@ -192,7 +194,7 @@ namespace Debug {
         boxModel.SetMaterialParameter("model", Mat);
 
         boxModel.SetMaterialParameter("cameraPos", cam.Position);
-        cam.Matrix(*boxModel.shaderProgram.get(), "camMatrix");
+        cam.Matrix(*boxModel.material->shaderProgram.get(), "camMatrix");
         if (infront) {
             glDisable(GL_DEPTH_TEST);
         }
@@ -218,6 +220,7 @@ namespace Debug {
         Model boxModel(
             "Assets/Shaders/line.vert",
             "Assets/Shaders/line.frag",
+            "",
             FinalMesh.vertices,
             FinalMesh.indices
         );
@@ -228,7 +231,7 @@ namespace Debug {
         boxModel.SetMaterialParameter("model", Mat);
 
         boxModel.SetMaterialParameter("cameraPos", cam.Position);
-        cam.Matrix(*boxModel.shaderProgram.get(), "camMatrix");
+        cam.Matrix(*boxModel.material->shaderProgram.get(), "camMatrix");
         if (infront) {
             glDisable(GL_DEPTH_TEST);
         }
@@ -297,6 +300,7 @@ namespace Debug {
         Model squareModel(
             "Assets/Shaders/line.vert",
             "Assets/Shaders/line.frag",
+            "",
             vertices,
             indices
         );
@@ -305,7 +309,7 @@ namespace Debug {
         glm::mat4 Mat = glm::mat4(1.0f);
         squareModel.SetMaterialParameter("model", Mat);
         squareModel.SetMaterialParameter("cameraPos", cam.Position);
-        cam.Matrix(*squareModel.shaderProgram.get(), "camMatrix");
+        cam.Matrix(*squareModel.material->shaderProgram.get(), "camMatrix");
 
         glDisable(GL_DEPTH_TEST);
         squareModel.Draw();

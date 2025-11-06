@@ -19,7 +19,7 @@ public:
 	void BeginPlay() override;
 	void Tick(float deltaTime, World* World) override;
 	void Render(VinceWindow* window, Camera* Cam) override;
-	void Draw() override;
+	void Draw(bool shadow, VinceWindow* window, Camera* Cam) override;
 
 	void SetStaticMesh(const std::string& meshName) {
 	}
