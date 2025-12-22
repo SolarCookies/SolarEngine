@@ -52,6 +52,12 @@
     <Filter Include="SolarEngine\Package\VP\FileSystem\Chunks\Images\RAW">
       <UniqueIdentifier>{F9F96EF8-650B-179F-EE5C-A9DE5A6DA0D8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\Chunks\Models">
+      <UniqueIdentifier>{AEEFEFDB-1A2B-509F-2320-CD2E8FDAD4CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\FileSystem\DebugPack">
+      <UniqueIdentifier>{753B3187-E1A0-C40D-6A79-66E6D6DDB97C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SolarEngine\Package\VP\FileSystem\PKG">
       <UniqueIdentifier>{F1996FEA-5D5E-6EDA-26C4-9EA492470A10}</UniqueIdentifier>
     </Filter>
@@ -60,6 +66,12 @@
     </Filter>
     <Filter Include="SolarEngine\Package\VP\UI\Pages">
       <UniqueIdentifier>{F813A4A8-64F7-B2E8-6DFA-E024D95C7939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\UI\Pages\DebugPackExtractAll">
+      <UniqueIdentifier>{C11316B2-2D25-BE58-B676-509822874792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Package\VP\UI\Pages\DebugPackManager">
+      <UniqueIdentifier>{C8CD7D27-B476-E556-DD0C-01D6C9140098}</UniqueIdentifier>
     </Filter>
     <Filter Include="SolarEngine\Package\VP\UI\Pages\PackageManager">
       <UniqueIdentifier>{CE9E109C-BA1C-6135-A314-1FCD8F31A35D}</UniqueIdentifier>
@@ -72,6 +84,12 @@
     </Filter>
     <Filter Include="SolarEngine\Shaders">
       <UniqueIdentifier>{D5007588-4162-5296-CACF-984836308955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Subsystems">
+      <UniqueIdentifier>{8D7BC238-7975-EB8A-62E2-819B4E7B51F7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SolarEngine\Subsystems\Saving">
+      <UniqueIdentifier>{6479B736-D091-9E60-993E-2EFA051633FA}</UniqueIdentifier>
     </Filter>
     <Filter Include="SolarEngine\Temporary">
       <UniqueIdentifier>{AEF4DCE1-1A61-98DC-E354-303A4F80BA44}</UniqueIdentifier>
@@ -90,15 +108,6 @@
     </Filter>
     <Filter Include="SolarEngine\World">
       <UniqueIdentifier>{B347794A-1F5E-77E0-68D5-0202D42A4868}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source">
-      <UniqueIdentifier>{56EB95D1-428D-C0A7-2B48-D4FB178947F8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Utils">
-      <UniqueIdentifier>{369510F3-22F8-9F97-CB7D-D84DB7BF6B1A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Utils\Crypto">
-      <UniqueIdentifier>{26D567CE-9236-45DC-1BA4-8B8E87047C9B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vendors">
       <UniqueIdentifier>{665268D3-D231-E76E-DB49-724547A84DD0}</UniqueIdentifier>
@@ -189,6 +198,9 @@
     <ClInclude Include="Source\Actors\Meshes\AStaticMesh.h">
       <Filter>SolarEngine\Actors\Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Actors\Meshes\aid_model.h">
+      <Filter>SolarEngine\Actors\Meshes</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Components\Component.h">
       <Filter>SolarEngine\Components</Filter>
     </ClInclude>
@@ -218,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="Source\Package\Hot.h">
       <Filter>SolarEngine\Package</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileDatabase.h">
+      <Filter>SolarEngine\Package\VP</Filter>
     </ClInclude>
     <ClInclude Include="Source\Package\VP\FileSystem\CAFF\CAFF.h">
       <Filter>SolarEngine\Package\VP\FileSystem\CAFF</Filter>
@@ -249,7 +264,22 @@
     <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.h">
       <Filter>SolarEngine\Package\VP\FileSystem\Chunks\Images\RAW</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Model_Chunk.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Modelloader.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\VertexTypes.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\DebugPack\DebugPack.h">
+      <Filter>SolarEngine\Package\VP\FileSystem\DebugPack</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Package\VP\FileSystem\File.h">
+      <Filter>SolarEngine\Package\VP\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\FileSystem\GlobalPackages.h">
       <Filter>SolarEngine\Package\VP\FileSystem</Filter>
     </ClInclude>
     <ClInclude Include="Source\Package\VP\FileSystem\PKG\PKG.h">
@@ -261,11 +291,20 @@
     <ClInclude Include="Source\Package\VP\UI\Page.h">
       <Filter>SolarEngine\Package\VP\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\DebugPackExtractAll\ExtractAllPageDebug.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages\DebugPackExtractAll</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\DebugPackManager\DebugPackManager.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages\DebugPackManager</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Package\VP\UI\Pages\EditorSelectionPage.h">
       <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
     </ClInclude>
     <ClInclude Include="Source\Package\VP\UI\Pages\ExtractAllPage.h">
       <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\DebugPack_FileBrowser.h">
+      <Filter>SolarEngine\Package\VP\UI\Pages\PackageManager\FileBrowser</Filter>
     </ClInclude>
     <ClInclude Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\FileBrowser.h">
       <Filter>SolarEngine\Package\VP\UI\Pages\PackageManager\FileBrowser</Filter>
@@ -297,6 +336,9 @@
     <ClInclude Include="Source\Shaders\FrameBuffer.h">
       <Filter>SolarEngine\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Shaders\Material.h">
+      <Filter>SolarEngine\Shaders</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Shaders\ShaderClass.h">
       <Filter>SolarEngine\Shaders</Filter>
     </ClInclude>
@@ -308,6 +350,12 @@
     </ClInclude>
     <ClInclude Include="Source\Shaders\VBO.h">
       <Filter>SolarEngine\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Subsystems\Saving\SaveManager.h">
+      <Filter>SolarEngine\Subsystems\Saving</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Subsystems\Types.h">
+      <Filter>SolarEngine\Subsystems</Filter>
     </ClInclude>
     <ClInclude Include="Source\Temporary\Debug.h">
       <Filter>SolarEngine\Temporary</Filter>
@@ -1269,16 +1317,8 @@
     <ClInclude Include="Vendors\stb_image\stb_image_write.h">
       <Filter>Vendors\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Model_Chunk.h" />
-    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\Modelloader.h" />
-    <ClInclude Include="Source\Package\VP\FileSystem\Chunks\Models\VertexTypes.h" />
-    <ClInclude Include="Vendors\half\half.hpp" />
-    <ClInclude Include="Source\Actors\Meshes\aid_model.h" />
-    <ClInclude Include="Source\Package\VP\FileSystem\GlobalPackages.h" />
-    <ClInclude Include="Source\Package\VP\FileSystem\DebugPack\DebugPack.h" />
-    <ClInclude Include="Source\Package\VP\UI\Pages\DebugPackManager\DebugPackManager.h" />
-    <ClInclude Include="Source\Package\VP\UI\Pages\DebugPackExtractAll\ExtractAllPageDebug.h" />
-    <ClInclude Include="Source\Shaders\Material.h" />
+    <ClInclude Include="Source\Utils\Clock.h" />
+    <ClInclude Include="Source\World\CameraClass.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Actors\Actor.cpp">
@@ -1305,14 +1345,35 @@
     <ClCompile Include="Source\Package\VP\FileSystem\CAFF\Streams\VREF.cpp">
       <Filter>SolarEngine\Package\VP\FileSystem\CAFF\Streams</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Chunk.cpp">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.cpp">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.cpp">
+      <Filter>SolarEngine\Package\VP\FileSystem\Chunks\Images\RAW</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\FileSystem\DebugPack\DebugPack.cpp">
+      <Filter>SolarEngine\Package\VP\FileSystem\DebugPack</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Package\VP\UI\GUI.cpp">
       <Filter>SolarEngine\Package\VP\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\DebugPackExtractAll\ExtractAllPageDebug.cpp">
+      <Filter>SolarEngine\Package\VP\UI\Pages\DebugPackExtractAll</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\DebugPackManager\DebugPackManager.cpp">
+      <Filter>SolarEngine\Package\VP\UI\Pages\DebugPackManager</Filter>
     </ClCompile>
     <ClCompile Include="Source\Package\VP\UI\Pages\EditorSelectionPage.cpp">
       <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
     </ClCompile>
     <ClCompile Include="Source\Package\VP\UI\Pages\ExtractAllPage.cpp">
       <Filter>SolarEngine\Package\VP\UI\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\DebugPack_FileBrowser.cpp">
+      <Filter>SolarEngine\Package\VP\UI\Pages\PackageManager\FileBrowser</Filter>
     </ClCompile>
     <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\PackageManager.cpp">
       <Filter>SolarEngine\Package\VP\UI\Pages\PackageManager</Filter>
@@ -1342,12 +1403,15 @@
       <Filter>SolarEngine</Filter>
     </ClCompile>
     <ClCompile Include="Source\Utils\Crypto\sha256.cpp">
-      <Filter>Source\Utils\Crypto</Filter>
+      <Filter>SolarEngine\Utils\Crypto</Filter>
     </ClCompile>
     <ClCompile Include="Source\Windows\Content\ContentWindow.cpp">
       <Filter>SolarEngine\Windows\Content</Filter>
     </ClCompile>
     <ClCompile Include="Source\Windows\DetailsPannel.cpp">
+      <Filter>SolarEngine\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\ViewportWindow.cpp">
       <Filter>SolarEngine\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Source\Windows\Window.cpp">
@@ -1785,15 +1849,6 @@
     <ClCompile Include="Vendors\stb_image\stb_image.cpp">
       <Filter>Vendors\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Chunk.cpp" />
-    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\ChunkFactory.cpp" />
-    <ClCompile Include="Source\Package\VP\FileSystem\Chunks\Images\RAW\RGBA_Chunk.cpp" />
-    <ClCompile Include="Source\Package\VP\FileDatabase.h" />
-    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\DebugPack_FileBrowser.h" />
-    <ClCompile Include="Source\Package\VP\UI\Pages\DebugPackManager\DebugPackManager.cpp" />
-    <ClCompile Include="Source\Package\VP\UI\Pages\PackageManager\FileBrowser\DebugPack_FileBrowser.cpp" />
-    <ClCompile Include="Source\Package\VP\FileSystem\DebugPack\DebugPack.cpp" />
-    <ClCompile Include="Source\Package\VP\UI\Pages\DebugPackExtractAll\ExtractAllPageDebug.cpp" />
-    <ClCompile Include="Source\Windows\ViewportWindow.cpp" />
+    <ClCompile Include="Source\World\CameraClass.cpp" />
   </ItemGroup>
 </Project>

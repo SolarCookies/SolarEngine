@@ -18,6 +18,7 @@ class WorldSettingsWindow
 	~WorldSettingsWindow() = default;
 	void Draw(World& world, VinceWindow& Window, PhysicsSystem& physics_system) {
 		{
+			ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.0f, 0.2f, 0.5f));
 			ImGui::Begin("World Settings");
 			ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
 
@@ -42,6 +43,7 @@ class WorldSettingsWindow
 			ImGui::Text("Actors in World: %d", world.GetActorCount());
 
 			ImGui::End();
+			ImGui::PopStyleColor();
 		}
 	}
 };

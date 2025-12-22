@@ -20,12 +20,13 @@
 #include "Windows/Window.h"
 
 #include "Temporary/Debug.h"
+#include "Subsystems/Saving/SaveManager.h"
 
-//#include "Actors/Meshes/aid_model.h"
+#include "Actors/Meshes/aid_model.h"
 
 
-//#include "Package/VP/UI/Pages/PackageManager/FileBrowser/FileBrowser.h"
-//#include "Package/VP/UI/GUI.h"
+#include "Package/VP/UI/Pages/PackageManager/FileBrowser/FileBrowser.h"
+#include "Package/VP/UI/GUI.h"
 
 
 
@@ -33,6 +34,30 @@
 // Main code
 int main(int, char**)
 {
+	SaveManager Saver;
+	if(false) //Saving
+	{
+		//Add a bunch of save data as a benchmark
+		for (int i = 0; i < 500; i++)
+		{
+			Saver.SaveType("TestInt_" + std::to_string(i), sInt{ i * 10 });
+			Saver.SaveType("TestFloat_" + std::to_string(i), sFloat{ i * 1.5f });
+			Saver.SaveType("TestString_" + std::to_string(i), sString{ "TestStringValue_" + std::to_string(i) });
+			Saver.SaveType("TestBool_" + std::to_string(i), sBool{ i % 2 == 0 });
+			Saver.SaveType("TestLong_" + std::to_string(i), sLong{ i * 1000 });
+		}
+		
+		//Save to file
+		Saver.SaveToFile("SaveData.sav", true);
+	}
+	else //Loading
+	{
+		Saver.LoadFromFile("SaveData.sav");
+		
+	}
+	
+
+
 	FileDatabase::Load("FileNameDatabase.ini");
 	//Jolt Physics Engine Requires this
 	RegisterDefaultAllocator();
@@ -60,8 +85,8 @@ int main(int, char**)
 	debug.Init(world, globals::window1, physics_system);
 
 	//Add aid_model to world
-	//std::unique_ptr<Aid_Model> model = std::make_unique<Aid_Model>();
-	//world.AddActor(std::move(model));
+	std::unique_ptr<Aid_Model> model = std::make_unique<Aid_Model>();
+	world.AddActor(std::move(model));
 
 	world.ConstructWorld();
 
@@ -91,7 +116,7 @@ int main(int, char**)
 	camera2.ShadowPerspective = false;
 	camera2.TestShadowPerspective = true;
 
-	//GUI m_GUI;
+	GUI m_GUI;
 
 	using clock = std::chrono::high_resolution_clock;
 	auto lastTime = clock::now();
@@ -125,11 +150,11 @@ int main(int, char**)
 		world.RenderWorldOutliner();
 		Details.RenderDetailsWindow(world);
 
-		//if (!m_GUI.HasInitialized) {
-		//	m_GUI.init();
-		//}
+		if (!m_GUI.HasInitialized) {
+			m_GUI.init();
+		}
 
-		//m_GUI.render();
+		m_GUI.render();
 
 		//Render ImGui
 		ImGui::Render();

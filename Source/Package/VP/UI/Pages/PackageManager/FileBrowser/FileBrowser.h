@@ -284,8 +284,8 @@ public:
 
 							//center height
 							//ImGui::SetCursorPosY(ImGui::GetCursorPosY() + (50 - ImGui::GetTextLineHeight()) / 2);
-
-							std::string PKGName = FileDatabase::GetName(FileNames[i]);
+							std::string Temp = FileNames[i];
+							std::string PKGName = FileDatabase::GetName(Temp);
 							if (PKGName == "") PKGName = FileNames[i];
 
 							if (ImGui::Button(PKGName.c_str()))

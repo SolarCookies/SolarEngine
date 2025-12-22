@@ -228,7 +228,8 @@ namespace gli
 				: Faces(MaxFace - BaseFace + 1)
 				, Levels(MaxLevel - BaseLevel + 1)
 			{
-				GLI_ASSERT(static_cast<size_t>(gli::levels(Storage.extent(0))) < this->ImageMemorySize.size());
+				//GLI_ASSERT(static_cast<size_t>(gli::levels(Storage.extent(0))) < this->ImageMemorySize.size());
+				GLI_ASSERT(gli::levels(Storage.extent(0).x) < static_cast<int>(this->ImageMemorySize.size()));
 
 				this->BaseAddresses.resize(Layers * this->Faces * this->Levels);
 

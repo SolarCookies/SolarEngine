@@ -239,6 +239,7 @@ inline static void Log(std::string str, EType Type)
 
 inline static void DrawLogAdvanced() {
 	//Log Window
+	ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.0f, 0.2f, 0.5f));
 	ImGui::Begin("Log");
 	if (ImGui::Button("Clear Log")) {
 		ClearLog();
@@ -247,7 +248,9 @@ inline static void DrawLogAdvanced() {
 	ImGui::BeginChild("Log", ImVec2(0, 0), true);
 	DrawLog();
 	ImGui::EndChild();
+
 	ImGui::End();
+	ImGui::PopStyleColor();
 }
 
 

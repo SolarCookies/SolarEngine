@@ -1,3 +1,4 @@
+#pragma	once
 #include "Utils/ini.h"
 
 /// The FileDatabase provides the functionality to take a checksum and return a custom user-friendly name for it. 

@@ -2,6 +2,7 @@
 
 void ViewportWindow::Draw(float& window_width, float& window_height, Camera& camera, VinceWindow& window, bool isShadowPass, const char* Name)
 {
+    ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.0f, 0.2f, 0.5f));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
     ImGui::Begin(Name);
     if (!isShadowPass) {
@@ -55,4 +56,5 @@ void ViewportWindow::Draw(float& window_width, float& window_height, Camera& cam
 
     ImGui::End();
     ImGui::PopStyleVar();
+	ImGui::PopStyleColor();
 }

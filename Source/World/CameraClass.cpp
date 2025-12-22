@@ -1,45 +1,29 @@
-#include "Camera.h"
+#include "CameraClass.h"
 
-SpectateCamera::SpectateCamera(float width, float height, vec3 Position) : Camera(width, height, Position)
+Camera::Camera(float width, float height, vec3 Position)
 {
-    
+    this->Position = Position;
+    this->width = width;
+    this->height = height;
     this->Orientation = vec3(0.0f, 0.0f, -1.0f);
     this->Up = vec3(0.0f, 1.0f, 0.0f);
-    this->cameraMatrix = glm::mat4(1.0f);
-
-
-    this->ShadowPerspective = false;
-    this->TestShadowPerspective = false;
-
-    // Yaw and pitch
-    this->yaw = -90.0f; // Facing -Z
-    this->pitch = 0.0f;
-
-    this->speed = 0.01f;
-    this->sensitivity = 0.2f;
-
-	this->Position = Position;
-	this->width = width;
-	this->height = height;
-	this->Orientation = vec3(0.0f, 0.0f, -1.0f);
-	this->Up = vec3(0.0f, 1.0f, 0.0f);
 }
 
-void SpectateCamera::updateMatrix(float FOV, float nearPlane, float farPlane)
+void Camera::updateMatrix(float FOV, float nearPlane, float farPlane)
 {
     if (TestShadowPerspective) {
         return;
     }
-	mat4 view = mat4(1.0f);
-	mat4 projection = mat4(1.0f);
+    mat4 view = mat4(1.0f);
+    mat4 projection = mat4(1.0f);
 
-	view = lookAt(Position, Position + Orientation, Up);
-	projection = perspective(radians(FOV), width / height, nearPlane, farPlane);
+    view = lookAt(Position, Position + Orientation, Up);
+    projection = perspective(radians(FOV), width / height, nearPlane, farPlane);
 
-	cameraMatrix = projection * view;
+    cameraMatrix = projection * view;
 }
 
-void SpectateCamera::Matrix(Shader& shader, const char* uniform)
+void Camera::Matrix(Shader& shader, const char* uniform)
 {
     if (TestShadowPerspective) {
         glm::mat4 orthonalProjection = glm::ortho(-5.0f, 5.0f, -5.0f, 5.0f, 0.1f, 50.0f);
@@ -52,7 +36,7 @@ void SpectateCamera::Matrix(Shader& shader, const char* uniform)
     }
 }
 
-void SpectateCamera::Inputs(GLFWwindow* window)
+void Camera::Inputs(GLFWwindow* window)
 {
     if (TestShadowPerspective) {
         return;

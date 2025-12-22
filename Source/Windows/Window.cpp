@@ -2,6 +2,62 @@
 #include "Log.hpp"
 #include "../Utils/OpenGL_Stuff.h"
 
+#define GLFW_EXPOSE_NATIVE_WIN32
+
+#include <GLFW/glfw3native.h> // Include this for native access
+
+
+#pragma comment(lib, "dwmapi.lib")
+
+#include <dwmapi.h>
+
+
+void VinceWindow::EnableBlur()
+{
+	HWND hwnd = glfwGetWin32Window(window.get());
+	if (!hwnd) return;
+
+	// DWM: Extend frame into client area (title bar and borders)
+	MARGINS margins = { -1 }; // -1 means extend to the whole window
+	DwmExtendFrameIntoClientArea(hwnd, &margins);
+
+	// Existing blur code...
+	const HINSTANCE hModule = LoadLibrary(TEXT("user32.dll"));
+	if (hModule)
+	{
+		typedef struct _ACCENT_POLICY
+		{
+			int nAccentState;
+			int nFlags;
+			int nColor;
+			int nAnimationId;
+		} ACCENT_POLICY;
+
+		typedef struct _WINDOWCOMPOSITIONATTRIBDATA
+		{
+			int nAttribute;
+			PVOID pData;
+			SIZE_T ulDataSize;
+		} WINDOWCOMPOSITIONATTRIBDATA;
+
+		enum AccentState
+		{
+			ACCENT_DISABLED = 0,
+			ACCENT_ENABLE_BLURBEHIND = 3,
+			ACCENT_ENABLE_ACRYLICBLURBEHIND = 4 // Windows 10/11
+		};
+
+		auto SetWindowCompositionAttribute = (BOOL(WINAPI*)(HWND, WINDOWCOMPOSITIONATTRIBDATA*))GetProcAddress(hModule, "SetWindowCompositionAttribute");
+		if (SetWindowCompositionAttribute)
+		{
+			ACCENT_POLICY policy = { ACCENT_ENABLE_BLURBEHIND, 0, 0, 0 };
+			WINDOWCOMPOSITIONATTRIBDATA data = { 19, &policy, sizeof(policy) };
+			SetWindowCompositionAttribute(hwnd, &data);
+		}
+		FreeLibrary(hModule);
+	}
+}
+
 void VinceWindow::init()
 {
 	glfwSetErrorCallback(glfw_error_callback);
@@ -13,6 +69,7 @@ void VinceWindow::init()
 	Log("GLSL Version set to: " + std::string(glsl_version), EType::Normal);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+	glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
 
 	Log("FrameBuffer Initialized", EType::BLUE);
 
@@ -42,6 +99,7 @@ void VinceWindow::init()
 	}
 
 	glViewport(0, 0, bufferWidth, bufferHeight);
+	VinceWindow::EnableBlur();
 }
 
 void VinceWindow::SetupImGuiIO()
@@ -72,7 +130,7 @@ void VinceWindow::SetupImGuiIO()
 			ImVec4* colors = ImGui::GetStyle().Colors;
 			colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
 			colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
-			colors[ImGuiCol_WindowBg] = ImVec4(0.08f, 0.00f, 0.15f, 0.94f);
+			colors[ImGuiCol_WindowBg] = ImVec4(0.08f, 0.00f, 0.15f, 0.00f);
 			colors[ImGuiCol_ChildBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
 			colors[ImGuiCol_PopupBg] = ImVec4(0.13f, 0.00f, 0.23f, 0.94f);
 			colors[ImGuiCol_Border] = ImVec4(0.57f, 0.00f, 1.00f, 0.50f);
@@ -112,7 +170,7 @@ void VinceWindow::SetupImGuiIO()
 			colors[ImGuiCol_TabDimmedSelected] = ImVec4(0.26f, 0.14f, 0.42f, 1.00f);
 			colors[ImGuiCol_TabDimmedSelectedOverline] = ImVec4(0.31f, 0.13f, 0.50f, 0.00f);
 			colors[ImGuiCol_DockingPreview] = ImVec4(0.89f, 0.26f, 0.98f, 0.70f);
-			colors[ImGuiCol_DockingEmptyBg] = ImVec4(0.20f, 0.02f, 0.29f, 1.00f);
+			colors[ImGuiCol_DockingEmptyBg] = ImVec4(0.20f, 0.02f, 0.29f, 0.00f);
 			colors[ImGuiCol_PlotLines] = ImVec4(1.00f, 0.00f, 0.95f, 1.00f);
 			colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
 			colors[ImGuiCol_PlotHistogram] = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);

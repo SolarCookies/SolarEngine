@@ -10,40 +10,16 @@
 #include <glm/gtx/vector_angle.hpp>
 
 #include "../Shaders/ShaderClass.h"
+#include "CameraClass.h"
 
 using namespace glm;
 
-class Camera
+class SpectateCamera : public Camera
 {
 public:
-	vec3 Position;
-	vec3 Orientation = vec3(0.0f, 0.0f, -1.0f);
-	vec3 Up = vec3(0.0f, 1.0f, 0.0f);
-	glm::mat4 cameraMatrix = glm::mat4(1.0f);
+    SpectateCamera(float width, float height, vec3 Position);
 
-
-	bool ShadowPerspective = false;
-	bool TestShadowPerspective = false;
-	//glm::mat4 orthonalProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 50.0f);
-	//glm::mat4 directonalLightView = glm::lookAt(vec3(-20.0f, 20.0f, 20.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
-	//glm::mat4 lightProjection = orthonalProjection * directonalLightView;
-
-	float width;
-	float height;
-
-	// Yaw and pitch
-	float yaw = -90.0f; // Facing -Z
-	float pitch = 0.0f;
-
-	float speed = 0.01f;
-	float sensitivity = 0.2f;
-
-	Camera(float width, float height, vec3 Position);
-
-	void updateMatrix(float FOV, float nearPlane, float farPlane);
-	glm::mat4 getViewMatrix() const {
-		return cameraMatrix;
-	}
-	void Matrix(Shader& shader, const char* uniform);
-	void Inputs(GLFWwindow* window);
+    void updateMatrix(float FOV, float nearPlane, float farPlane) override;
+    void Matrix(Shader& shader, const char* uniform) override;
+    void Inputs(GLFWwindow* window) override;
 };

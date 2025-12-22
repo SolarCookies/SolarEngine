@@ -20,6 +20,7 @@ LightComponent* World::GetLightSource()
 
 void World::RenderWorldOutliner()
 {
+    ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.1f, 0.0f, 0.2f, 0.5f));
     ImGui::Begin("WorldOutliner");
 
     // Prepare list of actor names
@@ -60,4 +61,5 @@ void World::RenderWorldOutliner()
     }
 
     ImGui::End();
+	ImGui::PopStyleColor();
 }
