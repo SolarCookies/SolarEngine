@@ -18,6 +18,7 @@
 #include <iostream>
 #include <cstdarg>
 #include <thread>
+#include <iostream>
 
 
 
@@ -51,7 +52,7 @@ static void TraceImpl(const char* inFMT, ...)
 static bool AssertFailedImpl(const char* inExpression, const char* inMessage, const char* inFile, uint inLine)
 {
 	// Print to the TTY
-	cout << inFile << ":" << inLine << ": (" << inExpression << ") " << (inMessage != nullptr ? inMessage : "") << endl;
+	std::cout << inFile << ":" << inLine << ": (" << inExpression << ") " << (inMessage != nullptr ? inMessage : "") << std::endl;
 
 	// Breakpoint
 	return true;
