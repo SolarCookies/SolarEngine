@@ -162,11 +162,11 @@ inline VertexBlock ConstructVertexBlockFromSize(int size, bool bigEndian, std::v
 		}
 		else if (size == 48) {
 			float uv[2];
-			memcpy(&uv, &block[36], sizeof(float) * 2);
+			memcpy(&uv, &block[28], sizeof(float) * 2); //36, 30
 			Vert.texCoord.u = uv[0];
 			Vert.texCoord.v = uv[1];
 			Vert.hasTexCoord = true;
-			Vert.texCoordOffset = 36; //This isnt correct at 40
+			Vert.texCoordOffset = 28; //This isnt correct at 40
 			std::vector<unsigned char> data;
 			data.resize(6);
 			memcpy(&data[0], &block[12], 6); // Read Normal (3 signed shorts, 6 bytes)

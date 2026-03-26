@@ -99,6 +99,7 @@
     <ClInclude Include="Source\Actors\Lights\APointLight.h" />
     <ClInclude Include="Source\Actors\Meshes\AStaticMesh.h" />
     <ClInclude Include="Source\Actors\Meshes\aid_model.h" />
+    <ClInclude Include="Source\Actors\Meshes\dbModel.h" />
     <ClInclude Include="Source\Components\Component.h" />
     <ClInclude Include="Source\Components\Lights\LightComponent.h" />
     <ClInclude Include="Source\Components\Meshes\DynamicMeshComponent.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Source\Utils\OpenGL_Stuff.h" />
     <ClInclude Include="Source\Utils\ZLibHelpers.h" />
     <ClInclude Include="Source\Utils\ini.h" />
+    <ClInclude Include="Source\VP_Decomp\aid\model\ModelTypes.h" />
     <ClInclude Include="Source\Windows\Content\ContentWindow.h" />
     <ClInclude Include="Source\Windows\DetailsPannel.h" />
     <ClInclude Include="Source\Windows\Log.hpp" />

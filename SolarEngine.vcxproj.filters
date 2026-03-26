@@ -1319,6 +1319,8 @@
     </ClInclude>
     <ClInclude Include="Source\Utils\Clock.h" />
     <ClInclude Include="Source\World\CameraClass.h" />
+    <ClInclude Include="Source\Actors\Meshes\dbModel.h" />
+    <ClInclude Include="Source\VP_Decomp\aid\model\ModelTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Actors\Actor.cpp">
